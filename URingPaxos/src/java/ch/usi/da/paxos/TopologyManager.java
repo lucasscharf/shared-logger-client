@@ -208,7 +208,6 @@ public class TopologyManager implements Watcher {
 				logger.error("Node ID " + nodeID + " in topology " + topologyID + " already registred!");
 			}
 		});
-		logger.debug("Logger config path: [{}]", path + "/" + config_path + "/");
 		// load/set basic configuration
 		Util.checkThenCreateZooNode(path + "/" + config_path,null,Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT,zoo);
 		Util.checkThenCreateZooNode(path + "/" + config_path + "/" + ConfigKey.p1_preexecution_number,"5000".getBytes(),Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT,zoo);
