@@ -87,10 +87,12 @@ public class LoggerController {
     public Response registerLogger(LoggerConfig config) {
         logger.info("Registering config [{}]", config);
         int clusterSize = nodesReplicas.size();
+        if (clusterSize <= 0)
+            clusterSize = 1;
         int initialId = (((int) (Math.random() * clusterSize) % clusterSize));
         for (int i = 0; i < initialId; i++) {
             int urlId = (initialId + i) % clusterSize;
-            
+            logger.info("Calling logger in url id: " + urlId);
             loggerRestClients.get(urlId).initLogs(config);
         }
         return Response.ok().build();
