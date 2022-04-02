@@ -30,7 +30,7 @@ import io.quarkus.runtime.ShutdownEvent;
 public class LoggerController {
 
     @Inject
-    @ConfigProperty(name = "nodes.replicas.url", defaultValue = "127.0.0.1:8080")
+    @ConfigProperty(name = "nodes.replicas.url", defaultValue = "http://127.0.0.1:8080")
     List<String> nodesReplicas;
     List<LoggerRestClient> loggerRestClients;
 
