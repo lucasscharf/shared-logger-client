@@ -21,6 +21,8 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.RestClientDefinitionException;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.quarkus.runtime.ShutdownEvent;
 
@@ -35,6 +37,7 @@ public class LoggerController {
     List<LoggerRestClient> loggerRestClients;
 
     List<LoggerClient> loggerClients;
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @PostConstruct
     public void init() {
