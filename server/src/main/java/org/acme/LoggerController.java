@@ -71,6 +71,8 @@ public class LoggerController {
     @POST
     @Path("init")
     public Response initLogs(LoggerConfig config) {
+        logger.info("Initing config [{}]", config);
+
         LoggerClient loggerClient = new MultRingPaxosLoggerClient(config.url, config.id, config.ring);
         loggerClients.add(loggerClient);
 
@@ -80,6 +82,7 @@ public class LoggerController {
     @POST
     @Path("register")
     public Response registerLogger(LoggerConfig config) {
+        logger.info("Registering config [{}]", config);
         int clusterSize = nodesReplicas.size();
         int initialId = (((int) (Math.random() * clusterSize) % clusterSize));
         for (int i = 0; i < initialId; i++) {
