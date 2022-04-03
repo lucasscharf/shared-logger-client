@@ -99,7 +99,9 @@ public class LoggerController {
     }
 
     @GET
+    @Path("getAll")
     public Response getAll() {
+        logger.info("Received a get all request");
         return Response.ok( //
                 loggerClients.stream().map(LoggerClient::getAllLogs).collect(Collectors.toList())//
         ).build();
