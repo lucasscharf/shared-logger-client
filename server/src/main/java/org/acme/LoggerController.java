@@ -24,6 +24,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.usi.da.smr.Replica;
 import io.quarkus.runtime.ShutdownEvent;
 
 @Path("/")
@@ -69,13 +70,14 @@ public class LoggerController {
         }
     }
 
-    ReplicaLoggerClient replicaLoggerClient;
+    Replica replicaLoggerClient;
 
     @POST
     @Path("registerReplica")
     public Response registerReplica(LoggerConfig config) throws Exception {
         logger.info("Registering replica logger");
-        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0,config.url);
+        replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
+        // replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0,config.url);
         logger.info("Replica logger [{}]", replicaLoggerClient);
         replicaLoggerClient.start();
         return Response.ok().build();
