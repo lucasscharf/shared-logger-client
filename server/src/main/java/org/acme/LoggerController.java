@@ -63,6 +63,22 @@ public class LoggerController {
                 e.printStackTrace();
             }
         });
+        if (replicaLoggerClient != null) {
+            logger.info("Closing replica");
+            replicaLoggerClient.close();
+        }
+    }
+
+    ReplicaLoggerClient replicaLoggerClient;
+
+    @POST
+    @Path("registerReplica")
+    public Response registerReplica(LoggerConfig config) throws Exception {
+        logger.info("Registering replica logger");
+        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0,config.url);
+        logger.info("Replica logger [{}]", replicaLoggerClient);
+        replicaLoggerClient.start();
+        return Response.ok().build();
     }
 
     @GET

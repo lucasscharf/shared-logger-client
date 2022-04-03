@@ -82,9 +82,6 @@ public class MultRingPaxosLoggerClient implements LoggerClient, Receiver {
 		}
 		message.getCommands().stream().map(Command::toString).forEach(logs::add);
 		logger.info("Log size [{}]", logs.size());
-		int msg_id = MurmurHash.hash32(message.getInstnce() + "-" + TOKEN);
-		Message msg = new Message(msg_id,TOKEN ,message.getFrom(),new ArrayList<>());
-		// udp.send(msg);
 	}
 
 	@Override
