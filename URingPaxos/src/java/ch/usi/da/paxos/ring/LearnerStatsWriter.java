@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
  */
 public class LearnerStatsWriter implements Runnable {
 
-	private final static Logger logger = Logger.getLogger("ch.usi.da.paxos.Stats");
+	private final static Logger logger = Logger.getLogger(LearnerStatsWriter.class);
 	
 	private long start_time = -1;
 	
