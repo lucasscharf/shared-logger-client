@@ -44,7 +44,8 @@ public class ReplicaLoggerClient extends Replica {
 
 	@Override
 	public void receive(Message m) {
-		System.out.println("Replica received ring " + m.getRing() + " instnace " + m.getInstnce() + " (" + m + ")");
+		logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
+		m.getRing(), m.getInstnce(), m.getID());
 	}
 
 }
