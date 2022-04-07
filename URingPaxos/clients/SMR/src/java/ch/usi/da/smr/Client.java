@@ -180,10 +180,12 @@ public class Client implements Receiver {
 		    						long time = System.nanoTime();
 		    						long sent_count = stat_command.get() - last_sent_count;
 		    						long sent_time = stat_latency.get() - last_sent_time;
-		    						float t = (float)(time-last_time)/(1000*1000*1000);
-		    						float count = sent_count/t;
-		    						logger.info(String.format("Client sent %.1f command/s avg. latency %.0f ns",count,sent_time/count));
-		    						logger.debug("commands " + commands.size() + " responses " + responses.size());
+		    						float time_in_seconds = ((float)(time-last_time))/(1000*1000*1000);
+		    						float sent_by_second = sent_count/time_in_seconds;
+		    						logger.info(
+											String.format("Client sent count [%s]. Client [%.1f] command/s avg. latency [%.0f] ns. Total comands sent [%d]. Total responses count [%d]. Time in seconds [%.3f]", //
+													sent_count, sent_by_second, sent_time / sent_by_second,
+													commands.size(), responses.size(), time_in_seconds));
 		    						last_sent_count += sent_count;
 		    						last_sent_time += sent_time;
 		    						last_time = time;
@@ -196,8 +198,8 @@ public class Client implements Receiver {
 		    			}
 		    		};
 		    		stats.start();
-		    		logger.info("Start performance testing with " + concurrent_cmd + " threads.");
-		    		logger.info("(values_per_thread:" + send_per_thread + " value_size:" + value_size + ")");
+		    		logger.info("Start performance testing with [" + concurrent_cmd + "] threads.");
+		    		logger.info("(values_per_thread:" + send_per_thread + " value_size:" + value_size + " bytes)");
 	    			Thread c = new Thread("Experiemnt controller"){
 						@Override
 						public void run(){
@@ -403,7 +405,7 @@ public class Client implements Receiver {
 									send_count++;
 								}
 								await.countDown();
-								logger.debug("Thread terminated.");
+								logger.debug("Thread ["+ Thread.currentThread().getId() +"] terminated.");
 							}
 						};
 						t.start();

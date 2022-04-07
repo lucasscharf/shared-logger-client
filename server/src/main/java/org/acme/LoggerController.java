@@ -33,7 +33,7 @@ import io.quarkus.runtime.ShutdownEvent;
 public class LoggerController {
 
     @Inject
-    @ConfigProperty(name = "nodes.replicas.url", defaultValue = "http://127.0.0.1:8080")
+    @ConfigProperty(name = "nodes.replicas.url", defaultValue = "http://127.0.0.1:8888")
     List<String> nodesReplicas;
     List<LoggerRestClient> loggerRestClients;
 
@@ -97,7 +97,7 @@ public class LoggerController {
     public Response initLogs(LoggerConfig config) {
         logger.info("Initing config [{}]", config);
 
-        LoggerClient loggerClient = new MultRingPaxosLoggerClient(config.url, config.id, config.ring);
+        LoggerClient loggerClient = new MultiRingPaxosLoggerClient(config.url, config.id, config.ring);
         loggerClients.add(loggerClient);
 
         return Response.ok().build();

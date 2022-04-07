@@ -5,7 +5,7 @@
 
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p %c{1}:%L - %m%n" />
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%t] %c{1}:%L - %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
 			<param name="levelMin" value="DEBUG" />
@@ -33,7 +33,7 @@
 	</category>
 
 	<root>
-		<priority value="debug" />
+		<priority value="INFO" />
 		<appender-ref ref="STDOUT" />
 		<!-- <appender-ref ref="FILE" /> -->
 	</root>
