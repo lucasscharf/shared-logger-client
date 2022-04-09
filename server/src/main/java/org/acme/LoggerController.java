@@ -53,6 +53,7 @@ public class LoggerController {
                         throw new RuntimeException(e);
                     }
                 }).collect(Collectors.toList());
+        logger.info("LoggerClients size [{}]", loggerClients.size());
     }
 
     public void destroy(@Observes ShutdownEvent ignored) {
@@ -68,22 +69,6 @@ public class LoggerController {
             logger.info("Closing replica");
             replicaLoggerClient.close();
         }
-    }
-
-    Replica replicaLoggerClient;
-
-    @POST
-    @Path("registerReplica")
-    public Response registerReplica(LoggerConfig config) throws Exception {
-        logger.info("Registering replica logger");
-        // String[] args = { config.ring + "," + config.id + ",0", "0", config.url };
-        // Replica.main(args);
-        // replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
-        replicaLoggerClient = new ReplicaLoggerClient("0",
-        config.ring,config.id,0,config.url);
-        logger.info("Replica logger [{}]", replicaLoggerClient);
-        replicaLoggerClient.start();
-        return Response.ok().build();
     }
 
     @GET
@@ -112,8 +97,10 @@ public class LoggerController {
             clusterSize = 1;
         int initialId = (((int) (Math.random() * clusterSize) % clusterSize));
         for (int i = 0; i < clusterSize; i++) {
+            int newId = (int) (Math.random() * clusterSize * 100);
             int urlId = (initialId + i) % clusterSize;
-            logger.info("Calling logger in url id: " + urlId);
+            logger.info("Calling logger in url id [{}]", urlId);
+            config.id = newId;
             loggerRestClients.get(urlId).initLogs(config);
         }
         return Response.ok().build();
@@ -122,9 +109,11 @@ public class LoggerController {
     @GET
     @Path("getAll")
     public Response getAll() {
-        logger.info("Received a get all request");
-        return Response.ok( //
-                loggerClients.stream().map(LoggerClient::getAllLogs).collect(Collectors.toList())//
-        ).build();
+        logger.info("Received a get all request.");
+        List<List<String>> loggedValues = loggerClients.stream().map(LoggerClient::getAllLogs)
+                .collect(Collectors.toList());
+        logger.info("Size [{}]", loggedValues.size());
+
+        return Response.ok(loggedValues).build();
     }
 }
