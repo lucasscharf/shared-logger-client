@@ -53,6 +53,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 			Thread.sleep(1000); // wait until PartitionManger is ready
 
 			ab = new RawABListener(nodeId, zookeeperUrl, rings);
+			ab.registerReceiver(this);
 
 			Thread t = new Thread((Runnable) ab);
 			t.setName("ABListener");
