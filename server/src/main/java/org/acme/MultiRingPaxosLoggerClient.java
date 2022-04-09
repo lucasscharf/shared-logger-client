@@ -30,15 +30,12 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 
 	public MultiRingPaxosLoggerClient(String zookeeperUrl, Integer nodeId, Integer ringId) {
 		logs = new LinkedList<>();
-		this.zookeeperUrl = zookeeperUrl;
 		this.nodeId = nodeId;
-		this.ringId = ringId;
 		partitions = new PartitionManager(zookeeperUrl);
 		try {
 			partitions.init();
 			partitions.register(nodeId, ringId, ip, TOKEN);
 			ab = partitions.getRawABListener(ringId, nodeId);
-			udp = new UDPSender();
 
 			ab.registerReceiver(this);
 
