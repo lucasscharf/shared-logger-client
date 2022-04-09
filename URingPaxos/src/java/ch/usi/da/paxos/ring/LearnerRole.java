@@ -149,6 +149,7 @@ public class LearnerRole extends Role implements Learner {
 		/*if(logger.isDebugEnabled()){
 			logger.debug("learner " + ring.getNodeID() + " received " + m);
 		}*/
+		logger.warn("message: " + m);
 		if(m.getType() == MessageType.Decision){
 			Decision d = null;
 			if(learned.get(m.getValue().getID()) != null){
