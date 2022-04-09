@@ -53,7 +53,7 @@ public class LoggerController {
                         throw new RuntimeException(e);
                     }
                 }).collect(Collectors.toList());
-        logger.info("LoggerClients size [{}]", loggerClients.size());
+        logger.info("loggerRestClients size [{}]", loggerRestClients.size());
     }
 
     public void destroy(@Observes ShutdownEvent ignored) {
@@ -74,6 +74,7 @@ public class LoggerController {
     @GET
     @Path("ping")
     public Response ping() {
+        logger.info("Pong");
         return Response.ok().build();
     }
 
