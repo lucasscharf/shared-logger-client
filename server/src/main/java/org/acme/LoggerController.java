@@ -65,11 +65,28 @@ public class LoggerController {
                 e.printStackTrace();
             }
         });
-        // if (replicaLoggerClient != null) {
-        //     logger.info("Closing replica");
-        //     replicaLoggerClient.close();
-        // }
+        if (replicaLoggerClient != null) {
+            logger.info("Closing replica");
+            replicaLoggerClient.close();
+        }
     }
+
+    Replica replicaLoggerClient;
+
+    @POST
+    @Path("registerReplica")
+    public Response registerReplica(LoggerConfig config) throws Exception {
+        logger.info("Registering replica logger");
+        // String[] args = { config.ring + "," + config.id + ",0", "0", config.url };
+        // Replica.main(args);
+        // replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
+        replicaLoggerClient = new ReplicaLoggerClient("0",
+        config.ring,config.id,0,config.url);
+        logger.info("Replica logger [{}]", replicaLoggerClient);
+        replicaLoggerClient.start();
+        return Response.ok().build();
+    }
+
 
     @GET
     @Path("ping")
@@ -100,7 +117,7 @@ public class LoggerController {
         for (int i = 0; i < clusterSize; i++) {
             int newId = (int) (Math.random() * clusterSize * 100);
             int urlId = (initialId + i) % clusterSize;
-            logger.info("Calling logger in url id [{}]", urlId);
+            logger.info("Calling logger in url id [{}] with id [{}]", urlId, newId);
             config.id = newId;
             loggerRestClients.get(urlId).initLogs(config);
         }
