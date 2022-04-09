@@ -158,6 +158,7 @@ public class LearnerRole extends Role implements Learner {
 			}else{
 				d = new Decision(fromRing.getRingID(),m.getInstance(),m.getBallot(),m.getValue());
 			}
+			logger.warn("Decision received: " + d);
 			if(d != null && d.getValue().getValue().length > 0){
 				if(!recovered && !recovery){
 					next_instance = d.getInstance();
