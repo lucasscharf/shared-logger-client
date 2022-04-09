@@ -65,10 +65,10 @@ public class LoggerController {
                 e.printStackTrace();
             }
         });
-        if (replicaLoggerClient != null) {
-            logger.info("Closing replica");
-            replicaLoggerClient.close();
-        }
+        // if (replicaLoggerClient != null) {
+        //     logger.info("Closing replica");
+        //     replicaLoggerClient.close();
+        // }
     }
 
     @GET
