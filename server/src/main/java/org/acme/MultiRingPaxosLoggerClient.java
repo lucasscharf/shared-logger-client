@@ -2,6 +2,7 @@ package org.acme;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,12 +11,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.usi.da.paxos.Util;
+import ch.usi.da.paxos.api.PaxosRole;
+import ch.usi.da.paxos.ring.RingDescription;
 import ch.usi.da.smr.MurmurHash;
 import ch.usi.da.smr.Partition;
 import ch.usi.da.smr.PartitionManager;
 import ch.usi.da.smr.message.Command;
 import ch.usi.da.smr.message.Message;
 import ch.usi.da.smr.transport.ABListener;
+import ch.usi.da.smr.transport.RawABListener;
 import ch.usi.da.smr.transport.Receiver;
 import ch.usi.da.smr.transport.UDPSender;
 
@@ -39,9 +43,16 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 			Partition partition = partitions.register(nodeId, ringId, ip, TOKEN);
 			logger.info("Partition [{}]", partition);
 			udp = new UDPSender();
-			ab = partitions.getRawABListener(ringId, nodeId);
 
-			ab.registerReceiver(this);
+			List<PaxosRole> role = new ArrayList<>();
+			role.add(PaxosRole.Learner);
+			List<RingDescription> rings = new ArrayList<>();
+			rings.add(new RingDescription(ringId, role));
+
+			logger.debug("Create RawABListener " + rings);
+			Thread.sleep(1000); // wait until PartitionManger is ready
+
+			ab = new RawABListener(nodeId, zookeeperUrl, rings);
 
 			Thread t = new Thread((Runnable) ab);
 			t.setName("ABListener");
@@ -72,7 +83,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 		logger.info("send udp message");
 
 		int msg_id = MurmurHash.hash32(message.getInstnce() + "-" + TOKEN);
-		Message msg = new Message(msg_id,TOKEN,message.getFrom(),message.getCommands());
+		Message msg = new Message(msg_id, TOKEN, message.getFrom(), message.getCommands());
 		udp.send(msg);
 	}
 
