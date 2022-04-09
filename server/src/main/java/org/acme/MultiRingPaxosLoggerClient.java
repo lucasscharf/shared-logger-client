@@ -68,6 +68,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 		}
 		message.getCommands().stream().map(Command::toString).forEach(logs::add);
 		logger.info("Log size [{}]", logs.size());
+		logger.info("send udp message");
 		udp.send(message);
 	}
 
