@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.usi.da.paxos.Util;
+import ch.usi.da.smr.MurmurHash;
 import ch.usi.da.smr.Partition;
 import ch.usi.da.smr.PartitionManager;
 import ch.usi.da.smr.message.Command;
@@ -69,7 +70,10 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 		message.getCommands().stream().map(Command::toString).forEach(logs::add);
 		logger.info("Log size [{}]", logs.size());
 		logger.info("send udp message");
-		udp.send(message);
+
+		int msg_id = MurmurHash.hash32(message.getInstnce() + "-" + TOKEN);
+		Message msg = new Message(msg_id,TOKEN,message.getFrom(),message.getCommands());
+		udp.send(msg);
 	}
 
 	@Override
