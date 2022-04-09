@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.usi.da.paxos.Util;
+import ch.usi.da.smr.Partition;
 import ch.usi.da.smr.PartitionManager;
 import ch.usi.da.smr.message.Command;
 import ch.usi.da.smr.message.Message;
@@ -23,7 +24,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 	private Integer nodeId;
 	private PartitionManager partitions;
 	private final InetAddress ip = Util.getHostAddress();
-
+	private final UDPSender udp;
 	private List<String> logs;
 
 	private final static Logger logger = LoggerFactory.getLogger(MultiRingPaxosLoggerClient.class);
@@ -34,7 +35,9 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 		partitions = new PartitionManager(zookeeperUrl);
 		try {
 			partitions.init();
-			partitions.register(nodeId, ringId, ip, TOKEN);
+			Partition partition = partitions.register(nodeId, ringId, ip, TOKEN);
+			logger.info("Partition [{}]", partition);
+			udp = new UDPSender();
 			ab = partitions.getRawABListener(ringId, nodeId);
 
 			ab.registerReceiver(this);
@@ -65,6 +68,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 		}
 		message.getCommands().stream().map(Command::toString).forEach(logs::add);
 		logger.info("Log size [{}]", logs.size());
+		udp.send(message);
 	}
 
 	@Override

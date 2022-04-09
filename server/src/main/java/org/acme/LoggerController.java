@@ -80,8 +80,7 @@ public class LoggerController {
         // String[] args = { config.ring + "," + config.id + ",0", "0", config.url };
         // Replica.main(args);
         // replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
-        replicaLoggerClient = new ReplicaLoggerClient("0",
-        config.ring,config.id,0,config.url);
+        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0,config.url);
         logger.info("Replica logger [{}]", replicaLoggerClient);
         replicaLoggerClient.start();
         return Response.ok().build();
