@@ -692,7 +692,7 @@ public class Client implements Receiver {
 				e++;
 			}
 			Long key = new Long(Math.round(l/1000));
-			logger.info("Latency: " + l + " latency key: " + key + " sum: " + sum);
+			// logger.info("Latency: " + l + " latency key: " + key + " sum: " + sum);
 			if(histogram.containsKey(key)){
 				histogram.put(key,histogram.get(key)+1);
 			}else{
@@ -702,7 +702,8 @@ public class Client implements Receiver {
 
 		logger.info("Latency size: " + latency.size());
 		float avg = (float)sum/latency.size()/1000/1000;
-		logger.info("client latency histogram: <1ms:" + a + " <10ms:" + b + " <25ms:" + b2 + " <50ms:" + c + " <75ms:" + f + " <100ms:" + d + " >100ms:" + e + " avg:" + avg);
+		logger.info("client latency histogram: <1ms:" + a + " <10ms:" + b + " <25ms:" + b2 + " <50ms:" + c + " <75ms:" + f + " <100ms:" + d + " >100ms:" + e + " avg (ms):" + avg);
+		logger.info("Key -> count");
 		for(Entry<Long, Long> bin : histogram.entrySet()){ // details for CDF
 			logger.info(bin.getKey() + "," + bin.getValue());
 		}
