@@ -668,6 +668,9 @@ public class Client implements Receiver {
 	private void printHistogram(){
 		Map<Long,Long> histogram = new HashMap<Long,Long>();
 		int a = 0,b = 0,b2 = 0,c = 0,d = 0,e = 0,f = 0;
+		Set<Entry<Long, Long>> histogramEntrySet = histogram.entrySet();
+
+		
 		long sum = 0;
 		for(Long l : latency){
 			sum = sum + l;
@@ -687,6 +690,7 @@ public class Client implements Receiver {
 				e++;
 			}
 			Long key = new Long(Math.round(l/1000));
+			logger.info("Latency: " + l + " latency key: " + key + " sum: " + sum);
 			if(histogram.containsKey(key)){
 				histogram.put(key,histogram.get(key)+1);
 			}else{
