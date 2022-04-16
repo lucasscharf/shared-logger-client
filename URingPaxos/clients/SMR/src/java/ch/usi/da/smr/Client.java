@@ -195,11 +195,13 @@ public class Client implements Receiver {
 		    						long sent_time = stat_latency.get() - last_sent_time;
 		    						float t = (float)(time-last_time)/(1000*1000*1000);
 		    						float count = sent_count/t;
+										latency.add(sent_time/count);
 		    						logger.info(String.format("Client sent %.1f command/s avg. latency %.0f ns",count,sent_time/count));
 		    						logger.debug("commands " + commands.size() + " responses " + responses.size());
 		    						last_sent_count += sent_count;
 		    						last_sent_time += sent_time;
 		    						last_time = time;
+										
 		    						Thread.sleep(100);
 		    					} catch (InterruptedException e) {
 		    						Thread.currentThread().interrupt();
@@ -697,6 +699,8 @@ public class Client implements Receiver {
 				histogram.put(key,1L);
 			}
 		}
+
+		logger.info("Latency size: " + latency.size());
 		float avg = (float)sum/latency.size()/1000/1000;
 		logger.info("client latency histogram: <1ms:" + a + " <10ms:" + b + " <25ms:" + b2 + " <50ms:" + c + " <75ms:" + f + " <100ms:" + d + " >100ms:" + e + " avg:" + avg);
 		for(Entry<Long, Long> bin : histogram.entrySet()){ // details for CDF
