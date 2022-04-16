@@ -58,7 +58,7 @@ public class MultiRingPaxosLoggerClient implements LoggerClient, Receiver {
 			Thread t = new Thread((Runnable) ab);
 			t.setName("ABListener");
 			t.start();
-		} catch (KeeperException | InterruptedException | IOException e) {
+		} catch (KeeperException | InterruptedException | IOException e) { 
 			throw new RuntimeException(e);
 		}
 

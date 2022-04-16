@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd ~
+git clone https://github.com/lucasscharf/shared-logger-client
+
 export JAVA_HOME=/usr/lib/jvm/java-13-openjdk-amd64/
 export nodes_replicas_url=http://node0:8888,http://node5:8888
 
@@ -24,8 +27,7 @@ sudo newgrp docker
 sudo chmod 666 /var/run/docker.sock
 sudo usermod -aG docker ${USER}
 
-cd ~
-git clone https://github.com/lucasscharf/shared-logger-client
+exit 
 
 cd ~/shared-logger-client
 docker-compose up -d zookeeper
