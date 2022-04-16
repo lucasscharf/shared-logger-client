@@ -195,7 +195,7 @@ public class Client implements Receiver {
 		    						long sent_time = stat_latency.get() - last_sent_time;
 		    						float t = (float)(time-last_time)/(1000*1000*1000);
 		    						float count = sent_count/t;
-										latency.add(sent_time/count);
+										latency.add((long) (sent_time/count));
 		    						logger.info(String.format("Client sent %.1f command/s avg. latency %.0f ns",count,sent_time/count));
 		    						logger.debug("commands " + commands.size() + " responses " + responses.size());
 		    						last_sent_count += sent_count;
