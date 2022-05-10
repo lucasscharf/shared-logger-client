@@ -18,6 +18,18 @@ package org.acme;
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,19 +46,49 @@ import ch.usi.da.smr.message.Message;
  * 
  * @author Samuel Benz benz@geoid.ch
  */
-public class ReplicaLoggerClient extends Replica {
+public class ReplicaLoggerClient extends Replica implements LoggerClient {
+	private File file;
+	private Path path;
+	private BufferedInputStream in;
+
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
 	public ReplicaLoggerClient(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host)
 			throws Exception {
 		super(token, ringID, nodeID, snapshot_modulo, zoo_host);
+		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+		// file = path.toFile();
+
+		logger.info("Path created [{}]", path);
 	}
 
 	@Override
 	public void receive(Message m) {
-		super.receive(m);
+		// super.receive(m);
 		logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
-		m.getRing(), m.getInstnce(), m.getID());
+				m.getRing(), m.getInstnce(), m.getID());
+
+		try {
+			Files.write(path,
+					m.getCommands().get(0).getValue(),
+					StandardOpenOption.APPEND);
+		} catch (IOException e) {
+			logger.error("", e);
+		}
 	}
 
+	@Override
+	public void close() {
+		logger.info("Clossing files");
+	}
+
+	@Override
+	public List<String> getAllLogs() {
+		try {
+			return Files.readAllLines(path).stream().collect(Collectors.toList());
+		} catch (IOException e) {
+			logger.error("", e);
+		}
+		return new ArrayList<>();
+	}
 }

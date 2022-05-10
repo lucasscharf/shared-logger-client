@@ -35,6 +35,11 @@ public class LoggerController {
     @Inject
     @ConfigProperty(name = "nodes_replicas_url", defaultValue = "http://127.0.0.1:8888")
     List<String> nodesReplicas;
+
+    @Inject
+    @ConfigProperty(name="zookeeper_url", defaultValue = "10.0.1.1")
+    public String zookeeperUrl;
+
     List<LoggerRestClient> loggerRestClients;
 
     List<LoggerClient> loggerClients;
@@ -80,7 +85,7 @@ public class LoggerController {
         // String[] args = { config.ring + "," + config.id + ",0", "0", config.url };
         // Replica.main(args);
         // replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
-        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0,config.url);
+        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0, zookeeperUrl);
         logger.info("Replica logger [{}]", replicaLoggerClient);
         replicaLoggerClient.start();
         return Response.ok().build();
@@ -99,7 +104,7 @@ public class LoggerController {
     public Response initLogs(LoggerConfig config) {
         logger.info("Initing config [{}]", config);
 
-        LoggerClient loggerClient = new MultiRingPaxosLoggerClient(config.url, config.id, config.ring);
+        LoggerClient loggerClient = new MultiRingPaxosLoggerClient(zookeeperUrl, config.id, config.ring);
         loggerClients.add(loggerClient);
 
         return Response.ok().build();

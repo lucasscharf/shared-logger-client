@@ -1,7 +1,6 @@
 package org.acme;
 
 public class LoggerConfig {
-	public String url;
 	public int ring;
 	public int id;
 	public int replicas;
@@ -15,8 +14,8 @@ public class LoggerConfig {
 		builder.append(ring);
 		builder.append(", replicas=");
 		builder.append(replicas);
-		builder.append(", url=");
-		builder.append(url);
+		// builder.append(", url=");
+		// builder.append(url);
 		builder.append("]");
 		return builder.toString();
 	}
