@@ -115,6 +115,12 @@ public class Replica implements Receiver {
 	private volatile boolean active_snapshot = false;
 
 	public Replica() {
+		this.nodeID = 0;
+		this.token = "0";
+		this.snapshot_modulo = 0;
+		partitions = null;
+		udp = null;
+		ab = null;
 	}
 
 	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
@@ -478,12 +484,7 @@ public class Replica implements Receiver {
 			System.exit(1);
 			return;
 		}
-
-		if(DISK_REPLICA.equalsIgnoreCase(replicaType)) {
-			startDiskReplica(args);
-		} else {
-			startMemoryReplica(args);
-		}
+		startMemoryReplica(args);
 	}
 
 	private static void startMemoryReplica(String[] args) {
@@ -520,37 +521,4 @@ public class Replica implements Receiver {
 		}
 	}
 
-	private static void startDiskReplica(String[] args) {
-		String zoo_host = "127.0.0.1:2181";
-		int snapshot = 0;
-
-		if (args.length > 2) {
-			zoo_host = args[2];
-		}
-		if (args.length > 1) {
-			snapshot = Integer.parseInt(args[1]);
-		}
-
-		String[] arg = args[0].split(",");
-		final int nodeID = Integer.parseInt(arg[1]);
-		final int ringID = Integer.parseInt(arg[0]);
-		final String token = arg[2];
-
-		try {
-			final DiskReplica diskReplica = new DiskReplica(token, ringID, nodeID, snapshot, zoo_host);
-			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
-				@Override
-				public void run() {
-					diskReplica.close();
-				}
-			});
-			diskReplica.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			in.readLine();
-			diskReplica.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-	}
 }
