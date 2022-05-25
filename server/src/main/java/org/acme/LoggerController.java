@@ -87,7 +87,7 @@ public class LoggerController {
         replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0, zookeeperUrl);
         // replicaLoggerClient = new MultiRingPaxosLoggerClient(zookeeperUrl, config.ring,config.id);
         // logger.info("Replica logger [{}]", replicaLoggerClient);
-        // replicaLoggerClient.start();
+        replicaLoggerClient.start();
         return Response.ok().build();
     }
 
