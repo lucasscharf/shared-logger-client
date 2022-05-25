@@ -37,7 +37,7 @@ public class LoggerController {
     List<String> nodesReplicas;
 
     @Inject
-    @ConfigProperty(name="zookeeper_url", defaultValue = "10.0.1.1")
+    @ConfigProperty(name="zookeeper_url", defaultValue = "10.10.1.1")
     public String zookeeperUrl;
 
     List<LoggerRestClient> loggerRestClients;
@@ -82,12 +82,12 @@ public class LoggerController {
     @Path("registerReplica")
     public Response registerReplica(LoggerConfig config) throws Exception {
         logger.info("Registering replica logger");
-        String[] args = { config.ring + "," + config.id + ",0", "0", zookeeperUrl };
-        Replica.main(args);
-        // replicaLoggerClient = new Replica("0", config.ring,config.id,0,zookeeperUrl);
-        // replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0, zookeeperUrl);
-        // logger.info("Replica logger [{}]", replicaLoggerClient);
-        // replicaLoggerClient.start();
+        // String[] args = { config.ring + "," + config.id + ",0", "0", config.url };
+        // Replica.main(args);
+        // replicaLoggerClient = new Replica("0", config.ring,config.id,0,config.url);
+        replicaLoggerClient = new ReplicaLoggerClient("0", config.ring,config.id,0, zookeeperUrl);
+        logger.info("Replica logger [{}]", replicaLoggerClient);
+        replicaLoggerClient.start();
         return Response.ok().build();
     }
 
