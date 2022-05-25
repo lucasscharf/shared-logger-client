@@ -121,6 +121,9 @@ public class Replica implements Receiver {
 		partitions = null;
 		udp = null;
 		ab = null;
+		System.out.println(String.format(
+			"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s]",
+			token, null, nodeID, snapshot_modulo, null));
 	}
 
 	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
@@ -139,7 +142,7 @@ public class Replica implements Receiver {
 		db = new TreeMap<String, byte[]>();
 		// stable_storage = new HttpRecovery(partitions);
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
-		logger.info(String.format(
+		System.out.println(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s]",
 				token, ringID, nodeID, snapshot_modulo, zoo_host));
 	}
