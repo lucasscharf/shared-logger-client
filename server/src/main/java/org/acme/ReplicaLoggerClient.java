@@ -66,7 +66,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	public void receive(Message m) {
 		logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
 				m.getRing(), m.getInstnce(), m.getID());
-		super.receive(m);
+		// super.receive(m);
 
 		try {
 			Files.write(path,
