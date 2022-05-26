@@ -350,6 +350,8 @@ public class ElasticLearnerRole extends Role implements Learner {
 	
 	@Override
 	public BlockingQueue<Decision> getDecisions() {
+		System.out.println("Get decisions from elastic leaner role");
+
 		return values;
 	}
 
