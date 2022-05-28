@@ -47,9 +47,7 @@ import ch.usi.da.smr.message.Message;
  * @author Samuel Benz benz@geoid.ch
  */
 public class ReplicaLoggerClient extends Replica implements LoggerClient {
-	private File file;
 	private Path path;
-	private BufferedInputStream in;
 
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
@@ -72,8 +70,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			if (!Files.exists(path))
 				Files.createFile(path);
 
+			String stringToSave = m.getCommands().get(0).toString() + "\n";
 			Files.write(path,
-					m.getCommands().get(0).getValue(),
+					stringToSave.getBytes(),
 					StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			logger.error("", e);
@@ -90,7 +89,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		try {
 			if (!Files.exists(path))
 				Files.createFile(path);
-
+			logger.debug("Get all logs of client");
 			return Files.readAllLines(path).stream().collect(Collectors.toList());
 		} catch (IOException e) {
 			logger.error("", e);
