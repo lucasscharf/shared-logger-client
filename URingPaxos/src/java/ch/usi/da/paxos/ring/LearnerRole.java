@@ -245,7 +245,7 @@ public class LearnerRole extends Role implements Learner {
 	
 	@Override
 	public BlockingQueue<Decision> getDecisions(){
-		System.out.println("Get decisions from leaner role");
+		System.out.println("Get decisions from learner role");
 		return values;
 	}
 	

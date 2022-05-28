@@ -69,6 +69,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		// super.receive(m);
 
 		try {
+			if (!Files.exists(path))
+				Files.createFile(path);
+
 			Files.write(path,
 					m.getCommands().get(0).getValue(),
 					StandardOpenOption.APPEND);
@@ -85,6 +88,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	@Override
 	public List<String> getAllLogs() {
 		try {
+			if (!Files.exists(path))
+				Files.createFile(path);
+
 			return Files.readAllLines(path).stream().collect(Collectors.toList());
 		} catch (IOException e) {
 			logger.error("", e);

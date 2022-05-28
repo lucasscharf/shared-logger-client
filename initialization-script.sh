@@ -4,7 +4,7 @@ cd ~
 git clone https://github.com/lucasscharf/shared-logger-client
 
 export JAVA_HOME=/usr/lib/jvm/java-13-openjdk-amd64/
-export nodes_replicas_url=http://node0:8888,http://node5:8888
+export nodes_replicas_url=http://node5:8888
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 

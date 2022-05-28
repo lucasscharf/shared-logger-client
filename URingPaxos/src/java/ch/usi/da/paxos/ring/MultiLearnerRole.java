@@ -156,7 +156,7 @@ public class MultiLearnerRole extends Role implements Learner {
 
 	@Override
 	public BlockingQueue<Decision> getDecisions() {
-		System.out.println("Get decisions from multi leaner roler");
+		System.out.println("Get decisions from multi learner roler");
 		return values;
 	}
 
