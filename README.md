@@ -31,6 +31,7 @@ Rodar o serviço de réplicas log e criar um log nele:
 ```bash
 export nodes_replicas_url=http://localhost:8888
 export zookeeper_url=10.10.1.1
+cd ~/shared-logger-client/server
 mvn quarkus:dev &
 sleep 3
 curl -X POST "http://localhost:8888/registerReplica" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":0,\"replicas\":1,\"ring\":1}"

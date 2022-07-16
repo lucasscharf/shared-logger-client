@@ -137,7 +137,8 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-
+		if (!Files.exists(path))
+			Files.createFile(path);
 		System.out.println(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
 				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
@@ -164,6 +165,7 @@ public class Replica implements Receiver {
 		db = new TreeMap<String, byte[]>();
 		// stable_storage = new HttpRecovery(partitions);
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
+		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 		if (!Files.exists(path))
 			Files.createFile(path);
 
