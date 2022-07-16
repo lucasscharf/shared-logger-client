@@ -27,8 +27,6 @@ sudo newgrp docker
 sudo chmod 666 /var/run/docker.sock
 sudo usermod -aG docker ${USER}
 
-exit 
-
 cd ~/shared-logger-client
 docker-compose up -d zookeeper
 

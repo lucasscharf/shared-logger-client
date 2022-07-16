@@ -18,8 +18,6 @@ package org.acme;
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,8 +31,8 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.usi.da.paxos.ring.LearnerRole;
 import ch.usi.da.smr.Replica;
+import ch.usi.da.smr.message.Command;
 import ch.usi.da.smr.message.Message;
 
 /**
@@ -55,8 +53,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			throws Exception {
 		super(token, ringID, nodeID, snapshot_modulo, zoo_host);
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-		// file = path.toFile();
 
+		if (!Files.exists(path))
+			Files.createFile(path);
 		logger.info("Path created [{}]", path);
 	}
 
@@ -67,13 +66,14 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		// super.receive(m);
 
 		try {
-			if (!Files.exists(path))
-				Files.createFile(path);
-
-			String stringToSave = m.getCommands().get(0).toString() + "\n";
-			Files.write(path,
-					stringToSave.getBytes(),
-					StandardOpenOption.APPEND);
+			synchronized(path) {
+				for(Command command : m.getCommands()) {
+					String stringToSave = command.toString() + "\n";
+					Files.write(path,
+							stringToSave.getBytes(),
+							StandardOpenOption.APPEND);
+				}
+			}
 		} catch (IOException e) {
 			logger.error("", e);
 		}

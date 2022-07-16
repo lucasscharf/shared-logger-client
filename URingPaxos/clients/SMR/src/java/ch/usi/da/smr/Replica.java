@@ -1,4 +1,5 @@
 package ch.usi.da.smr;
+
 /* 
  * Copyright (c) 2013 Università della Svizzera italiana (USI)
  * 
@@ -17,8 +18,20 @@ package ch.usi.da.smr;
  * You should have received a copy of the GNU General Public License
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+import ch.usi.da.smr.Replica;
+import ch.usi.da.smr.message.Command;
+import ch.usi.da.smr.message.Message;
 import java.io.BufferedInputStream;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -113,6 +126,8 @@ public class Replica implements Receiver {
 	private volatile boolean recovery = false;
 
 	private volatile boolean active_snapshot = false;
+	private boolean embebedLog = true;
+	private Path path;
 
 	public Replica() {
 		this.nodeID = 0;
@@ -121,12 +136,19 @@ public class Replica implements Receiver {
 		partitions = null;
 		udp = null;
 		ab = null;
+		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+
 		System.out.println(String.format(
-			"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s]",
-			token, null, nodeID, snapshot_modulo, null));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
+				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
 	}
 
 	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
+		this(token, ringID, nodeID, snapshot_modulo, zoo_host, false);
+	}
+
+	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, boolean embebedLog)
+			throws Exception {
 		this.nodeID = nodeID;
 		this.token = token;
 		this.snapshot_modulo = snapshot_modulo;
@@ -142,9 +164,12 @@ public class Replica implements Receiver {
 		db = new TreeMap<String, byte[]>();
 		// stable_storage = new HttpRecovery(partitions);
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
+		if (!Files.exists(path))
+			Files.createFile(path);
+
 		System.out.println(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s]",
-				token, ringID, nodeID, snapshot_modulo, zoo_host));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
+				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
 	}
 
 	public void setPartition(Partition partition) {
@@ -167,54 +192,6 @@ public class Replica implements Receiver {
 		Thread t = new Thread((Runnable) ab);
 		t.setName("ABListener");
 		t.start();
-		/*
-		 * Thread c = new Thread("Experiemnt controller"){
-		 * 
-		 * @Override
-		 * public void run(){
-		 * try {
-		 * if(nodeID == 5){
-		 * //re-partitioning: split group
-		 * Thread.sleep(35000);
-		 * 
-		 * //!!!!!!!!!!!! Edit also RawABListener to set correct replication group
-		 * !!!!!!!!!!!!
-		 * 
-		 * int oldRing = 1;
-		 * int newRing = 2;
-		 * int groupID = 2;
-		 * token = "7FFFFFFF";
-		 * 
-		 * // add ring 2
-		 * ABSender old_sender = partitions.getThriftABSender(oldRing,2);
-		 * ABSender new_sender = partitions.getThriftABSender(newRing,2);
-		 * //String c = "s," + groupID + "," + newRing;
-		 * Control c = new Control(1,ControlType.Subscribe,groupID,newRing);
-		 * Message m = new Message(1,ip + ";" + 8000,"",null);
-		 * m.setControl(c);
-		 * old_sender.abroadcast(m);
-		 * new_sender.abroadcast(m);
-		 * 
-		 * Thread.sleep(5000);
-		 * 
-		 * // register new partition
-		 * setPartition(partitions.register(nodeID, newRing, ip, token));
-		 * 
-		 * //Thread.sleep(4000);
-		 * 
-		 * // remove ring 1
-		 * c = new Control(2,ControlType.Unsubscribe,groupID,oldRing);
-		 * m = new Message(1,ip + ";" + 8000,"",null);
-		 * m.setControl(c);
-		 * new_sender.abroadcast(m);
-		 * 
-		 * }
-		 * } catch (Exception e) {
-		 * }
-		 * }
-		 * };
-		 * c.start();
-		 */
 	}
 
 	public void close() {
@@ -224,34 +201,13 @@ public class Replica implements Receiver {
 	}
 
 	@Override
-	public void receive(Message m) {
-		logger.debug("Replica received ring " + m.getRing() + " instnace " + m.getInstnce() + " (" + m + ")");
-
-		// skip already executed commands
-		/*
-		 * FIXME: disabled recovery!if(m.getInstnce() <=
-		 * exec_instance.get(m.getRing())){
-		 * return;
-		 * }
-		 */
-		if (m.isSkip() || m.isSetControl()) { // skip skip-instances
-			exec_instance.put(m.getRing(), m.getInstnce());
+	public void receive(Message message) {
+		if (message.isSkip() || message.isSetControl()) { // skip skip-instances
+			exec_instance.put(message.getRing(), message.getInstnce());
 			return;
 		}
 
 		List<Command> cmds = new ArrayList<Command>();
-
-		// recover if a not ascending instance arrives
-		/*
-		 * FIXME: disabled recovery! if(m.getInstnce()-1 !=
-		 * exec_instance.get(m.getRing())){
-		 * while(m.getInstnce()-1 > exec_instance.get(m.getRing())){
-		 * logger.info("Replica start recovery: " + exec_instance.get(m.getRing()) +
-		 * " to " + (m.getInstnce()-1));
-		 * exec_instance = load();
-		 * }
-		 * }
-		 */
 
 		// write snapshot
 		exec_cmd++;
@@ -261,61 +217,55 @@ public class Replica implements Receiver {
 
 		synchronized (db) {
 			byte[] data;
-			for (Command c : m.getCommands()) {
-				switch (c.getType()) {
+			for (Command command : message.getCommands()) {
+				try {
+
+					if (embebedLog) {
+						String stringToSave = command.toString() + "\n";
+						Files.write(path,
+								stringToSave.getBytes(),
+								StandardOpenOption.APPEND);
+					}
+				} catch (IOException e) {
+					logger.error("", e);
+				}
+				// TODO implementar lógica de salvar os logs
+				switch (command.getType()) {
 					case PUT:
-						db.put(c.getKey(), c.getValue());
-						if (db.containsKey(c.getKey())) {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), "OK".getBytes());
+						db.put(command.getKey(), command.getValue());
+						if (db.containsKey(command.getKey())) {
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "OK".getBytes());
 							cmds.add(cmd);
 						} else {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), "FAIL".getBytes());
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "FAIL".getBytes());
 							cmds.add(cmd);
 						}
 						break;
 					case DELETE:
-						if (db.remove(c.getKey()) != null) {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), "OK".getBytes());
+						if (db.remove(command.getKey()) != null) {
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "OK".getBytes());
 							cmds.add(cmd);
 						} else {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), "FAIL".getBytes());
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "FAIL".getBytes());
 							cmds.add(cmd);
 						}
 						break;
 					case GET:
-						data = db.get(c.getKey());
+						data = db.get(command.getKey());
 						if (data != null) {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), data);
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), data);
 							cmds.add(cmd);
 						} else {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, c.getKey(), null);
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), null);
 							cmds.add(cmd);
 						}
 						break;
-					case GETRANGE: // key range (token range not implemented)
-						/*
-						 * Inspired by the Cassandra API:
-						 * The semantics of start keys and tokens are slightly different.
-						 * Keys are start-inclusive; tokens are start-exclusive. Token
-						 * ranges may also wrap -- that is, the end token may be less than
-						 * the start one. Thus, a range from keyX to keyX is a one-element
-						 * range, but a range from tokenY to tokenY is the full ring (one
-						 * exception is if keyX is mapped to the minimum token, then the
-						 * range from keyX to keyX is the full ring).
-						 * Attribute Description
-						 * start_key The first key in the inclusive KeyRange.
-						 * end_key The last key in the inclusive KeyRange.
-						 * start_token The first token in the exclusive KeyRange.
-						 * end_token The last token in the exclusive KeyRange.
-						 * count The total number of keys to permit in the KeyRange.
-						 */
-						String start_key = c.getKey();
-						String end_key = new String(c.getValue()).split(";")[0];
-						int count = c.getCount();
+					case GETRANGE:
+						String start_key = command.getKey();
+						String end_key = new String(command.getValue()).split(";")[0];
+						int count = command.getCount();
 						logger.info("getrange " + start_key + " -> " + end_key + " (" + MurmurHash.hash32(start_key) + "->"
 								+ MurmurHash.hash32(end_key) + ")");
-						// logger.debug("tailMap:" + db.tailMap(start_key).keySet() + " count:" +
-						// count);
 						int msg = 0;
 						int msg_size = 0;
 						for (Entry<String, byte[]> e : db.tailMap(start_key).entrySet()) {
@@ -325,19 +275,19 @@ public class Replica implements Receiver {
 							if (msg_size >= 50000) {
 								break;
 							} // send by UDP
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, e.getKey(), e.getValue());
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, e.getKey(), e.getValue());
 							msg_size += e.getValue().length;
 							cmds.add(cmd);
 							msg++;
 						}
 						if (msg == 0) {
-							Command cmd = new Command(c.getID(), CommandType.RESPONSE, "", null);
+							Command cmd = new Command(command.getID(), CommandType.RESPONSE, "", null);
 							cmds.add(cmd);
 						}
 						// signal
-						partitions.singal(token, c);
+						partitions.singal(token, command);
 						// wait until signal from every involved partition
-						boolean ret = partitions.waitSignal(c);
+						boolean ret = partitions.waitSignal(command);
 						if (ret != true) {
 							cmds.clear();
 						}
@@ -348,9 +298,9 @@ public class Replica implements Receiver {
 				}
 			}
 		}
-		exec_instance.put(m.getRing(), m.getInstnce());
-		int msg_id = MurmurHash.hash32(m.getInstnce() + "-" + token);
-		Message msg = new Message(msg_id, token, m.getFrom(), cmds);
+		exec_instance.put(message.getRing(), message.getInstnce());
+		int msg_id = MurmurHash.hash32(message.getInstnce() + "-" + token);
+		Message msg = new Message(msg_id, token, message.getFrom(), cmds);
 		// logger.debug("Send UDP: " + msg);
 		udp.send(msg);
 	}
@@ -478,12 +428,8 @@ public class Replica implements Receiver {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String replicaType = "memoryReplica";
-		if (args.length > 3) {
-			replicaType = args[3];
-		}
 		if (args.length < 1) {
-			System.err.println("Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host]");
+			System.err.println("Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host] [embedded log (true|flase)]");
 			System.exit(1);
 			return;
 		}
@@ -500,6 +446,11 @@ public class Replica implements Receiver {
 		if (args.length > 1) {
 			snapshot = Integer.parseInt(args[1]);
 		}
+		boolean embebedLog = true;
+		if(args.length > 3) {
+			embebedLog = Boolean.valueOf(args[3]);
+		}
+
 
 		String[] arg = args[0].split(",");
 		final int nodeID = Integer.parseInt(arg[1]);
@@ -507,7 +458,7 @@ public class Replica implements Receiver {
 		final String token = arg[2];
 
 		try {
-			final Replica replica = new Replica(token, ringID, nodeID, snapshot, zoo_host);
+			final Replica replica = new Replica(token, ringID, nodeID, snapshot, zoo_host, embebedLog);
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
