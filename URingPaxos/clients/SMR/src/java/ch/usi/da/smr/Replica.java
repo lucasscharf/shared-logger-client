@@ -73,7 +73,7 @@ import ch.usi.da.smr.transport.UDPSender;
  */
 public class Replica implements Receiver {
 
-	private final static Logger logger = Logger.getLogger(Replica.class);
+	private final Logger logger;
 
 	public final int nodeID;
 
@@ -112,8 +112,9 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+		logger = null;
 
-		logger.info(String.format(
+		System.out.println(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s] with simple constructor",
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog));
 	}
@@ -141,6 +142,7 @@ public class Replica implements Receiver {
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 		if (!Files.exists(path) && embebedLog)
 			Files.createFile(path);
+		logger = Logger.getLogger(Replica.class);
 
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
