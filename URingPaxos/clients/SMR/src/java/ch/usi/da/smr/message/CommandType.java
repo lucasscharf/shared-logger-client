@@ -30,7 +30,6 @@ package ch.usi.da.smr.message;
  */
 public enum CommandType {
 	GET(1),
-	GETRANGE(2),
 	PUT(3),
 	DELETE(4),
 	RESPONSE(5);
