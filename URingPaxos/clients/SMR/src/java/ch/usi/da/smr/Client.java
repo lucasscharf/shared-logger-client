@@ -217,8 +217,8 @@ public class Client implements Receiver {
 											long lat = System.nanoTime() - time;
 											stat_latencies.addAndGet(lat);
 											responsesReceivedCounter.incrementAndGet();
-											logger
-													.info(String.format("Recebi a resposta [%s] para o comando [%s] com latência [%s] e stat_latencies [%s] (delete-me depois)", r, cmd, lat, stat_latencies));
+											// logger
+											// 		.info(String.format("Recebi a resposta [%s] para o comando [%s] com latência [%s] e stat_latencies [%s] (delete-me depois)", r, cmd, lat, stat_latencies));
 										}
 									} catch (Exception e) {
 										logger.error("Error in send thread!", e);
@@ -524,18 +524,18 @@ public class Client implements Receiver {
 			}
 		}
 
-		logger.info("Latency size: " + latenciesInNano.size());
-		float avg = (float) sum / latenciesInNano.size() / 1000 / 1000;
-		logger.info(
-				"Client latencies histogram:\n <1ms:" + a + "\n <10ms:" + b + "\n <25ms:" + b2 + "\n <50ms:" + c + "\n <75ms:"
-						+ f + "\n <100ms:" + d + "\n >100ms:" + e + "\n avg (ms):" + avg);
-		logger.info("Key -> count");
+		// logger.info("Latency size: " + latenciesInNano.size());
+		// float avg = (float) sum / latenciesInNano.size() / 1000 / 1000;
+		// logger.info(
+		// 		"Client latencies histogram:\n <1ms:" + a + "\n <10ms:" + b + "\n <25ms:" + b2 + "\n <50ms:" + c + "\n <75ms:"
+		// 				+ f + "\n <100ms:" + d + "\n >100ms:" + e + "\n avg (ms):" + avg);
+		// logger.info("Key -> count");
 
-		eachMillisecondAndHits.entrySet()
-				.stream()
-				.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
-				.map(e1 -> e1.getKey() + "," + e1.getValue())
-				.forEach(logger::info);
+		// eachMillisecondAndHits.entrySet()
+		// 		.stream()
+		// 		.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
+		// 		.map(e1 -> e1.getKey() + "," + e1.getValue())
+		// 		.forEach(logger::info);
 	}
 
 	public static Map<Integer, Integer> parseConnectMap(String arg) {
