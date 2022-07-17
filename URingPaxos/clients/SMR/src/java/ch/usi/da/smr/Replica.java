@@ -132,6 +132,7 @@ public class Replica implements Receiver {
 		this.token = token;
 		this.snapshot_modulo = snapshot_modulo;
 		this.partitions = new PartitionManager(zoo_host);
+		this.embebedLog = embebedLog;
 		partitions.init();
 		setPartition(partitions.register(nodeID, ringID, ip, token));
 		udp = new UDPSender();
@@ -148,7 +149,7 @@ public class Replica implements Receiver {
 
 		System.out.println(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
-				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
+				token, ringID, nodeID, snapshot_modulo, zoo_host, path, embebedLog));
 	}
 
 	public void setPartition(Partition partition) {
