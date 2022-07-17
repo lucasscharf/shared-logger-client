@@ -65,8 +65,10 @@ public class UDPListener implements Runnable {
 				}				
 			} catch (SocketException e) {
 				e.printStackTrace();
+				System.exit(0);
 			} catch (IOException e) {
 				e.printStackTrace();
+				System.exit(0);
 			}
 		}
 	}
