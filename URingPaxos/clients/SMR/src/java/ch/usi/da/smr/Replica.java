@@ -197,14 +197,11 @@ public class Replica implements Receiver {
 			exec_instance.put(message.getRing(), message.getInstnce());
 			return;
 		}
-
+		commandsReceivedCounter.incrementAndGet();
 		List<Command> cmds = new ArrayList<Command>();
 
 		// write snapshot
 		exec_cmd++;
-		if (snapshot_modulo > 0 && exec_cmd % snapshot_modulo == 0) {
-			async_checkpoint();
-		}
 
 		synchronized (db) {
 			byte[] data;
@@ -280,48 +277,6 @@ public class Replica implements Receiver {
 		}
 	}
 
-	public boolean sync_checkpoint() {
-		if (stable_storage.storeState(exec_instance, db)) {
-			try {
-				for (Entry<Integer, Long> e : exec_instance.entrySet()) {
-					ab.safe(e.getKey(), e.getValue());
-				}
-				logger.info("Replica checkpointed up to instance " + exec_instance);
-				return true;
-			} catch (Exception e) {
-				logger.error(e);
-			}
-		}
-		return false;
-	}
-
-	public boolean async_checkpoint() {
-		if (!active_snapshot) {
-			active_snapshot = true;
-			// shallow copy
-			Map<Integer, Long> old_exec_instance = new HashMap<Integer, Long>(exec_instance);
-			SortedMap<String, byte[]> old_db = new TreeMap<String, byte[]>(db);
-			// deep copy
-			/*
-			 * Map<Integer,Long> old_exec_instance = new HashMap<Integer,Long>();
-			 * for(Entry<Integer,Long> e : exec_instance.entrySet()){
-			 * old_exec_instance.put(new Integer(e.getKey()),new Long(e.getValue()));
-			 * }
-			 * SortedMap<String,byte[]> old_db = new TreeMap<String,byte[]>();
-			 * for(Entry<String,byte[]> e : db.entrySet()){
-			 * old_db.put(new
-			 * String(e.getKey()),Arrays.copyOf(e.getValue(),e.getValue().length));
-			 * }
-			 * old_db.putAll(db);
-			 */
-			Thread t = new Thread(new SnapshotWriter(this, old_exec_instance, old_db, stable_storage, ab));
-			t.start();
-		} else {
-			logger.info("Async checkpoint supressed since other active!");
-		}
-		return true;
-	}
-
 	public void setActiveSnapshot(boolean b) {
 		active_snapshot = b;
 	}
@@ -338,35 +293,7 @@ public class Replica implements Receiver {
 	 */
 	@Override
 	public boolean is_ready(Integer ring, Long instance) {
-		if (instance <= exec_instance.get(ring) + 1) {
-			if (recovery == true) {
-				recovery = false;
-				logger.info("Recovery set false.");
-			}
-			return true;
-		}
-		if (recovery == false) {
-			recovery = true;
-			Thread t = new Thread() {
-				@Override
-				public void run() {
-					logger.info("Replica starts recovery thread.");
-					while (getRecovery()) {
-						exec_instance = load();
-						try {
-							Thread.sleep(10000);
-						} catch (InterruptedException e) {
-							Thread.currentThread().interrupt();
-							break;
-						}
-					}
-					logger.info("Recovery thread stopped.");
-				}
-			};
-			t.setName("Recovery");
-			t.start();
-		}
-		return false;
+		return true;
 	}
 
 	public static boolean newerState(Map<Integer, Long> nstate, Map<Integer, Long> state) {
