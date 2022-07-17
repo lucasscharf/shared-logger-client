@@ -36,6 +36,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -72,6 +74,7 @@ public class Client implements Receiver {
 	private final int trackerNumber;
 	private final AtomicInteger commandsSendCounter;
 	private final AtomicInteger responsesReceivedCounter;
+	private final ConcurrentLinkedQueue<Long> latencies = new ConcurrentLinkedQueue<>();
 
 	private final UDPListener udp;
 
@@ -98,8 +101,6 @@ public class Client implements Receiver {
 
 	private final Map<Integer, Integer> connectMap;
 
-	private int controlID = 0;
-
 	public Client(PartitionManager partitions, Map<Integer, Integer> connectMap, long thinkingTime, int writePercentage,
 			int trackerNumber)
 			throws IOException {
@@ -125,168 +126,27 @@ public class Client implements Receiver {
 
 	public void readStdin() throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String s;
+		String commandLine;
 		try {
 			int id = 0;
 			Command cmd = null;
-			while ((s = in.readLine()) != null && s.length() != 0) {
+			while ((commandLine = in.readLine()) != null && commandLine.length() != 0) {
 				// read input
-				String[] line = s.split("\\s+");
-				if (s.startsWith("sub")) {
-					prepareGlobal(controlID++, 1);
-					Thread.sleep(8000);
-					subscribeGlobal(controlID++, 1);
+				String[] line = commandLine.split("\\s+");
+				if (commandLine.startsWith("start")) {
 					cmd = null;
-				} else if (s.startsWith("unsub")) {
-					unsubscribeGlobal(controlID++, 1);
-					cmd = null;
-				} else if (s.startsWith("start")) {
-					cmd = null;
-					final int numberOfThreads; // # of threads
-					final int sendsPerThread;
-					final int commandSize;
-					final int key_count = 50000; // 50k * 1k byte memory needed at replica
-					String[] sl = s.split(" ");
-					if (sl.length > 1) {
-						numberOfThreads = Integer.parseInt(sl[1]);
-						sendsPerThread = Integer.parseInt(sl[2]);
-						commandSize = Integer.parseInt(sl[3]);
-					} else {
-						numberOfThreads = 70; 
-						sendsPerThread = 15000;
-						commandSize = 1024;
-					}
-					final AtomicInteger send_id = new AtomicInteger(0);
-
-					final CountDownLatch await = new CountDownLatch(numberOfThreads);
-					final Thread stats = new Thread("ClientStatsWriter") {
-						private int lastSentCount = 0;
-						private int lastReceivedCount = 0;
-
-						@Override
-						public void run() {
-							while (await.getCount() > 0) {
-								int currentSentCount = commandsSendCounter.get();
-								int currentReceiverCount = responsesReceivedCounter.get();
-
-								try {
-									logger.info(
-											String.format(
-													"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s",
-													currentSentCount - lastSentCount, //
-													currentReceiverCount - lastReceivedCount, //
-													currentSentCount, //
-													currentReceiverCount));
-									Thread.sleep(1_000);
-								} catch (InterruptedException e) {
-									Thread.currentThread().interrupt();
-									break;
-								}
-							}
-						}
-					};
-					stats.start();
-					logger.info("Start performance testing with [" + numberOfThreads + "] threads.");
-					logger.info("(sendsPerThread:" + sendsPerThread + " value_size:" + commandSize + " bytes)");
-					for (int i = 0; i < numberOfThreads; i++) {
-						Thread t = new Thread("Command Sender " + i) {
-							@Override
-							public void run() {
-								int sendCount = 0;
-								while (sendCount < sendsPerThread) {
-									int id = send_id.incrementAndGet();
-									Command cmd = null;
-
-									int randomChance = ((int) (Math.random() * 100.0));
-
-									if (randomChance < writePercentage) {
-										cmd = new Command(id, CommandType.PUT, "user" + (id % key_count), new byte[commandSize]);
-									} else {
-										int targetId = ((int) (Math.random() * (double) key_count) % id);
-										cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
-									}
-									Response response = null;
-									try {
-										long currentTimeInNano = System.nanoTime();
-										commandsSendCounter.incrementAndGet();
-										if ((response = send(cmd)) != null) {
-											response.getResponse(1000); // wait response
-											int currentResponse = responsesReceivedCounter.incrementAndGet();
-											if (currentResponse % trackerNumber == 0) {
-												long currentLatency = System.nanoTime() - currentTimeInNano;
-												logger.info(String.format(
-														"Recebi a resposta para o comando [%s] com latncia [%s] (delete-me depois)", cmd,
-														currentLatency));
-											}
-										}
-									} catch (Exception e) {
-										logger.error("Error in send thread!", e);
-									}
-									sendCount++;
-									try {
-										Thread.sleep(thinkingTime);
-									} catch (Exception ex) {
-										logger.error("we have a problem", ex);
-									}
-								}
-								await.countDown();
-								logger.debug("Thread [" + Thread.currentThread().getId() + "] terminated.");
-							}
-						};
-						t.start();
-					}
-					await.await(); // wait until finished
-					id = send_id.incrementAndGet();
-					Thread.sleep(5000);
+					id = handleAutomaticTest(commandLine);
 				} else if (line.length > 3) {
-					try {
-						String arg2 = line[2];
-						if (arg2.equals(".")) {
-							arg2 = "";
-						} // simulate empty string
-						cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], arg2.getBytes(),
-								Integer.parseInt(line[3]));
-					} catch (IllegalArgumentException e) {
-						System.err.println(e.getMessage());
-					}
+					cmd = handleFourParametersCommand(id, cmd, line);
 				} else if (line.length > 2) {
-					try {
-						cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], line[2].getBytes());
-					} catch (IllegalArgumentException e) {
-						System.err.println(e.getMessage());
-					}
+					cmd = handleThreeParametersCommand(id, cmd, line);
 				} else if (line.length > 1) {
-					try {
-						cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], new byte[0]);
-					} catch (IllegalArgumentException e) {
-						System.err.println(e.getMessage());
-					}
+					cmd = handleTwoParametersCommand(id, cmd, line);
 				} else {
 					System.out.println("Add command: <PUT|GET|GETRANGE|DELETE> key <value>");
 				}
-				// send a command
-				if (cmd != null) {
-					Response r = null;
-					if ((r = send(cmd)) != null) {
-						List<Command> response = r.getResponse(10000); // wait response
-						if (!response.isEmpty()) {
-							for (Command c : response) {
-								if (c.getType() == CommandType.RESPONSE) {
-									if (c.getValue() != null) {
-										System.out.println("  -> " + new String(c.getValue()));
-									} else {
-										System.out.println("<no entry>");
-									}
-								}
-							}
-							id++; // re-use same ID if you run into a timeout
-						} else {
-							System.err.println("Did not receive response from replicas: " + cmd);
-						}
-					} else {
-						System.err.println("Could not send command: " + cmd);
-					}
-				}
+
+				id = sendCommandIfNecessary(id, cmd);
 			}
 			in.close();
 		} catch (IOException e) {
@@ -294,6 +154,172 @@ public class Client implements Receiver {
 		} catch (InterruptedException e) {
 		}
 		stop();
+	}
+
+	private int handleAutomaticTest(String commandLine) throws InterruptedException {
+		int id;
+		final int numberOfThreads; // # of threads
+		final int sendsPerThread;
+		final int commandSize;
+		final int key_count = 50000; // 50k * 1k byte memory needed at replica
+		String[] sl = commandLine.split(" ");
+		if (sl.length > 1) {
+			numberOfThreads = Integer.parseInt(sl[1]);
+			sendsPerThread = Integer.parseInt(sl[2]);
+			commandSize = Integer.parseInt(sl[3]);
+		} else {
+			numberOfThreads = 70;
+			sendsPerThread = 15000;
+			commandSize = 1024;
+		}
+		final AtomicInteger send_id = new AtomicInteger(0);
+
+		final CountDownLatch await = new CountDownLatch(numberOfThreads);
+		final Thread stats = new Thread("ClientStatsWriter") {
+			private int lastSentCount = 0;
+			private int lastReceivedCount = 0;
+
+			@Override
+			public void run() {
+				while (await.getCount() > 0) {
+					int currentSentCount = commandsSendCounter.get();
+					int currentReceiverCount = responsesReceivedCounter.get();
+
+					try {
+						logger.info(
+								String.format(
+										"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s. Avg latency %.1f ms",
+										currentSentCount - lastSentCount, //
+										currentReceiverCount - lastReceivedCount, //
+										currentSentCount, //
+										currentReceiverCount,//
+										latencies.stream().mapToLong(m -> m).average().orElse(0.0) / 1_000_000
+										));
+						latencies.clear();
+						Thread.sleep(1_000);
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
+					}
+				}
+			}
+		};
+		stats.start();
+		logger.info("Start performance testing with [" + numberOfThreads + "] threads.");
+		logger.info("(sendsPerThread:" + sendsPerThread + " value_size:" + commandSize + " bytes)");
+		for (int i = 0; i < numberOfThreads; i++) {
+			Thread t = new Thread("Command Sender " + i) {
+				@Override
+				public void run() {
+					logger.info("Command sender initialized");
+					int sendCount = 0;
+					while (sendCount < sendsPerThread) {
+						int id = send_id.incrementAndGet();
+						Command cmd = null;
+
+						int randomChance = ((int) (Math.random() * 100.0));
+
+						if (randomChance < writePercentage) {
+							cmd = new Command(id, CommandType.PUT, "user" + (id % key_count), new byte[commandSize]);
+						} else {
+							int targetId = ((int) (Math.random() * (double) key_count) % id);
+							cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
+						}
+						Response response = null;
+						try {
+							long currentTimeInNano = System.nanoTime();
+							commandsSendCounter.incrementAndGet();
+							if ((response = send(cmd)) != null) {
+								response.getResponse(1000); // wait response
+								int currentResponse = responsesReceivedCounter.incrementAndGet();
+								if (currentResponse % trackerNumber == 0) {
+									long currentLatency = System.nanoTime() - currentTimeInNano;
+									latencies.add(currentLatency);
+									// logger.info(String.format(
+									// "Recebi a resposta para o comando [%s] com latncia [%s] (delete-me depois)",
+									// cmd,
+									// currentLatency));
+								}
+							}
+						} catch (Exception e) {
+							logger.error("Error in send thread!", e);
+						}
+						sendCount++;
+						try {
+							Thread.sleep(thinkingTime);
+						} catch (Exception ex) {
+							logger.error("we have a problem", ex);
+						}
+					}
+					await.countDown();
+					logger.debug("Thread [" + Thread.currentThread().getId() + "] terminated.");
+				}
+			};
+			t.start();
+		}
+		await.await(); // wait until finished
+		id = send_id.incrementAndGet();
+		Thread.sleep(5000);
+		return id;
+	}
+
+	private int sendCommandIfNecessary(int id, Command cmd) throws Exception {
+		// send a command
+		if (cmd != null) {
+			Response r = null;
+			if ((r = send(cmd)) != null) {
+				List<Command> response = r.getResponse(10000); // wait response
+				if (!response.isEmpty()) {
+					for (Command c : response) {
+						if (c.getType() == CommandType.RESPONSE) {
+							if (c.getValue() != null) {
+								System.out.println("  -> " + new String(c.getValue()));
+							} else {
+								System.out.println("<no entry>");
+							}
+						}
+					}
+					id++; // re-use same ID if you run into a timeout
+				} else {
+					System.err.println("Did not receive response from replicas: " + cmd);
+				}
+			} else {
+				System.err.println("Could not send command: " + cmd);
+			}
+		}
+		return id;
+	}
+
+	private Command handleTwoParametersCommand(int id, Command cmd, String[] line) {
+		try {
+			cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], new byte[0]);
+		} catch (IllegalArgumentException e) {
+			System.err.println(e.getMessage());
+		}
+		return cmd;
+	}
+
+	private Command handleThreeParametersCommand(int id, Command cmd, String[] line) {
+		try {
+			cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], line[2].getBytes());
+		} catch (IllegalArgumentException e) {
+			System.err.println(e.getMessage());
+		}
+		return cmd;
+	}
+
+	private Command handleFourParametersCommand(int id, Command cmd, String[] line) {
+		try {
+			String arg2 = line[2];
+			if (arg2.equals(".")) {
+				arg2 = "";
+			} // simulate empty string
+			cmd = new Command(id, CommandType.valueOf(line[0].toUpperCase()), line[1], arg2.getBytes(),
+					Integer.parseInt(line[3]));
+		} catch (IllegalArgumentException e) {
+			System.err.println(e.getMessage());
+		}
+		return cmd;
 	}
 
 	public void stop() {
