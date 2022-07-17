@@ -69,6 +69,9 @@ public class Client implements Receiver {
 
 	private final long thinkingTime;
 	private final int writePercentage;
+	private final int trackerNumber;
+	private final AtomicInteger commandsSendCounter;
+	private final AtomicInteger responsesReceivedCounter;
 
 	private final UDPListener udp;
 
@@ -78,11 +81,7 @@ public class Client implements Receiver {
 
 	private Map<Integer, List<String>> await_response = new ConcurrentHashMap<Integer, List<String>>();
 
-	private final List<Long> latenciesInNano = Collections.synchronizedList(new ArrayList<Long>());
-
 	private Map<Integer, BlockingQueue<Response>> send_queues = new HashMap<Integer, BlockingQueue<Response>>();
-
-	private AtomicInteger commandsSendCounter = new AtomicInteger(), responsesReceivedCounter = new AtomicInteger();
 
 	// we need only one response per replica group
 	Set<Long> delivered = Collections.newSetFromMap(new LinkedHashMap<Long, Boolean>() {
@@ -101,12 +100,16 @@ public class Client implements Receiver {
 
 	private int controlID = 0;
 
-	public Client(PartitionManager partitions, Map<Integer, Integer> connectMap, long thinkingTime, int writePercentage)
+	public Client(PartitionManager partitions, Map<Integer, Integer> connectMap, long thinkingTime, int writePercentage,
+			int trackerNumber)
 			throws IOException {
 		this.partitions = partitions;
 		this.connectMap = connectMap;
 		this.thinkingTime = thinkingTime;
 		this.writePercentage = writePercentage;
+		this.trackerNumber = trackerNumber;
+		commandsSendCounter = new AtomicInteger();
+		responsesReceivedCounter = new AtomicInteger();
 
 		ip = Util.getHostAddress();
 		port = 5000 + new Random().nextInt(15000);
@@ -139,47 +142,41 @@ public class Client implements Receiver {
 					cmd = null;
 				} else if (s.startsWith("start")) {
 					cmd = null;
-					final int concurrent_cmd; // # of threads
-					final int send_per_thread;
-					final int value_size;
+					final int numberOfThreads; // # of threads
+					final int sendsPerThread;
+					final int commandSize;
 					final int key_count = 50000; // 50k * 1k byte memory needed at replica
 					String[] sl = s.split(" ");
 					if (sl.length > 1) {
-						concurrent_cmd = Integer.parseInt(sl[1]);
-						send_per_thread = Integer.parseInt(sl[2]);
-						value_size = Integer.parseInt(sl[3]);
+						numberOfThreads = Integer.parseInt(sl[1]);
+						sendsPerThread = Integer.parseInt(sl[2]);
+						commandSize = Integer.parseInt(sl[3]);
 					} else {
-						concurrent_cmd = 70; // 10;
-						send_per_thread = 15000;
-						value_size = 1024;
+						numberOfThreads = 70; 
+						sendsPerThread = 15000;
+						commandSize = 1024;
 					}
 					final AtomicInteger send_id = new AtomicInteger(0);
-					final AtomicLong stat_latencies = new AtomicLong();
-					final AtomicLong stat_command = new AtomicLong();
-					latenciesInNano.clear();
-					final CountDownLatch await = new CountDownLatch(concurrent_cmd);
+
+					final CountDownLatch await = new CountDownLatch(numberOfThreads);
 					final Thread stats = new Thread("ClientStatsWriter") {
-						private long last_time = System.nanoTime();
-						private long last_sent_count = 0;
-						private long last_sent_time = 0;
+						private int lastSentCount = 0;
+						private int lastReceivedCount = 0;
 
 						@Override
 						public void run() {
 							while (await.getCount() > 0) {
-								try {
-									long time = System.nanoTime();
-									long sent_count = stat_command.get() - last_sent_count;
-									long sent_time = stat_latencies.get() - last_sent_time;
-									float t = (float) (time - last_time) / (1000 * 1000 * 1000);
-									float count = sent_count / t;
-									latenciesInNano.add((long) (sent_time / count));
-									logger.info(
-											String.format("Client sent %.1f command/s avg. latencies %.0f ns. commands %s. responses %s",
-													count, sent_time / count, commandsSendCounter.get(), responsesReceivedCounter.get()));
-									last_sent_count += sent_count;
-									last_sent_time += sent_time;
-									last_time = time;
+								int currentSentCount = commandsSendCounter.get();
+								int currentReceiverCount = responsesReceivedCounter.get();
 
+								try {
+									logger.info(
+											String.format(
+													"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s",
+													currentSentCount - lastSentCount, //
+													currentReceiverCount - lastReceivedCount, //
+													currentSentCount, //
+													currentReceiverCount));
 									Thread.sleep(1_000);
 								} catch (InterruptedException e) {
 									Thread.currentThread().interrupt();
@@ -189,41 +186,43 @@ public class Client implements Receiver {
 						}
 					};
 					stats.start();
-					logger.info("Start performance testing with [" + concurrent_cmd + "] threads.");
-					logger.info("(values_per_thread:" + send_per_thread + " value_size:" + value_size + " bytes)");
-					for (int i = 0; i < concurrent_cmd; i++) {
+					logger.info("Start performance testing with [" + numberOfThreads + "] threads.");
+					logger.info("(sendsPerThread:" + sendsPerThread + " value_size:" + commandSize + " bytes)");
+					for (int i = 0; i < numberOfThreads; i++) {
 						Thread t = new Thread("Command Sender " + i) {
 							@Override
 							public void run() {
-								int send_count = 0;
-								while (send_count < send_per_thread) {
+								int sendCount = 0;
+								while (sendCount < sendsPerThread) {
 									int id = send_id.incrementAndGet();
 									Command cmd = null;
 
 									int randomChance = ((int) (Math.random() * 100.0));
 
 									if (randomChance < writePercentage) {
-										cmd = new Command(id, CommandType.PUT, "user" + (id % key_count), new byte[value_size]);
+										cmd = new Command(id, CommandType.PUT, "user" + (id % key_count), new byte[commandSize]);
 									} else {
 										int targetId = ((int) (Math.random() * (double) key_count) % id);
 										cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
 									}
-									Response r = null;
+									Response response = null;
 									try {
-										long time = System.nanoTime();
+										long currentTimeInNano = System.nanoTime();
 										commandsSendCounter.incrementAndGet();
-										if ((r = send(cmd)) != null) {
-											r.getResponse(1000); // wait response
-											long lat = System.nanoTime() - time;
-											stat_latencies.addAndGet(lat);
-											responsesReceivedCounter.incrementAndGet();
-											// logger
-											// 		.info(String.format("Recebi a resposta [%s] para o comando [%s] com latência [%s] e stat_latencies [%s] (delete-me depois)", r, cmd, lat, stat_latencies));
+										if ((response = send(cmd)) != null) {
+											response.getResponse(1000); // wait response
+											int currentResponse = responsesReceivedCounter.incrementAndGet();
+											if (currentResponse % trackerNumber == 0) {
+												long currentLatency = System.nanoTime() - currentTimeInNano;
+												logger.info(String.format(
+														"Recebi a resposta para o comando [%s] com latncia [%s] (delete-me depois)", cmd,
+														currentLatency));
+											}
 										}
 									} catch (Exception e) {
 										logger.error("Error in send thread!", e);
 									}
-									send_count++;
+									sendCount++;
 									try {
 										Thread.sleep(thinkingTime);
 									} catch (Exception ex) {
@@ -239,7 +238,6 @@ public class Client implements Receiver {
 					await.await(); // wait until finished
 					id = send_id.incrementAndGet();
 					Thread.sleep(5000);
-					printHistogram();
 				} else if (line.length > 3) {
 					try {
 						String arg2 = line[2];
@@ -390,7 +388,6 @@ public class Client implements Receiver {
 		// filter away already received replica answers
 		long hash = MurmurHash.hash64(m.getID() + "-" + m.getInstnce());
 		if (delivered.contains(hash)) {
-			// logger.debug("dublicate " + m);
 			return;
 		} else {
 			delivered.add(hash);
@@ -470,15 +467,20 @@ public class Client implements Receiver {
 			writePercentage = Integer.parseInt(args[3]);
 		}
 
+		int trackerNumber = 100;
+		if (args.length > 4) {
+			trackerNumber = Integer.parseInt(args[4]);
+		}
+
 		if (args.length < 1) {
 			System.err.println(
-					"Plese use \"Client\" \"ring ID,node ID[;ring ID,node ID] [thinkingTime] [write percentage [0;100]] \"");
+					"Plese use \"Client\" \"ring ID,node ID[;ring ID,node ID] [thinkingTime] [write percentage [0;100] [command tracker number]] \"");
 		} else {
 			final Map<Integer, Integer> connectMap = parseConnectMap(args[0]);
 			try {
 				final PartitionManager partitions = new PartitionManager(zoo_host, connectMap);
 				partitions.init();
-				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage);
+				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage, trackerNumber);
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 					@Override
 					public void run() {
@@ -492,50 +494,6 @@ public class Client implements Receiver {
 				System.exit(1);
 			}
 		}
-	}
-
-	private void printHistogram() {
-		Map<Long, Long> eachMillisecondAndHits = new HashMap<>();
-		int a = 0, b = 0, b2 = 0, c = 0, d = 0, e = 0, f = 0;
-
-		long sum = 0;
-		for (Long latency : latenciesInNano) {
-			sum = sum + latency;
-			if (latency < 1_000_000) { // <1ms
-				a++;
-			} else if (latency < 10_000_000) { // <10ms
-				b++;
-			} else if (latency < 25_000_000) { // <25ms
-				b2++;
-			} else if (latency < 50_000_000) { // <50ms
-				c++;
-			} else if (latency < 75_000_000) { // <75ms
-				f++;
-			} else if (latency < 100_000_000) { // <100ms
-				d++;
-			} else {
-				e++;
-			}
-			Long key = Long.valueOf(latency / 1_000_000);
-			if (eachMillisecondAndHits.containsKey(key)) {
-				eachMillisecondAndHits.put(key, eachMillisecondAndHits.get(key) + 1);
-			} else {
-				eachMillisecondAndHits.put(key, 1L);
-			}
-		}
-
-		// logger.info("Latency size: " + latenciesInNano.size());
-		// float avg = (float) sum / latenciesInNano.size() / 1000 / 1000;
-		// logger.info(
-		// 		"Client latencies histogram:\n <1ms:" + a + "\n <10ms:" + b + "\n <25ms:" + b2 + "\n <50ms:" + c + "\n <75ms:"
-		// 				+ f + "\n <100ms:" + d + "\n >100ms:" + e + "\n avg (ms):" + avg);
-		// logger.info("Key -> count");
-
-		// eachMillisecondAndHits.entrySet()
-		// 		.stream()
-		// 		.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
-		// 		.map(e1 -> e1.getKey() + "," + e1.getValue())
-		// 		.forEach(logger::info);
 	}
 
 	public static Map<Integer, Integer> parseConnectMap(String arg) {
