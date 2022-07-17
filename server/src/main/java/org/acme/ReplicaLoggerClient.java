@@ -61,8 +61,8 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	@Override
 	public void receive(Message m) {
-		logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
-				m.getRing(), m.getInstnce(), m.getID());
+		// logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
+		// 		m.getRing(), m.getInstnce(), m.getID());
 		// super.receive(m);
 
 		try {
@@ -81,7 +81,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	@Override
 	public void close() {
-		logger.info("Clossing files");
+		logger.info("Closing files");
 	}
 
 	@Override
