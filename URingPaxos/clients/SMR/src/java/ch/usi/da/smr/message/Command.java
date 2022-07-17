@@ -132,27 +132,6 @@ public class Command {
 		}
 	}
 
-	/*public static byte[] toByteArray(Command c){
-		ByteBuffer b = ByteBuffer.allocate(65535);
-		// int id
-		// int type
-		// String key
-		// byte[] value
-		// int count
-		b.putInt(c.getID());
-		b.putShort((short)c.getType().getId());
-		b.putInt(c.getKey().getBytes().length);
-		b.put(c.getKey().getBytes());
-		b.putInt(c.getValue().length);
-		b.put(c.getValue());
-		b.putInt(c.getCount());
-		
-		byte[] a = new byte[b.position()];
-		b.rewind();		
-		b.get(a);
-		return a;
-	}*/
-
 	public static Command toCommand(Cmd c) {
 		CommandType type = null;
 		switch(c.getType()){
@@ -185,19 +164,5 @@ public class Command {
 		}
 		return toCommand(c);
 	}
-	
-	/*public static Command fromByteArray(byte[] b){
-		ByteBuffer buffer = ByteBuffer.wrap(b);
-		int id = buffer.getInt();
-		CommandType type = CommandType.fromId(buffer.getShort());
-		byte[] kb = new byte[buffer.getInt()];
-		buffer.get(kb);
-		String key = new String(kb);
-		byte[] value = new byte[buffer.getInt()];
-		buffer.get(value);
-		int count = buffer.getInt();
-		Command cmd = new Command(id,type,key,value,count);
-		return cmd;
-	}*/
 
 }

@@ -87,7 +87,10 @@ public class Client implements Receiver {
 	private final static Logger logger = Logger.getLogger(Client.class);
 
 	private final PartitionManager partitions;
-				
+
+	private final long thinkingTime;
+	private final int writePercentage;
+
 	private final UDPListener udp;
 	
 	private Map<Integer,Response> commands = new ConcurrentHashMap<Integer,Response>();
@@ -116,9 +119,12 @@ public class Client implements Receiver {
 	
 	private int controlID = 0;
 	
-	public Client(PartitionManager partitions,Map<Integer,Integer> connectMap) throws IOException {
+	public Client(PartitionManager partitions,Map<Integer,Integer> connectMap, long thinkingTime, int writePercentage) throws IOException {
 		this.partitions = partitions;
 		this.connectMap = connectMap;
+		this.thinkingTime = thinkingTime;
+		this.writePercentage = writePercentage;
+
 		ip = Util.getHostAddress();
 		port = 5000 + new Random().nextInt(15000);
 		udp = new UDPListener(port);
@@ -177,27 +183,14 @@ public class Client implements Receiver {
 		    			public void run() {
 		    				while(await.getCount() > 0){
 		    					try {
-		    						// long time = System.nanoTime();
-		    						// long sent_count = stat_command.get() - last_sent_count;
-		    						// long sent_time = stat_latency.get() - last_sent_time;
-		    						// float time_in_seconds = ((float)(time-last_time))/(1000*1000*1000);
-		    						// float sent_by_second = sent_count/time_in_seconds;
-		    						// logger.info(
-										// 	String.format("Client sent count [%s]. Client [%.1f] command/s avg. latency [%.0f] ns. Total comands sent [%d]. Total responses count [%d]. Time in seconds [%.3f]", //
-										// 			sent_count, sent_by_second, sent_time / sent_by_second,
-										// 			commands.size(), responses.size(), time_in_seconds));
-		    						// last_sent_count += sent_count;
-		    						// last_sent_time += sent_time;
-		    						// last_time = time;
-		    						// Thread.sleep(100);
 										long time = System.nanoTime();
 		    						long sent_count = stat_command.get() - last_sent_count;
 		    						long sent_time = stat_latency.get() - last_sent_time;
 		    						float t = (float)(time-last_time)/(1000*1000*1000);
 		    						float count = sent_count/t;
 										latency.add((long) (sent_time/count));
-		    						logger.info(String.format("Client sent %.1f command/s avg. latency %.0f ns",count,sent_time/count));
-		    						logger.debug("commands " + commands.size() + " responses " + responses.size());
+		    						logger.info(String.format("Client sent %.1f command/s avg. latency %.0f ns. commands %s. responses %s",count,sent_time/count, commands.size(), responses.size()));
+		    						// logger.debug("commands " + commands.size() + " responses " + responses.size());
 		    						last_sent_count += sent_count;
 		    						last_sent_time += sent_time;
 		    						last_time = time;
@@ -213,11 +206,11 @@ public class Client implements Receiver {
 		    		stats.start();
 		    		logger.info("Start performance testing with [" + concurrent_cmd + "] threads.");
 		    		logger.info("(values_per_thread:" + send_per_thread + " value_size:" + value_size + " bytes)");
-	    			Thread c = new Thread("Experiemnt controller"){
+	    			Thread c = new Thread("Experiment controller"){
 						@Override
 						public void run(){
 							try {
-								
+								logger.info("Starting experiment controller...");
 								String token1 = "0";
 								String token2 = "7FFFFFFF";
 								String token3 = "3FFFFFFF";
@@ -389,6 +382,8 @@ public class Client implements Receiver {
 								unsubscribeGlobal(29,3);
 								unsubscribeGlobal(30,4);
 								
+								logger.info("experiment controller finished (i stil don't know what this thing do)");
+
 							} catch (Exception e) {
 							}
 						}
@@ -401,7 +396,17 @@ public class Client implements Receiver {
 								int send_count = 0;
 								while(send_count < send_per_thread){
 									int id = send_id.incrementAndGet();
-									Command cmd = new Command(id,CommandType.PUT,"user" + (id % key_count), new byte[value_size]);
+									Command cmd = null;
+
+									int randomChance = ((int) (Math.random() * 100.0));
+									
+									if(randomChance < writePercentage) {
+										cmd = new Command(id,CommandType.PUT,"user" + (id % key_count), new byte[value_size]);
+									} else {
+										int targetId = ((int) (Math.random() * (double) key_count) % id);
+										cmd = new Command(id,CommandType.GET,"user" + targetId, new byte[0]);
+									}
+									
 									Response r = null;
 									try{
 										long time = System.nanoTime();
@@ -416,6 +421,11 @@ public class Client implements Receiver {
 										logger.error("Error in send thread!",e);
 									}
 									send_count++;
+									try {
+										Thread.sleep(thinkingTime);
+									}catch(Exception ex) {
+										logger.error("we have a problem", ex);
+									}
 								}
 								await.countDown();
 								logger.debug("Thread ["+ Thread.currentThread().getId() +"] terminated.");
@@ -644,14 +654,25 @@ public class Client implements Receiver {
 		if (args.length > 1) {
 			zoo_host = args[1];
 		}
+		long thinkingTime = 100;
+		if (args.length > 2) {
+			thinkingTime = Long.parseLong(args[2]);
+		}
+
+		int writePercentage = 100;
+		if (args.length > 3) {
+			writePercentage = Integer.parseInt(args[3]);
+		}
+
+
 		if (args.length < 1) {
-			System.err.println("Plese use \"Client\" \"ring ID,node ID[;ring ID,node ID]\"");
+			System.err.println("Plese use \"Client\" \"ring ID,node ID[;ring ID,node ID] [thinkingTime] [write percentage [0;100]] \"");
 		} else {
 			final Map<Integer,Integer> connectMap = parseConnectMap(args[0]);
 			try {
 				final PartitionManager partitions = new PartitionManager(zoo_host,connectMap);
 				partitions.init();
-				final Client client = new Client(partitions,connectMap);
+				final Client client = new Client(partitions,connectMap, thinkingTime, writePercentage);
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook"){
 					@Override
 					public void run(){
