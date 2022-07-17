@@ -188,7 +188,7 @@ public class Client implements Receiver {
 					try {
 						logger.info(
 								String.format(
-										"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s. Avg latency %.1f ms",
+										"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s. Avg latency %.2f ms",
 										currentSentCount - lastSentCount, //
 										currentReceiverCount - lastReceivedCount, //
 										currentSentCount, //

@@ -71,27 +71,6 @@ import ch.usi.da.smr.transport.UDPSender;
  * @author Samuel Benz benz@geoid.ch
  */
 public class Replica implements Receiver {
-	private static final String DISK_REPLICA = "diskReplica";
-	static {
-		// get hostname and pid for log file name
-		String host = "localhost";
-		try {
-			Process proc = Runtime.getRuntime().exec("hostname");
-			BufferedInputStream in = new BufferedInputStream(proc.getInputStream());
-			proc.waitFor();
-			byte[] b = new byte[in.available()];
-			in.read(b);
-			in.close();
-			host = new String(b).replace("\n", "");
-		} catch (IOException | InterruptedException e) {
-		}
-		int pid = 0;
-		try {
-			pid = Integer.parseInt((new File("/proc/self")).getCanonicalFile().getName());
-		} catch (NumberFormatException | IOException e) {
-		}
-		System.setProperty("logfilename", "L" + host + "-" + pid + ".log");
-	}
 
 	private final static Logger logger = Logger.getLogger(Replica.class);
 
@@ -126,7 +105,7 @@ public class Replica implements Receiver {
 	private volatile boolean recovery = false;
 
 	private volatile boolean active_snapshot = false;
-	private boolean embebedLog = true;
+	private boolean embebedLog;
 	private Path path;
 
 	public Replica() {
@@ -139,7 +118,7 @@ public class Replica implements Receiver {
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 
 		System.out.println(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s] with simple constructor",
 				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
 	}
 
@@ -162,7 +141,6 @@ public class Replica implements Receiver {
 			ab = partitions.getRawABListener(ringID, nodeID);
 		}
 		db = new TreeMap<String, byte[]>();
-		// stable_storage = new HttpRecovery(partitions);
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 		if (!Files.exists(path))
@@ -220,7 +198,6 @@ public class Replica implements Receiver {
 			byte[] data;
 			for (Command command : message.getCommands()) {
 				try {
-
 					if (embebedLog) {
 						String stringToSave = command.toString() + "\n";
 						Files.write(path,
