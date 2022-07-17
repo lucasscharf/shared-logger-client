@@ -1,0 +1,182 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3"
+	xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1"
+	xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1"
+	xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+	<node client_id="node0" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node0:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node1" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node1:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node2" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node2:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node3" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node3:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node4" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node4:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node5" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node5:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node6" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node6:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node7" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node7:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<node client_id="node8" exclusive="true" component_manager_id="urn:publicid:IDN+emulab.net+authority+cm">
+		<sliver_type name="raw">
+			<disk_image name="urn:publicid:IDN+emulab.net+image+ScalableSMR//Ubuntu-Java"/>
+		</sliver_type>
+		<hardware_type name="d430"/>
+		<interface client_id="node8:eth1"/>
+		<services xmlns="http://www.geni.net/resources/rspec/3"/>
+	</node>
+	<link client_id="link-1">
+		<interface_ref client_id="node0:eth1"/>
+		<interface_ref client_id="node1:eth1"/>
+		<interface_ref client_id="node2:eth1"/>
+		<interface_ref client_id="node3:eth1"/>
+		<interface_ref client_id="node4:eth1"/>
+		<interface_ref client_id="node5:eth1"/>
+		<interface_ref client_id="node6:eth1"/>
+		<interface_ref client_id="node7:eth1"/>
+		<interface_ref client_id="node8:eth1"/>
+		<link_type name="lan"/>
+
+		<component_manager xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+authority+cm"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node0:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node1:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node2:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node3:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node4:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node5:eth1" dest_id="node8:eth1" capacity="10000000"/>
+
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node7:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node6:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node7:eth1" dest_id="node8:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node0:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node1:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node2:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node3:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node4:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node5:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node6:eth1" capacity="10000000"/>
+		<property xmlns="http://www.geni.net/resources/rspec/3" source_id="node8:eth1" dest_id="node7:eth1" capacity="10000000"/>
+	</link>
+	<rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
+		<description type="markdown">Intentional use: 3 acceptors + 2 replicas + 2 logs + 1 proposer + 1 zookeeper</description>
+		<instructions type="markdown"/>
+	</rspec_tour>
+	<data_set xmlns="http://www.protogeni.net/resources/rspec/ext/profile-parameters/1">
+		<data_item name="emulab.net.parameter.linkSpeed">10000000</data_item>
+		<data_item name="emulab.net.parameter.tempFileSystemSize">0</data_item>
+		<data_item name="emulab.net.parameter.useVMs">False</data_item>
+		<data_item name="emulab.net.parameter.tempFileSystemMax">False</data_item>
+		<data_item name="emulab.net.parameter.tempFileSystemMount">/mydata</data_item>
+		<data_item name="emulab.net.parameter.bestEffort">False</data_item>
+		<data_item name="emulab.net.parameter.phystype">d430</data_item>
+		<data_item name="emulab.net.parameter.sameSwitch">False</data_item>
+		<data_item name="emulab.net.parameter.osImage">urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD</data_item>
+		<data_item name="emulab.net.parameter.nodeCount">6</data_item>
+		<data_item name="emulab.net.parameter.startVNC">False</data_item>
+	</data_set>
+</rspec>
