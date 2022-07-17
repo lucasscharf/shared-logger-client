@@ -20,11 +20,9 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.RestClientDefinitionException;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.usi.da.smr.Replica;
 import io.quarkus.runtime.ShutdownEvent;
 
 @Path("/")
@@ -86,7 +84,7 @@ public class LoggerController {
     @Path("ping")
     public Response ping() {
         logger.info("Pong");
-        return Response.ok().build();
+        return Response.ok("pong").build();
     }
 
     @POST
