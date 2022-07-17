@@ -74,7 +74,7 @@ public class LoggerController {
     @Path("registerReplica")
     public Response registerReplica(LoggerConfig config) throws Exception {
         logger.info("Registering replica logger");
-        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient("0", config.ring, config.id, 0, zookeeperUrl);
+        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient("0", config.ring, config.id, 0, zookeeperUrl, config.pathPrefix);
         replicaLoggerClient.start();
         loggerClients.add(replicaLoggerClient);
         return Response.ok().build();
@@ -85,17 +85,6 @@ public class LoggerController {
     public Response ping() {
         logger.info("Pong");
         return Response.ok("pong").build();
-    }
-
-    @POST
-    @Path("init")
-    public Response initLogs(LoggerConfig config) {
-        logger.info("Initing config [{}]", config);
-
-        LoggerClient loggerClient = new MultiRingPaxosLoggerClient(zookeeperUrl, config.id, config.ring);
-        loggerClients.add(loggerClient);
-
-        return Response.ok().build();
     }
 
     @POST
@@ -111,13 +100,13 @@ public class LoggerController {
             int urlId = (initialId + i) % clusterSize;
             logger.info("Calling logger in url id [{}] with id [{}]", urlId, newId);
             config.id = newId;
-            loggerRestClients.get(urlId).initLogs(config);
+            loggerRestClients.get(urlId).registerReplica(config);
         }
         return Response.ok().build();
     }
 
     @GET
-    @Path("getAll")
+    @Path("getAllLogs")
     public Response getAll() {
         logger.info("Received a get all request.");
         List<List<String>> loggedValues = loggerClients.stream().map(LoggerClient::getAllLogs)

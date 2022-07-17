@@ -119,10 +119,10 @@ public class Replica implements Receiver {
 	}
 
 	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
-		this(token, ringID, nodeID, snapshot_modulo, zoo_host, false);
+		this(token, ringID, nodeID, snapshot_modulo, zoo_host, false, "/tmp");
 	}
 
-	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, boolean embebedLog)
+	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, boolean embebedLog, String pathPrefix)
 			throws Exception {
 		this.nodeID = nodeID;
 		this.token = token;
@@ -138,7 +138,7 @@ public class Replica implements Receiver {
 
 		db = new TreeMap<String, byte[]>();
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
-		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
 		if (!Files.exists(path) && embebedLog)
 			Files.createFile(path);
 
@@ -315,7 +315,7 @@ public class Replica implements Receiver {
 	public static void main(String[] args) {
 		if (args.length < 1) {
 			System.err.println(
-					"Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host] [embedded log (true|flase)]");
+					"Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host] [embedded log (true|flase)] [path prefix]");
 			System.exit(1);
 			return;
 		}
@@ -337,13 +337,18 @@ public class Replica implements Receiver {
 			embebedLog = Boolean.valueOf(args[3]);
 		}
 
+		String pathPrefix = "/tmp";
+		if (args.length > 4) {
+			pathPrefix = args[3];
+		}
+
 		String[] arg = args[0].split(",");
 		final int nodeID = Integer.parseInt(arg[1]);
 		final int ringID = Integer.parseInt(arg[0]);
 		final String token = arg[2];
 
 		try {
-			final Replica replica = new Replica(token, ringID, nodeID, snapshot, zoo_host, embebedLog);
+			final Replica replica = new Replica(token, ringID, nodeID, snapshot, zoo_host, embebedLog, pathPrefix);
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {

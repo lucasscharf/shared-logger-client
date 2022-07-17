@@ -51,10 +51,10 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
-	public ReplicaLoggerClient(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host)
+	public ReplicaLoggerClient(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, String pathPrefix)
 			throws Exception {
 		super(token, ringID, nodeID, snapshot_modulo, zoo_host);
-		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
 
 		if (!Files.exists(path))
 			Files.createFile(path);

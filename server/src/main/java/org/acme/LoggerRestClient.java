@@ -13,9 +13,9 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @RegisterRestClient
 public interface LoggerRestClient {
 
-	@Path("init")
+	@Path("registerReplica")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
-	public void initLogs(LoggerConfig config);
+	public void registerReplica(LoggerConfig config);
 }

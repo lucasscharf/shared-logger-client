@@ -4,6 +4,7 @@ public class LoggerConfig {
 	public int ring;
 	public int id;
 	public int replicas;
+	public String pathPrefix = "/mnt/disk1";
 
 	@Override
 	public String toString() {
@@ -14,8 +15,8 @@ public class LoggerConfig {
 		builder.append(ring);
 		builder.append(", replicas=");
 		builder.append(replicas);
-		// builder.append(", url=");
-		// builder.append(url);
+		builder.append(", pathPrefix=");
+		builder.append(pathPrefix);
 		builder.append("]");
 		return builder.toString();
 	}
