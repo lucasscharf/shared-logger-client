@@ -96,4 +96,19 @@ public class Response {
 		}
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Response [cmd=");
+		builder.append(cmd);
+		builder.append(", control=");
+		builder.append(control);
+		builder.append(", done=");
+		builder.append(done);
+		builder.append(", response=");
+		builder.append(response);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

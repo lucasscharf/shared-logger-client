@@ -78,9 +78,11 @@ public class Client implements Receiver {
 
 	private Map<Integer, List<String>> await_response = new ConcurrentHashMap<Integer, List<String>>();
 
-	private final List<Long> latencies = Collections.synchronizedList(new ArrayList<Long>());
+	private final List<Long> latenciesInNano = Collections.synchronizedList(new ArrayList<Long>());
 
 	private Map<Integer, BlockingQueue<Response>> send_queues = new HashMap<Integer, BlockingQueue<Response>>();
+
+	private AtomicInteger commandsSendCounter = new AtomicInteger(), responsesReceivedCounter = new AtomicInteger();
 
 	// we need only one response per replica group
 	Set<Long> delivered = Collections.newSetFromMap(new LinkedHashMap<Long, Boolean>() {
@@ -154,7 +156,7 @@ public class Client implements Receiver {
 					final AtomicInteger send_id = new AtomicInteger(0);
 					final AtomicLong stat_latencies = new AtomicLong();
 					final AtomicLong stat_command = new AtomicLong();
-					latencies.clear();
+					latenciesInNano.clear();
 					final CountDownLatch await = new CountDownLatch(concurrent_cmd);
 					final Thread stats = new Thread("ClientStatsWriter") {
 						private long last_time = System.nanoTime();
@@ -170,17 +172,15 @@ public class Client implements Receiver {
 									long sent_time = stat_latencies.get() - last_sent_time;
 									float t = (float) (time - last_time) / (1000 * 1000 * 1000);
 									float count = sent_count / t;
-									latencies.add((long) (sent_time / count));
+									latenciesInNano.add((long) (sent_time / count));
 									logger.info(
 											String.format("Client sent %.1f command/s avg. latencies %.0f ns. commands %s. responses %s",
-													count, sent_time / count, commands.size(), responses.size()));
-									// logger.debug("commands " + commands.size() + " responses " +
-									// responses.size());
+													count, sent_time / count, commandsSendCounter.get(), responsesReceivedCounter.get()));
 									last_sent_count += sent_count;
 									last_sent_time += sent_time;
 									last_time = time;
 
-									Thread.sleep(100);
+									Thread.sleep(1_000);
 								} catch (InterruptedException e) {
 									Thread.currentThread().interrupt();
 									break;
@@ -191,200 +191,6 @@ public class Client implements Receiver {
 					stats.start();
 					logger.info("Start performance testing with [" + concurrent_cmd + "] threads.");
 					logger.info("(values_per_thread:" + send_per_thread + " value_size:" + value_size + " bytes)");
-					// Thread c = new Thread("Experiment controller") {
-					// @Override
-					// public void run() {
-					// try {
-					// logger.info("Starting experiment controller...");
-					// String token1 = "0";
-					// String token2 = "7FFFFFFF";
-					// String token3 = "3FFFFFFF";
-					// String token4 = "-3FFFFFFF";
-
-					// Thread.sleep(12000);
-
-					// int prepare_time = 5000;
-					// int wait_before_getrange = 0;
-					// int wait_before_subscribe = 1000;
-					// int cmd_timeout = 0;
-
-					// // 1,2
-					// long time1 = System.nanoTime();
-					// prepareGlobal(1, 1);
-					// prepareGlobal(2, 2);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(1, 1);
-					// subscribeGlobal(2, 2);
-					// Thread.sleep(wait_before_getrange);
-					// int id = send_id.incrementAndGet();
-					// Command cmd = new Command(id, CommandType.GETRANGE, "user1,2",
-					// ("user2;" + token1 + ";" + token2).getBytes(), 5);
-					// Response r = null;
-					// long time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 1 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(3, 1);
-					// unsubscribeGlobal(4, 2);
-					// Thread.sleep(1000);
-
-					// // 1,3
-					// Thread.sleep(6000);
-					// time1 = System.nanoTime();
-					// prepareGlobal(5, 1);
-					// prepareGlobal(6, 3);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(5, 1);
-					// subscribeGlobal(6, 3);
-					// Thread.sleep(wait_before_getrange);
-					// id = send_id.incrementAndGet();
-					// cmd = new Command(id, CommandType.GETRANGE, "user1,3", ("user2;" + token1 +
-					// ";" + token3).getBytes(),
-					// 5);
-					// r = null;
-					// time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 1,3 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(7, 1);
-					// unsubscribeGlobal(8, 3);
-					// Thread.sleep(1000);
-
-					// // 1,4
-					// Thread.sleep(6000);
-					// time1 = System.nanoTime();
-					// prepareGlobal(9, 1);
-					// prepareGlobal(10, 4);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(9, 1);
-					// subscribeGlobal(10, 4);
-					// Thread.sleep(wait_before_getrange);
-					// id = send_id.incrementAndGet();
-					// cmd = new Command(id, CommandType.GETRANGE, "user1,4", ("user2;" + token1 +
-					// ";" + token4).getBytes(),
-					// 5);
-					// r = null;
-					// time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 1,4 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(11, 1);
-					// unsubscribeGlobal(12, 4);
-					// Thread.sleep(1000);
-
-					// // 2,3
-					// Thread.sleep(6000);
-					// time1 = System.nanoTime();
-					// prepareGlobal(13, 2);
-					// prepareGlobal(14, 3);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(13, 2);
-					// subscribeGlobal(14, 3);
-					// Thread.sleep(wait_before_getrange);
-					// id = send_id.incrementAndGet();
-					// cmd = new Command(id, CommandType.GETRANGE, "user2,3", ("user2;" + token2 +
-					// ";" + token3).getBytes(),
-					// 5);
-					// r = null;
-					// time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 2,3 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(15, 2);
-					// unsubscribeGlobal(16, 3);
-					// Thread.sleep(1000);
-
-					// // 2,4
-
-					// // 3,4
-
-					// // 1,2,3
-					// Thread.sleep(6000);
-					// time1 = System.nanoTime();
-					// prepareGlobal(17, 1);
-					// prepareGlobal(18, 2);
-					// prepareGlobal(19, 3);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(17, 1);
-					// subscribeGlobal(18, 2);
-					// subscribeGlobal(19, 3);
-					// Thread.sleep(wait_before_getrange);
-					// id = send_id.incrementAndGet();
-					// cmd = new Command(id, CommandType.GETRANGE, "user1,2,3",
-					// ("user2;" + token1 + ";" + token2 + ";" + token3).getBytes(), 5);
-					// r = null;
-					// time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 1,2,3 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(20, 1);
-					// unsubscribeGlobal(21, 2);
-					// unsubscribeGlobal(22, 3);
-					// Thread.sleep(1000);
-
-					// // 1,2,4
-					// // 1,3,4
-					// // 2,3,4
-
-					// // 1,2,3,4
-					// Thread.sleep(6000);
-					// time1 = System.nanoTime();
-					// prepareGlobal(23, 1);
-					// prepareGlobal(24, 2);
-					// prepareGlobal(25, 3);
-					// prepareGlobal(26, 4);
-					// Thread.sleep(prepare_time);
-					// subscribeGlobal(23, 1);
-					// subscribeGlobal(24, 2);
-					// subscribeGlobal(25, 3);
-					// subscribeGlobal(26, 4);
-					// Thread.sleep(wait_before_getrange);
-					// id = send_id.incrementAndGet();
-					// cmd = new Command(id, CommandType.GETRANGE, "user1,2,3,4",
-					// ("user2;" + token1 + ";" + token2 + ";" + token3 + ";" + token4).getBytes(),
-					// 5);
-					// r = null;
-					// time2 = System.nanoTime();
-					// if ((r = send(cmd)) != null) {
-					// r.getResponse(cmd_timeout); // wait response
-					// long lat1 = System.nanoTime() - time1;
-					// long lat2 = System.nanoTime() - time2;
-					// logger.info("GETRANGE 1,2,3,4 " + lat1 + " " + lat2);
-					// }
-					// Thread.sleep(wait_before_subscribe);
-					// unsubscribeGlobal(27, 1);
-					// unsubscribeGlobal(28, 2);
-					// unsubscribeGlobal(29, 3);
-					// unsubscribeGlobal(30, 4);
-
-					// logger.info("experiment controller finished (i stil don't know what this
-					// thing do)");
-
-					// } catch (Exception e) {
-					// }
-					// }
-					// };
-					// c.start();
 					for (int i = 0; i < concurrent_cmd; i++) {
 						Thread t = new Thread("Command Sender " + i) {
 							@Override
@@ -402,16 +208,17 @@ public class Client implements Receiver {
 										int targetId = ((int) (Math.random() * (double) key_count) % id);
 										cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
 									}
-
 									Response r = null;
 									try {
 										long time = System.nanoTime();
+										commandsSendCounter.incrementAndGet();
 										if ((r = send(cmd)) != null) {
 											r.getResponse(1000); // wait response
 											long lat = System.nanoTime() - time;
 											stat_latencies.addAndGet(lat);
-											stat_command.incrementAndGet();
-											logger.info(String.format("Recebi a resposta [%s] para o comando [%s] (delete-me depois)", r, cmd));
+											responsesReceivedCounter.incrementAndGet();
+											logger
+													.info(String.format("Recebi a resposta [%s] para o comando [%s] com latência [%s] e stat_latencies [%s] (delete-me depois)", r, cmd, lat, stat_latencies));
 										}
 									} catch (Exception e) {
 										logger.error("Error in send thread!", e);
@@ -688,46 +495,47 @@ public class Client implements Receiver {
 	}
 
 	private void printHistogram() {
-		Map<Long, Long> histogram = new HashMap<Long, Long>();
+		Map<Long, Long> eachMillisecondAndHits = new HashMap<>();
 		int a = 0, b = 0, b2 = 0, c = 0, d = 0, e = 0, f = 0;
-		Set<Entry<Long, Long>> histogramEntrySet = histogram.entrySet();
 
 		long sum = 0;
-		for (Long l : latencies) {
-			sum = sum + l;
-			if (l < 1000000) { // <1ms
+		for (Long latency : latenciesInNano) {
+			sum = sum + latency;
+			if (latency < 1_000_000) { // <1ms
 				a++;
-			} else if (l < 10000000) { // <10ms
+			} else if (latency < 10_000_000) { // <10ms
 				b++;
-			} else if (l < 25000000) { // <25ms
+			} else if (latency < 25_000_000) { // <25ms
 				b2++;
-			} else if (l < 50000000) { // <50ms
+			} else if (latency < 50_000_000) { // <50ms
 				c++;
-			} else if (l < 75000000) { // <75ms
+			} else if (latency < 75_000_000) { // <75ms
 				f++;
-			} else if (l < 100000000) { // <100ms
+			} else if (latency < 100_000_000) { // <100ms
 				d++;
 			} else {
 				e++;
 			}
-			Long key = new Long(Math.round(l / 1000));
-			// logger.info("Latency: " + l + " latencies key: " + key + " sum: " + sum);
-			if (histogram.containsKey(key)) {
-				histogram.put(key, histogram.get(key) + 1);
+			Long key = Long.valueOf(latency / 1_000_000);
+			if (eachMillisecondAndHits.containsKey(key)) {
+				eachMillisecondAndHits.put(key, eachMillisecondAndHits.get(key) + 1);
 			} else {
-				histogram.put(key, 1L);
+				eachMillisecondAndHits.put(key, 1L);
 			}
 		}
 
-		logger.info("Latency size: " + latencies.size());
-		float avg = (float) sum / latencies.size() / 1000 / 1000;
+		logger.info("Latency size: " + latenciesInNano.size());
+		float avg = (float) sum / latenciesInNano.size() / 1000 / 1000;
 		logger.info(
 				"Client latencies histogram:\n <1ms:" + a + "\n <10ms:" + b + "\n <25ms:" + b2 + "\n <50ms:" + c + "\n <75ms:"
 						+ f + "\n <100ms:" + d + "\n >100ms:" + e + "\n avg (ms):" + avg);
 		logger.info("Key -> count");
-		for (Entry<Long, Long> bin : histogram.entrySet()) { // details for CDF
-			logger.info(bin.getKey() + "," + bin.getValue());
-		}
+
+		eachMillisecondAndHits.entrySet()
+				.stream()
+				.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
+				.map(e1 -> e1.getKey() + "," + e1.getValue())
+				.forEach(logger::info);
 	}
 
 	public static Map<Integer, Integer> parseConnectMap(String arg) {
