@@ -1,5 +1,7 @@
 package ch.usi.da.smr.message;
 
+import java.util.Arrays;
+
 import org.apache.thrift.TDeserializer;
 import org.apache.thrift.TException;
 import org.apache.thrift.TSerializer;
@@ -83,11 +85,24 @@ public class Command {
 	public int getCount(){
 		return count;
 	}
-	
-	public String toString(){
-		return ("Command id:" + id + " type:" + type + " key:" + key);
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Command [count=");
+		builder.append(count);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", key=");
+		builder.append(key);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append(", value=");
+		builder.append(Arrays.toString(value));
+		builder.append("]");
+		return builder.toString();
 	}
-	
+
 	public boolean equals(Object obj) {
 		if(obj instanceof Command){
             if(this.hashCode() == ((Command) obj).hashCode()){

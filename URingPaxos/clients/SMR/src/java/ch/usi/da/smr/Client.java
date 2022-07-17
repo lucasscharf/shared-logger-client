@@ -111,6 +111,8 @@ public class Client implements Receiver {
 		this.trackerNumber = trackerNumber;
 		commandsSendCounter = new AtomicInteger();
 		responsesReceivedCounter = new AtomicInteger();
+		logger.info(String.format("thinkingTime [%s], writePercentage [%s], trackerNumber [%s]", thinkingTime,
+				writePercentage, trackerNumber));
 
 		ip = Util.getHostAddress();
 		port = 5000 + new Random().nextInt(15000);
@@ -184,17 +186,18 @@ public class Client implements Receiver {
 				while (await.getCount() > 0) {
 					int currentSentCount = commandsSendCounter.get();
 					int currentReceiverCount = responsesReceivedCounter.get();
+					List<Long> currentLatencies = new ArrayList<>(latencies);
 
 					try {
 						logger.info(
 								String.format(
-										"Commands sent (since last call) %s. Response received (since last call) %s. Total Commands %s. Total Responses %s. Avg latency %.2f ms",
+										"Commands sent %s. Response received %s. Total Commands %s. Total Responses %s. Avg latency %.2f ms. Lantencies size %s",
 										currentSentCount - lastSentCount, //
 										currentReceiverCount - lastReceivedCount, //
 										currentSentCount, //
-										currentReceiverCount,//
-										latencies.stream().mapToLong(m -> m).average().orElse(0.0) / 1_000_000
-										));
+										currentReceiverCount, //
+										currentLatencies.stream().mapToLong(m -> m).average().orElse(0.0) / 1_000_000,
+										latencies.size()));
 						latencies.clear();
 						lastReceivedCount = currentReceiverCount;
 						lastSentCount = currentSentCount;
@@ -207,13 +210,13 @@ public class Client implements Receiver {
 			}
 		};
 		stats.start();
-		logger.info("Start performance testing with [" + numberOfThreads + "] threads.");
-		logger.info("(sendsPerThread:" + sendsPerThread + " value_size:" + commandSize + " bytes)");
+		logger.info(String.format(
+				"Start performance testing with [%s], sendsPerThread [%s], commandSize [%s] bytes)", //
+				numberOfThreads, sendsPerThread, commandSize));
 		for (int i = 0; i < numberOfThreads; i++) {
 			Thread t = new Thread("Command Sender " + i) {
 				@Override
 				public void run() {
-					logger.info("Command sender initialized");
 					int sendCount = 0;
 					while (sendCount < sendsPerThread) {
 						int id = send_id.incrementAndGet();
