@@ -261,7 +261,7 @@ public class Client implements Receiver {
 		}
 		await.await(); // wait until finished
 		id = send_id.incrementAndGet();
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		return id;
 	}
 
