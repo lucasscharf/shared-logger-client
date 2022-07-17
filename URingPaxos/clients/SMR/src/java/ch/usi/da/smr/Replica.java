@@ -339,7 +339,7 @@ public class Replica implements Receiver {
 
 		String pathPrefix = "/tmp";
 		if (args.length > 4) {
-			pathPrefix = args[3];
+			pathPrefix = args[4];
 		}
 
 		String[] arg = args[0].split(",");

@@ -2,9 +2,11 @@
 
 cd ~
 git clone https://github.com/lucasscharf/shared-logger-client
+cd shared-logger-client
+git pull
 
 export JAVA_HOME=/usr/lib/jvm/java-13-openjdk-amd64/
-export nodes_replicas_url=http://node5:8888
+export nodes_replicas_url=http://node8:8888
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
@@ -43,4 +45,6 @@ cd ~/shared-logger-client/URingPaxos/clients/SMR/target
 unzip SMR-trunk-release.zip
 
 cd ~/shared-logger-client/server/
-mvn clean install
+mvn clean install -DskipTests 
+cd target 
+java -jar shared-logger-1.0.0-SNAPSHOT-runner.jar   
