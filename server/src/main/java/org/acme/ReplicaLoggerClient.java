@@ -26,6 +26,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -46,6 +47,7 @@ import ch.usi.da.smr.message.Message;
  */
 public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	private Path path;
+	private AtomicInteger commandsReceivedCounter;
 
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
@@ -57,17 +59,39 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		if (!Files.exists(path))
 			Files.createFile(path);
 		logger.info("Path created [{}]", path);
+		commandsReceivedCounter = new AtomicInteger();
+		final Thread stats = new Thread("ClientStatsWriter") {
+			private int lastReceivedCount = 0;
+
+			@Override
+			public void run() {
+				while (true) {
+					int currentReceivedCount = commandsReceivedCounter.get();
+
+					try {
+						logger.info(
+								String.format(
+										"Commands received %s, Total Commands %s,",
+										currentReceivedCount - lastReceivedCount, //
+										currentReceivedCount));
+						lastReceivedCount = currentReceivedCount;
+						Thread.sleep(1_000);
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
+					}
+				}
+			}
+		};
+		stats.start();
 	}
 
 	@Override
 	public void receive(Message m) {
-		// logger.info("Receiving command [{}] with ring [{}] from instance [{}] with id [{}]", m.getCommands(),
-		// 		m.getRing(), m.getInstnce(), m.getID());
-		// super.receive(m);
-
 		try {
-			synchronized(path) {
-				for(Command command : m.getCommands()) {
+			commandsReceivedCounter.incrementAndGet();
+			synchronized (path) {
+				for (Command command : m.getCommands()) {
 					String stringToSave = command.toString() + "\n";
 					Files.write(path,
 							stringToSave.getBytes(),

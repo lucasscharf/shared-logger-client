@@ -146,30 +146,30 @@ public class Replica implements Receiver {
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
 				token, ringID, nodeID, snapshot_modulo, zoo_host, path, embebedLog));
 
-				final Thread stats = new Thread("ClientStatsWriter") {
-					private int lastReceivedCount = 0;
-		
-					@Override
-					public void run() {
-						while (true) {
-							int currentReceivedCount = commandsReceivedCounter.get();
-		
-							try {
-								logger.info(
-										String.format(
-												"Commands received %s, Total Commands %s,",
-												currentReceivedCount - lastReceivedCount, //
-												currentReceivedCount));
-								lastReceivedCount = currentReceivedCount;
-								Thread.sleep(1_000);
-							} catch (InterruptedException e) {
-								Thread.currentThread().interrupt();
-								break;
-							}
-						}
+		final Thread stats = new Thread("ClientStatsWriter") {
+			private int lastReceivedCount = 0;
+
+			@Override
+			public void run() {
+				while (true) {
+					int currentReceivedCount = commandsReceivedCounter.get();
+
+					try {
+						logger.info(
+								String.format(
+										"Commands received %s, Total Commands %s,",
+										currentReceivedCount - lastReceivedCount, //
+										currentReceivedCount));
+						lastReceivedCount = currentReceivedCount;
+						Thread.sleep(1_000);
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+						break;
 					}
-				};
-				stats.start();
+				}
+			}
+		};
+		stats.start();
 	}
 
 	public void setPartition(Partition partition) {
