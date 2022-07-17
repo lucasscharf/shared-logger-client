@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -80,10 +81,6 @@ public class Replica implements Receiver {
 
 	private final PartitionManager partitions;
 
-	private volatile int min_token;
-
-	private volatile int max_token; // if min_token > max_token : replica serves whole key space
-
 	private final UDPSender udp;
 
 	private final ABListener ab;
@@ -98,8 +95,6 @@ public class Replica implements Receiver {
 
 	private int snapshot_modulo = 0; // disabled
 
-	private final boolean use_thrift = false;
-
 	RecoveryInterface stable_storage;
 
 	private volatile boolean recovery = false;
@@ -107,6 +102,7 @@ public class Replica implements Receiver {
 	private volatile boolean active_snapshot = false;
 	private boolean embebedLog;
 	private Path path;
+	private AtomicInteger commandsReceivedCounter;
 
 	public Replica() {
 		this.nodeID = 0;
@@ -117,9 +113,9 @@ public class Replica implements Receiver {
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 
-		System.out.println(String.format(
+		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s] with simple constructor",
-				token, null, nodeID, snapshot_modulo, null, path, embebedLog));
+				token, null, nodeID, snapshot_modulo, null, null, embebedLog));
 	}
 
 	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
@@ -136,39 +132,54 @@ public class Replica implements Receiver {
 		partitions.init();
 		setPartition(partitions.register(nodeID, ringID, ip, token));
 		udp = new UDPSender();
-		if (use_thrift) {
-			ab = partitions.getThriftABListener(ringID, nodeID);
-		} else {
-			ab = partitions.getRawABListener(ringID, nodeID);
-		}
+		commandsReceivedCounter = new AtomicInteger();
+
+		ab = partitions.getRawABListener(ringID, nodeID);
+
 		db = new TreeMap<String, byte[]>();
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-		if (!Files.exists(path))
+		if (!Files.exists(path) && embebedLog)
 			Files.createFile(path);
 
-		System.out.println(String.format(
+		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
 				token, ringID, nodeID, snapshot_modulo, zoo_host, path, embebedLog));
+
+				final Thread stats = new Thread("ClientStatsWriter") {
+					private int lastReceivedCount = 0;
+		
+					@Override
+					public void run() {
+						while (true) {
+							int currentReceivedCount = commandsReceivedCounter.get();
+		
+							try {
+								logger.info(
+										String.format(
+												"Commands received %s, Total Commands %s,",
+												currentReceivedCount - lastReceivedCount, //
+												currentReceivedCount));
+								lastReceivedCount = currentReceivedCount;
+								Thread.sleep(1_000);
+							} catch (InterruptedException e) {
+								Thread.currentThread().interrupt();
+								break;
+							}
+						}
+					}
+				};
+				stats.start();
 	}
 
 	public void setPartition(Partition partition) {
 		logger.info("Replica update partition " + partition);
-		min_token = partition.getLow();
-		max_token = partition.getHigh();
 	}
 
 	public void start() {
 		partitions.registerPartitionChangeNotifier(this);
-		// install old state
-		// FIXME: disabled recovery! exec_instance = load();
-		// start listening
 		ab.registerReceiver(this);
-		if (min_token > max_token) {
-			logger.info("Replica start serving partition " + token + ": whole key space");
-		} else {
-			logger.info("Replica start serving partition " + token + ": " + min_token + "->" + max_token);
-		}
+
 		Thread t = new Thread((Runnable) ab);
 		t.setName("ABListener");
 		t.start();
@@ -237,38 +248,6 @@ public class Replica implements Receiver {
 						} else {
 							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), null);
 							cmds.add(cmd);
-						}
-						break;
-					case GETRANGE:
-						String start_key = command.getKey();
-						String end_key = new String(command.getValue()).split(";")[0];
-						int count = command.getCount();
-						logger.info("getrange " + start_key + " -> " + end_key + " (" + MurmurHash.hash32(start_key) + "->"
-								+ MurmurHash.hash32(end_key) + ")");
-						int msg = 0;
-						int msg_size = 0;
-						for (Entry<String, byte[]> e : db.tailMap(start_key).entrySet()) {
-							if (msg >= count || (!end_key.isEmpty() && e.getKey().compareTo(end_key) > 0)) {
-								break;
-							}
-							if (msg_size >= 50000) {
-								break;
-							} // send by UDP
-							Command cmd = new Command(command.getID(), CommandType.RESPONSE, e.getKey(), e.getValue());
-							msg_size += e.getValue().length;
-							cmds.add(cmd);
-							msg++;
-						}
-						if (msg == 0) {
-							Command cmd = new Command(command.getID(), CommandType.RESPONSE, "", null);
-							cmds.add(cmd);
-						}
-						// signal
-						partitions.singal(token, command);
-						// wait until signal from every involved partition
-						boolean ret = partitions.waitSignal(command);
-						if (ret != true) {
-							cmds.clear();
 						}
 						break;
 					default:
@@ -408,7 +387,8 @@ public class Replica implements Receiver {
 	 */
 	public static void main(String[] args) {
 		if (args.length < 1) {
-			System.err.println("Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host] [embedded log (true|flase)]");
+			System.err.println(
+					"Plese use \"Replica\" \"ringID,nodeID,Token\" [snapshot_modulo] [zookeeper host] [embedded log (true|flase)]");
 			System.exit(1);
 			return;
 		}
@@ -426,10 +406,9 @@ public class Replica implements Receiver {
 			snapshot = Integer.parseInt(args[1]);
 		}
 		boolean embebedLog = true;
-		if(args.length > 3) {
+		if (args.length > 3) {
 			embebedLog = Boolean.valueOf(args[3]);
 		}
-
 
 		String[] arg = args[0].split(",");
 		final int nodeID = Integer.parseInt(arg[1]);

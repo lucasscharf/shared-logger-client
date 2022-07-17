@@ -191,7 +191,7 @@ public class Client implements Receiver {
 					try {
 						logger.info(
 								String.format(
-										"Commands sent %s. Response received %s. Total Commands %s. Total Responses %s. Avg latency %.2f ms. Lantencies size %s",
+										"Commands sent %s, Response received %s, Total Commands %s, Total Responses %s, Avg latency (ms) %.2f, Lantencies size %s,",
 										currentSentCount - lastSentCount, //
 										currentReceiverCount - lastReceivedCount, //
 										currentSentCount, //
@@ -386,19 +386,11 @@ public class Client implements Receiver {
 		Response r = new Response(cmd);
 		commands.put(cmd.getID(), r);
 		int partition = -1;
-		if (cmd.getType() == CommandType.GETRANGE) {
-			List<String> await = new ArrayList<String>();
-			for (Partition p : partitions.getPartitions()) {
-				await.add(p.getID());
-			}
-			// TODO: also subset of partition await_response.put(cmd.getID(),await);
-		} else {
-			partition = partitions.getPartition(cmd.getKey());
-			// special case for EC2 inter-region app;
-			String single_part = System.getenv("PART");
-			if (single_part != null) {
-				partition = Integer.parseInt(single_part);
-			}
+		partition = partitions.getPartition(cmd.getKey());
+		// special case for EC2 inter-region app;
+		String single_part = System.getenv("PART");
+		if (single_part != null) {
+			partition = Integer.parseInt(single_part);
 		}
 		synchronized (send_queues) {
 			if (!send_queues.containsKey(partition)) {
