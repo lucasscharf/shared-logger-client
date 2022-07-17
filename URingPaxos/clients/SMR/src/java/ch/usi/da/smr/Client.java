@@ -196,6 +196,8 @@ public class Client implements Receiver {
 										latencies.stream().mapToLong(m -> m).average().orElse(0.0) / 1_000_000
 										));
 						latencies.clear();
+						lastReceivedCount = currentReceiverCount;
+						lastSentCount = currentSentCount;
 						Thread.sleep(1_000);
 					} catch (InterruptedException e) {
 						Thread.currentThread().interrupt();

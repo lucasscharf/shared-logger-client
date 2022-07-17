@@ -59,14 +59,10 @@ public class RawABListener implements ABListener, Runnable {
 	public void run() {
 		while(true) {
 			try {
-				System.out.println("Trying taking a decision");
 				Decision d = paxos.getLearner().getDecisions().take();
-				System.out.println("received a decision");
 				if(d != null && d.getValue() != null){					
-					System.out.println("decision exists and has value");
 					Message m = Message.fromDecision(d);
 					if(m != null && receiver != null){
-						System.out.println("calling receiver");
 						receiver.receive(m);
 					}
 				}
