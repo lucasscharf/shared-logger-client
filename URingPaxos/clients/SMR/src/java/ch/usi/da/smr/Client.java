@@ -75,6 +75,9 @@ public class Client implements Receiver {
 	private final AtomicInteger commandsSendCounter;
 	private final AtomicInteger responsesReceivedCounter;
 	private final ConcurrentLinkedQueue<Long> latencies = new ConcurrentLinkedQueue<>();
+	private final ConcurrentHashMap<Long,Long> allLatencies = new ConcurrentHashMap<>();
+	private static Thread stats;
+	
 
 	private final UDPListener udp;
 
@@ -177,7 +180,7 @@ public class Client implements Receiver {
 		final AtomicInteger send_id = new AtomicInteger(0);
 
 		final CountDownLatch await = new CountDownLatch(numberOfThreads);
-		final Thread stats = new Thread("ClientStatsWriter") {
+		stats = new Thread("ClientStatsWriter") {
 			private int lastSentCount = 0;
 			private int lastReceivedCount = 0;
 
@@ -240,10 +243,7 @@ public class Client implements Receiver {
 								if (currentResponse % trackerNumber == 0) {
 									long currentLatency = System.nanoTime() - currentTimeInNano;
 									latencies.add(currentLatency);
-									// logger.info(String.format(
-									// "Recebi a resposta para o comando [%s] com latncia [%s] (delete-me depois)",
-									// cmd,
-									// currentLatency));
+									allLatencies.put(System.currentTimeMillis(), currentLatency);
 								}
 							}
 						} catch (Exception e) {
@@ -507,6 +507,7 @@ public class Client implements Receiver {
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 					@Override
 					public void run() {
+						stats.stop();
 						client.stop();
 					}
 				});
