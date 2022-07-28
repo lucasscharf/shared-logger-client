@@ -24,6 +24,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,6 +38,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -75,10 +80,9 @@ public class Client implements Receiver {
 	private final AtomicInteger commandsSendCounter;
 	private final AtomicInteger responsesReceivedCounter;
 	private final ConcurrentLinkedQueue<Long> latencies = new ConcurrentLinkedQueue<>();
-	private final ConcurrentHashMap<Long,Long> allLatencies = new ConcurrentHashMap<>();
-	private static Thread stats;
-	
+	private static final ConcurrentHashMap<Long, Long> allLatencies = new ConcurrentHashMap<>();
 
+	private static Thread stats;
 	private final UDPListener udp;
 
 	private Map<Integer, Response> commands = new ConcurrentHashMap<Integer, Response>();
@@ -509,6 +513,27 @@ public class Client implements Receiver {
 					public void run() {
 						stats.stop();
 						client.stop();
+						Path latencyPath = Paths.get("/tmp" + UUID.randomUUID().toString());
+						try {
+
+							if (!Files.exists(latencyPath))
+								Files.createFile(latencyPath);
+							logger.info("Raw path created [ " + latencyPath + "]");
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						allLatencies.entrySet().stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).map(
+								r -> r.getKey() + "," + r.getValue() + "\n").forEach(
+										stringToSave -> {
+											try {
+												Files.write(latencyPath,
+														stringToSave.getBytes(),
+														StandardOpenOption.APPEND);
+											} catch (Exception ex) {
+												ex.printStackTrace();
+											}
+										});
+
 					}
 				});
 				client.init();
