@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test -f "a" ; then
+		echo "Existe a"
+    return 0;
+fi
+
+echo "não existe a"
+touch a
+git add .
+git commit -m "add a"
+git push
