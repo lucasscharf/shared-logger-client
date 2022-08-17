@@ -237,7 +237,7 @@ public class Client implements Receiver {
 							int targetId = ((int) (Math.random() * (double) key_count) % id);
 							cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
 						}
-						org.apache.catalina.connector.Response response = null;
+						Response response = null;
 						try {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
