@@ -125,6 +125,9 @@ public class Message {
 		if(control != null){
 			return ("Message id:" + id + " from:" + from + " to:" + to + " " + control);
 		}else{
+			if(commands!= null && commands.size() == 1) {
+				return ("Message id:" + id + " from:" + from + " to:" + to + " commandId: " + commands.get(0).getID());
+			}
 			return ("Message id:" + id + " from:" + from + " to:" + to + " " + commands);
 		}
 	}

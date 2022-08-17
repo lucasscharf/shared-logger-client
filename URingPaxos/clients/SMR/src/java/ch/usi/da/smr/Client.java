@@ -415,7 +415,7 @@ public class Client implements Receiver {
 		if (single_part != null) {
 			partition = Integer.parseInt(single_part);
 		}
-		logger.info(String.format("Trying send command with thread [%s]", Thread.currentThread().getName()));
+		logger.info(String.format("Trying send command with thread [%s] and command ID [%s]", Thread.currentThread().getName(), cmd.getID()));
 		synchronized (send_queues) {
 			if (!send_queues.containsKey(partition)) {
 				send_queues.put(partition, new LinkedBlockingQueue<Response>());
@@ -430,7 +430,7 @@ public class Client implements Receiver {
 
 	@Override
 	public synchronized void receive(Message m) {
-		logger.debug("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
+		logger.info("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
 
 		// filter away already received replica answers
 		long hash = MurmurHash.hash64(m.getID() + "-" + m.getInstnce());
