@@ -419,9 +419,11 @@ public class Client implements Receiver {
 		synchronized (send_queues) {
 			if (!send_queues.containsKey(partition)) {
 				send_queues.put(partition, new LinkedBlockingQueue<Response>());
-				Thread t = new Thread(new BatchSender(partition, this));
-				t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
-				t.start();
+				// Thread t = new Thread(new BatchSender(partition, this));
+				// t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
+				// t.start();
+
+				new BatchSender(partition, this).run();
 			}
 		}
 		send_queues.get(partition).add(r);
