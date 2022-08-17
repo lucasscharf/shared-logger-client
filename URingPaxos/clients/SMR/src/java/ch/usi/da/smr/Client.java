@@ -238,12 +238,16 @@ public class Client implements Receiver {
 							cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
 						}
 						Response response = null;
+
 						try {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
 							if ((response = send(cmd)) != null) {
-								List<Command> commandList = response.getResponse(1000); // wait response
-								System.out.println("Response: " + commandList.size());
+								List<Command> commandList = response.getResponse(10000); // wait response
+								
+								if(commandList.isEmpty()) {
+									logger.error("Did not receive response from replicas: " + cmd);
+								}
 								int currentResponse = responsesReceivedCounter.incrementAndGet();
 								if (currentResponse % trackerNumber == 0) {
 									long currentLatency = System.nanoTime() - currentTimeInNano;
