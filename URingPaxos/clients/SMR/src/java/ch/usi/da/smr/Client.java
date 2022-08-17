@@ -229,46 +229,58 @@ public class Client implements Receiver {
 						int id = send_id.incrementAndGet();
 						Command cmd = null;
 
-						int randomChance = ((int) (Math.random() * 100.0));
-
-						if (randomChance < writePercentage) {
-							cmd = new Command(id, CommandType.PUT, "user" + (id % key_count), new byte[commandSize]);
-						} else {
-							int targetId = ((int) (Math.random() * (double) key_count) % id);
-							cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
-						}
+						cmd = buildCommand(commandSize, key_count, id);
 						Response response = null;
 
 						try {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
-							if ((response = send(cmd)) != null) {
-								List<Command> commandList = response.getResponse(1000); // wait response
-								
-								if(commandList.isEmpty()) {
-									logger.error("Did not receive response from replicas: " + cmd);
-								}
-								int currentResponse = responsesReceivedCounter.incrementAndGet();
-								if (currentResponse % trackerNumber == 0) {
-									long currentLatency = System.nanoTime() - currentTimeInNano;
-									latencies.add(currentLatency);
-									allLatencies.put(System.currentTimeMillis(), currentLatency);
-								}
-							} else {
+							response = send(cmd);
+							if (response == null) {
 								logger.error("There is no response D:");
+								continue;
+							}
+							List<Command> commandList = response.getResponse(1000); // wait response
+
+							if (commandList.isEmpty()) {
+								logger.error("Did not receive response from replicas: " + cmd.getID());
+								continue;
+							}
+							int currentResponse = responsesReceivedCounter.incrementAndGet();
+							if (currentResponse % trackerNumber == 0) {
+								long currentLatency = System.nanoTime() - currentTimeInNano;
+								latencies.add(currentLatency);
+								allLatencies.put(System.currentTimeMillis(), currentLatency);
 							}
 						} catch (Exception e) {
 							logger.error("Error in send thread!", e);
 						}
 						sendCount++;
-						try {
-							Thread.sleep(thinkingTime);
-						} catch (Exception ex) {
-							logger.error("we have a problem", ex);
-						}
+						sleepForThinkingTime();
 					}
 					await.countDown();
 					logger.info("Thread [" + Thread.currentThread().getName() + "] terminated.");
+				}
+
+				private void sleepForThinkingTime() {
+					try {
+						Thread.sleep(thinkingTime);
+					} catch (Exception ex) {
+						logger.error("we have a problem", ex);
+					}
+				}
+
+				private Command buildCommand(final int commandSize, final int keyCount, int id) {
+					Command cmd;
+					int randomChance = ((int) (Math.random() * 100.0));
+
+					if (randomChance < writePercentage) {
+						cmd = new Command(id, CommandType.PUT, "user" + (id % keyCount), new byte[commandSize]);
+					} else {
+						int targetId = ((int) (Math.random() * (double) keyCount) % id);
+						cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
+					}
+					return cmd;
 				}
 			};
 			t.start();
@@ -403,11 +415,12 @@ public class Client implements Receiver {
 		if (single_part != null) {
 			partition = Integer.parseInt(single_part);
 		}
+		logger.info(String.format("Trying send command with thread [%s]", Thread.currentThread().getName()));
 		synchronized (send_queues) {
 			if (!send_queues.containsKey(partition)) {
 				send_queues.put(partition, new LinkedBlockingQueue<Response>());
 				Thread t = new Thread(new BatchSender(partition, this));
-				t.setName("BatchSender-" + partition);
+				t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
 				t.start();
 			}
 		}
@@ -417,7 +430,7 @@ public class Client implements Receiver {
 
 	@Override
 	public synchronized void receive(Message m) {
-		logger.debug("Client received ring " + m.getRing() + " instnace " + m.getInstnce() + " (" + m + ")");
+		logger.debug("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
 
 		// filter away already received replica answers
 		long hash = MurmurHash.hash64(m.getID() + "-" + m.getInstnce());

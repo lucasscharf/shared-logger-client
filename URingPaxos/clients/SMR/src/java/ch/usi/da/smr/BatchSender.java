@@ -63,6 +63,7 @@ public class BatchSender implements Runnable {
 	
 	@Override
 	public void run() {
+		logger.info("Sending batch");
 		while(true){
 			try {
 				Response r = queue.take();
@@ -93,6 +94,7 @@ public class BatchSender implements Runnable {
 				break;				
 			}
 		}
+		logger.info("Batch sent");
 	}
 
 }
