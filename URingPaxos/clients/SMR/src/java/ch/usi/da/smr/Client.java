@@ -242,8 +242,8 @@ public class Client implements Receiver {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
 							if ((response = send(cmd)) != null) {
-								response.getResponse(1000); // wait response
-								System.out.println("Response: " + response.getMessage());
+								List<Command> commandList = response.getResponse(1000); // wait response
+								System.out.println("Response: " + commandList.size());
 								int currentResponse = responsesReceivedCounter.incrementAndGet();
 								if (currentResponse % trackerNumber == 0) {
 									long currentLatency = System.nanoTime() - currentTimeInNano;
