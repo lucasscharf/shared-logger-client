@@ -513,7 +513,7 @@ public class Client implements Receiver {
 					public void run() {
 						stats.stop();
 						client.stop();
-						Path latencyPath = Paths.get("/tmp" + UUID.randomUUID().toString());
+						Path latencyPath = Paths.get("/tmp/" + UUID.randomUUID().toString());
 						try {
 
 							if (!Files.exists(latencyPath))
