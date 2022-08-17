@@ -243,7 +243,7 @@ public class Client implements Receiver {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
 							if ((response = send(cmd)) != null) {
-								List<Command> commandList = response.getResponse(10000); // wait response
+								List<Command> commandList = response.getResponse(1000); // wait response
 								
 								if(commandList.isEmpty()) {
 									logger.error("Did not receive response from replicas: " + cmd);
@@ -268,7 +268,7 @@ public class Client implements Receiver {
 						}
 					}
 					await.countDown();
-					logger.debug("Thread [" + Thread.currentThread().getId() + "] terminated.");
+					logger.info("Thread [" + Thread.currentThread().getName() + "] terminated.");
 				}
 			};
 			t.start();
@@ -547,7 +547,6 @@ public class Client implements Receiver {
 				client.readStdin();
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.exit(1);
 			}
 		}
 	}
