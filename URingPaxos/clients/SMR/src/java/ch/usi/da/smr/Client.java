@@ -218,7 +218,7 @@ public class Client implements Receiver {
 		};
 		stats.start();
 		logger.info(String.format(
-				"Start performance testing with [%s], sendsPerThread [%s], commandSize [%s] bytes)", //
+				"Start performance testing with [%s] threads, sendsPerThread [%s], commandSize [%s] bytes)", //
 				numberOfThreads, sendsPerThread, commandSize));
 		for (int i = 0; i < numberOfThreads; i++) {
 			Thread t = new Thread("Command Sender " + i) {
@@ -237,18 +237,21 @@ public class Client implements Receiver {
 							int targetId = ((int) (Math.random() * (double) key_count) % id);
 							cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
 						}
-						Response response = null;
+						org.apache.catalina.connector.Response response = null;
 						try {
 							long currentTimeInNano = System.nanoTime();
 							commandsSendCounter.incrementAndGet();
 							if ((response = send(cmd)) != null) {
 								response.getResponse(1000); // wait response
+								System.out.println("Response: " + response.getMessage());
 								int currentResponse = responsesReceivedCounter.incrementAndGet();
 								if (currentResponse % trackerNumber == 0) {
 									long currentLatency = System.nanoTime() - currentTimeInNano;
 									latencies.add(currentLatency);
 									allLatencies.put(System.currentTimeMillis(), currentLatency);
 								}
+							} else {
+								logger.error("There is no response D:");
 							}
 						} catch (Exception e) {
 							logger.error("Error in send thread!", e);
