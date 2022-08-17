@@ -240,7 +240,7 @@ public class Client implements Receiver {
 								logger.error("There is no response D:");
 								continue;
 							}
-							List<Command> commandList = response.getResponse(1000); // wait response
+							List<Command> commandList = response.getResponse(5000); // wait response
 
 							if (commandList.isEmpty()) {
 								logger.error("Did not receive response from replicas: " + cmd.getID());
@@ -419,11 +419,9 @@ public class Client implements Receiver {
 		synchronized (send_queues) {
 			if (!send_queues.containsKey(partition)) {
 				send_queues.put(partition, new LinkedBlockingQueue<Response>());
-				// Thread t = new Thread(new BatchSender(partition, this));
-				// t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
-				// t.start();
-
-				new BatchSender(partition, this).run();
+				Thread t = new Thread(new BatchSender(partition, this));
+				t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
+				t.start();
 			}
 		}
 		send_queues.get(partition).add(r);
