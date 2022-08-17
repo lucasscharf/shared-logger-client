@@ -275,7 +275,7 @@ public class Client implements Receiver {
 					int randomChance = ((int) (Math.random() * 100.0));
 
 					if (randomChance < writePercentage) {
-						cmd = new Command(id, CommandType.PUT, "user" + (id % keyCount), new byte[commandSize]);
+						cmd = new Command(id, CommandType.PUT, "user" + (id % keyCount) + "-" + Thread.currentThread().getName(), new byte[commandSize]);
 					} else {
 						int targetId = ((int) (Math.random() * (double) keyCount) % id);
 						cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
