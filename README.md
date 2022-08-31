@@ -40,7 +40,7 @@ curl -X POST "http://localhost:8888/registerReplica" -H  "accept: */*" -H  "Cont
 Rodar o cliente. No caso, o comando levanta 10 threads, que enviam 100 comandos com tanho de 1kb usando o zookeeper na máquina 10.10.1.1.
 
 ```bash
-./run_experiment.sh 10 100 1024 10.10.1.1
+~/shared-logger-client/run_experiment.sh 10 100 1024 10.10.1.1
 ```
 ## Para impedir o processo de recovery nas instâncias, executar o seguinte comando
 Executar o comando: 
