@@ -356,7 +356,7 @@ public class Replica implements Receiver {
 			int endRange = Integer.parseInt(range[1]) + 1;
 			int delta = endRange - beginRange;
 			ringIds = new int[delta];
-			for (int i = beginRange; i < endRange; i++) {
+			for (int i = 0; i < delta; i++) {
 				ringIds[i] = beginRange + i;
 			}
 		} else {
