@@ -197,7 +197,6 @@ public class Replica implements Receiver {
 			exec_instance.put(message.getRing(), message.getInstnce());
 			return;
 		}
-		commandsReceivedCounter.incrementAndGet();
 		List<Command> cmds = new ArrayList<Command>();
 
 		// write snapshot
@@ -251,6 +250,7 @@ public class Replica implements Receiver {
 						System.err.println("Receive RESPONSE as Command!");
 						break;
 				}
+				commandsReceivedCounter.incrementAndGet();
 			}
 		}
 		exec_instance.put(message.getRing(), message.getInstnce());
