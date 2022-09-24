@@ -88,7 +88,7 @@ public class AcceptorRole extends Role {
 	}
 
 	public void deliver(RingManager fromRing,Message m){
-		logger.info("acceptor " + ring.getNodeID() + " received " + m);
+		// logger.info("acceptor " + ring.getNodeID() + " received " + m);
 		long instance = m.getInstance();
 		int ballot = 0;
 		Value value = null;

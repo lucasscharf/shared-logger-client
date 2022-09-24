@@ -221,7 +221,7 @@ public class ProposerRole extends Role implements Proposer {
 	}
 	
 	public void deliver(RingManager fromRing,Message m){
-		logger.info("proposer " + ring.getNodeID() + " received " + m);
+		// logger.info("proposer " + ring.getNodeID() + " received " + m);
 		if(m.getType() == MessageType.Decision){
 			String ID = m.getValue().getID();
 			if(proposals.containsKey(ID)){
