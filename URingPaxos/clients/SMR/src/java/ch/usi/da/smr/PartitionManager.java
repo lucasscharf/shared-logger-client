@@ -232,7 +232,7 @@ public class PartitionManager implements Watcher {
 	public int getPartition(String key){
 		int hash = MurmurHash.hash32(key);
 		if (circle.isEmpty()) {
-			return -1; // the "all" partition
+			return -1; // the "all" partitionv
 		}
 		if (!circle.containsKey(hash)) {
 			SortedMap<Integer, Integer> tailMap = circle.tailMap(hash);
@@ -241,15 +241,15 @@ public class PartitionManager implements Watcher {
 		return hash;
 	}
 
-	public ABListener getRawABListener(int ring, int replicaID) throws IOException, KeeperException, InterruptedException {
+	public ABListener getRawABListener(int replicaID, int[] paxosRings) throws IOException, KeeperException, InterruptedException {
 		List<PaxosRole> role = new ArrayList<PaxosRole>();
 		role.add(PaxosRole.Learner);
 		List<RingDescription> rings = new ArrayList<RingDescription>();
-		rings.add(new RingDescription(ring,role));
-		// disabled for dynamic subscription
-		/*if(getGlobalRing() > 0){
-			rings.add(new RingDescription(getGlobalRing(),role));
-		}*/
+
+		for (int ring : paxosRings) {
+			rings.add(new RingDescription(ring,role));
+		}
+
 		logger.debug("Create RawABListener " + rings);
 		Thread.sleep(1000); // wait until PartitionManger is ready
 		return new RawABListener(replicaID,zoo_host,rings);

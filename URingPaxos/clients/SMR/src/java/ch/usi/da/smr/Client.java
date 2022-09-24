@@ -430,7 +430,7 @@ public class Client implements Receiver {
 
 	@Override
 	public synchronized void receive(Message m) {
-		logger.info("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
+		// logger.info("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
 
 		// filter away already received replica answers
 		long hash = MurmurHash.hash64(m.getID() + "-" + m.getInstnce());

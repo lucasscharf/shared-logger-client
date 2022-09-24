@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -118,11 +119,12 @@ public class Replica implements Receiver {
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog));
 	}
 
-	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
-		this(token, ringID, nodeID, snapshot_modulo, zoo_host, false, "/tmp");
+	public Replica(String token, int[] ringIds, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
+		this(token, ringIds, nodeID, snapshot_modulo, zoo_host, false, "/tmp");
 	}
 
-	public Replica(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, boolean embebedLog, String pathPrefix)
+	public Replica(String token, int[] ringIds, int nodeID, int snapshot_modulo, String zoo_host, boolean embebedLog,
+			String pathPrefix)
 			throws Exception {
 		this.nodeID = nodeID;
 		this.token = token;
@@ -130,11 +132,13 @@ public class Replica implements Receiver {
 		this.partitions = new PartitionManager(zoo_host);
 		this.embebedLog = embebedLog;
 		partitions.init();
-		setPartition(partitions.register(nodeID, ringID, ip, token));
+		for (int ringId : ringIds) {
+			setPartition(partitions.register(nodeID, ringId, ip, token));
+		}
 		udp = new UDPSender();
 		commandsReceivedCounter = new AtomicInteger();
 
-		ab = partitions.getRawABListener(ringID, nodeID);
+		ab = partitions.getRawABListener(nodeID, ringIds);
 
 		db = new TreeMap<String, byte[]>();
 		stable_storage = new DfsRecovery(nodeID, token, "/tmp/smr", partitions);
@@ -144,7 +148,7 @@ public class Replica implements Receiver {
 
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
-				token, ringID, nodeID, snapshot_modulo, zoo_host, path, embebedLog));
+				token, ringIds, nodeID, snapshot_modulo, zoo_host, path, embebedLog));
 
 		final Thread stats = new Thread("ClientStatsWriter") {
 			private int lastReceivedCount = 0;
@@ -343,12 +347,30 @@ public class Replica implements Receiver {
 		}
 
 		String[] arg = args[0].split(",");
-		final int nodeID = Integer.parseInt(arg[1]);
-		final int ringID = Integer.parseInt(arg[0]);
+		String ringIdRange = arg[0];
+		int[] ringIds;
+
+		if (ringIdRange.contains("-")) {
+			String[] range = ringIdRange.split("-");
+			int beginRange = Integer.parseInt(range[0]);
+			int endRange = Integer.parseInt(range[1]) + 1;
+			int delta = endRange - beginRange;
+			ringIds = new int[delta];
+			for (int i = beginRange; i < endRange; i++) {
+				ringIds[i] = beginRange + i;
+			}
+		} else {
+			int ringId = Integer.parseInt(ringIdRange);
+			ringIds = new int[1];
+			ringIds[0] = ringId;
+		}
+
+		int nodeId = Integer.parseInt(arg[1]);
+
 		final String token = arg[2];
 
 		try {
-			final Replica replica = new Replica(token, ringID, nodeID, snapshot, zoo_host, embebedLog, pathPrefix);
+			final Replica replica = new Replica(token, ringIds, nodeId, snapshot, zoo_host, embebedLog, pathPrefix);
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
