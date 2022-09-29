@@ -52,7 +52,6 @@ import ch.usi.da.smr.message.Message;
 import ch.usi.da.smr.transport.ABListener;
 import ch.usi.da.smr.transport.ABSender;
 import ch.usi.da.smr.transport.RawABListener;
-import ch.usi.da.smr.transport.RawABSender;
 import ch.usi.da.smr.transport.ThriftABListener;
 import ch.usi.da.smr.transport.ThriftABSender;
 import ch.usi.da.smr.transport.UDPListener;
@@ -233,7 +232,7 @@ public class PartitionManager implements Watcher {
 	public int getPartition(String key){
 		int hash = MurmurHash.hash32(key);
 		if (circle.isEmpty()) {
-			return -1; // the "all" partitionv
+			return -1; // the "all" partition
 		}
 		if (!circle.containsKey(hash)) {
 			SortedMap<Integer, Integer> tailMap = circle.tailMap(hash);
@@ -242,15 +241,15 @@ public class PartitionManager implements Watcher {
 		return hash;
 	}
 
-	public ABListener getRawABListener(int replicaID, int[] paxosRings) throws IOException, KeeperException, InterruptedException {
+	public ABListener getRawABListener(int ring, int replicaID) throws IOException, KeeperException, InterruptedException {
 		List<PaxosRole> role = new ArrayList<PaxosRole>();
 		role.add(PaxosRole.Learner);
 		List<RingDescription> rings = new ArrayList<RingDescription>();
-
-		for (int ring : paxosRings) {
-			rings.add(new RingDescription(ring,role));
-		}
-
+		rings.add(new RingDescription(ring,role));
+		// disabled for dynamic subscription
+		/*if(getGlobalRing() > 0){
+			rings.add(new RingDescription(getGlobalRing(),role));
+		}*/
 		logger.debug("Create RawABListener " + rings);
 		Thread.sleep(1000); // wait until PartitionManger is ready
 		return new RawABListener(replicaID,zoo_host,rings);
@@ -275,7 +274,7 @@ public class PartitionManager implements Watcher {
 		return new ThriftABListener(host,9090+replicaID);
 	}
 
-	public ABSender getRawABSender(int ring, int clientID) throws IOException, KeeperException, InterruptedException {
+	/*public ABSender getRawABSender(int ring, int clientID) throws IOException, KeeperException, InterruptedException {
 		if(proposers.containsKey(ring + "-" + clientID)){
 			return proposers.get(ring + "-" + clientID);
 		}else{
@@ -288,7 +287,7 @@ public class PartitionManager implements Watcher {
 			proposers.put(ring + "-" + clientID, proposer);
 			return proposer;
 		}
-	}
+	}*/
 
 	public ABSender getThriftABSender(int ring, int clientID) throws TTransportException {
 		if(proposers.containsKey(ring + "-" + clientID)){
