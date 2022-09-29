@@ -16,7 +16,7 @@ package ch.usi.da.smr;
  *
  * You should have received a copy of the GNU General Public License
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
- */
+ */ 
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -406,26 +406,38 @@ public class Client implements Receiver {
 	 * @throws Exception
 	 */
 	public Response send(Command cmd) throws Exception {
+		// Response r = new Response(cmd);
+		// commands.put(cmd.getID(), r);
+		// int partition = -1;
+		// partition = partitions.getPartition(cmd.getKey());
+		// // special case for EC2 inter-region app;
+		// String single_part = System.getenv("PART");
+		// if (single_part != null) {
+		// 	partition = Integer.parseInt(single_part);
+		// }
+		// logger.info(String.format("Trying send command with thread [%s] and command ID [%s]", Thread.currentThread().getName(), cmd.getID()));
+		// synchronized (send_queues) {
+		// 	if (!send_queues.containsKey(partition)) {
+		// 		send_queues.put(partition, new LinkedBlockingQueue<Response>());
+		// 		Thread t = new Thread(new BatchSender(partition, this));
+		// 		t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
+		// 		t.start();
+		// 	}
+		// }
+		// send_queues.get(partition).add(r);
+		// return r;
 		Response r = new Response(cmd);
-		commands.put(cmd.getID(), r);
-		int partition = -1;
-		partition = partitions.getPartition(cmd.getKey());
-		// special case for EC2 inter-region app;
-		String single_part = System.getenv("PART");
-		if (single_part != null) {
-			partition = Integer.parseInt(single_part);
-		}
-		logger.info(String.format("Trying send command with thread [%s] and command ID [%s]", Thread.currentThread().getName(), cmd.getID()));
-		synchronized (send_queues) {
-			if (!send_queues.containsKey(partition)) {
-				send_queues.put(partition, new LinkedBlockingQueue<Response>());
-				Thread t = new Thread(new BatchSender(partition, this));
-				t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
-				t.start();
-			}
-		}
-		send_queues.get(partition).add(r);
-		return r;
+		commands.put(cmd.getID(),r);
+		int ring = connectMap.entrySet().stream().findAny().get().getKey();
+    	
+    	if(!send_queues.containsKey(ring)){
+    		send_queues.put(ring,new LinkedBlockingQueue<Response>());
+    		Thread t = new Thread(new BatchSender(ring,this));
+    		t.setName("BatchSender-" + ring);
+    		t.start();
+    	}
+    	send_queues.get(ring).add(r);
+    	return r;		
 	}
 
 	@Override
