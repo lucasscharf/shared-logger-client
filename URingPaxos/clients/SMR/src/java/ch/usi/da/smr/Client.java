@@ -16,7 +16,7 @@ package ch.usi.da.smr;
  *
  * You should have received a copy of the GNU General Public License
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -49,8 +49,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.log4j.Logger;
+import org.apache.zookeeper.ZooKeeper;
 
 import ch.usi.da.paxos.Util;
+import ch.usi.da.paxos.lab.DummyWatcher;
 import ch.usi.da.paxos.message.Control;
 import ch.usi.da.paxos.message.ControlType;
 import ch.usi.da.smr.message.Command;
@@ -107,20 +109,21 @@ public class Client implements Receiver {
 	private final int port;
 
 	private final Map<Integer, Integer> connectMap;
+	private final ZooKeeper zoo;
 
 	public Client(PartitionManager partitions, Map<Integer, Integer> connectMap, long thinkingTime, int writePercentage,
-			int trackerNumber)
+			int trackerNumber, ZooKeeper zoo)
 			throws IOException {
 		this.partitions = partitions;
 		this.connectMap = connectMap;
 		this.thinkingTime = thinkingTime;
 		this.writePercentage = writePercentage;
+		this.zoo = zoo;
 		this.trackerNumber = trackerNumber;
 		commandsSendCounter = new AtomicInteger();
 		responsesReceivedCounter = new AtomicInteger();
 		logger.info(String.format("thinkingTime [%s], writePercentage [%s], trackerNumber [%s]", thinkingTime,
 				writePercentage, trackerNumber));
-
 		ip = Util.getHostAddress();
 		port = 5000 + new Random().nextInt(15000);
 		udp = new UDPListener(port);
@@ -275,7 +278,8 @@ public class Client implements Receiver {
 					int randomChance = ((int) (Math.random() * 100.0));
 
 					if (randomChance < writePercentage) {
-						cmd = new Command(id, CommandType.PUT, "user" + (id % keyCount) + "-" + Thread.currentThread().getName(), new byte[commandSize]);
+						cmd = new Command(id, CommandType.PUT, "user" + (id % keyCount) + "-" + Thread.currentThread().getName(),
+								new byte[commandSize]);
 					} else {
 						int targetId = ((int) (Math.random() * (double) keyCount) % id);
 						cmd = new Command(id, CommandType.GET, "user" + targetId, new byte[0]);
@@ -354,6 +358,10 @@ public class Client implements Receiver {
 		udp.close();
 	}
 
+	public ZooKeeper getZooKeeper() {
+		return zoo;
+	}
+
 	public void prepareGlobal(int cmdID, int groupID) throws Exception {
 		int oldRing = groupID;
 		int newRing = partitions.getGlobalRing();
@@ -413,36 +421,39 @@ public class Client implements Receiver {
 		// // special case for EC2 inter-region app;
 		// String single_part = System.getenv("PART");
 		// if (single_part != null) {
-		// 	partition = Integer.parseInt(single_part);
+		// partition = Integer.parseInt(single_part);
 		// }
-		// logger.info(String.format("Trying send command with thread [%s] and command ID [%s]", Thread.currentThread().getName(), cmd.getID()));
+		// logger.info(String.format("Trying send command with thread [%s] and command
+		// ID [%s]", Thread.currentThread().getName(), cmd.getID()));
 		// synchronized (send_queues) {
-		// 	if (!send_queues.containsKey(partition)) {
-		// 		send_queues.put(partition, new LinkedBlockingQueue<Response>());
-		// 		Thread t = new Thread(new BatchSender(partition, this));
-		// 		t.setName("BatchSender-" + partition +  "-" + Thread.currentThread().getName());
-		// 		t.start();
-		// 	}
+		// if (!send_queues.containsKey(partition)) {
+		// send_queues.put(partition, new LinkedBlockingQueue<Response>());
+		// Thread t = new Thread(new BatchSender(partition, this));
+		// t.setName("BatchSender-" + partition + "-" +
+		// Thread.currentThread().getName());
+		// t.start();
+		// }
 		// }
 		// send_queues.get(partition).add(r);
 		// return r;
 		Response r = new Response(cmd);
-		commands.put(cmd.getID(),r);
+		commands.put(cmd.getID(), r);
 		int ring = connectMap.entrySet().stream().findAny().get().getKey();
-    	
-    	if(!send_queues.containsKey(ring)){
-    		send_queues.put(ring,new LinkedBlockingQueue<Response>());
-    		Thread t = new Thread(new BatchSender(ring,this));
-    		t.setName("BatchSender-" + ring);
-    		t.start();
-    	}
-    	send_queues.get(ring).add(r);
-    	return r;		
+
+		if (!send_queues.containsKey(ring)) {
+			send_queues.put(ring, new LinkedBlockingQueue<Response>());
+			Thread t = new Thread(new BatchSender(ring, this));
+			t.setName("BatchSender-" + ring);
+			t.start();
+		}
+		send_queues.get(ring).add(r);
+		return r;
 	}
 
 	@Override
 	public synchronized void receive(Message m) {
-		// logger.info("Client received ring " + m.getRing() + " instance " + m.getInstnce() + " (" + m + ")");
+		// logger.info("Client received ring " + m.getRing() + " instance " +
+		// m.getInstnce() + " (" + m + ")");
 
 		// filter away already received replica answers
 		long hash = MurmurHash.hash64(m.getID() + "-" + m.getInstnce());
@@ -538,8 +549,9 @@ public class Client implements Receiver {
 			final Map<Integer, Integer> connectMap = parseConnectMap(args[0]);
 			try {
 				final PartitionManager partitions = new PartitionManager(zoo_host, connectMap);
-				partitions.init();
-				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage, trackerNumber);
+				// partitions.init();
+				ZooKeeper zoo = new ZooKeeper(zoo_host,3000,new DummyWatcher());
+				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage, trackerNumber,zoo);
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 					@Override
 					public void run() {

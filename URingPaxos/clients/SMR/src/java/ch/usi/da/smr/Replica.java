@@ -133,7 +133,7 @@ public class Replica implements Receiver {
 		this.snapshot_modulo = snapshot_modulo;
 		this.partitions = new PartitionManager(zoo_host);
 		this.embebedLog = embebedLog;
-		partitions.init();
+		// partitions.init();
 		// for (int ringId : ringIds) {
 		// 	setPartition(partitions.register(nodeID, ringId, ip, token));
 		// }
@@ -184,7 +184,7 @@ public class Replica implements Receiver {
 	}
 
 	public void start() {
-		partitions.registerPartitionChangeNotifier(this);
+		// partitions.registerPartitionChangeNotifier(this);
 		ab.registerReceiver(this);
 
 		Thread t = new Thread((Runnable) ab);
