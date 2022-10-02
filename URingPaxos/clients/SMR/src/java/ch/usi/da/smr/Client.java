@@ -438,8 +438,11 @@ public class Client implements Receiver {
 		// return r;
 		Response r = new Response(cmd);
 		commands.put(cmd.getID(), r);
-		int ring = connectMap.entrySet().stream().findAny().get().getKey();
-
+		int connectionSize = connectMap.size();
+		int rolledNumber = ((int) (97 * Math.random())) % connectionSize;
+		int ring = new ArrayList<>(connectMap.entrySet()).get(rolledNumber).getKey();
+		System.out.println("Send to ring: " + ring);
+		
 		if (!send_queues.containsKey(ring)) {
 			send_queues.put(ring, new LinkedBlockingQueue<Response>());
 			Thread t = new Thread(new BatchSender(ring, this));

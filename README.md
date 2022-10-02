@@ -24,7 +24,7 @@ cd ~/shared-logger-client/URingPaxos/target/Paxos-trunk ;   ./ringpaxos.sh 2 1:A
 
 Rodar a réplica (serviço do smr):
 ```bash
-cd ~/shared-logger-client/URingPaxos/clients/SMR/target/SMR-trunk ;  ./replica.sh 1,4,0 0 10.10.1.1
+cd ~/shared-logger-client/URingPaxos/clients/SMR/target/SMR-trunk ;  ./replica.sh 1:L,4,0 0 10.10.1.1
 ```
 
 Rodar o serviço de réplicas log e criar um log nele:
