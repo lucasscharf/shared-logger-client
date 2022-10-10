@@ -47,6 +47,7 @@ Executar o comando:
 
 ```bash
 /opt/zookeeper/bin/zkCli.sh set /ringpaxos/topology1/config/learner_recovery 0
+/opt/zookeeper/bin/zkCli.sh set /ringpaxos/topology2/config/learner_recovery 0
 ```
 
 Dentro da máquina docker do zookeeper

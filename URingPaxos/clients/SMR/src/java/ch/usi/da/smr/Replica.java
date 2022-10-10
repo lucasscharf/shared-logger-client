@@ -47,9 +47,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import com.sleepycat.je.DatabaseException;
+import com.sleepycat.je.Environment;
+import com.sleepycat.je.EnvironmentConfig;
+
 import org.apache.log4j.Logger;
 
 import ch.usi.da.paxos.Util;
+import ch.usi.da.paxos.api.StableStorage;
 import ch.usi.da.paxos.message.Control;
 import ch.usi.da.paxos.message.ControlType;
 import ch.usi.da.paxos.ring.RingDescription;
@@ -81,6 +86,7 @@ public class Replica implements Receiver {
 	public final int nodeID;
 
 	public String token;
+	private StableStorage stableStorage;
 
 	private final PartitionManager partitions;
 
@@ -104,8 +110,10 @@ public class Replica implements Receiver {
 
 	private volatile boolean active_snapshot = false;
 	private boolean embebedLog;
+	private boolean useMemoryDb;
 	private Path path;
 	private AtomicInteger commandsReceivedCounter;
+	private Path fileDatabase;
 
 	public Replica() {
 		this.nodeID = 0;
@@ -115,33 +123,37 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-
+		fileDatabase = Paths.get("/tmp/databasefile");
+		try {
+			Files.deleteIfExists(fileDatabase);
+			Files.createDirectories(fileDatabase);	
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s] with simple constructor",
-				token, null, nodeID, snapshot_modulo, null, null, embebedLog));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useMemoryDb [%s] with simple constructor",
+				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useMemoryDb));
 	}
 
-	public Replica(String token, List<RingDescription> rings, int nodeID, int snapshot_modulo, String zoo_host) throws Exception {
-		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/tmp");
+	public Replica(String token, List<RingDescription> rings, int nodeID, int snapshot_modulo, String zoo_host)
+			throws Exception {
+		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/tmp", false);
 	}
 
-	public Replica(String token, List<RingDescription> rings, int nodeId, int snapshot_modulo, String zoo_host, boolean embebedLog,
-			String pathPrefix)
+	public Replica(String token, List<RingDescription> rings, int nodeId, int snapshot_modulo, String zoo_host,
+			boolean embebedLog, String pathPrefix, Boolean useMemoryDb)
 			throws Exception {
 		this.nodeID = nodeId;
 		this.token = token;
 		this.snapshot_modulo = snapshot_modulo;
 		this.partitions = new PartitionManager(zoo_host);
 		this.embebedLog = embebedLog;
-		// partitions.init();
-		// for (int ringId : ringIds) {
-		// 	setPartition(partitions.register(nodeID, ringId, ip, token));
-		// }
+
 		udp = new UDPSender();
 		commandsReceivedCounter = new AtomicInteger();
 
-		// ab = partitions.getRawABListener(nodeID, ringIds);
-		ab = new RawABListener(nodeId,zoo_host,rings);
+		ab = new RawABListener(nodeId, zoo_host, rings);
 
 		db = new TreeMap<String, byte[]>();
 		stable_storage = new DfsRecovery(nodeId, token, "/tmp/smr", partitions);
@@ -149,9 +161,14 @@ public class Replica implements Receiver {
 		if (!Files.exists(path) && embebedLog)
 			Files.createFile(path);
 
+		this.useMemoryDb = useMemoryDb;
+		fileDatabase = Paths.get("/tmp/databasefile");
+		Files.deleteIfExists(fileDatabase);
+		Files.createDirectories(fileDatabase);
+
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s]",
-				token, rings, nodeId, snapshot_modulo, zoo_host, path, embebedLog));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useMemoryDb [%s] with simple constructor",
+				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useMemoryDb));
 
 		final Thread stats = new Thread("ClientStatsWriter") {
 			private int lastReceivedCount = 0;
@@ -177,6 +194,13 @@ public class Replica implements Receiver {
 			}
 		};
 		stats.start();
+	}
+
+	public Environment createDatabase() {
+		EnvironmentConfig envConfig = new EnvironmentConfig();
+		envConfig.setAllowCreate(true);
+		Environment environment = new Environment(new File("/tmp/database"), envConfig);
+		return environment;
 	}
 
 	public void setPartition(Partition partition) {
@@ -226,6 +250,14 @@ public class Replica implements Receiver {
 				switch (command.getType()) {
 					case PUT:
 						db.put(command.getKey(), command.getValue());
+						if (useMemoryDb) {
+							Path fileToSave = fileDatabase.resolve("/").resolve(command.getKey());
+							try {
+								Files.write(fileToSave, command.getValue());
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+						}
 						if (db.containsKey(command.getKey())) {
 							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "OK".getBytes());
 							cmds.add(cmd);
@@ -242,9 +274,27 @@ public class Replica implements Receiver {
 							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "FAIL".getBytes());
 							cmds.add(cmd);
 						}
+						if (useMemoryDb) {
+							Path fileToRemove = fileDatabase.resolve("/").resolve(command.getKey());
+							try {
+								Files.deleteIfExists(fileToRemove);
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+						}
+
 						break;
 					case GET:
 						data = db.get(command.getKey());
+						if (useMemoryDb) {
+							Path fileToRetrieve = fileDatabase.resolve("/").resolve(command.getKey());
+							try {
+								data = Files.readAllBytes(fileToRetrieve);
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+						}
+
 						if (data != null) {
 							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), data);
 							cmds.add(cmd);
@@ -263,7 +313,6 @@ public class Replica implements Receiver {
 		exec_instance.put(message.getRing(), message.getInstnce());
 		int msg_id = MurmurHash.hash32(message.getInstnce() + "-" + token);
 		Message msg = new Message(msg_id, token, message.getFrom(), cmds);
-		// logger.debug("Send UDP: " + msg);
 		udp.send(msg);
 	}
 
@@ -349,24 +398,14 @@ public class Replica implements Receiver {
 			pathPrefix = args[4];
 		}
 
+		Boolean useMemoryDatabase = true;
+		if (args.length > 5) {
+			useMemoryDatabase = Boolean.valueOf(args[5]);
+		}
+
 		String[] arg = args[0].split(",");
 		String ringIdRange = arg[0];
-		// int[] ringIds;
 
-		// if (ringIdRange.contains("-")) {
-		// 	String[] range = ringIdRange.split("-");
-		// 	int beginRange = Integer.parseInt(range[0]);
-		// 	int endRange = Integer.parseInt(range[1]) + 1;
-		// 	int delta = endRange - beginRange;
-		// 	ringIds = new int[delta];
-		// 	for (int i = 0; i < delta; i++) {
-		// 		ringIds[i] = beginRange + i;
-		// 	}
-		// } else {
-		// 	int ringId = Integer.parseInt(ringIdRange);
-		// 	ringIds = new int[1];
-		// 	ringIds[0] = ringId;
-		// }
 		List<RingDescription> rings = Util.parseRingsArgument(ringIdRange);
 
 		int nodeId = Integer.parseInt(arg[1]);
@@ -374,7 +413,8 @@ public class Replica implements Receiver {
 		final String token = arg[2];
 
 		try {
-			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix);
+			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix,
+					useMemoryDatabase);
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
