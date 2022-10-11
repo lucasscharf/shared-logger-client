@@ -1,7 +1,9 @@
 package org.acme;
 
+import java.util.List;
+
 public class LoggerConfig {
-	public int ring;
+	public String ring;
 	public int id;
 	public int replicas;
 	public String pathPrefix = "/mnt/disk1";

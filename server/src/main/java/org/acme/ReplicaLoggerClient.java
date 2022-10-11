@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.usi.da.paxos.Util;
 import ch.usi.da.smr.Replica;
 import ch.usi.da.smr.message.Command;
 import ch.usi.da.smr.message.Message;
@@ -51,9 +52,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
-	public ReplicaLoggerClient(String token, int ringID, int nodeID, int snapshot_modulo, String zoo_host, String pathPrefix)
+	public ReplicaLoggerClient(String token, String ringIdRange, int nodeID, int snapshot_modulo, String zoo_host, String pathPrefix)
 			throws Exception {
-		super(token, ringID, nodeID, snapshot_modulo, zoo_host);
+		super(token, Util.parseRingsArgument(ringIdRange), nodeID, snapshot_modulo, zoo_host);
 		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
 
 		if (!Files.exists(path))
