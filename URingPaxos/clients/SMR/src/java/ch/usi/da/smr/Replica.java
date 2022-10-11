@@ -110,7 +110,7 @@ public class Replica implements Receiver {
 
 	private volatile boolean active_snapshot = false;
 	private boolean embebedLog;
-	private boolean useMemoryDb;
+	private boolean useDiskDb;
 	private Path path;
 	private AtomicInteger commandsReceivedCounter;
 	private Path fileDatabase;
@@ -123,7 +123,7 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-		fileDatabase = Paths.get("/tmp/databasefile");
+		fileDatabase = Paths.get("/tmp/databasefile/");
 		try {
 			Files.deleteIfExists(fileDatabase);
 			Files.createDirectories(fileDatabase);	
@@ -132,8 +132,8 @@ public class Replica implements Receiver {
 		}
 		
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useMemoryDb [%s] with simple constructor",
-				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useMemoryDb));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
+				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
 	}
 
 	public Replica(String token, List<RingDescription> rings, int nodeID, int snapshot_modulo, String zoo_host)
@@ -142,7 +142,7 @@ public class Replica implements Receiver {
 	}
 
 	public Replica(String token, List<RingDescription> rings, int nodeId, int snapshot_modulo, String zoo_host,
-			boolean embebedLog, String pathPrefix, Boolean useMemoryDb)
+			boolean embebedLog, String pathPrefix, Boolean useDiskDb)
 			throws Exception {
 		this.nodeID = nodeId;
 		this.token = token;
@@ -161,14 +161,14 @@ public class Replica implements Receiver {
 		if (!Files.exists(path) && embebedLog)
 			Files.createFile(path);
 
-		this.useMemoryDb = useMemoryDb;
-		fileDatabase = Paths.get("/tmp/databasefile");
+		this.useDiskDb = useDiskDb;
+		fileDatabase = Paths.get("/tmp/databasefile/");
 		Files.deleteIfExists(fileDatabase);
 		Files.createDirectories(fileDatabase);
 
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useMemoryDb [%s] with simple constructor",
-				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useMemoryDb));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
+				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
 
 		final Thread stats = new Thread("ClientStatsWriter") {
 			private int lastReceivedCount = 0;
@@ -194,13 +194,6 @@ public class Replica implements Receiver {
 			}
 		};
 		stats.start();
-	}
-
-	public Environment createDatabase() {
-		EnvironmentConfig envConfig = new EnvironmentConfig();
-		envConfig.setAllowCreate(true);
-		Environment environment = new Environment(new File("/tmp/database"), envConfig);
-		return environment;
 	}
 
 	public void setPartition(Partition partition) {
@@ -250,8 +243,8 @@ public class Replica implements Receiver {
 				switch (command.getType()) {
 					case PUT:
 						db.put(command.getKey(), command.getValue());
-						if (useMemoryDb) {
-							Path fileToSave = fileDatabase.resolve("/").resolve(command.getKey());
+						if (useDiskDb) {
+							Path fileToSave = fileDatabase.resolve(command.getKey());
 							try {
 								Files.write(fileToSave, command.getValue());
 							} catch (Exception ex) {
@@ -274,8 +267,8 @@ public class Replica implements Receiver {
 							Command cmd = new Command(command.getID(), CommandType.RESPONSE, command.getKey(), "FAIL".getBytes());
 							cmds.add(cmd);
 						}
-						if (useMemoryDb) {
-							Path fileToRemove = fileDatabase.resolve("/").resolve(command.getKey());
+						if (useDiskDb) {
+							Path fileToRemove = fileDatabase.resolve(command.getKey());
 							try {
 								Files.deleteIfExists(fileToRemove);
 							} catch (Exception ex) {
@@ -286,8 +279,8 @@ public class Replica implements Receiver {
 						break;
 					case GET:
 						data = db.get(command.getKey());
-						if (useMemoryDb) {
-							Path fileToRetrieve = fileDatabase.resolve("/").resolve(command.getKey());
+						if (useDiskDb) {
+							Path fileToRetrieve = fileDatabase.resolve(command.getKey());
 							try {
 								data = Files.readAllBytes(fileToRetrieve);
 							} catch (Exception ex) {
@@ -398,9 +391,9 @@ public class Replica implements Receiver {
 			pathPrefix = args[4];
 		}
 
-		Boolean useMemoryDatabase = true;
+		Boolean useDiskDb = false;
 		if (args.length > 5) {
-			useMemoryDatabase = Boolean.valueOf(args[5]);
+			useDiskDb = Boolean.valueOf(args[5]);
 		}
 
 		String[] arg = args[0].split(",");
@@ -414,7 +407,7 @@ public class Replica implements Receiver {
 
 		try {
 			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix,
-					useMemoryDatabase);
+					useDiskDb);
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
