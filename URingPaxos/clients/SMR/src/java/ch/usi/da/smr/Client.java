@@ -219,7 +219,7 @@ public class Client implements Receiver {
 				}
 			}
 		};
-		// stats.start();
+		stats.start();
 		logger.info(String.format(
 				"Start performance testing with [%s] threads, sendsPerThread [%s], commandSize [%s] bytes)", //
 				numberOfThreads, sendsPerThread, commandSize));
