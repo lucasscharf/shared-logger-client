@@ -123,13 +123,7 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
-		fileDatabase = Paths.get("/tmp/databasefile/");
-		try {
-			Files.deleteIfExists(fileDatabase);
-			Files.createDirectories(fileDatabase);	
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		}
+		clearDatabaseFileSystem();
 		
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
@@ -162,9 +156,8 @@ public class Replica implements Receiver {
 			Files.createFile(path);
 
 		this.useDiskDb = useDiskDb;
-		fileDatabase = Paths.get("/tmp/databasefile/");
-		Files.deleteIfExists(fileDatabase);
-		Files.createDirectories(fileDatabase);
+		clearDatabaseFileSystem();
+		
 
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
@@ -194,6 +187,23 @@ public class Replica implements Receiver {
 			}
 		};
 		stats.start();
+	}
+
+	private void clearDatabaseFileSystem() {
+		fileDatabase = Paths.get("/tmp/databasefile/");
+		try {
+			Files.list(fileDatabase).forEach(f -> {
+				try {
+					Files.deleteIfExists(f);
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			});
+			Files.deleteIfExists(fileDatabase);
+			Files.createDirectories(fileDatabase);
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public void setPartition(Partition partition) {

@@ -441,7 +441,6 @@ public class Client implements Receiver {
 		int connectionSize = connectMap.size();
 		int rolledNumber = ((int) (97 * Math.random())) % connectionSize;
 		int ring = new ArrayList<>(connectMap.entrySet()).get(rolledNumber).getKey();
-		System.out.println("Send to ring: " + ring);
 		
 		if (!send_queues.containsKey(ring)) {
 			send_queues.put(ring, new LinkedBlockingQueue<Response>());
