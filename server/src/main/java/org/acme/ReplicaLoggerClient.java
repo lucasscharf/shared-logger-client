@@ -90,9 +90,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	@Override
 	public void receive(Message m) {
 		try {
-			commandsReceivedCounter.incrementAndGet();
 			synchronized (path) {
 				for (Command command : m.getCommands()) {
+					commandsReceivedCounter.incrementAndGet();
 					String stringToSave = command.toString() + "\n";
 					Files.write(path,
 							stringToSave.getBytes(),
