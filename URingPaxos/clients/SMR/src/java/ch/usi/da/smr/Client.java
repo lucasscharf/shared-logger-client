@@ -268,7 +268,7 @@ public class Client implements Receiver {
 
 				private void sleepForThinkingTime() {
 					try {
-						int timeToSleep = ((int) (Math.random() * 10000.0)) % thinkingTime + 5;
+						long timeToSleep = ((long) (Math.random() * 10000.0)) % thinkingTime + 5;
 						Thread.sleep(timeToSleep);
 					} catch (Exception ex) {
 						logger.error("we have a problem", ex);
