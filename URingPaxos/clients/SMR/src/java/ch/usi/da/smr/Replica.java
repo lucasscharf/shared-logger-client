@@ -187,7 +187,12 @@ public class Replica implements Receiver {
 				}
 			}
 		};
-		stats.start();
+		if(startThread)
+			stats.start();
+	}
+
+	public boolean startThread(){
+		return true;
 	}
 
 	private void clearDatabaseFileSystem() {

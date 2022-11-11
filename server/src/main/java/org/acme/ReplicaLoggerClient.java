@@ -52,7 +52,8 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
-	public ReplicaLoggerClient(String token, String ringIdRange, int nodeID, int snapshot_modulo, String zoo_host, String pathPrefix)
+	public ReplicaLoggerClient(String token, String ringIdRange, int nodeID, int snapshot_modulo, String zoo_host,
+			String pathPrefix)
 			throws Exception {
 		super(token, Util.parseRingsArgument(ringIdRange), nodeID, snapshot_modulo, zoo_host);
 		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
@@ -86,6 +87,10 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			}
 		};
 		stats.start();
+	}
+
+	public boolean startThread() {
+		return false;
 	}
 
 	@Override

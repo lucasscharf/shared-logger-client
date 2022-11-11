@@ -94,10 +94,10 @@ public class LoggerController {
         int clusterSize = nodesReplicas.size();
         if (clusterSize <= 0)
             clusterSize = 1;
-        int initialId = (((int) (Math.random() * clusterSize) % clusterSize));
+        int id = config.id;
         for (int i = 0; i < clusterSize; i++) {
-            int newId = (int) (Math.random() * clusterSize * 100);
-            int urlId = (initialId + i) % clusterSize;
+            int newId = i + id;
+            int urlId = (newId) % clusterSize;
             logger.info("Calling logger in url id [{}] with id [{}]", urlId, newId);
             config.id = newId;
             loggerRestClients.get(urlId).registerReplica(config);
