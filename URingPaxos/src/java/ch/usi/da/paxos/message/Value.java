@@ -104,10 +104,8 @@ public class Value implements Serializable {
 			return((Control.fromWire(value)).toString() + " (" + ID + ")");
 		}else if(value.length == 0){
 			return("<none> (" + ID + ")");
-		}else if(new String(value).length()>40){
-			return(new String(value).subSequence(0,39) + "... (" + ID + ")");
-		}else{
-			return(new String(value) + " (" + ID + ")");
+		} else {
+			return("<has data> (" + ID + ")");
 		}
 	}
 
@@ -118,10 +116,8 @@ public class Value implements Serializable {
 			return (Control.fromWire(value)).toString();
 		}else if(value.length == 0){
 			return("<none>");
-		}else if(new String(value).length()>40){
-			return(new String(value).subSequence(0,39) + "...");
-		}else{
-			return(new String(value));
+		} else {
+			return("<has data> (" + ID + ")");
 		}
 	}
 

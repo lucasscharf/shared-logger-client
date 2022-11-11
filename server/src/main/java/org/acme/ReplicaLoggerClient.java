@@ -70,9 +70,10 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 					int currentReceivedCount = commandsReceivedCounter.get();
 
 					try {
-						logger.info(
+						System.out.println(
 								String.format(
-										"Commands received %s, Total Commands %s,",
+										"%s, %s, %s",
+										System.currentTimeMillis(),
 										currentReceivedCount - lastReceivedCount, //
 										currentReceivedCount));
 						lastReceivedCount = currentReceivedCount;

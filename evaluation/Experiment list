@@ -1,4 +1,18 @@
 Avaliações:
+
+tipo de operação_modelo de log_número de threads_tamanho da mensagem (em kbs)
+cp_sem_016_300_001 - cpu bound _ sem logger _ 16 threads _ 300 comandos _ 1kb
+io_des_128_400_002 - io bound _ logger desacoplado _ 128 threads _ 400 comandos _ 1kb
+Salvar o dump do zkTree
+
+
+Ideia de como normalizar as datas de log:
+
+19:18:23 , 1200
+19:18:24, 1321
+A1-$A$1,  1200
+A2-$A$1, 1321
+
 Thinking time: 100ms
 	CPU Bound
 		Sem logger 
@@ -33,3 +47,4 @@ Thinking time: 100ms
 			50 threads, 300 commands, 1 kb <- V
 			100 threads, 300 commands, 1 kb <- X
 			500 threads, 300 commands, 1 kb <- Y
+

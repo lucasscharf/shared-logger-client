@@ -172,9 +172,10 @@ public class Replica implements Receiver {
 					int currentReceivedCount = commandsReceivedCounter.get();
 
 					try {
-						logger.info(
+						System.out.println(
 								String.format(
-										"Commands received %s, Total Commands %s,",
+										"%s, %s, %s",
+										System.currentTimeMillis(),
 										currentReceivedCount - lastReceivedCount, //
 										currentReceivedCount));
 						lastReceivedCount = currentReceivedCount;

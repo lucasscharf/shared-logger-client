@@ -227,6 +227,7 @@ public class Client implements Receiver {
 			Thread t = new Thread("Command Sender " + i) {
 				@Override
 				public void run() {
+					allLatencies.put(System.currentTimeMillis(), 0);
 					int sendCount = 0;
 					while (sendCount < sendsPerThread) {
 						int id = send_id.incrementAndGet();
@@ -267,7 +268,8 @@ public class Client implements Receiver {
 
 				private void sleepForThinkingTime() {
 					try {
-						Thread.sleep(thinkingTime);
+						int timeToSleep = (Math.random() * 10000.0) % thinkingTime + 5;
+						Thread.sleep(timeToSleep);
 					} catch (Exception ex) {
 						logger.error("we have a problem", ex);
 					}
