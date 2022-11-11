@@ -74,7 +74,8 @@ public class LoggerController {
     @Path("registerReplica")
     public Response registerReplica(LoggerConfig config) throws Exception {
         logger.info("Registering replica logger");
-        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient("0", config.ring + ":L", config.id, 0, zookeeperUrl, config.pathPrefix);
+        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(config.ring + "", config.ring + ":L",
+                config.id, 0, zookeeperUrl, config.pathPrefix);
         replicaLoggerClient.start();
         loggerClients.add(replicaLoggerClient);
         return Response.ok().build();
@@ -91,7 +92,7 @@ public class LoggerController {
     @Path("register")
     public Response registerLogger(LoggerConfig config) {
         logger.info("Registering config [{}]", config);
-        int clusterSize = nodesReplicas.size();
+        int clusterSize = config.replicas;
         if (clusterSize <= 0)
             clusterSize = 1;
         int id = config.id;

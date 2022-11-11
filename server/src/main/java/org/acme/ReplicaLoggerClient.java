@@ -103,7 +103,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 					Files.write(path,
 							stringToSave.getBytes(),
 							StandardOpenOption.APPEND);
-				}
+				})
 			}
 		} catch (IOException e) {
 			logger.error("", e);

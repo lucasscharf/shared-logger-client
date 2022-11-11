@@ -198,6 +198,7 @@ public class Replica implements Receiver {
 	private void clearDatabaseFileSystem() {
 		fileDatabase = Paths.get("/tmp/databasefile/");
 		try {
+			Files.createDirectories(fileDatabase);
 			Files.list(fileDatabase).forEach(f -> {
 				try {
 					Files.deleteIfExists(f);
@@ -206,7 +207,6 @@ public class Replica implements Receiver {
 				}
 			});
 			Files.deleteIfExists(fileDatabase);
-			Files.createDirectories(fileDatabase);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
