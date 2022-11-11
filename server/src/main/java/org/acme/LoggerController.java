@@ -74,7 +74,7 @@ public class LoggerController {
     @Path("registerReplica")
     public Response registerReplica(LoggerConfig config) throws Exception {
         logger.info("Registering replica logger");
-        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient("0", config.ring, config.id, 0, zookeeperUrl, config.pathPrefix);
+        ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient("0", config.ring + ":L", config.id, 0, zookeeperUrl, config.pathPrefix);
         replicaLoggerClient.start();
         loggerClients.add(replicaLoggerClient);
         return Response.ok().build();
