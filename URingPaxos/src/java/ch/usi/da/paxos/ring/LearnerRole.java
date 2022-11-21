@@ -216,7 +216,7 @@ public class LearnerRole extends Role implements Learner {
 					}
 				}
 			}else{
-				logger.error("Learner received decision without value! " + m);
+				logger.error("Learner received decision without value! [" + m + "]");
 			}
 		}else if(m.getType() == MessageType.Safe){
 			Value v = null;

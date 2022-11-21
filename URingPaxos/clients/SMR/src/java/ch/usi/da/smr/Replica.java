@@ -207,6 +207,7 @@ public class Replica implements Receiver {
 				}
 			});
 			Files.deleteIfExists(fileDatabase);
+			Files.createDirectories(fileDatabase);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
