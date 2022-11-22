@@ -29,12 +29,11 @@ cd ~/shared-logger-client/URingPaxos/clients/SMR/target/SMR-trunk ;  ./replica.s
 
 Rodar o serviço de réplicas log e criar um log nele:
 ```bash
-export nodes_replicas_url=http://localhost:8888
-export zookeeper_url=10.10.1.1
 cd ~/shared-logger-client/server
 mvn quarkus:dev &
-sleep 3
-curl -X POST "http://localhost:8888/registerReplica" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":0,\"replicas\":1,\"ring\":1}"
+sleep 10
+curl -X POST "http://localhost:8888/register" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":4,\"pathPrefix\":\"/tmp/\",\"replicas\":2,\"ring\":\"1\"}"
+fg
 ```
 
 Rodar o cliente. No caso, o comando levanta 10 threads, que enviam 100 comandos com tanho de 1kb usando o zookeeper na máquina 10.10.1.1.
