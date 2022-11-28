@@ -171,17 +171,17 @@ public class Client implements Receiver {
 	private int handleAutomaticTest(String commandLine) throws InterruptedException {
 		int id;
 		final int numberOfThreads; // # of threads
-		final int sendsPerThread;
+		final int experimentTimeSeconds;
 		final int commandSize;
 		final int key_count = 50000; // 50k * 1k byte memory needed at replica
 		String[] sl = commandLine.split(" ");
 		if (sl.length > 1) {
 			numberOfThreads = Integer.parseInt(sl[1]);
-			sendsPerThread = Integer.parseInt(sl[2]);
+			experimentTimeSeconds = Integer.parseInt(sl[2]);
 			commandSize = Integer.parseInt(sl[3]);
 		} else {
 			numberOfThreads = 70;
-			sendsPerThread = 15000;
+			experimentTimeSeconds = 60;
 			commandSize = 1024;
 		}
 		final AtomicInteger send_id = new AtomicInteger(0);
@@ -221,15 +221,18 @@ public class Client implements Receiver {
 		};
 		stats.start();
 		logger.info(String.format(
-				"Start performance testing with [%s] threads, sendsPerThread [%s], commandSize [%s] bytes)", //
-				numberOfThreads, sendsPerThread, commandSize));
+				"Start performance testing with [%s] threads, experimentTimeSeconds [%s], commandSize [%s] bytes)", //
+				numberOfThreads, experimentTimeSeconds, commandSize));
 		for (int i = 0; i < numberOfThreads; i++) {
 			Thread t = new Thread("Command Sender " + i) {
 				@Override
 				public void run() {
+					Integer initialTimeSeconds = System.currentTimeMillis() / 1000;
+					Integer currentTimeSeconds = System.currentTimeMillis() / 1000;
 					allLatencies.put(System.currentTimeMillis(), 0L);
-					int sendCount = 0;
-					while (sendCount < sendsPerThread) {
+					while ((initialTimeSeconds + experimentTimeSeconds) > currentTimeSeconds) {
+						currentTimeSeconds = System.currentTimeMillis() / 1000;
+
 						int id = send_id.incrementAndGet();
 						Command cmd = null;
 
@@ -259,7 +262,6 @@ public class Client implements Receiver {
 						} catch (Exception e) {
 							logger.error("Error in send thread!", e);
 						}
-						sendCount++;
 						sleepForThinkingTime();
 					}
 					await.countDown();
@@ -443,7 +445,7 @@ public class Client implements Receiver {
 		int connectionSize = connectMap.size();
 		int rolledNumber = ((int) (97 * Math.random())) % connectionSize;
 		int ring = new ArrayList<>(connectMap.entrySet()).get(rolledNumber).getKey();
-		
+
 		if (!send_queues.containsKey(ring)) {
 			send_queues.put(ring, new LinkedBlockingQueue<Response>());
 			Thread t = new Thread(new BatchSender(ring, this));
@@ -554,8 +556,8 @@ public class Client implements Receiver {
 			try {
 				final PartitionManager partitions = new PartitionManager(zoo_host, connectMap);
 				// partitions.init();
-				ZooKeeper zoo = new ZooKeeper(zoo_host,3000,new DummyWatcher());
-				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage, trackerNumber,zoo);
+				ZooKeeper zoo = new ZooKeeper(zoo_host, 3000, new DummyWatcher());
+				final Client client = new Client(partitions, connectMap, thinkingTime, writePercentage, trackerNumber, zoo);
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 					@Override
 					public void run() {
