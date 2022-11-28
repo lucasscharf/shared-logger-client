@@ -1,0 +1,71 @@
+12:53:23,709 INFO  [main] RawABListener:48 - Initing a RawABListener...
+12:53:23,722 INFO  [main] Node:101 - PID: 6363
+12:53:23,931 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+12:53:23,935 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+12:53:23,935 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+12:53:23,954 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+12:53:23,955 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+12:53:23,957 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+12:53:23,963 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: enabled
+12:53:23,965 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+12:53:23,974 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 15 at /10.10.1.6:2349)
+12:53:24,954 INFO  [main] Replica:162 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1669233204955, 0, 0
+1669233205955, 0, 0
+1669233206956, 0, 0
+1669233207956, 0, 0
+1669233208957, 0, 0
+1669233209957, 0, 0
+1669233210957, 0, 0
+1669233211958, 0, 0
+1669233212958, 0, 0
+1669233213959, 0, 0
+1669233214959, 0, 0
+1669233215959, 0, 0
+1669233216960, 0, 0
+1669233217960, 0, 0
+1669233218961, 0, 0
+1669233219961, 0, 0
+1669233220961, 0, 0
+1669233221961, 0, 0
+1669233222962, 0, 0
+1669233223962, 0, 0
+1669233224963, 0, 0
+1669233225963, 0, 0
+1669233226963, 0, 0
+1669233227963, 3204, 3204
+1669233228964, 7509, 10713
+1669233229965, 7466, 18179
+1669233230965, 7739, 25918
+1669233231966, 7666, 33584
+1669233232966, 7574, 41158
+1669233233966, 7644, 48802
+1669233234967, 7665, 56467
+1669233235967, 7666, 64133
+1669233236967, 7669, 71802
+1669233237968, 7563, 79365
+1669233238968, 7686, 87051
+1669233239969, 7663, 94714
+1669233240969, 7630, 102344
+1669233241970, 7629, 109973
+1669233242971, 7490, 117463
+1669233243971, 7524, 124987
+1669233244971, 2997, 127984
+1669233245972, 16, 128000
+1669233246972, 0, 128000
+1669233247972, 0, 128000
+1669233248972, 0, 128000
+1669233249973, 0, 128000
+1669233250973, 0, 128000
+12:54:11,495 ERROR [main-EventThread] TopologyManager:387 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/15
+12:54:11,498 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 15 at null)
+12:54:11,504 ERROR [main-EventThread] ClientCnxn:537 - Error while calling watcher 
+java.lang.NullPointerException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:126)
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:706)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:720)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
