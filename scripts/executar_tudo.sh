@@ -28,11 +28,11 @@ sleep 5
 ssh lucas123@$ipReplica3 "~/shared-logger-client/scripts/run_cpu_sem_replica_3.sh" &
 sleep 5
 
-ssh lucas123@$ipClient "~/shared-logger-client/scripts/run_experiment.sh 2"
+# ssh lucas123@$ipClient "~/shared-logger-client/scripts/run_experiment.sh 2"
 
-./pegarLogs.sh $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
+# ./pegarLogs.sh $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
 
-sleep 5
+# sleep 5
 
 for ip in "${ips[@]}" 
 do 
