@@ -1,13 +1,13 @@
 #!/bin/bash
 
-outputFile=~/code/shared-logger-client/evaluation/thinking_time_50/io_sem_4_500_001/
 
-ipLogger1=pc788.emulab.net
-ipLogger2=pc784.emulab.net
-ipReplica1=pc790.emulab.net
-ipReplica2=pc793.emulab.net
-ipReplica3=pc789.emulab.net
-ipClient=pc795.emulab.net
+ipLogger1=$1
+ipLogger2=$2
+ipReplica1=$3
+ipReplica2=$4
+ipReplica3=$5
+ipClient=$6
+outputFile=$7
 
 
 mkdir $outputFile
