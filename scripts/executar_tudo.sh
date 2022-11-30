@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ipProposer=pc833.emulab.net
+ipZookeeper=pc833.emulab.net
+ipProposer=pc842.emulab.net
 ipAcceptor=pc855.emulab.net
 ipLogger1=pc849.emulab.net
 ipLogger2=pc834.emulab.net
@@ -21,26 +22,27 @@ ssh lucas123@$ipProposer '~/shared-logger-client/scripts/run_proposer.sh' &
 sleep 5
 ssh lucas123@$ipAcceptor '~/shared-logger-client/scripts/run_acceptor.sh' &
 sleep 5
-ssh lucas123@$ipReplica1 "~/shared-logger-client/scripts/run_cpu_sem_replica_1.sh" &
-sleep 5
-ssh lucas123@$ipReplica2 "~/shared-logger-client/scripts/run_cpu_sem_replica_2.sh" &
-sleep 5
-ssh lucas123@$ipReplica3 "~/shared-logger-client/scripts/run_cpu_sem_replica_3.sh" &
-sleep 5
+# ssh lucas123@$ipReplica1 "~/shared-logger-client/scripts/run_cpu_sem_replica_1.sh" &
+# sleep 5
+# ssh lucas123@$ipReplica2 "~/shared-logger-client/scripts/run_cpu_sem_replica_2.sh" &
+# sleep 5
+# ssh lucas123@$ipReplica3 "~/shared-logger-client/scripts/run_cpu_sem_replica_3.sh" &
+# sleep 5
 
 # ssh lucas123@$ipClient "~/shared-logger-client/scripts/run_experiment.sh 2"
 
 # ./pegarLogs.sh $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
 
-# sleep 5
+
+echo "a aplicaçõa está de pé"
+sleep 10
 
 for ip in "${ips[@]}" 
 do 
 	ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh' &
 done 
 
-
 sleep 5
 
-ssh lucas123@$ipProposer '~/shared-logger-client/scripts/clean_zookeeper.sh'
+ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh'
 
