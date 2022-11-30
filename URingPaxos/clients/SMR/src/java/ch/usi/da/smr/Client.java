@@ -227,8 +227,8 @@ public class Client implements Receiver {
 			Thread t = new Thread("Command Sender " + i) {
 				@Override
 				public void run() {
-					Integer initialTimeSeconds = System.currentTimeMillis() / 1000;
-					Integer currentTimeSeconds = System.currentTimeMillis() / 1000;
+					long initialTimeSeconds = System.currentTimeMillis() / 1000;
+					long currentTimeSeconds = System.currentTimeMillis() / 1000;
 					allLatencies.put(System.currentTimeMillis(), 0L);
 					while ((initialTimeSeconds + experimentTimeSeconds) > currentTimeSeconds) {
 						currentTimeSeconds = System.currentTimeMillis() / 1000;
