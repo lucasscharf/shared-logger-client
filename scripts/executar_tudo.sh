@@ -2,12 +2,12 @@
 
 ipProposer=pc833.emulab.net
 ipAcceptor=pc855.emulab.net
-ipLogger1=pc788.emulab.net
-ipLogger2=pc784.emulab.net
-ipReplica1=pc790.emulab.net
-ipReplica2=pc793.emulab.net
-ipReplica3=pc789.emulab.net
-ipClient=pc795.emulab.net
+ipLogger1=pc849.emulab.net
+ipLogger2=pc834.emulab.net
+ipReplica1=pc845.emulab.net
+ipReplica2=pc830.emulab.net
+ipReplica3=pc831.emulab.net
+ipClient=pc822.emulab.net
 
 outputFile=~/code/shared-logger-client/evaluation/thinking_time_50/io_sem_4_500_001/
 
@@ -27,10 +27,12 @@ sleep 3
 
 ssh lucas123@$ipClient "~/shared-logger-client/scripts/run_experiment.sh"
 
-./pegarLogs $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
+./pegarLogs.sh $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
 
 for ip in "${ips[@]}" 
 do 
-	ssh lucas123@$ipProposer '~/shared-logger-client/scripts/kill_all_java.sh &' &
+	ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh &' &
 done 
+
+ssh lucas123@$ipProposer 'docker restart zookeeper'
 
