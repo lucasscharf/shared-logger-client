@@ -23,6 +23,9 @@ import ch.usi.da.smr.message.Command;
 import ch.usi.da.smr.message.Message;
 import java.io.BufferedInputStream;
 
+import sun.misc.Signal;
+import sun.misc.SignalHandler;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,6 +36,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -124,7 +128,7 @@ public class Replica implements Receiver {
 		ab = null;
 		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
 		clearDatabaseFileSystem();
-		
+
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
@@ -157,7 +161,6 @@ public class Replica implements Receiver {
 
 		this.useDiskDb = useDiskDb;
 		clearDatabaseFileSystem();
-		
 
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
@@ -187,11 +190,11 @@ public class Replica implements Receiver {
 				}
 			}
 		};
-		if(startThread())
+		if (startThread())
 			stats.start();
 	}
 
-	public boolean startThread(){
+	public boolean startThread() {
 		return true;
 	}
 
@@ -202,13 +205,13 @@ public class Replica implements Receiver {
 			Files.list(fileDatabase).forEach(f -> {
 				try {
 					Files.deleteIfExists(f);
-				} catch(Exception ex) {
+				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 			});
 			Files.deleteIfExists(fileDatabase);
 			Files.createDirectories(fileDatabase);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
@@ -425,6 +428,45 @@ public class Replica implements Receiver {
 		try {
 			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix,
 					useDiskDb);
+
+			Stream .of(
+					"HUP",
+					"INT",
+					"QUIT",
+					"ILL",
+					"TRAP",
+					"ABRT",
+					"BUS",
+					"FPE",
+					"KILL",
+					"USR1",
+					"SEGV",
+					"USR2",
+					"PIPE",
+					"ALRM",
+					"TERM",
+					"STKFLT",
+					"CHLD",
+					"CONT",
+					"STOP",
+					"TSTP",
+					"TTIN",
+					"TTOU",
+					"URG",
+					"XCPU",
+					"XFSZ",
+					"VTALRM",
+					"PROF",
+					"WINCH",
+					"POLL",
+					"PWR",
+					"SYS") //
+					.forEach(signalName -> Signal.handle(//
+							new Signal(signalName),
+							signal -> {
+								System.out.println(signal.getName() + " (" + signal.getNumber() + ")");
+							}));
+
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
