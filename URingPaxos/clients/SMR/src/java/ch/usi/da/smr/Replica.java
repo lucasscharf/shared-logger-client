@@ -482,6 +482,8 @@ public class Replica implements Receiver {
 			replica.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			in.readLine();
+			in.readLine();
+			in.readLine();
 			replica.close();
 		} catch (Exception e) {
 			e.printStackTrace();
