@@ -1,16 +1,26 @@
-06:33:03,500 INFO  [main] RawABListener:48 - Initing a RawABListener...
-06:33:03,510 INFO  [main] Node:101 - PID: 3603
-06:33:03,704 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-06:33:03,708 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-06:33:03,709 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-06:33:03,729 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-06:33:03,731 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-06:33:03,732 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-06:33:03,737 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: enabled
-06:33:03,739 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-06:33:03,745 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 14] (succsessor: 1 at /172.18.0.1:2162)
-06:33:03,759 INFO  [main] Replica:162 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
-1669815183760, 0, 0
-06:33:03,764 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
-06:33:03,865 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-06:33:03,865 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+06:46:29,297 INFO  [main] RawABListener:48 - Initing a RawABListener...
+06:46:29,312 INFO  [main] Node:101 - PID: 4340
+06:46:29,499 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+06:46:29,502 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+06:46:29,502 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+06:46:29,516 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+06:46:29,516 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+06:46:29,517 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+06:46:29,522 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+06:46:29,524 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+06:46:29,530 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 1 at /172.18.0.1:2886)
+06:46:29,533 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+06:46:29,540 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 15 at /10.10.1.7:2295)
+06:46:29,547 INFO  [main] Replica:162 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1669815989548, 0, 0
+06:46:29,552 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
