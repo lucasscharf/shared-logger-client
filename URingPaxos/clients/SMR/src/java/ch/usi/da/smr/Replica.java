@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -429,7 +428,7 @@ public class Replica implements Receiver {
 			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix,
 					useDiskDb);
 
-			Stream .of(
+			Stream.of(
 					"HUP",
 					"INT",
 					"QUIT",
@@ -461,11 +460,17 @@ public class Replica implements Receiver {
 					"POLL",
 					"PWR",
 					"SYS") //
-					.forEach(signalName -> Signal.handle(//
-							new Signal(signalName),
-							signal -> {
-								System.out.println(signal.getName() + " (" + signal.getNumber() + ")");
-							}));
+					.forEach(signalName -> {
+						try {
+							Signal.handle(//
+									new Signal(signalName),
+									signal -> {
+										System.out.println(signal.getName() + " (" + signal.getNumber() + ")");
+									});
+						} catch (Exception ex) {
+							System.out.println("Could no create signal hander for: " + signalName);
+						}
+					});
 
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
