@@ -1,0 +1,60 @@
+05:46:02,135 INFO  [main] RawABListener:48 - Initing a RawABListener...
+05:46:02,142 INFO  [main] Node:101 - PID: 16382
+05:46:02,310 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+05:46:02,314 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+05:46:02,314 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+05:46:02,329 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+05:46:02,330 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+05:46:02,330 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+05:46:02,336 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+05:46:02,338 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+05:46:02,343 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [15] (succsessor: 15 at /10.10.1.7:2677)
+05:46:02,351 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 15] (succsessor: 2 at /10.10.1.4:2981)
+05:46:02,357 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
+1670157962357, 0, 0
+Reading from stdin
+05:46:02,364 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 14, 15] (succsessor: 2 at /10.10.1.4:2981)
+05:46:02,384 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2933)
+05:46:02,488 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2933)
+1670157963357, 0, 0
+1670157964358, 0, 0
+1670157965358, 0, 0
+1670157966358, 0, 0
+1670157967359, 0, 0
+05:46:07,808 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:46:07,810 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:46:07,871 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Chann

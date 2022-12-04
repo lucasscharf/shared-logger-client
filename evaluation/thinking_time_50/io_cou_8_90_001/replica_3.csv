@@ -1,0 +1,63 @@
+05:51:33,332 INFO  [main] RawABListener:48 - Initing a RawABListener...
+05:51:33,339 INFO  [main] Node:101 - PID: 16762
+05:51:33,531 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+05:51:33,536 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+05:51:33,536 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+05:51:33,555 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+05:51:33,556 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+05:51:33,558 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+05:51:33,566 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+05:51:33,568 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+05:51:33,576 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2259)
+05:51:33,592 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
+1670158293592, 0, 0
+Reading from stdin
+05:51:33,600 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2259)
+1670158294593, 0, 0
+1670158295593, 0, 0
+1670158296594, 0, 0
+1670158297594, 0, 0
+05:51:38,503 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:51:38,506 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:51:38,507 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:51:38,510 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device

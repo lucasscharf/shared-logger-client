@@ -1,0 +1,107 @@
+20:52:28,768 INFO  [main] RawABListener:48 - Initing a RawABListener...
+20:52:28,782 INFO  [main] Node:101 - PID: 10460
+20:52:28,999 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+20:52:29,004 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+20:52:29,004 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+20:52:29,025 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+20:52:29,026 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+20:52:29,027 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+20:52:29,036 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+20:52:29,038 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+20:52:29,044 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 14, 15] (succsessor: 1 at /10.10.1.2:2789)
+20:52:29,124 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2789)
+20:52:29,279 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2789)
+20:52:58,424 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1670125978425, 0, 0
+Reading from stdin
+1670125979425, 16859, 16859
+1670125980426, 16075, 32934
+1670125981426, 15964, 48898
+1670125982426, 11489, 60387
+1670125984311, 16453, 76840
+1670125985311, 15702, 92542
+1670125986311, 16110, 108652
+1670125987312, 16333, 124985
+1670125988315, 16028, 141013
+1670125989316, 16498, 157511
+1670125990316, 16318, 173829
+1670125991316, 15950, 189779
+1670125992317, 13159, 202938
+1670125994674, 17502, 220440
+1670125995674, 16231, 236671
+1670125996675, 16281, 252952
+1670125997675, 7506, 260458
+1670125999322, 18402, 278860
+1670126000322, 16200, 295060
+1670126001323, 16254, 311314
+1670126002323, 5931, 317245
+1670126003853, 17639, 334884
+1670126004853, 16326, 351210
+1670126005854, 12255, 363465
+1670126007618, 16555, 380020
+1670126008618, 16427, 396447
+1670126009949, 6363, 402810
+1670126010949, 16412, 419222
+1670126011949, 16318, 435540
+1670126012950, 4415, 439955
+1670126013950, 15960, 455915
+1670126014950, 9616, 465531
+1670126016170, 16158, 481689
+1670126017170, 9831, 491520
+1670126018358, 16102, 507622
+1670126019358, 7173, 514795
+1670126020363, 16940, 531735
+1670126021364, 7909, 539644
+1670126022364, 15532, 555176
+1670126023832, 16516, 571692
+1670126024832, 8709, 580401
+1670126025832, 10252, 590653
+1670126026912, 16174, 606827
+1670126027913, 9424, 616251
+1670126028913, 9949, 626200
+1670126029913, 12425, 638625
+1670126031113, 14894, 653519
+1670126032428, 14554, 668073
+1670126033727, 13829, 681902
+1670126034968, 13941, 695843
+1670126036254, 13460, 709303
+1670126037421, 13366, 722669
+1670126038628, 13262, 735931
+1670126039820, 12934, 748865
+1670126040988, 12658, 761523
+1670126042142, 12602, 774125
+1670126043291, 12476, 786601
+1670126044438, 45, 786646
+1670126045438, 0, 786646
+1670126046438, 0, 786646
+1670126047438, 0, 786646
+1670126048439, 0, 786646
+1670126049439, 0, 786646
+1670126050439, 0, 786646
+1670126051440, 0, 786646
+20:54:12,006 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2789)
+1670126052440, 0, 786646
+1670126053440, 0, 786646
+1670126054440, 0, 786646
+1670126055441, 0, 786646
+1670126056441, 0, 786646
+1670126057441, 0, 786646
+20:54:18,005 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 14, 15] (succsessor: 2 at /10.10.1.4:2150)
+20:54:18,015 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1670126058441, 0, 786646
+1670126059441, 0, 786646
+20:54:20,005 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.6:2013)
+1670126060442, 0, 786646
+1670126061442, 0, 786646
+1670126062442, 0, 786646
+1670126063443, 0, 786646

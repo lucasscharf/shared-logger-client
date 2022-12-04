@@ -1,0 +1,83 @@
+05:20:07,067 INFO  [main] RawABListener:48 - Initing a RawABListener...
+05:20:07,074 INFO  [main] Node:101 - PID: 14214
+05:20:07,264 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+05:20:07,269 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+05:20:07,269 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+05:20:07,286 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+05:20:07,286 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+05:20:07,288 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+05:20:07,296 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+05:20:07,299 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+05:20:07,304 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 14, 15] (succsessor: 15 at /10.10.1.7:2216)
+05:20:07,311 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 15 at /10.10.1.7:2216)
+05:20:07,321 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
+1670156407321, 0, 0
+Reading from stdin
+1670156408322, 0, 0
+1670156409322, 0, 0
+1670156410323, 0, 0
+1670156411323, 0, 0
+1670156412324, 0, 0
+1670156413324, 6070, 6070
+1670156414325, 7966, 14036
+1670156415325, 8019, 22055
+1670156416326, 7847, 29902
+1670156417326, 7970, 37872
+1670156418327, 7845, 45717
+1670156419328, 7881, 53598
+1670156420330, 7912, 61510
+1670156421330, 8023, 69533
+1670156422331, 7823, 77356
+1670156423331, 8010, 85366
+1670156424332, 7972, 93338
+1670156425332, 7916, 101254
+1670156426333, 7999, 109253
+1670156427333, 7876, 117129
+1670156428334, 8022, 125151
+1670156429335, 7954, 133105
+1670156430335, 8058, 141163
+1670156431336, 7958, 149121
+1670156432336, 8070, 157191
+1670156433337, 7713, 164904
+1670156434337, 8222, 173126
+1670156435338, 7921, 181047
+1670156436338, 7875, 188922
+1670156437338, 8146, 197068
+1670156438345, 7872, 204940
+1670156439348, 7952, 212892
+1670156440348, 8021, 220913
+1670156441348, 8070, 228983
+1670156442349, 7680, 236663
+1670156443349, 8058, 244721
+1670156444350, 7806, 252527
+1670156445350, 7892, 260419
+1670156446350, 7891, 268310
+1670156447351, 8184, 276494
+05:20:48,206 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+05:20:48,211 ERROR [ABListener] Replica:260 - 
+java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at ch.usi.da.smr.Replica.receive(Replica.java:255)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run

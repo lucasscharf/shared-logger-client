@@ -38,10 +38,16 @@ do
 
 			for ip in "${ips[@]}" 
 			do 
-				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh' 
+				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh' &
 			done 
 
 			./pegarLogs.sh $ipLogger1 $ipLogger2 $ipReplica1 $ipReplica2 $ipReplica3 $ipClient $outputFile
+
+			for ip in "${ips[@]}" 
+			do 
+				ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'& 
+			done 
+			sleep 5
 
 			ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh'
 		done
