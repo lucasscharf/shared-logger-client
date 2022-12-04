@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo rm -f /tmp/*
+sudo rm -fr /tmp/*

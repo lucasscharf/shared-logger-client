@@ -22,8 +22,8 @@ do
 		for thread in "${threads[@]}"
 		do
 			outputFile=~/code/shared-logger-client/evaluation/thinking_time_50/$app\_$log\_$thread\_90_001/
-			ssh lucas123@$ipProposer '~/shared-logger-client/scripts/run_proposer.sh' & 
-			ssh lucas123@$ipAcceptor '~/shared-logger-client/scripts/run_acceptor.sh' & 
+			ssh lucas123@$ipProposer '~/shared-logger-client/scripts/run_proposer.sh > /dev/null' & 
+			ssh lucas123@$ipAcceptor '~/shared-logger-client/scripts/run_acceptor.sh > /dev/null' & 
 			ssh lucas123@$ipReplica1 "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
 			ssh lucas123@$ipReplica2 "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
 			ssh lucas123@$ipReplica3 "~/shared-logger-client/scripts/run_$app\_$log\_replica_3.sh" &
@@ -45,11 +45,12 @@ do
 
 			for ip in "${ips[@]}" 
 			do 
-				ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'& 
+				ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh' & 
 			done 
 			sleep 5
 
-			ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null'
+			ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh >> /dev/null'
+			killall -9 ssh
 		done
 	done
 done
