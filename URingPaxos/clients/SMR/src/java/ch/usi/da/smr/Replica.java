@@ -202,6 +202,13 @@ public class Replica implements Receiver {
 		fileDatabase = Paths.get("/tmp/databasefile/");
 		try {
 			Files.createDirectories(fileDatabase);
+			Files.list(Paths.get("/tmp")).forEach(f -> {
+				try {
+					Files.deleteIfExists(f);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			});
 			Files.list(fileDatabase).forEach(f -> {
 				try {
 					Files.deleteIfExists(f);
