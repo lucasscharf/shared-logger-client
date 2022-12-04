@@ -49,7 +49,7 @@ do
 			done 
 			sleep 5
 
-			ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh'
+			ssh lucas123@$ipZookeeper '~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null'
 		done
 	done
 done
