@@ -429,50 +429,6 @@ public class Replica implements Receiver {
 			final Replica replica = new Replica(token, rings, nodeId, snapshot, zoo_host, embebedLog, pathPrefix,
 					useDiskDb);
 
-			Stream.of(
-					"HUP",
-					"INT",
-					"QUIT",
-					"ILL",
-					"TRAP",
-					"ABRT",
-					"BUS",
-					"FPE",
-					"KILL",
-					"USR1",
-					"SEGV",
-					"USR2",
-					"PIPE",
-					"ALRM",
-					"TERM",
-					"STKFLT",
-					"CHLD",
-					"CONT",
-					"STOP",
-					"TSTP",
-					"TTIN",
-					"TTOU",
-					"URG",
-					"XCPU",
-					"XFSZ",
-					"VTALRM",
-					"PROF",
-					"WINCH",
-					"POLL",
-					"PWR",
-					"SYS") //
-					.forEach(signalName -> {
-						try {
-							Signal.handle(//
-									new Signal(signalName),
-									signal -> {
-										System.out.println(signal.getName() + " (" + signal.getNumber() + ")");
-									});
-						} catch (Exception ex) {
-							System.out.println("Could no create signal hander for: " + signalName);
-						}
-					});
-
 			Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 				@Override
 				public void run() {
@@ -480,6 +436,7 @@ public class Replica implements Receiver {
 				}
 			});
 			replica.start();
+			System.out.println("Reading from stdin");
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			in.readLine();
 			in.readLine();
