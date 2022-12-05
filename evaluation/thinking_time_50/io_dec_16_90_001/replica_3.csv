@@ -1,170 +1,111 @@
-15:33:01,767 INFO  [main] RawABListener:48 - Initing a RawABListener...
-15:33:01,774 INFO  [main] Node:101 - PID: 33598
-15:33:01,951 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-15:33:01,954 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-15:33:01,954 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-15:33:01,967 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-15:33:01,968 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-15:33:01,969 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-15:33:01,978 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-15:33:01,980 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-15:33:01,987 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 14, 15] (succsessor: 1 at /10.10.1.2:2492)
-15:33:01,997 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-15:33:01,998 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2492)
-1670193181998, 0, 0
+06:43:35,858 INFO  [main] RawABListener:48 - Initing a RawABListener...
+06:43:35,867 INFO  [main] Node:101 - PID: 41873
+06:43:36,046 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+06:43:36,049 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+06:43:36,050 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+06:43:36,067 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+06:43:36,067 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+06:43:36,069 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+06:43:36,077 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+06:43:36,079 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+06:43:36,083 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2437)
+06:43:36,102 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1670247816102, 0, 0
 Reading from stdin
-15:33:02,029 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2492)
-1670193182998, 0, 0
-1670193183999, 0, 0
-1670193184999, 0, 0
-1670193186000, 0, 0
-1670193187000, 68, 68
-1670193188000, 506, 574
-1670193189001, 503, 1077
-1670193190001, 519, 1596
-1670193191002, 503, 2099
-1670193192002, 496, 2595
-15:33:12,342 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2492)
-15:33:12,383 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:2446 ballot:11 v_ballot:0 value:<none> (893703450203431)]
-1670193193002, 240, 2835
-1670193194003, 501, 3336
-1670193195003, 487, 3823
-1670193196004, 513, 4336
-1670193197004, 511, 4847
-1670193198004, 524, 5371
-1670193199004, 503, 5874
-1670193200005, 510, 6384
-1670193201005, 514, 6898
-1670193202005, 505, 7403
-1670193203006, 499, 7902
-1670193204006, 497, 8399
-1670193205007, 507, 8906
-1670193206008, 505, 9411
-1670193207008, 496, 9907
-1670193208009, 497, 10404
-1670193209009, 519, 10923
-1670193210009, 500, 11423
-1670193211010, 497, 11920
-1670193212010, 496, 12416
-1670193213010, 504, 12920
-1670193214010, 530, 13450
-1670193215011, 515, 13965
-1670193216011, 516, 14481
-1670193217011, 499, 14980
-1670193218012, 498, 15478
-1670193219012, 483, 15961
-1670193220012, 506, 16467
-1670193221012, 507, 16974
-1670193222013, 499, 17473
-1670193223013, 493, 17966
-1670193224013, 498, 18464
-1670193225014, 521, 18985
-1670193226014, 502, 19487
-1670193227014, 522, 20009
-1670193228014, 493, 20502
-1670193229015, 486, 20988
-1670193230015, 513, 21501
-1670193231015, 493, 21994
-1670193232015, 515, 22509
-1670193233016, 490, 22999
-1670193234016, 517, 23516
-1670193235016, 495, 24011
-1670193236016, 504, 24515
-1670193237017, 500, 25015
-1670193238017, 502, 25517
-1670193239017, 504, 26021
-1670193240018, 502, 26523
-1670193241018, 512, 27035
-1670193242018, 515, 27550
-1670193243018, 494, 28044
-1670193244019, 513, 28557
-1670193245019, 495, 29052
-1670193246019, 519, 29571
-1670193247020, 497, 30068
-1670193248020, 525, 30593
-1670193249020, 528, 31121
-1670193250020, 501, 31622
-1670193251021, 497, 32119
-1670193252021, 502, 32621
-1670193253021, 519, 33140
-1670193254022, 512, 33652
-1670193255022, 519, 34171
-1670193256022, 501, 34672
-1670193257022, 511, 35183
-1670193258023, 500, 35683
-1670193259024, 511, 36194
-1670193260024, 505, 36699
-1670193261024, 503, 37202
-1670193262024, 500, 37702
-1670193263025, 499, 38201
-1670193264025, 502, 38703
-1670193265025, 511, 39214
-1670193266026, 513, 39727
-1670193267026, 509, 40236
-1670193268026, 505, 40741
-1670193269026, 523, 41264
-1670193270026, 520, 41784
-1670193271027, 499, 42283
-1670193272027, 499, 42782
-1670193273027, 507, 43289
-1670193274028, 492, 43781
-1670193275028, 512, 44293
-1670193276028, 506, 44799
-1670193277028, 5, 44804
-1670193278029, 0, 44804
-1670193279029, 0, 44804
-1670193280029, 0, 44804
-1670193281029, 0, 44804
-1670193282030, 0, 44804
-1670193283030, 0, 44804
-15:34:44,006 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 14, 15] (succsessor: 1 at /10.10.1.2:2492)
-1670193284030, 0, 44804
-1670193285031, 0, 44804
-1670193286031, 0, 44804
-1670193287031, 0, 44804
-1670193288031, 0, 44804
-1670193289032, 0, 44804
-15:34:50,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 4, 14, 15] (succsessor: 2 at /10.10.1.4:2794)
-15:34:50,011 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
-java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-1670193290032, 0, 44804
-1670193291032, 0, 44804
-1670193292032, 0, 44804
-1670193293033, 0, 44804
-15:34:54,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [4, 14, 15] (succsessor: 4 at /10.10.1.9:2734)
-15:34:54,004 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
-java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-1670193294033, 0, 44804
-1670193295033, 0, 44804
-15:34:56,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.6:2727)
-15:34:56,004 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
-java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-1670193296033, 0, 44804
-1670193297033, 0, 44804
+1670247817103, 0, 0
+1670247818103, 0, 0
+1670247819104, 0, 0
+1670247820104, 0, 0
+1670247821104, 78, 78
+1670247822105, 489, 567
+1670247823105, 508, 1075
+1670247824106, 493, 1568
+1670247825106, 503, 2071
+1670247826107, 522, 2593
+1670247827107, 500, 3093
+1670247828107, 504, 3597
+1670247829108, 509, 4106
+1670247830108, 498, 4604
+1670247831108, 494, 5098
+1670247832109, 495, 5593
+1670247833109, 501, 6094
+1670247834109, 494, 6588
+1670247835110, 496, 7084
+1670247836110, 491, 7575
+1670247837110, 501, 8076
+1670247838111, 502, 8578
+1670247839111, 485, 9063
+1670247840111, 519, 9582
+1670247841112, 496, 10078
+1670247842112, 523, 10601
+1670247843113, 507, 11108
+1670247844114, 493, 11601
+1670247845114, 489, 12090
+1670247846114, 516, 12606
+1670247847114, 501, 13107
+1670247848115, 502, 13609
+1670247849115, 506, 14115
+1670247850115, 519, 14634
+1670247851116, 495, 15129
+1670247852116, 494, 15623
+1670247853116, 510, 16133
+1670247854117, 533, 16666
+1670247855117, 509, 17175
+1670247856117, 505, 17680
+1670247857118, 501, 18181
+1670247858118, 508, 18689
+1670247859118, 506, 19195
+1670247860119, 501, 19696
+1670247861119, 510, 20206
+1670247862119, 500, 20706
+1670247863119, 513, 21219
+1670247864120, 498, 21717
+1670247865120, 497, 22214
+1670247866120, 520, 22734
+1670247867120, 489, 23223
+1670247868121, 513, 23736
+1670247869121, 513, 24249
+1670247870122, 520, 24769
+1670247871122, 496, 25265
+1670247872123, 498, 25763
+1670247873123, 514, 26277
+1670247874123, 498, 26775
+1670247875123, 530, 27305
+1670247876124, 497, 27802
+1670247877124, 504, 28306
+1670247878124, 499, 28805
+1670247879125, 491, 29296
+1670247880125, 504, 29800
+1670247881125, 503, 30303
+1670247882125, 506, 30809
+1670247883126, 493, 31302
+1670247884126, 506, 31808
+1670247885126, 516, 32324
+1670247886127, 510, 32834
+1670247887127, 475, 33309
+1670247888127, 508, 33817
+1670247889127, 508, 34325
+1670247890127, 505, 34830
+1670247891128, 513, 35343
+1670247892128, 505, 35848
+1670247893128, 502, 36350
+1670247894129, 506, 36856
+1670247895129, 508, 37364
+1670247896129, 520, 37884
+1670247897129, 516, 38400
+1670247898130, 497, 38897
+1670247899130, 515, 39412
+1670247900130, 523, 39935
+1670247901131, 511, 40446
+1670247902131, 499, 40945
+1670247903131, 494, 41439
+1670247904132, 513, 41952
+1670247905132, 486, 42438
+1670247906132, 504, 42942
+1670247907132, 528, 43470
+1670247908133, 488, 43958
+1670247909133, 503, 44461
+1670247910133, 462, 44923
+1670247911133, 0, 44923
+1670247912134, 0, 44923
+1670247913134, 0, 44923
