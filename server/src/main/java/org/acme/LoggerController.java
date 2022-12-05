@@ -127,11 +127,11 @@ public class LoggerController {
   @POST
   @Path("generateDatFiles")
   public Response generateDatFiles() throws Exception {
-    List<String> applications = List.of("io");
-    List<String> loggerTypes = List.of("sem", "cou", "des");
-    List<String> others = List.of("500");
+    List<String> applications = List.of("io", "cpu");
+    List<String> loggerTypes = List.of("sem", "cou", "dec");
+    List<String> others = List.of("90");
     List<String> commandsSizes = List.of("001");
-    List<String> threadCounters = Arrays.asList("4", "8", "16", "32", "64", "128", "256", "512", "1024");
+    List<String> threadCounters = Arrays.asList("2", "4", "8", "16", "32", "64", "128", "256", "512", "1024");
     final String separator = "_";
 
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
@@ -191,7 +191,10 @@ public class LoggerController {
         .filter(l -> patternIsNumberOrComma.matcher(l).find())
         .filter(l -> !patternIsZeroThroughput.matcher(l).find())
         .skip(2).count() - 2;
-
+        if (size < 0) {
+          size = 1;
+          logger.warn("Could not find size for replica file [{}]", replicaPath);
+        }
     Double avg = Files.readAllLines(path).stream()
         .filter(l -> patternIsNumberOrComma.matcher(l).find())
         .filter(l -> !patternIsZeroThroughput.matcher(l).find())
@@ -215,6 +218,11 @@ public class LoggerController {
     long size = Files.readAllLines(path).stream()
         .filter(l -> !patternIsZeroLatency.matcher(l).find())
         .skip(2).count() - 2;
+
+    if (size < 0) {
+      size = 1;
+      logger.warn("Could not find size for latency file [{}]", latencyPath);
+    }
 
     Double avg = Files.readAllLines(path).stream()
         .filter(l -> !patternIsZeroLatency.matcher(l).find())

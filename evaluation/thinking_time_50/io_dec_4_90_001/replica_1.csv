@@ -1,0 +1,129 @@
+15:26:15,970 INFO  [main] RawABListener:48 - Initing a RawABListener...
+15:26:15,981 INFO  [main] Node:101 - PID: 39168
+15:26:16,191 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+15:26:16,195 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+15:26:16,195 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+15:26:16,214 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+15:26:16,214 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+15:26:16,217 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+15:26:16,223 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+15:26:16,226 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+15:26:16,231 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 14, 15] (succsessor: 14 at /10.10.1.6:2793)
+15:26:16,246 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 14 at /10.10.1.6:2793)
+15:26:16,246 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1670192776247, 0, 0
+Reading from stdin
+1670192777247, 0, 0
+1670192778247, 0, 0
+1670192779248, 0, 0
+1670192780248, 0, 0
+1670192781249, 24, 24
+1670192782249, 118, 142
+1670192783250, 123, 265
+1670192784250, 126, 391
+1670192785250, 132, 523
+1670192786251, 124, 647
+15:26:26,514 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14, 15] (succsessor: 14 at /10.10.1.6:2793)
+15:26:26,548 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:630 ballot:11 v_ballot:0 value:<none> (889645184121541)]
+1670192787251, 53, 700
+15:26:27,529 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:373)
+	at java.base/java.util.ArrayList.get(ArrayList.java:426)
+	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
+	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+15:26:27,530 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 5, 13, 14, 15] (succsessor: 14 at /10.10.1.6:2793)
+15:26:27,535 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:684 ballot:11 v_ballot:0 value:<none> (889655280580941)]
+15:26:27,553 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:685 ballot:11 v_ballot:0 value:<none> (889655492127871)]
+1670192788252, 57, 757
+1670192789252, 135, 892
+1670192790252, 125, 1017
+1670192791252, 124, 1141
+1670192792253, 125, 1266
+1670192793253, 123, 1389
+1670192794253, 119, 1508
+1670192795254, 125, 1633
+1670192796254, 131, 1764
+1670192797254, 128, 1892
+1670192798255, 127, 2019
+1670192799255, 132, 2151
+1670192800255, 124, 2275
+1670192801256, 123, 2398
+1670192802256, 136, 2534
+1670192803257, 120, 2654
+1670192804257, 129, 2783
+1670192805257, 124, 2907
+1670192806257, 132, 3039
+1670192807258, 124, 3163
+1670192808258, 126, 3289
+1670192809258, 121, 3410
+1670192810259, 127, 3537
+1670192811259, 127, 3664
+1670192812259, 125, 3789
+1670192813260, 124, 3913
+1670192814260, 130, 4043
+1670192815260, 119, 4162
+1670192816260, 125, 4287
+1670192817261, 128, 4415
+1670192818261, 120, 4535
+1670192819261, 117, 4652
+1670192820262, 120, 4772
+1670192821262, 121, 4893
+1670192822262, 130, 5023
+1670192823263, 137, 5160
+1670192824263, 126, 5286
+1670192825263, 120, 5406
+1670192826263, 126, 5532
+1670192827264, 118, 5650
+1670192828264, 124, 5774
+1670192829264, 130, 5904
+1670192830264, 127, 6031
+1670192831265, 120, 6151
+1670192832265, 126, 6277
+1670192833265, 128, 6405
+1670192834265, 118, 6523
+1670192835266, 122, 6645
+1670192836266, 125, 6770
+1670192837266, 117, 6887
+1670192838267, 133, 7020
+1670192839268, 125, 7145
+1670192840268, 127, 7272
+1670192841268, 128, 7400
+1670192842269, 127, 7527
+1670192843269, 129, 7656
+1670192844269, 135, 7791
+1670192845269, 120, 7911
+1670192846270, 131, 8042
+1670192847270, 130, 8172
+1670192848270, 127, 8299
+1670192849270, 127, 8426
+1670192850271, 128, 8554
+1670192851271, 130, 8684
+1670192852271, 122, 8806
+1670192853272, 132, 8938
+1670192854272, 130, 9068
+1670192855272, 129, 9197
+1670192856272, 129, 9326
+1670192857273, 130, 9456
+1670192858273, 122, 9578
+1670192859273, 142, 9720
+1670192860274, 129, 9849
+1670192861274, 134, 9983
+1670192862274, 129, 10112
+1670192863274, 118, 10230
+1670192864275, 137, 10367
+1670192865275, 127, 10494
+1670192866275, 123, 10617
+1670192867276, 125, 10742
+1670192868276, 128, 10870
+1670192869276, 136, 11006
+1670192870276, 101, 11107
+1670192871277, 0, 11107
+1670192872277, 0, 11107
+1670192873277, 0, 11107

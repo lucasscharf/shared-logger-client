@@ -1,0 +1,183 @@
+15:50:55,781 INFO  [main] RawABListener:48 - Initing a RawABListener...
+15:50:55,789 INFO  [main] Node:101 - PID: 34784
+15:50:55,979 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+15:50:55,983 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+15:50:55,983 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+15:50:56,007 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+15:50:56,008 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+15:50:56,008 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+15:50:56,013 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+15:50:56,015 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+15:50:56,022 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2930)
+15:50:56,036 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1670194256036, 0, 0
+Reading from stdin
+1670194257037, 0, 0
+1670194258037, 0, 0
+1670194259037, 0, 0
+1670194260038, 0, 0
+1670194261038, 0, 0
+1670194262039, 18000, 18000
+1670194263039, 26253, 44253
+1670194264040, 26478, 70731
+1670194265040, 24165, 94896
+1670194266041, 24597, 119493
+15:51:06,322 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2930)
+15:51:06,323 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:373)
+	at java.base/java.util.ArrayList.get(ArrayList.java:426)
+	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
+	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+15:51:06,340 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:14174 ballot:11 v_ballot:0 value:<none> (904443206442591)]
+15:51:06,341 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:14177 ballot:11 v_ballot:0 value:<none> (904443216362061)]
+15:51:07,028 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 14174
+1670194267041, 9631, 129124
+1670194268042, 35419, 164543
+1670194269043, 31401, 195944
+1670194270043, 31986, 227930
+1670194271044, 32625, 260555
+1670194272044, 32299, 292854
+1670194273045, 18647, 311501
+1670194274045, 14897, 326398
+1670194275071, 15646, 342044
+1670194276072, 15948, 357992
+1670194277072, 16483, 374475
+1670194278073, 29367, 403842
+1670194279074, 30126, 433968
+1670194280074, 31041, 465009
+1670194281075, 28807, 493816
+1670194282075, 24906, 518722
+1670194283109, 25577, 544299
+1670194284109, 27675, 571974
+1670194285110, 24969, 596943
+1670194286110, 28089, 625032
+1670194287111, 27583, 652615
+1670194288112, 30887, 683502
+1670194289112, 31716, 715218
+1670194290113, 29772, 744990
+1670194291113, 21438, 766428
+1670194292114, 24822, 791250
+1670194293114, 24174, 815424
+1670194294114, 21534, 836958
+1670194295115, 25011, 861969
+1670194296116, 29016, 890985
+1670194297116, 25921, 916906
+1670194298117, 30096, 947002
+1670194299117, 30697, 977699
+1670194300117, 29267, 1006966
+1670194301118, 30080, 1037046
+1670194302118, 28885, 1065931
+1670194303119, 32103, 1098034
+1670194304119, 31563, 1129597
+1670194305119, 32256, 1161853
+1670194306120, 30445, 1192298
+1670194307120, 32797, 1225095
+1670194308121, 32021, 1257116
+1670194309122, 31551, 1288667
+1670194310122, 32038, 1320705
+1670194311122, 30563, 1351268
+1670194312123, 30987, 1382255
+1670194313123, 29244, 1411499
+1670194314124, 29813, 1441312
+1670194315124, 30177, 1471489
+1670194316124, 24930, 1496419
+1670194317125, 31166, 1527585
+1670194318125, 32760, 1560345
+1670194319125, 31773, 1592118
+1670194320126, 32154, 1624272
+1670194321126, 29835, 1654107
+1670194322127, 32004, 1686111
+1670194323127, 29019, 1715130
+1670194324127, 30435, 1745565
+1670194325128, 28067, 1773632
+1670194326128, 29925, 1803557
+1670194327128, 30006, 1833563
+1670194328193, 31076, 1864639
+1670194329193, 31543, 1896182
+1670194330193, 25671, 1921853
+1670194331194, 29140, 1950993
+1670194332219, 28188, 1979181
+1670194333219, 29100, 2008281
+1670194334219, 28660, 2036941
+1670194335220, 32090, 2069031
+1670194336220, 33021, 2102052
+1670194337221, 30106, 2132158
+1670194338221, 32013, 2164171
+1670194339221, 32445, 2196616
+1670194340222, 32445, 2229061
+1670194341222, 28154, 2257215
+1670194342222, 30311, 2287526
+1670194343223, 32166, 2319692
+1670194344223, 32294, 2351986
+1670194345224, 29657, 2381643
+1670194346224, 33147, 2414790
+1670194347224, 31921, 2446711
+1670194348225, 32769, 2479480
+1670194349225, 33030, 2512510
+1670194350225, 30685, 2543195
+1670194351226, 26686, 2569881
+1670194352226, 0, 2569881
+1670194353226, 0, 2569881
+1670194354227, 0, 2569881
+1670194355227, 0, 2569881
+1670194356227, 0, 2569881
+1670194357227, 0, 2569881
+1670194358228, 0, 2569881
+1670194359228, 0, 2569881
+15:52:40,007 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 14, 15] (succsessor: 1 at /10.10.1.2:2930)
+1670194360228, 0, 2569881
+1670194361229, 0, 2569881
+1670194362229, 0, 2569881
+1670194363229, 0, 2569881
+1670194364229, 0, 2569881
+1670194365230, 0, 2569881
+15:52:46,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 4, 14, 15] (succsessor: 2 at /10.10.1.4:2851)
+15:52:46,007 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1670194366230, 0, 2569881
+1670194367230, 0, 2569881
+1670194368230, 0, 2569881
+1670194369231, 0, 2569881
+15:52:50,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [4, 14, 15] (succsessor: 4 at /10.10.1.9:2344)
+15:52:50,004 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1670194370231, 0, 2569881
+1670194371231, 0, 2569881
+15:52:52,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.6:2746)
+15:52:52,005 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1670194372231, 0, 2569881

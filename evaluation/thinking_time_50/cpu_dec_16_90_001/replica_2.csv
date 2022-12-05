@@ -1,0 +1,149 @@
+16:05:09,013 INFO  [main] RawABListener:48 - Initing a RawABListener...
+16:05:09,020 INFO  [main] Node:101 - PID: 35036
+16:05:09,200 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+16:05:09,204 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+16:05:09,204 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+16:05:09,219 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+16:05:09,219 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+16:05:09,220 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+16:05:09,227 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+16:05:09,232 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+16:05:09,241 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 14] (succsessor: 2 at /10.10.1.4:2529)
+16:05:09,248 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14] (succsessor: 1 at /10.10.1.2:2478)
+16:05:09,251 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1670195109251, 0, 0
+Reading from stdin
+16:05:09,272 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 15 at /10.10.1.7:2745)
+16:05:09,311 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 15 at /10.10.1.7:2745)
+1670195110252, 0, 0
+1670195111252, 0, 0
+1670195112253, 0, 0
+1670195113253, 0, 0
+1670195114253, 0, 0
+1670195115254, 273, 273
+1670195116254, 479, 752
+1670195117255, 519, 1271
+1670195118255, 525, 1796
+1670195119256, 508, 2304
+16:05:19,577 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:373)
+	at java.base/java.util.ArrayList.get(ArrayList.java:426)
+	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
+	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+16:05:19,578 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14, 15] (succsessor: 15 at /10.10.1.7:2745)
+16:05:19,598 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:2147 ballot:11 v_ballot:0 value:<none> (912975764173481)]
+16:05:19,598 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:2149 ballot:11 v_ballot:0 value:<none> (912975788357131)]
+16:05:20,250 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 2147
+16:05:20,250 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 2148
+16:05:20,250 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 2149
+1670195120256, 153, 2457
+1670195121256, 508, 2965
+1670195122257, 485, 3450
+1670195123257, 481, 3931
+1670195124257, 505, 4436
+1670195125258, 496, 4932
+1670195126258, 499, 5431
+1670195127258, 508, 5939
+1670195128259, 512, 6451
+1670195129259, 493, 6944
+1670195130260, 523, 7467
+1670195131261, 511, 7978
+1670195132261, 510, 8488
+1670195133262, 494, 8982
+1670195134262, 495, 9477
+1670195135262, 503, 9980
+1670195136263, 508, 10488
+1670195137263, 510, 10998
+1670195138263, 512, 11510
+1670195139264, 510, 12020
+1670195140264, 499, 12519
+1670195141264, 494, 13013
+1670195142264, 506, 13519
+1670195143265, 499, 14018
+1670195144265, 487, 14505
+1670195145265, 497, 15002
+1670195146266, 515, 15517
+1670195147266, 505, 16022
+1670195148266, 521, 16543
+1670195149267, 515, 17058
+1670195150267, 525, 17583
+1670195151267, 506, 18089
+1670195152268, 500, 18589
+1670195153268, 498, 19087
+1670195154268, 488, 19575
+1670195155268, 502, 20077
+1670195156269, 503, 20580
+1670195157269, 513, 21093
+1670195158269, 501, 21594
+1670195159269, 507, 22101
+1670195160270, 514, 22615
+1670195161270, 514, 23129
+1670195162271, 495, 23624
+1670195163271, 513, 24137
+1670195164272, 503, 24640
+1670195165272, 500, 25140
+1670195166272, 498, 25638
+1670195167273, 501, 26139
+1670195168273, 502, 26641
+1670195169273, 500, 27141
+1670195170273, 502, 27643
+1670195171274, 500, 28143
+1670195172274, 497, 28640
+1670195173274, 500, 29140
+1670195174275, 513, 29653
+1670195175275, 512, 30165
+1670195176276, 504, 30669
+1670195177277, 507, 31176
+1670195178277, 518, 31694
+1670195179277, 495, 32189
+1670195180278, 505, 32694
+1670195181278, 501, 33195
+1670195182278, 519, 33714
+1670195183278, 496, 34210
+1670195184279, 523, 34733
+1670195185279, 515, 35248
+1670195186279, 510, 35758
+1670195187279, 516, 36274
+1670195188280, 508, 36782
+1670195189280, 490, 37272
+1670195190280, 513, 37785
+1670195191281, 496, 38281
+1670195192281, 497, 38778
+1670195193281, 516, 39294
+1670195194281, 501, 39795
+1670195195282, 506, 40301
+1670195196282, 507, 40808
+1670195197282, 479, 41287
+1670195198282, 497, 41784
+1670195199283, 501, 42285
+1670195200283, 507, 42792
+1670195201283, 487, 43279
+1670195202284, 502, 43781
+1670195203284, 520, 44301
+1670195204284, 376, 44677
+1670195205284, 0, 44677
+1670195206285, 0, 44677
+1670195207285, 0, 44677
+1670195208285, 0, 44677
+1670195209285, 0, 44677
+1670195210286, 0, 44677
+1670195211286, 0, 44677
+16:06:52,007 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 14, 15] (succsessor: 15 at /10.10.1.7:2745)
+1670195212286, 0, 44677
+1670195213287, 0, 44677
+1670195214287, 0, 44677
+1670195215287, 0, 44677
+1670195216287, 0, 44677
+1670195217288, 0, 44677
+16:06:58,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 4, 14, 15] (succsessor: 15 at /10.10.1.7:2745)
+1670195218288, 0, 44677
+1670195219288, 0, 44677
+1670195220288, 0, 44677
+1670195221288, 0, 44677

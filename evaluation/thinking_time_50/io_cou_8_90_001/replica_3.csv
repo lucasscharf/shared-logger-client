@@ -1,63 +1,175 @@
-05:51:33,332 INFO  [main] RawABListener:48 - Initing a RawABListener...
-05:51:33,339 INFO  [main] Node:101 - PID: 16762
-05:51:33,531 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-05:51:33,536 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-05:51:33,536 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-05:51:33,555 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-05:51:33,556 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-05:51:33,558 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-05:51:33,566 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-05:51:33,568 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-05:51:33,576 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2259)
-05:51:33,592 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
-1670158293592, 0, 0
+12:04:59,510 INFO  [main] RawABListener:48 - Initing a RawABListener...
+12:04:59,525 INFO  [main] Node:101 - PID: 26523
+12:04:59,759 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+12:04:59,763 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+12:04:59,764 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+12:04:59,782 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+12:04:59,783 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+12:04:59,784 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+12:04:59,793 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+12:04:59,795 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+12:04:59,806 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2809)
+12:04:59,817 INFO  [main] Replica:165 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
+1670180699818, 0, 0
 Reading from stdin
-05:51:33,600 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2259)
-1670158294593, 0, 0
-1670158295593, 0, 0
-1670158296594, 0, 0
-1670158297594, 0, 0
-05:51:38,503 ERROR [ABListener] Replica:260 - 
-java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at ch.usi.da.smr.Replica.receive(Replica.java:255)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-05:51:38,506 ERROR [ABListener] Replica:260 - 
-java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at ch.usi.da.smr.Replica.receive(Replica.java:255)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-05:51:38,507 ERROR [ABListener] Replica:260 - 
-java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at ch.usi.da.smr.Replica.receive(Replica.java:255)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-05:51:38,510 ERROR [ABListener] Replica:260 - 
-java.io.IOException: No space left on device
+1670180700818, 0, 0
+1670180701819, 0, 0
+1670180702819, 0, 0
+1670180703820, 0, 0
+12:05:04,539 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2809)
+1670180704820, 0, 0
+1670180705820, 0, 0
+1670180706821, 0, 0
+1670180707821, 0, 0
+1670180708822, 0, 0
+1670180709822, 0, 0
+1670180710822, 0, 0
+1670180711823, 0, 0
+1670180712823, 0, 0
+1670180713823, 0, 0
+1670180714824, 0, 0
+1670180715824, 0, 0
+1670180716824, 0, 0
+1670180717825, 0, 0
+1670180718825, 0, 0
+1670180719825, 0, 0
+1670180720826, 216, 216
+1670180721826, 247, 463
+1670180722826, 258, 721
+1670180723827, 246, 967
+1670180724827, 255, 1222
+1670180725828, 250, 1472
+1670180726828, 266, 1738
+1670180727828, 258, 1996
+1670180728829, 242, 2238
+1670180729829, 258, 2496
+1670180730829, 260, 2756
+1670180731830, 250, 3006
+1670180732830, 260, 3266
+1670180733830, 246, 3512
+1670180734831, 251, 3763
+1670180735831, 254, 4017
+1670180736831, 256, 4273
+1670180737832, 242, 4515
+1670180738832, 257, 4772
+1670180739832, 254, 5026
+1670180740833, 254, 5280
+1670180741833, 254, 5534
+1670180742833, 250, 5784
+1670180743834, 250, 6034
+1670180744834, 260, 6294
+1670180745834, 244, 6538
+1670180746835, 258, 6796
+1670180747836, 253, 7049
+1670180748836, 253, 7302
+1670180749836, 253, 7555
+1670180750837, 263, 7818
+1670180751837, 247, 8065
+1670180752837, 253, 8318
+1670180753837, 263, 8581
+1670180754838, 241, 8822
+1670180755838, 250, 9072
+1670180756838, 251, 9323
+1670180757839, 268, 9591
+1670180758839, 259, 9850
+1670180759839, 261, 10111
+1670180760839, 255, 10366
+1670180761840, 257, 10623
+1670180762840, 255, 10878
+1670180763840, 245, 11123
+1670180764841, 252, 11375
+1670180765841, 255, 11630
+1670180766841, 261, 11891
+1670180767841, 246, 12137
+1670180768842, 251, 12388
+1670180769842, 250, 12638
+1670180770842, 253, 12891
+1670180771843, 248, 13139
+1670180772843, 253, 13392
+1670180773844, 267, 13659
+1670180774844, 261, 13920
+1670180775844, 249, 14169
+1670180776845, 251, 14420
+1670180777845, 259, 14679
+1670180778845, 255, 14934
+1670180779845, 260, 15194
+1670180780846, 250, 15444
+1670180781846, 260, 15704
+1670180782846, 246, 15950
+1670180783847, 259, 16209
+1670180784847, 246, 16455
+1670180785847, 250, 16705
+1670180786848, 252, 16957
+1670180787848, 243, 17200
+1670180788848, 241, 17441
+1670180789849, 248, 17689
+1670180790849, 249, 17938
+1670180791849, 250, 18188
+1670180792849, 243, 18431
+1670180793850, 255, 18686
+1670180794850, 248, 18934
+1670180795850, 245, 19179
+1670180796850, 243, 19422
+1670180797851, 250, 19672
+1670180798851, 277, 19949
+1670180799851, 255, 20204
+1670180800851, 253, 20457
+1670180801852, 253, 20710
+1670180802852, 255, 20965
+1670180803852, 260, 21225
+1670180804853, 246, 21471
+1670180805853, 259, 21730
+1670180806853, 265, 21995
+1670180807853, 253, 22248
+1670180808854, 247, 22495
+1670180809854, 49, 22544
+1670180810854, 0, 22544
+1670180811854, 0, 22544
+1670180812855, 0, 22544
+1670180813855, 0, 22544
+1670180814855, 0, 22544
+1670180815855, 0, 22544
+1670180816856, 0, 22544
+1670180817856, 0, 22544
+12:06:58,007 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14, 15] (succsessor: 1 at /10.10.1.2:2809)
+1670180818856, 0, 22544
+1670180819856, 0, 22544
+1670180820857, 0, 22544
+1670180821857, 0, 22544
+1670180822857, 0, 22544
+1670180823857, 0, 22544
+12:07:04,005 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 14, 15] (succsessor: 2 at /10.10.1.4:2762)
+12:07:04,011 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1670180824858, 0, 22544
+1670180825858, 0, 22544
+12:07:06,004 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.6:2231)
+1670180826858, 0, 22544
+1670180827858, 0, 22544
+1670180828859, 0, 22544
+1670180829859, 0, 22544
+1670180830859, 0, 22544
+1670180831859, 0, 22544
+12:07:12,005 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [15] (succsessor: 15 at /10.10.1.7:2467)
+1670180832860, 0, 22544
+1670180833860, 0, 22544
+1670180834860, 0, 22544
+1670180835860, 0, 22544
+1670180836860, 0, 22544
+1670180837861, 0, 22544
+1670180838861, 0, 22544
+1670180839861, 0, 22544
+1670180840861, 0, 22544
+1670180841862, 0, 22544
+1670180842862, 0, 22544
+1670180843862, 0, 22544
+1670180844862, 0, 22544
