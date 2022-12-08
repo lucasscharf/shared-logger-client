@@ -130,7 +130,7 @@ public class Replica implements Receiver {
 		partitions = null;
 		udp = null;
 		ab = null;
-		path = Paths.get("/tmp/" + UUID.randomUUID().toString());
+		path = Paths.get("/media/disk1/filesystem" + UUID.randomUUID().toString());
 		clearDatabaseFileSystem();
 
 		logger.info(String.format(
@@ -140,7 +140,7 @@ public class Replica implements Receiver {
 
 	public Replica(String token, List<RingDescription> rings, int nodeID, int snapshot_modulo, String zoo_host)
 			throws Exception {
-		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/tmp", false);
+		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/media/disk1/filesystem", false);
 	}
 
 	public Replica(String token, List<RingDescription> rings, int nodeId, int snapshot_modulo, String zoo_host,
@@ -203,7 +203,7 @@ public class Replica implements Receiver {
 	}
 
 	private void clearDatabaseFileSystem() {
-		fileDatabase = Paths.get("/tmp/databasefile/");
+		fileDatabase = Paths.get("/media/disk1/filesystem/databasefile/");
 		try {
 			Files.createDirectories(fileDatabase);
 			Files.list(fileDatabase).forEach(f -> {
@@ -421,7 +421,7 @@ public class Replica implements Receiver {
 			embebedLog = Boolean.valueOf(args[3]);
 		}
 
-		String pathPrefix = "/tmp";
+		String pathPrefix = "/media/disk1/filesystem";
 		if (args.length > 4) {
 			pathPrefix = args[4];
 		}
