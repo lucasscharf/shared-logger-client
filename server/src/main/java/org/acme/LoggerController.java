@@ -137,8 +137,8 @@ public class LoggerController {
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
     StringBuilder datFile = new StringBuilder();
 
-    datFile.append("name, sem_latency (ms), sem_throughputReplica (kCommands/s), sem_throughputLogger (kCommands/s),")
-        .append(" cou_latency (ms), cou_throughputReplica (kCommands/s), cou_throughputLogger (kCommands/s),")
+    datFile.append("name, sem_latency (ms), sem_throughputReplica (kCommands/s), ")
+        .append(" cou_latency (ms), cou_throughputReplica (kCommands/s), ")
         .append(" des_latency (ms), des_throughputReplica (kCommands/s), des_throughputLogger (kCommands/s)\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
@@ -165,11 +165,14 @@ public class LoggerController {
 
               datFile
                   .append(latency + ",")
-                  .append(throughputReplica + ",")
+                  .append(throughputReplica + ",");
+              if("des".equals(loggerType))
+                datFile
                   .append(throughputLogger + ",");
             }
             datFile.append("\n");
           }
+         datFile.append("\n");
         }
       }
     }
