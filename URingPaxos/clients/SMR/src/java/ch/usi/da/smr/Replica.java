@@ -85,6 +85,8 @@ import ch.usi.da.smr.transport.UDPSender;
  */
 public class Replica implements Receiver {
 
+	private static final String DATABASEFILE = "/media/disk1/filesystem";
+
 	private final static Logger logger = Logger.getLogger(Replica.class);
 
 	public final int nodeID;
@@ -254,7 +256,7 @@ public class Replica implements Receiver {
 						String stringToSave = command.toString() + "\n";
 						Files.write(path,
 								stringToSave.getBytes(),
-								StandardOpenOption.APPEND);
+								StandardOpenOption.APPEND, StandardOpenOption.SYNC);
 					}
 				} catch (IOException e) {
 					logger.error("", e);
@@ -266,7 +268,7 @@ public class Replica implements Receiver {
 						if (useDiskDb) {
 							Path fileToSave = fileDatabase.resolve(command.getKey());
 							try {
-								Files.write(fileToSave, command.getValue());
+								Files.write(fileToSave, command.getValue(), StandardOpenOption.APPEND, StandardOpenOption.SYNC);
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}
