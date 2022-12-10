@@ -139,7 +139,7 @@ public class LoggerController {
 
     datFile.append("name, sem_latency (ms), sem_throughputReplica (kCommands/s), ")
         .append(" cou_latency (ms), cou_throughputReplica (kCommands/s), ")
-        .append(" des_latency (ms), des_throughputReplica (kCommands/s), des_throughputLogger (kCommands/s)\n");
+        .append(" dec_latency (ms), dec_throughputReplica (kCommands/s), dec_throughputLogger (kCommands/s)\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
         for (String application : applications) {
@@ -157,7 +157,7 @@ public class LoggerController {
                   + "/";
               String latencyPath = folderPath + "client_latency.csv";
               String replicaPath = folderPath + "replica_1.csv";
-              String loggerPath = folderPath + "logger_1.csv";
+              String loggerPath = folderPath + "logger_2.csv";
 
               String latency = readLatency(latencyPath);
               String throughputReplica = readThroughput(replicaPath);
@@ -166,13 +166,13 @@ public class LoggerController {
               datFile
                   .append(latency + ",")
                   .append(throughputReplica + ",");
-              if("des".equals(loggerType))
+              if ("dec".equals(loggerType))
                 datFile
-                  .append(throughputLogger + ",");
+                    .append(throughputLogger + ",");
             }
             datFile.append("\n");
           }
-         datFile.append("\n");
+          datFile.append("\n");
         }
       }
     }
@@ -186,21 +186,27 @@ public class LoggerController {
 
     String regexIsZeroThroughput = "^.* 0, 0$";
     Pattern patternIsZeroThroughput = Pattern.compile(regexIsZeroThroughput);
-
     if (!path.toFile().exists())
       return "0.00";
 
-    long size = Files.readAllLines(path).stream()
+    List<String> allLines = Files.readAllLines(path);
+    String regexLastLine = "^.* 0, " + allLines.get(allLines.size() - 1).split(", ")[2];
+    Pattern patternRegexLastLine = Pattern.compile(regexLastLine);
+
+    long size = allLines.stream()
         .filter(l -> patternIsNumberOrComma.matcher(l).find())
         .filter(l -> !patternIsZeroThroughput.matcher(l).find())
+        .filter(l -> !patternRegexLastLine.matcher(l).find())
         .skip(2).count() - 2;
-        if (size < 0) {
-          size = 1;
-          logger.warn("Could not find size for replica file [{}]", replicaPath);
-        }
-    Double avg = Files.readAllLines(path).stream()
+    if (size < 0) {
+      size = 1;
+      logger.warn("Could not find size for replica file [{}]", replicaPath);
+    }
+
+    Double avg = allLines.stream()
         .filter(l -> patternIsNumberOrComma.matcher(l).find())
         .filter(l -> !patternIsZeroThroughput.matcher(l).find())
+        .filter(l -> !patternRegexLastLine.matcher(l).find())
         .skip(2)
         .limit(size)
         .mapToLong(
