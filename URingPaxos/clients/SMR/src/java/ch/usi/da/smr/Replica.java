@@ -256,9 +256,6 @@ public class Replica implements Receiver {
 				try {
 					if (embebedLog) {
 						String stringToSave = command.toString() + "\n";
-						// Files.write(path,
-						// 		stringToSave.getBytes(),
-						// 		StandardOpenOption.APPEND, StandardOpenOption.SYNC);
 							File file = path.toFile();
 							FileWriter writer = new FileWriter(file, true);
 							writer.write(Arrays.toString(command.getValue()));
@@ -268,7 +265,6 @@ public class Replica implements Receiver {
 				} catch (IOException e) {
 					logger.error("", e);
 				}
-				// TODO implementar lógica de salvar os logs
 				switch (command.getType()) {
 					case PUT:
 						db.put(command.getKey(), command.getValue());
