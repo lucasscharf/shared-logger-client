@@ -18,12 +18,15 @@ package org.acme;
  * along with URingPaxos.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -99,10 +102,11 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			synchronized (path) {
 				for (Command command : m.getCommands()) {
 					commandsReceivedCounter.incrementAndGet();
-					String stringToSave = command.toString() + "\n";
-					Files.write(path,
-							stringToSave.getBytes(),
-							StandardOpenOption.APPEND);
+					File file = path.toFile();
+					FileWriter writer = new FileWriter(file, true);
+					writer.write(Arrays.toString(command.getValue()));
+					writer.flush();
+					writer.close();
 				}
 			}
 		} catch (IOException e) {
