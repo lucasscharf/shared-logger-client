@@ -1,0 +1,73 @@
+16:51:52,883 INFO  [main] RawABListener:48 - Initing a RawABListener...
+16:51:52,891 INFO  [main] Node:101 - PID: 58020
+16:51:53,079 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+16:51:53,082 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+16:51:53,083 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+16:51:53,098 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+16:51:53,099 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+16:51:53,100 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+16:51:53,109 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+16:51:53,111 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+16:51:53,117 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 13, 14] (succsessor: 14 at /10.10.1.5:2758)
+16:51:53,130 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1670716313130, 0, 0
+Reading from stdin
+16:51:53,133 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.5:2758)
+16:51:53,219 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 14 at /10.10.1.5:2758)
+1670716314131, 0, 0
+1670716315131, 0, 0
+1670716316132, 0, 0
+1670716317132, 0, 0
+1670716318132, 5, 5
+1670716319133, 4727, 4732
+1670716320134, 4575, 9307
+1670716321134, 3861, 13168
+1670716322135, 5737, 18905
+1670716323136, 6644, 25549
+1670716324136, 6818, 32367
+1670716325137, 6718, 39085
+1670716326137, 6140, 45225
+1670716327138, 6861, 52086
+1670716328138, 6590, 58676
+1670716329138, 6917, 65593
+1670716330139, 4795, 70388
+1670716331140, 6907, 77295
+1670716332140, 8435, 85730
+1670716333141, 8406, 94136
+1670716334141, 9012, 103148
+1670716335141, 7192, 110340
+1670716336142, 6098, 116438
+1670716337142, 6631, 123069
+1670716338142, 7847, 130916
+1670716339143, 8364, 139280
+16:52:19,168 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
+	at ch.usi.da.smr.Replica.receive(Replica.java:265)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+16:52:19,171 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
+	at ch.usi.da.smr.Replica.receive(Replica.java:265)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+16:52:19,175 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:

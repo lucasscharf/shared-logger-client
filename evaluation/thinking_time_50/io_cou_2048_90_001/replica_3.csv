@@ -1,0 +1,76 @@
+16:51:53,003 INFO  [main] RawABListener:48 - Initing a RawABListener...
+16:51:53,012 INFO  [main] Node:101 - PID: 58583
+16:51:53,201 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+16:51:53,205 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+16:51:53,205 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+16:51:53,228 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+16:51:53,228 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+16:51:53,229 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+16:51:53,233 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+16:51:53,235 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+16:51:53,242 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2737)
+16:51:53,258 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1670716313259, 0, 0
+Reading from stdin
+1670716314259, 0, 0
+1670716315260, 0, 0
+1670716316260, 0, 0
+1670716317260, 0, 0
+1670716318261, 265, 265
+1670716319261, 3646, 3911
+1670716320262, 5894, 9805
+1670716321262, 3693, 13498
+1670716322262, 5271, 18769
+1670716323263, 6895, 25664
+1670716324263, 7041, 32705
+1670716325264, 6922, 39627
+1670716326264, 6466, 46093
+1670716327265, 5757, 51850
+1670716328265, 6493, 58343
+1670716329265, 4725, 63068
+1670716330266, 6553, 69621
+1670716331266, 6881, 76502
+1670716332267, 6821, 83323
+1670716333267, 6818, 90141
+1670716334268, 6848, 96989
+1670716335268, 6285, 103274
+1670716336269, 6460, 109734
+1670716337269, 6795, 116529
+1670716338270, 6785, 123314
+1670716339270, 6288, 129602
+1670716340271, 5302, 134904
+16:52:20,634 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
+	at ch.usi.da.smr.Replica.receive(Replica.java:265)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+16:52:20,638 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
+	at ch.usi.da.smr.Replica.receive(Replica.java:265)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+16:52:20,639 ERROR [ABListener] Replica:269 - 
+java.io.IOException: No space left on device
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
+	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
+	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
+	at ch.usi.da.smr.Replica.receive(Replica.java:265)
+	at ch.usi.da.smr.transport.RawABLi
