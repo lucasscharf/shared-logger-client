@@ -131,7 +131,7 @@ public class LoggerController {
     List<String> loggerTypes = List.of("sem", "cou", "dec");
     List<String> others = List.of("90");
     List<String> commandsSizes = List.of("001");
-    List<String> threadCounters = Arrays.asList("2", "4", "8", "16", "32", "64", "128", "256", "512", "1024");
+    List<String> threadCounters = Arrays.asList("2", "4", "8", "16", "32", "64", "128", "256", "512", "1024", "2048");
     final String separator = "_";
 
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
@@ -188,9 +188,22 @@ public class LoggerController {
     Pattern patternIsZeroThroughput = Pattern.compile(regexIsZeroThroughput);
     if (!path.toFile().exists())
       return "0.00";
-
     List<String> allLines = Files.readAllLines(path);
-    String regexLastLine = "^.* 0, " + allLines.get(allLines.size() - 1).split(", ")[2];
+
+    if(allLines.isEmpty()) {
+      logger.warn("File [{}] is empty", replicaPath);
+      return "0.00";
+    }
+
+    String[] splittedLastLine = allLines.get(allLines.size() - 1).split(", ");
+    String regexLastLine;
+    
+    if(splittedLastLine.length > 1) {
+      regexLastLine = "^.* 0, " + splittedLastLine[2];
+    } else {
+      logger.warn("Laste line for file [{}] is [{}]", replicaPath, allLines.get(allLines.size() - 1));
+      regexLastLine = "^.* 0, 0$";
+    }
     Pattern patternRegexLastLine = Pattern.compile(regexLastLine);
 
     long size = allLines.stream()

@@ -277,9 +277,9 @@ public class Replica implements Receiver {
 								writer.write(Arrays.toString(command.getValue()));
 								writer.flush();
 								writer.close();
-								// Files.write(fileToSave, command.getValue(), StandardOpenOption.APPEND, StandardOpenOption.SYNC);
 							} catch (Exception ex) {
 								ex.printStackTrace();
+								clearDatabaseFileSystem();
 							}
 						}
 						if (db.containsKey(command.getKey())) {
