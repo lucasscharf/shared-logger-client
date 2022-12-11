@@ -247,7 +247,7 @@ public class Client implements Receiver {
 								logger.error("There is no response D:");
 								continue;
 							}
-							List<Command> commandList = response.getResponse(5000); // wait response
+							List<Command> commandList = response.getResponse(10000); // wait response
 
 							if (commandList.isEmpty()) {
 								logger.error("Did not receive response from replicas: " + cmd.getID());

@@ -212,8 +212,8 @@ public class LoggerController {
         .filter(l -> !patternRegexLastLine.matcher(l).find())
         .skip(2).count() - 2;
     if (size < 0) {
-      size = 1;
       logger.warn("Could not find size for replica file [{}]", replicaPath);
+      return "0.00";
     }
 
     Double avg = allLines.stream()
