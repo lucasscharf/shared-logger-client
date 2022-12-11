@@ -137,9 +137,9 @@ public class LoggerController {
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
     StringBuilder datFile = new StringBuilder();
 
-    datFile.append("name, sem_latency (ms), sem_throughputReplica (kCommands/s), ")
-        .append(" cou_latency (ms), cou_throughputReplica (kCommands/s), ")
-        .append(" dec_latency (ms), dec_throughputReplica (kCommands/s), dec_throughputLogger (kCommands/s)\n");
+    datFile.append("name, sem_throughputReplica (kCommands/s), sem_latency (ms),")
+        .append("cou_throughputReplica (kCommands/s), cou_latency (ms), ")
+        .append("dec_throughputReplica (kCommands/s), dec_throughputLogger (kCommands/s), dec_latency (ms)\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
         for (String application : applications) {
@@ -162,13 +162,13 @@ public class LoggerController {
               String latency = readLatency(latencyPath);
               String throughputReplica = readThroughput(replicaPath);
               String throughputLogger = readThroughput(loggerPath);
-
-              datFile
-                  .append(latency + ",")
-                  .append(throughputReplica + ",");
               if ("dec".equals(loggerType))
                 datFile
                     .append(throughputLogger + ",");
+              datFile
+                  .append(throughputReplica + ",")
+                  .append(latency + ",");
+
             }
             datFile.append("\n");
           }
@@ -190,16 +190,19 @@ public class LoggerController {
       return "0.00";
     List<String> allLines = Files.readAllLines(path);
 
-    if(allLines.isEmpty()) {
+    if (allLines.isEmpty()) {
       logger.warn("File [{}] is empty", replicaPath);
       return "0.00";
     }
 
-    String[] splittedLastLine = allLines.get(allLines.size() - 1).split(", ");
+    String[] splittedLastLine = allLines.stream()
+        .filter(l -> patternIsNumberOrComma.matcher(l).find())
+        .reduce((a, b) -> b).orElse("").split(", ");
     String regexLastLine;
-    
-    if(splittedLastLine.length > 1) {
-      regexLastLine = "^.* 0, " + splittedLastLine[2];
+
+    if (splittedLastLine.length > 1) {
+      regexLastLine = "^.* 0, " + splittedLastLine[2] + "$";
+      logger.info("[{}] -> [{}]", replicaPath, regexLastLine);
     } else {
       logger.warn("Laste line for file [{}] is [{}]", replicaPath, allLines.get(allLines.size() - 1));
       regexLastLine = "^.* 0, 0$";
