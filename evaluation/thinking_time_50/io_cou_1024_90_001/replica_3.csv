@@ -1,87 +1,117 @@
-16:49:13,016 INFO  [main] RawABListener:48 - Initing a RawABListener...
-16:49:13,023 INFO  [main] Node:101 - PID: 58313
-16:49:13,206 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-16:49:13,210 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-16:49:13,210 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-16:49:13,230 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-16:49:13,231 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-16:49:13,232 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-16:49:13,239 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-16:49:13,241 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-16:49:13,245 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2674)
-16:49:13,264 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
-1670716153265, 0, 0
+19:57:31,008 INFO  [main] RawABListener:48 - Initing a RawABListener...
+19:57:31,016 INFO  [main] Node:101 - PID: 67307
+19:57:31,219 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+19:57:31,224 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+19:57:31,225 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+19:57:31,241 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+19:57:31,242 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+19:57:31,243 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+19:57:31,253 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+19:57:31,255 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+19:57:31,264 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.5:2345)
+19:57:31,270 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 14, 15] (succsessor: 2 at /10.10.1.3:2183)
+19:57:31,276 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1670727451277, 0, 0
 Reading from stdin
-1670716154266, 0, 0
-1670716155266, 0, 0
-1670716156266, 0, 0
-1670716157267, 0, 0
-1670716158267, 428, 428
-1670716159268, 5710, 6138
-1670716160268, 4693, 10831
-1670716161268, 6365, 17196
-1670716162269, 6838, 24034
-1670716163269, 4098, 28132
-1670716164270, 4818, 32950
-1670716165271, 6441, 39391
-1670716166272, 6543, 45934
-1670716167272, 6794, 52728
-1670716168272, 6769, 59497
-1670716169273, 5647, 65144
-1670716170273, 6156, 71300
-1670716171274, 6176, 77476
-1670716172274, 6198, 83674
-1670716173274, 7048, 90722
-1670716174275, 5900, 96622
-1670716175275, 6580, 103202
-1670716176275, 6365, 109567
-1670716177276, 7597, 117164
-1670716178276, 7087, 124251
-1670716179301, 5792, 130043
-1670716180301, 5127, 135170
-1670716181301, 5183, 140353
-1670716182301, 6349, 146702
-1670716183302, 5651, 152353
-1670716184303, 5572, 157925
-1670716185303, 6205, 164130
-1670716186304, 5290, 169420
-1670716187308, 5882, 175302
-1670716188308, 6378, 181680
-1670716189309, 7044, 188724
-1670716190309, 7100, 195824
-1670716191310, 6552, 202376
-1670716192310, 5938, 208314
-1670716193311, 988, 209302
-1670716194322, 3593, 212895
-1670716195322, 6440, 219335
-1670716196322, 6452, 225787
-1670716197323, 7766, 233553
-1670716198323, 1249, 234802
-16:49:59,193 ERROR [ABListener] Replica:269 - 
-java.io.IOException: No space left on device
-	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
-	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
-	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
-	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
-	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
-	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
-	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
-	at ch.usi.da.smr.Replica.receive(Replica.java:265)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-16:49:59,196 ERROR [ABListener] Replica:269 - 
-java.io.IOException: No space left on device
-	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
-	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
-	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
-	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
-	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
-	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
-	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
-	at ch.usi.da.smr.Replica.receive(Replica.java:265)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-16:49:59,198 ERROR [ABListener] Replica:269 - 
-java.io.IOException: No space left on device
-	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
-	at java.base/java.io.File
+19:57:31,290 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 13, 14, 15] (succsessor: 2 at /10.10.1.3:2183)
+19:57:31,312 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2741)
+1670727452277, 0, 0
+1670727453278, 0, 0
+1670727454278, 0, 0
+1670727455278, 0, 0
+1670727456279, 34, 34
+1670727457279, 6019, 6053
+1670727458280, 6044, 12097
+1670727459280, 5439, 17536
+1670727460281, 4861, 22397
+1670727461282, 6665, 29062
+1670727462282, 6539, 35601
+1670727463282, 5833, 41434
+1670727464283, 5564, 46998
+1670727465283, 7236, 54234
+1670727466284, 4693, 58927
+1670727467284, 4723, 63650
+1670727468285, 6525, 70175
+1670727469285, 7738, 77913
+1670727470286, 7666, 85579
+1670727471286, 4961, 90540
+1670727472286, 5939, 96479
+1670727473287, 4063, 100542
+1670727474289, 5291, 105833
+1670727475289, 5212, 111045
+1670727476289, 5908, 116953
+1670727477290, 5051, 122004
+1670727478290, 4166, 126170
+1670727479291, 4469, 130639
+1670727480291, 7427, 138066
+1670727481292, 7826, 145892
+1670727482292, 8055, 153947
+1670727483292, 5489, 159436
+1670727484293, 6448, 165884
+1670727485293, 7128, 173012
+1670727486293, 8264, 181276
+1670727487294, 9137, 190413
+1670727488294, 6989, 197402
+1670727489294, 6848, 204250
+1670727490295, 7235, 211485
+1670727491295, 7820, 219305
+1670727492295, 9010, 228315
+1670727493295, 825, 229140
+1670727494579, 5867, 235007
+1670727495579, 7033, 242040
+1670727496580, 7487, 249527
+1670727497580, 4949, 254476
+1670727499240, 6334, 260810
+1670727500241, 6716, 267526
+1670727501241, 7195, 274721
+1670727502241, 6816, 281537
+1670727503241, 843, 282380
+1670727504344, 6072, 288452
+1670727505345, 4926, 293378
+1670727506345, 6852, 300230
+1670727507345, 7254, 307484
+1670727508346, 437, 307921
+1670727509346, 7448, 315369
+1670727510346, 7380, 322749
+1670727511346, 7705, 330454
+1670727512347, 2952, 333406
+1670727513771, 5737, 339143
+1670727514772, 6731, 345874
+1670727515772, 7226, 353100
+1670727516772, 7403, 360503
+1670727517773, 7493, 367996
+1670727518773, 4, 368000
+1670727520031, 5784, 373784
+1670727521032, 6552, 380336
+1670727522032, 7762, 388098
+1670727523032, 4469, 392567
+1670727524664, 5720, 398287
+1670727525664, 6605, 404892
+1670727526665, 6912, 411804
+1670727527665, 7997, 419801
+1670727528665, 944, 420745
+1670727529766, 6730, 427475
+1670727530766, 5564, 433039
+1670727531766, 6638, 439677
+1670727532766, 7328, 447005
+1670727533767, 146, 447151
+1670727534767, 5713, 452864
+1670727535767, 6832, 459696
+1670727536768, 7688, 467384
+1670727537768, 7578, 474962
+1670727538768, 15, 474977
+1670727539808, 6317, 481294
+1670727540808, 6933, 488227
+1670727541808, 5998, 494225
+1670727542809, 5377, 499602
+1670727544699, 7045, 506647
+1670727545699, 5781, 512428
+1670727546699, 6554, 518982
+1670727547699, 4442, 523424
+1670727549277, 5669, 529093
+1670727550277, 6251, 535344
+1670727551277, 6873, 542217
+1670727552277, 2277, 544494
+19:59:13,170 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+19:59:13,268 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+19:59:13,268 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes

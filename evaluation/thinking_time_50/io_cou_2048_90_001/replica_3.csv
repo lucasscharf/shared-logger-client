@@ -1,33 +1,111 @@
-18:28:01,352 INFO  [main] RawABListener:48 - Initing a RawABListener...
-18:28:01,359 INFO  [main] Node:101 - PID: 60427
-18:28:01,563 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-18:28:01,568 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-18:28:01,568 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-18:28:01,587 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-18:28:01,588 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-18:28:01,589 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-18:28:01,598 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-18:28:01,600 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-18:28:01,610 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 15] (succsessor: 1 at /10.10.1.2:2073)
-18:28:01,615 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 15] (succsessor: 1 at /10.10.1.2:2073)
-18:28:01,625 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 15] (succsessor: 1 at /10.10.1.2:2073)
-18:28:01,630 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2073)
-18:28:44,009 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [14, 15] (succsessor: 14 at /10.10.1.5:2996)
-18:28:44,083 ERROR [main-EventThread] NetworkManager:298 - NetworkManager client connect error
-java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-18:28:46,005 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [15] (succsessor: 15 at /10.10.1.6:2622)
-18:28:48,052 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
-1670722128052, 0, 0
+19:54:44,865 INFO  [main] RawABListener:48 - Initing a RawABListener...
+19:54:44,880 INFO  [main] Node:101 - PID: 66882
+19:54:45,118 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+19:54:45,121 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+19:54:45,122 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+19:54:45,139 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+19:54:45,140 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+19:54:45,140 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+19:54:45,146 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+19:54:45,153 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+19:54:45,161 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 15] (succsessor: 1 at /10.10.1.2:2287)
+19:54:45,167 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 1 at /10.10.1.2:2287)
+19:54:45,176 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [15], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1670727285176, 0, 0
 Reading from stdin
-1670722129053, 4174, 4174
-1670722130053, 6248, 10422
-1670722131054, 3914, 14336
+1670727286177, 0, 0
+1670727287177, 0, 0
+1670727288178, 0, 0
+1670727289178, 0, 0
+1670727290179, 774, 774
+1670727291179, 4901, 5675
+1670727292179, 4848, 10523
+1670727293180, 5189, 15712
+1670727294181, 5399, 21111
+1670727295182, 5364, 26475
+1670727296182, 6776, 33251
+1670727297183, 6712, 39963
+1670727298183, 5656, 45619
+1670727299183, 6081, 51700
+1670727300184, 6295, 57995
+1670727301184, 6721, 64716
+1670727302185, 7102, 71818
+1670727303185, 7475, 79293
+1670727304186, 6552, 85845
+1670727305186, 7662, 93507
+1670727306187, 8349, 101856
+1670727307187, 7952, 109808
+1670727308188, 7126, 116934
+1670727309188, 6182, 123116
+1670727310188, 5918, 129034
+1670727311189, 6057, 135091
+1670727312189, 5326, 140417
+1670727313189, 6141, 146558
+1670727314190, 5603, 152161
+1670727315190, 6397, 158558
+1670727316191, 6703, 165261
+1670727317191, 7703, 172964
+1670727318192, 7500, 180464
+1670727319192, 5042, 185506
+1670727320192, 6727, 192233
+1670727321193, 6453, 198686
+1670727322193, 6623, 205309
+1670727323193, 2053, 207362
+1670727324537, 4458, 211820
+1670727325538, 4952, 216772
+1670727326538, 5500, 222272
+1670727327538, 5860, 228132
+1670727329244, 4933, 233065
+1670727330245, 8046, 241111
+1670727331245, 7018, 248129
+1670727332245, 5619, 253748
+1670727333245, 1478, 255226
+1670727334405, 4581, 259807
+1670727335405, 5152, 264959
+1670727336405, 5999, 270958
+1670727337406, 5840, 276798
+1670727338406, 1268, 278066
+1670727339407, 5310, 283376
+1670727340407, 5258, 288634
+1670727341407, 5711, 294345
+1670727342408, 6418, 300763
+1670727343408, 1021, 301784
+1670727344408, 4501, 306285
+1670727345408, 6229, 312514
+1670727346409, 5588, 318102
+1670727347409, 5311, 323413
+1670727348410, 973, 324386
+1670727349410, 6614, 331000
+1670727350410, 4902, 335902
+1670727351410, 6571, 342473
+1670727352411, 6724, 349197
+1670727353411, 480, 349677
+1670727354415, 4382, 354059
+1670727355415, 5971, 360030
+1670727356416, 5592, 365622
+1670727357416, 5456, 371078
+1670727358416, 1279, 372357
+1670727359417, 4547, 376904
+1670727360417, 6357, 383261
+1670727361417, 4628, 387889
+1670727362417, 6407, 394296
+1670727363418, 878, 395174
+1670727364418, 5526, 400700
+1670727365418, 6573, 407273
+1670727366420, 6560, 413833
+1670727367420, 6128, 419961
+1670727368420, 511, 420472
+1670727369421, 5428, 425900
+1670727370421, 5646, 431546
+1670727371421, 4972, 436518
+1670727372422, 5166, 441684
+1670727373422, 1201, 442885
+1670727374422, 6444, 449329
+1670727375423, 5925, 455254
+1670727376423, 3983, 459237
+1670727377423, 5511, 464748
+1670727378424, 781, 465529
+1670727379424, 5397, 470926
+1670727380424, 6228, 477154
+1670727381424, 8661, 485815
+19:56:21,981 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners

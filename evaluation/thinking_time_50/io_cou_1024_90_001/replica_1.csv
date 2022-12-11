@@ -1,83 +1,121 @@
-16:49:12,896 INFO  [main] RawABListener:48 - Initing a RawABListener...
-16:49:12,904 INFO  [main] Node:101 - PID: 57775
-16:49:13,096 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-16:49:13,099 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-16:49:13,100 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-16:49:13,119 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-16:49:13,120 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-16:49:13,121 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-16:49:13,131 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-16:49:13,133 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-16:49:13,140 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13, 14] (succsessor: 14 at /10.10.1.5:2559)
-16:49:13,155 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
-1670716153155, 0, 0
+19:57:31,094 INFO  [main] RawABListener:48 - Initing a RawABListener...
+19:57:31,101 INFO  [main] Node:101 - PID: 65830
+19:57:31,273 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+19:57:31,276 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+19:57:31,276 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+19:57:31,293 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+19:57:31,294 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+19:57:31,294 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+19:57:31,301 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+19:57:31,304 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+19:57:31,310 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 13, 14, 15] (succsessor: 14 at /10.10.1.5:2345)
+19:57:31,315 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 14 at /10.10.1.5:2345)
+19:57:31,323 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1670727451323, 0, 0
 Reading from stdin
-16:49:13,197 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.5:2559)
-16:49:13,225 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 14 at /10.10.1.5:2559)
-1670716154156, 0, 0
-1670716155156, 0, 0
-1670716156157, 0, 0
-1670716157157, 0, 0
-1670716158157, 53, 53
-1670716159158, 4384, 4437
-1670716160158, 5459, 9896
-1670716161159, 5098, 14994
-1670716162160, 5551, 20545
-1670716163161, 5509, 26054
-1670716164161, 6484, 32538
-1670716165162, 6439, 38977
-1670716166162, 6432, 45409
-1670716167162, 6307, 51716
-1670716168163, 6051, 57767
-1670716169163, 5634, 63401
-1670716170164, 4347, 67748
-1670716171164, 5894, 73642
-1670716172165, 6272, 79914
-1670716173165, 6462, 86376
-1670716174166, 7976, 94352
-1670716175166, 8159, 102511
-1670716176166, 7517, 110028
-1670716177167, 7463, 117491
-1670716178167, 7730, 125221
-1670716179167, 5348, 130569
-1670716180168, 6070, 136639
-1670716181168, 6572, 143211
-1670716182169, 7243, 150454
-1670716183169, 4441, 154895
-1670716184169, 6046, 160941
-1670716185170, 5996, 166937
-1670716186170, 6201, 173138
-1670716187170, 6366, 179504
-1670716188171, 6568, 186072
-1670716189171, 4993, 191065
-1670716190171, 6062, 197127
-1670716191171, 6119, 203246
-1670716192172, 6560, 209806
-1670716193174, 5862, 215668
-1670716195040, 7693, 223361
-1670716196041, 7750, 231111
-1670716197041, 6623, 237734
-16:49:57,937 ERROR [ABListener] Replica:269 - 
-java.io.IOException: No space left on device
-	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
-	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
-	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
-	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
-	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
-	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
-	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
-	at ch.usi.da.smr.Replica.receive(Replica.java:265)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+1670727452324, 0, 0
+1670727453324, 0, 0
+1670727454325, 0, 0
+1670727455325, 0, 0
+1670727456325, 73, 73
+1670727457326, 5275, 5348
+1670727458326, 5597, 10945
+1670727459327, 4640, 15585
+1670727460328, 5171, 20756
+1670727461328, 7295, 28051
+1670727462329, 5649, 33700
+1670727463329, 5022, 38722
+1670727464330, 6157, 44879
+1670727465330, 6173, 51052
+1670727466330, 5499, 56551
+1670727467331, 7033, 63584
+1670727468331, 6679, 70263
+1670727469332, 7110, 77373
+1670727470332, 8574, 85947
+1670727471333, 8358, 94305
+1670727472333, 8152, 102457
+1670727473333, 7718, 110175
+1670727474334, 6649, 116824
+1670727475334, 6559, 123383
+1670727476334, 6451, 129834
+1670727477335, 6708, 136542
+1670727478336, 6830, 143372
+1670727479336, 7003, 150375
+1670727480336, 6508, 156883
+1670727481337, 6562, 163445
+1670727482337, 6689, 170134
+1670727483337, 7039, 177173
+1670727484338, 7602, 184775
+1670727485338, 6836, 191611
+1670727486339, 7444, 199055
+1670727487339, 8293, 207348
+1670727488339, 8297, 215645
+1670727490598, 7158, 222803
+1670727491598, 7811, 230614
+1670727492598, 7819, 238433
+1670727493599, 5179, 243612
+1670727495250, 7352, 250964
+1670727496250, 7073, 258037
+1670727497250, 4588, 262625
+1670727498251, 6525, 269150
+1670727499251, 7039, 276189
+1670727500251, 7204, 283393
+1670727501251, 5653, 289046
+1670727502252, 6334, 295380
+1670727503252, 6671, 302051
+1670727504252, 7010, 309061
+1670727505253, 7235, 316296
+1670727506253, 7860, 324156
+1670727507253, 8428, 332584
+1670727508254, 8357, 340941
+1670727509254, 8466, 349407
+1670727511630, 5480, 354887
+1670727512630, 6447, 361334
+1670727513631, 7072, 368406
+1670727514631, 4281, 372687
+1670727516133, 5579, 378266
+1670727517134, 6594, 384860
+1670727518134, 7030, 391890
+1670727519134, 8247, 400137
+1670727520135, 952, 401089
+1670727521284, 8018, 409107
+1670727522284, 8381, 417488
+1670727523284, 8253, 425741
+1670727524284, 7844, 433585
+1670727526365, 7338, 440923
+1670727527365, 5590, 446513
+1670727528366, 6250, 452763
+1670727529366, 6210, 458973
+1670727531190, 5984, 464957
+1670727532190, 6593, 471550
+1670727533190, 7643, 479193
+1670727534190, 7979, 487172
+1670727535191, 346, 487518
+1670727536248, 4579, 492097
+1670727537249, 6376, 498473
+1670727538249, 6969, 505442
+1670727539250, 6699, 512141
+1670727541146, 4552, 516693
+1670727542146, 6792, 523485
+1670727543147, 7296, 530781
+1670727544147, 3721, 534502
+1670727545579, 5327, 539829
+1670727546579, 4665, 544494
+1670727547579, 0, 544494
+1670727548580, 0, 544494
+1670727549580, 0, 544494
+1670727550580, 0, 544494
+1670727551580, 0, 544494
+1670727552581, 0, 544494
+19:59:13,170 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-16:49:57,942 ERROR [ABListener] Replica:269 - 
-java.io.IOException: No space left on device
-	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
-	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:348)
-	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:242)
-	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:321)
-	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:325)
-	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:159)
-	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:254)
-	at ch.usi.da.smr.Replica.receive(Replica.java:265)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.T
+19:59:13,174 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13] (succsessor: 1 at /10.10.1.2:2741)
+19:59:13,178 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+19:59:13,279 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+19:59:13,279 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
