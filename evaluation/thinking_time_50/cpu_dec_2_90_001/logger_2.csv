@@ -2,114 +2,61 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-10:30:04,768 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.215s. Listening on: http://0.0.0.0:8888
-10:30:04,777 INFO  quarkus:91 [main] Profile prod activated. 
-10:30:04,778 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-10:30:08,628 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-10:30:08,690 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/tmp/]]
-10:30:08,691 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
-10:30:08,763 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-10:30:09,057 INFO  ReplicaLoggerClient:63 [executor-thread-2] Path created [/tmp/0c85c32e-943e-4549-b6a9-4a799f902449]
-1670693409058, 0, 0
-1670693410059, 0, 0
-1670693411060, 0, 0
-1670693412060, 0, 0
-1670693413060, 0, 0
-1670693414061, 0, 0
-1670693415061, 2, 2
-1670693416061, 0, 2
-1670693417061, 0, 2
-1670693418062, 0, 2
-1670693419062, 0, 2
-1670693420062, 2, 4
-1670693421063, 0, 4
-1670693422063, 0, 4
-1670693423063, 0, 4
-1670693424064, 0, 4
-1670693425064, 2, 6
-1670693426064, 0, 6
-1670693427064, 0, 6
-1670693428065, 0, 6
-1670693429065, 0, 6
-1670693430065, 2, 8
-1670693431066, 0, 8
-1670693432066, 0, 8
-1670693433066, 0, 8
-1670693434067, 0, 8
-1670693435067, 2, 10
-1670693436067, 0, 10
-1670693437067, 0, 10
-1670693438068, 0, 10
-1670693439068, 0, 10
-1670693440068, 2, 12
-1670693441069, 0, 12
-1670693442069, 0, 12
-1670693443069, 0, 12
-1670693444069, 0, 12
-1670693445070, 2, 14
-1670693446070, 0, 14
-1670693447070, 0, 14
-1670693448071, 0, 14
-1670693449071, 0, 14
-1670693450071, 2, 16
-1670693451071, 0, 16
-1670693452072, 0, 16
-1670693453072, 0, 16
-1670693454072, 0, 16
-1670693455073, 2, 18
-1670693456073, 0, 18
-1670693457073, 0, 18
-1670693458073, 0, 18
-1670693459074, 0, 18
-1670693460074, 2, 20
-1670693461074, 0, 20
-1670693462075, 0, 20
-1670693463075, 0, 20
-1670693464075, 0, 20
-1670693465075, 2, 22
-1670693466076, 0, 22
-1670693467076, 0, 22
-1670693468076, 0, 22
-1670693469077, 0, 22
-1670693470077, 2, 24
-1670693471077, 0, 24
-1670693472077, 0, 24
-1670693473078, 0, 24
-1670693474078, 0, 24
-1670693475078, 2, 26
-1670693476079, 0, 26
-1670693477079, 0, 26
-1670693478079, 0, 26
-1670693479079, 0, 26
-1670693480080, 2, 28
-1670693481080, 0, 28
-1670693482080, 0, 28
-1670693483081, 0, 28
-1670693484081, 0, 28
-1670693485081, 2, 30
-1670693486081, 0, 30
-1670693487082, 0, 30
-1670693488082, 0, 30
-1670693489082, 0, 30
-1670693490083, 2, 32
-1670693491083, 0, 32
-1670693492083, 0, 32
-1670693493084, 0, 32
-1670693494084, 0, 32
-1670693495084, 2, 34
-1670693496084, 0, 34
-1670693497085, 0, 34
-1670693498085, 0, 34
-1670693499085, 0, 34
-1670693500085, 2, 36
-1670693501086, 0, 36
-1670693502086, 0, 36
-1670693503086, 0, 36
-1670693504086, 0, 36
-1670693505087, 2, 38
-1670693506087, 0, 38
-1670693507087, 0, 38
-1670693508087, 0, 38
-1670693509088, 0, 38
-1670693510088, 0, 38
-1670693511088, 0, 38
+15:10:25,642 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.199s. Listening on: http://0.0.0.0:8888
+15:10:25,648 INFO  quarkus:91 [main] Profile prod activated. 
+15:10:25,649 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+15:10:29,608 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
+15:10:29,682 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+15:10:29,682 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
+15:10:29,785 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+15:10:30,095 INFO  ReplicaLoggerClient:63 [executor-thread-2] Path created [/media/disk1/1da4e313-93b4-49c2-b006-05289fad5642]
+1670710230096, 0, 0
+1670710231097, 0, 0
+1670710232097, 0, 0
+1670710233097, 0, 0
+1670710234098, 0, 0
+1670710235098, 0, 0
+15:10:35,809 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+15:10:35,845 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+15:10:35,871 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.nio.file.Files.write(Files.java:3495)
+	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
+	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+15:10:35,878 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
+	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method
