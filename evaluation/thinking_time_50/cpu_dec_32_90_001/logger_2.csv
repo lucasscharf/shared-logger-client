@@ -2,61 +2,49 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-15:19:05,900 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.127s. Listening on: http://0.0.0.0:8888
-15:19:05,905 INFO  quarkus:91 [main] Profile prod activated. 
-15:19:05,906 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-15:19:09,914 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-15:19:09,959 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-15:19:09,959 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
-15:19:10,012 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-15:19:10,340 INFO  ReplicaLoggerClient:63 [executor-thread-2] Path created [/media/disk1/a76346cd-ab63-4e00-a5ed-ed2cb13e6854]
-1670710750341, 0, 0
-1670710751342, 0, 0
-1670710752342, 0, 0
-1670710753343, 0, 0
-1670710754343, 0, 0
-1670710755343, 0, 0
-15:19:16,098 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-
-15:19:16,100 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-
-15:19:16,100 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
-	at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
-	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
-	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
-	at java.base/java.nio.channels.Channels.writeFully(Channels.java:97)
-	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
-	at java.base/java.nio.file.Files.write(Files.java:3495)
-	at org.acme.ReplicaLoggerClient.receive(ReplicaLoggerClient.java:103)
-	at ch.usi.da.smr.transport.RawABListener.run(RawABListener.java:66)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-
-15:19:16,131 ERROR ReplicaLoggerClient:109 [ABListener] : java.io.IOException: No space left on device
-	at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method
+21:54:41,882 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.284s. Listening on: http://0.0.0.0:8888
+21:54:41,888 INFO  quarkus:91 [main] Profile prod activated. 
+21:54:41,888 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+21:54:45,837 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
+21:54:45,895 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+21:54:45,895 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
+21:54:45,959 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+21:54:46,281 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/294fe4a9-d9c2-492a-a54d-06b2f79c8790]
+1670734486282, 0, 0
+1670734487283, 0, 0
+1670734488284, 0, 0
+1670734489284, 0, 0
+1670734490284, 0, 0
+1670734491285, 0, 0
+1670734492285, 471, 471
+1670734493285, 1037, 1508
+1670734494286, 1004, 2512
+1670734495286, 996, 3508
+1670734496286, 1013, 4521
+1670734497287, 1004, 5525
+1670734498287, 1013, 6538
+1670734499288, 1009, 7547
+1670734500288, 1017, 8564
+1670734501288, 992, 9556
+1670734502290, 1017, 10573
+1670734503290, 996, 11569
+1670734504290, 1011, 12580
+1670734505291, 999, 13579
+1670734506291, 1019, 14598
+1670734507292, 987, 15585
+1670734508292, 1004, 16589
+1670734509292, 1026, 17615
+1670734510293, 1017, 18632
+1670734511293, 1019, 19651
+1670734512294, 1025, 20676
+1670734513294, 1001, 21677
+1670734514294, 1028, 22705
+1670734515295, 1009, 23714
+1670734516296, 1022, 24736
+1670734517296, 1024, 25760
+1670734518296, 995, 26755
+1670734519297, 1037, 27792
+1670734520297, 999, 28791
+1670734521298, 745, 29536
+1670734522299, 0, 29536
+1670734523300, 0, 29536
