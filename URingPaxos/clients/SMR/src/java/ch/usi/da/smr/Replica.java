@@ -203,7 +203,7 @@ public class Replica implements Receiver {
 	}
 
 	private void clearDatabaseFileSystem() {
-		fileDatabase = Paths.get("/media/disk1/filesystem/databasefile/");
+		fileDatabase = Paths.get("/media/disk1/");
 		try {
 			Files.createDirectories(fileDatabase);
 			Files.list(fileDatabase).forEach(f -> {
