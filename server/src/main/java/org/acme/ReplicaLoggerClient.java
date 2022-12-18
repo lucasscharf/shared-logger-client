@@ -66,7 +66,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		logger.info("Path created [{}]", path);
 		if (commandsReceivedCounter == null)
 			commandsReceivedCounter = new AtomicInteger();
-		if (stats == null)
+		if (stats == null) {
 			stats = new Thread("ClientStatsWriter") {
 				private int lastReceivedCount = 0;
 
@@ -91,7 +91,8 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 					}
 				}
 			};
-		stats.start();
+			stats.start();
+		}
 	}
 
 	public boolean startThread() {
