@@ -137,9 +137,12 @@ public class LoggerController {
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
     StringBuilder datFile = new StringBuilder();
 
-    datFile.append("name, sem_throughputReplica (kCommands/s), sem_latency (ms),")
-        .append("cou_throughputReplica (kCommands/s), cou_latency (ms), ")
-        .append("dec_throughputReplica (kCommands/s), dec_throughputLogger (kCommands/s), dec_latency (ms)\n");
+    datFile.append(
+        "name, sem_throughputReplica (avg)(kCommands/s), sem_throughputReplica (med)(kCommands/s), sem_throughputReplica (p95)(kCommands/s), sem_latency (avg)(ms), sem_latency (med)(ms), sem_latency (p95)(ms),")
+        .append(
+            "cou_throughputReplica (avg)(kCommands/s), cou_throughputReplica (med)(kCommands/s), cou_throughputReplica (p95)(kCommands/s), cou_latency (avg)(ms), cou_latency (med)(ms), cou_latency (med)(ms), ")
+        .append(
+            "dec_throughputLogger (avg)(kCommands/s), dec_throughputLogger (med)(kCommands/s),dec_throughputLogger (p95)(kCommands/s), dec_throughputReplica (avg)(kCommands/s), dec_throughputReplica (med)(kCommands/s), dec_throughputReplica (p95)(kCommands/s), dec_latency (avg)(ms), dec_latency (med)(ms), dec_latency (p95)(ms)\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
         for (String application : applications) {
@@ -159,15 +162,29 @@ public class LoggerController {
               String replicaPath = folderPath + "replica_1.csv";
               String loggerPath = folderPath + "logger_2.csv";
 
-              String latency = readLatency(latencyPath);
-              String throughputReplica = readThroughput(replicaPath);
-              String throughputLogger = readThroughput(loggerPath);
-              if ("dec".equals(loggerType))
+              String latencyAvg = readAvgLatency(latencyPath);
+              String latencyP50 = readPercentilLatency(latencyPath, 50);
+              String latencyP95 = readPercentilLatency(latencyPath, 95);
+              String throughputAvgReplica = readAvgThroughput(replicaPath);
+              String throughputAvgLogger = readAvgThroughput(loggerPath);
+              String throughputP50Replica = readPercentilThroughput(replicaPath, 50);
+              String throughputP50Logger = readPercentilThroughput(loggerPath, 50);
+              String throughputP95Replica = readPercentilThroughput(replicaPath, 95);
+              String throughputP95Logger = readPercentilThroughput(loggerPath, 95);
+
+              if ("dec".equals(loggerType)) {
                 datFile
-                    .append(throughputLogger + ",");
+                    .append(throughputAvgLogger + ",")
+                    .append(throughputP50Logger + ",")
+                    .append(throughputP95Logger + ",");
+              }
               datFile
-                  .append(throughputReplica + ",")
-                  .append(latency + ",");
+                  .append(throughputAvgReplica + ",")
+                  .append(throughputP50Replica + ",")
+                  .append(throughputP95Replica + ",")
+                  .append(latencyAvg + ",")
+                  .append(latencyP50 + ",")
+                  .append(latencyP95 + ",");
 
             }
             datFile.append("\n");
@@ -179,7 +196,7 @@ public class LoggerController {
     return Response.ok(datFile.toString()).build();
   }
 
-  private String readThroughput(String replicaPath) throws Exception {
+  private String readAvgThroughput(String replicaPath) throws Exception {
     java.nio.file.Path path = Paths.get(replicaPath);
     String regexIsNumberOrComma = "^(\\d+?,? ?)*$";
     Pattern patternIsNumberOrComma = Pattern.compile(regexIsNumberOrComma);
@@ -202,7 +219,6 @@ public class LoggerController {
 
     if (splittedLastLine.length > 1) {
       regexLastLine = "^.* 0, " + splittedLastLine[2] + "$";
-      logger.info("[{}] -> [{}]", replicaPath, regexLastLine);
     } else {
       logger.warn("Laste line for file [{}] is [{}]", replicaPath, allLines.get(allLines.size() - 1));
       regexLastLine = "^.* 0, 0$";
@@ -232,7 +248,63 @@ public class LoggerController {
     return String.format(Locale.ROOT, "%.2f", avg);
   }
 
-  private String readLatency(String latencyPath) throws Exception {
+  private String readPercentilThroughput(String replicaPath, int percentil) throws Exception {
+    java.nio.file.Path path = Paths.get(replicaPath);
+    String regexIsNumberOrComma = "^(\\d+?,? ?)*$";
+    Pattern patternIsNumberOrComma = Pattern.compile(regexIsNumberOrComma);
+
+    String regexIsZeroThroughput = "^.* 0, 0$";
+    Pattern patternIsZeroThroughput = Pattern.compile(regexIsZeroThroughput);
+    if (!path.toFile().exists())
+      return "0.00";
+    List<String> allLines = Files.readAllLines(path);
+
+    if (allLines.isEmpty()) {
+      logger.warn("File [{}] is empty", replicaPath);
+      return "0.00";
+    }
+
+    String[] splittedLastLine = allLines.stream()
+        .filter(l -> patternIsNumberOrComma.matcher(l).find())
+        .reduce((a, b) -> b).orElse("").split(", ");
+    String regexLastLine;
+
+    if (splittedLastLine.length > 1) {
+      regexLastLine = "^.* 0, " + splittedLastLine[2] + "$";
+      // logger.info("[{}] -> [{}]", replicaPath, regexLastLine);
+    } else {
+      logger.warn("Laste line for file [{}] is [{}]", replicaPath, allLines.get(allLines.size() - 1));
+      regexLastLine = "^.* 0, 0$";
+    }
+    Pattern patternRegexLastLine = Pattern.compile(regexLastLine);
+
+    long size = allLines.stream()
+        .filter(l -> patternIsNumberOrComma.matcher(l).find())
+        .filter(l -> !patternIsZeroThroughput.matcher(l).find())
+        .filter(l -> !patternRegexLastLine.matcher(l).find())
+        .skip(2).count() - 2;
+    if (size < 0) {
+      logger.warn("Could not find size for replica file [{}]", replicaPath);
+      return "0.00";
+    }
+
+    double p = allLines.stream()
+        .filter(l -> patternIsNumberOrComma.matcher(l).find())
+        .filter(l -> !patternIsZeroThroughput.matcher(l).find())
+        .filter(l -> !patternRegexLastLine.matcher(l).find())
+        .skip(2)
+        .limit(size)
+        .mapToDouble(
+            line -> Long.parseLong(line.split(", ")[1]))
+        .sorted()
+        .skip((size * percentil) / 100)
+        .findFirst()
+        .orElse(-1L) / 1_000D;
+
+    return String.format(Locale.ROOT, "%.2f", p);
+  }
+
+  private String readAvgLatency(String latencyPath) throws Exception {
     java.nio.file.Path path = Paths.get(latencyPath).normalize();
 
     if (!path.toFile().exists())
@@ -258,5 +330,36 @@ public class LoggerController {
         .average().orElse(0D) / 1000_000D;
 
     return String.format(Locale.ROOT, "%.2f", avg);
+  }
+
+  private String readPercentilLatency(String latencyPath, int percentil) throws Exception {
+    java.nio.file.Path path = Paths.get(latencyPath).normalize();
+
+    if (!path.toFile().exists())
+      return "0.00";
+
+    String regexIsZeroLatency = "^.*,0$";
+    Pattern patternIsZeroLatency = Pattern.compile(regexIsZeroLatency);
+    long size = Files.readAllLines(path).stream()
+        .filter(l -> !patternIsZeroLatency.matcher(l).find())
+        .skip(2).count() - 2;
+
+    if (size < 0) {
+      size = 1;
+      logger.warn("Could not find size for latency file [{}]", latencyPath);
+    }
+
+    Double p = Files.readAllLines(path).stream()
+        .filter(l -> !patternIsZeroLatency.matcher(l).find())
+        .skip(2)
+        .limit(size)
+        .mapToLong(
+            line -> Long.parseLong(line.split(",")[1]))
+        .sorted()
+        .skip((size * percentil) / 100)
+        .findFirst()
+        .orElse(-1L) / 1000_000D;
+
+    return String.format(Locale.ROOT, "%.2f", p);
   }
 }
