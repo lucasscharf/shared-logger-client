@@ -1,7 +1,5 @@
 package org.acme;
 
-import java.util.List;
-
 public class LoggerConfig {
 	public String ring;
 	public int id;
