@@ -7,3 +7,4 @@ java -jar ~/shared-logger-client/server/target/shared-logger-1.0.0-SNAPSHOT-runn
 
 sleep 5
 curl -X POST "http://localhost:8888/register" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":4,\"pathPrefix\":\"/media/disk1/\",\"replicas\":1,\"ring\":\"1\"}"
+curl -X POST "http://localhost:8888/register" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":5,\"pathPrefix\":\"/media/disk1/\",\"replicas\":1,\"ring\":\"2\"}"
