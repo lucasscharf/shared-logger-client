@@ -9,7 +9,7 @@ ipClient=$6
 outputFile=$7
 ipReplica1_ring_2=$8
 ipReplica2_ring_2=$9
-ipReplica3_ring_2=$10
+ipReplica3_ring_2=${10}
 
 
 mkdir $outputFile

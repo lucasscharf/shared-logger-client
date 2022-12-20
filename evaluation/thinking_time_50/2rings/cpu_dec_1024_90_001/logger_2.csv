@@ -1,0 +1,74 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+20:57:25,204 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.235s. Listening on: http://0.0.0.0:8888
+20:57:25,211 INFO  quarkus:91 [main] Profile prod activated. 
+20:57:25,211 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:57:29,255 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
+20:57:29,322 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+20:57:29,323 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
+20:57:29,386 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+20:57:29,755 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/af483696-bfc2-473d-b281-bc4ffd99e425]
+1671422249756, 0, 0
+20:57:29,813 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
+20:57:29,814 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [5]
+20:57:29,818 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+20:57:29,914 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/ed2f3da2-e2a4-4d98-98fc-069bac84df0f]
+1671422250756, 0, 0
+1671422251756, 0, 0
+1671422252757, 0, 0
+1671422253757, 0, 0
+1671422254757, 0, 0
+1671422255758, 6367, 6367
+1671422256758, 23123, 29490
+1671422257758, 23512, 53002
+1671422258759, 22780, 75782
+1671422259760, 22174, 97956
+1671422260760, 18480, 116436
+1671422261760, 18443, 134879
+1671422262761, 21217, 156096
+1671422263762, 24990, 181086
+1671422264762, 21662, 202748
+1671422265763, 19758, 222506
+1671422266763, 13488, 235994
+1671422267764, 17197, 253191
+1671422268806, 22752, 275943
+1671422269806, 22395, 298338
+1671422270807, 23241, 321579
+1671422271807, 23229, 344808
+1671422272807, 23872, 368680
+1671422273808, 19709, 388389
+1671422274808, 15222, 403611
+1671422275808, 13217, 416828
+1671422276809, 18517, 435345
+1671422277809, 23513, 458858
+1671422278810, 23706, 482564
+1671422279810, 21469, 504033
+1671422280810, 22381, 526414
+1671422281811, 21714, 548128
+1671422282811, 24522, 572650
+1671422283811, 23749, 596399
+1671422284812, 20960, 617359
+1671422285812, 17544, 634903
+1671422286813, 18454, 653357
+1671422287814, 21396, 674753
+1671422288814, 27109, 701862
+1671422289815, 31413, 733275
+1671422290815, 27305, 760580
+1671422291815, 29054, 789634
+1671422292816, 28430, 818064
+1671422293816, 29062, 847126
+1671422294816, 27498, 874624
+20:58:15,419 ERROR [executor-thread-2-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1671422295817, 19738, 894362

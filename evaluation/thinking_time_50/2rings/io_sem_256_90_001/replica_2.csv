@@ -1,0 +1,22 @@
+19:51:51,074 INFO  [main] RawABListener:48 - Initing a RawABListener...
+19:51:51,088 INFO  [main] Node:101 - PID: 6724
+19:51:51,300 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+19:51:51,304 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+19:51:51,304 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+19:51:51,323 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+19:51:51,324 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+19:51:51,327 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+19:51:51,331 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+19:51:51,333 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+19:51:51,340 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14, 15] (succsessor: 15 at /10.10.1.14:2071)
+19:51:51,355 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1671504711355, 0, 0
+Reading from stdin
+1671504712356, 0, 0
+1671504713356, 0, 0
+1671504714357, 0, 0
+1671504715357, 0, 0
+1671504716358, 967, 967
+19:51:56,886 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/learners
+19:51:56,887 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+19:51:56,887 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
