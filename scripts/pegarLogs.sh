@@ -11,7 +11,6 @@ ipReplica1_ring_2=$8
 ipReplica2_ring_2=$9
 ipReplica3_ring_2=${10}
 
-rm -rf $outputFile
 mkdir $outputFile
 
 scp lucas123@$ipClient:/tmp/execucao /tmp/client.log
