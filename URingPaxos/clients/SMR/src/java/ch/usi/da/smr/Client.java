@@ -47,6 +47,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.ZooKeeper;
@@ -539,6 +540,7 @@ public class Client implements Receiver {
 				Runtime.getRuntime().addShutdownHook(new Thread("ShutdownHook") {
 					@Override
 					public void run() {
+						System.out.println("I will kill everything");
 						stats.stop();
 						client.stop();
 						Path latencyPath = Paths.get("/tmp/" + UUID.randomUUID().toString());
@@ -550,18 +552,19 @@ public class Client implements Receiver {
 						} catch (Exception ex) {
 							ex.printStackTrace();
 						}
-						allLatencies.entrySet().stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).map(
-								r -> r.getKey() + "," + r.getValue() + "\n").forEach(
-										stringToSave -> {
-											try {
-												Files.write(latencyPath,
-														stringToSave.getBytes(),
-														StandardOpenOption.APPEND);
-											} catch (Exception ex) {
-												ex.printStackTrace();
-											}
-										});
-
+						System.out.println("Saving file");
+						String stringToSave = allLatencies.entrySet().stream()
+								.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).map(
+										r -> r.getKey() + "," + r.getValue() + "\n")
+								.collect(Collectors.joining());
+						try {
+							Files.write(latencyPath,
+									stringToSave.getBytes(),
+									StandardOpenOption.APPEND);
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						System.out.println("File save");
 					}
 				});
 				client.init();
@@ -570,6 +573,7 @@ public class Client implements Receiver {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	public static Map<Integer, Integer> parseConnectMap(String arg) {
