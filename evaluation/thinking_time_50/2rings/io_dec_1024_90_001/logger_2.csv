@@ -2,55 +2,123 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-17:37:50,829 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.235s. Listening on: http://0.0.0.0:8888
-17:37:50,836 INFO  quarkus:91 [main] Profile prod activated. 
-17:37:50,837 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-17:37:54,810 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-17:37:54,885 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-17:37:54,886 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
-17:37:55,002 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-17:37:55,321 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/e788ad6f-d879-4acb-8328-a03572e932b4]
-1671583075322, 0, 0
-17:37:55,374 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
-17:37:55,375 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [5]
-17:37:55,380 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-17:37:55,468 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/b647f550-6caa-480e-9252-069932ca5849]
-1671583076323, 0, 0
-1671583077323, 0, 0
-1671583078324, 0, 0
-1671583079324, 0, 0
-1671583080324, 0, 0
-1671583081324, 7771, 7771
-1671583082325, 22761, 30532
-1671583083326, 24523, 55055
-1671583084326, 18869, 73924
-1671583085327, 21834, 95758
-1671583086327, 24136, 119894
-1671583087327, 19840, 139734
-1671583088328, 19804, 159538
-1671583089329, 23548, 183086
-1671583090329, 21559, 204645
-1671583091330, 22601, 227246
-1671583092330, 23126, 250372
-1671583093330, 25132, 275504
-1671583094330, 26624, 302128
-1671583095331, 21938, 324066
-1671583096331, 24334, 348400
-1671583097332, 20381, 368781
-1671583098332, 20835, 389616
-1671583099332, 23074, 412690
-1671583100333, 25728, 438418
-1671583101334, 26378, 464796
-1671583102334, 24436, 489232
-1671583103335, 24838, 514070
-1671583104335, 26212, 540282
-1671583105335, 26835, 567117
-1671583106336, 28819, 595936
-1671583107336, 26854, 622790
-1671583108336, 24634, 647424
-1671583109337, 25576, 673000
-1671583110337, 28371, 701371
-1671583111337, 28599, 729970
-1671583112338, 17455, 747425
-1671583113338, 118, 747543
-1671583114338, 0, 747543
+21:09:51,170 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.182s. Listening on: http://0.0.0.0:8888
+21:09:51,177 INFO  quarkus:91 [main] Profile prod activated. 
+21:09:51,178 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+21:09:55,135 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
+21:09:55,190 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+21:09:55,191 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
+21:09:55,247 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+21:09:55,536 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 80458582-8ff6-4b44-b6a3-9d6d6209c0f9-1: org.jboss.resteasy.spi.UnhandledException: org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1426)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:102)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:54)
+	at org.apache.zookeeper.ZooKeeper.create(ZooKeeper.java:1538)
+	at ch.usi.da.paxos.Util.checkThenCreateZooNode(Util.java:189)
+	at ch.usi.da.paxos.Util.checkThenCreateZooNode(Util.java:153)
+	at ch.usi.da.paxos.TopologyManager.getConfig(TopologyManager.java:193)
+	at ch.usi.da.paxos.ring.RingManager.getConfig(RingManager.java:107)
+	at ch.usi.da.paxos.ring.RingManager.init(RingManager.java:96)
+	at ch.usi.da.paxos.ring.Node.update(Node.java:129)
+	at ch.usi.da.paxos.ring.Node.start(Node.java:105)
+	at ch.usi.da.smr.transport.RawABListener.<init>(RawABListener.java:55)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:158)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:143)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:61)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:84)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+
+21:09:55,608 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
+21:09:55,608 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [5]
+21:09:55,612 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+21:09:55,716 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 80458582-8ff6-4b44-b6a3-9d6d6209c0f9-2: org.jboss.resteasy.spi.UnhandledException: org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:102)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:54)
+	at org.apache.zookeeper.ZooKeeper.create(ZooKeeper.java:1538)
+	at ch.usi.da.paxos.Util.checkThenCreateZooNode(Util.java:189)
+	at ch.usi.da.paxos.Util.checkThenCreateZooNode(Util.java:153)
+	at ch.usi.da.paxos.TopologyManager.getConfig(TopologyManager.java:193)
+	at ch.usi.da.paxos.ring.RingManager.getConfig(RingManager.java:107)
+	at ch.usi.da.paxos.ring.RingManager.init(RingManager.java:96)
+	at ch.usi.da.paxos.ring.Node.update(Node.java:129)
+	at ch.usi.da.paxos.ring.Node.start(Node.java:105)
+	at ch.usi.da.smr.transport.RawABListener.<init>(RawABListener.java:55)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:158)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:143)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:61)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:84)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+

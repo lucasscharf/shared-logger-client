@@ -2,64 +2,58 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-19:37:25,581 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.131s. Listening on: http://0.0.0.0:8888
-19:37:25,587 INFO  quarkus:91 [main] Profile prod activated. 
-19:37:25,588 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-19:37:29,732 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-19:37:29,836 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-19:37:29,836 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
-19:37:29,944 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-19:37:30,291 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/6e39742a-c3ea-49b2-9359-5f862924152e]
-1671417450292, 0, 0
-19:37:30,344 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
-19:37:30,345 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [5]
-19:37:30,349 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
-19:37:30,437 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/d36eb846-65e8-4c28-9061-82c99387ccf2]
-1671417451292, 0, 0
-1671417452293, 0, 0
-1671417453293, 0, 0
-1671417454293, 0, 0
-1671417455294, 0, 0
-1671417456294, 4635, 4635
-1671417457294, 7658, 12293
-1671417458295, 7704, 19997
-1671417459295, 7762, 27759
-1671417460296, 7787, 35546
-1671417461296, 7818, 43364
-1671417462297, 7701, 51065
-1671417463298, 7752, 58817
-1671417464298, 7696, 66513
-1671417465299, 7700, 74213
-1671417466299, 8071, 82284
-1671417467302, 8018, 90302
-1671417468303, 8050, 98352
-1671417469303, 8094, 106446
-1671417470303, 8077, 114523
-1671417471304, 8097, 122620
-1671417472304, 8112, 130732
-1671417473305, 8039, 138771
-1671417474305, 8102, 146873
-1671417475306, 8097, 154970
-1671417476306, 8081, 163051
-1671417477306, 8088, 171139
-1671417478307, 8146, 179285
-1671417479307, 8024, 187309
-1671417480308, 8083, 195392
-1671417481308, 8146, 203538
-1671417482308, 8094, 211632
-1671417483309, 8120, 219752
-1671417484309, 8103, 227855
-1671417485310, 5800, 233655
-1671417486310, 0, 233655
-19:38:06,368 ERROR [executor-thread-2-EventThread] NetworkManager:298 - NetworkManager client connect error
-java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-1671417487310, 0, 233655
+21:03:57,600 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.402s. Listening on: http://0.0.0.0:8888
+21:03:57,607 INFO  quarkus:91 [main] Profile prod activated. 
+21:03:57,607 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+21:04:01,153 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
+21:04:01,210 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+21:04:01,210 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [4]
+21:04:01,270 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+21:04:01,626 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/38a390c8-aead-4373-a59e-bfbf686ffe90]
+1671595441627, 0, 0
+21:04:01,671 INFO  LoggerController:101 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
+21:04:01,671 INFO  LoggerController:109 [executor-thread-1] Calling logger in url id [0] with id [5]
+21:04:01,675 INFO  LoggerController:83 [executor-thread-2] Registering replica logger
+21:04:01,761 INFO  ReplicaLoggerClient:66 [executor-thread-2] Path created [/media/disk1/ef130bd4-6add-4169-be2a-7325ffef5cc5]
+1671595442627, 0, 0
+1671595443628, 0, 0
+1671595444628, 0, 0
+1671595445628, 0, 0
+1671595446629, 0, 0
+1671595447629, 426, 426
+1671595448629, 7927, 8353
+1671595449630, 7793, 16146
+1671595450630, 7863, 24009
+1671595451631, 7786, 31795
+1671595452631, 7665, 39460
+1671595453631, 7567, 47027
+1671595454631, 7652, 54679
+1671595455632, 7634, 62313
+1671595456632, 7645, 69958
+1671595457633, 7625, 77583
+1671595458633, 7791, 85374
+1671595459634, 7851, 93225
+1671595460634, 7881, 101106
+1671595461635, 7922, 109028
+1671595462635, 7903, 116931
+1671595463635, 8113, 125044
+1671595464636, 8270, 133314
+1671595465636, 8053, 141367
+1671595466636, 8086, 149453
+1671595467637, 8066, 157519
+1671595468638, 8050, 165569
+1671595469638, 8072, 173641
+1671595470638, 8039, 181680
+1671595471639, 8040, 189720
+1671595472639, 7907, 197627
+1671595473639, 7910, 205537
+1671595474640, 7953, 213490
+1671595475640, 7944, 221434
+1671595476640, 7911, 229345
+1671595477640, 3063, 232408
+1671595478641, 0, 232408
+1671595479641, 0, 232408
+1671595480641, 0, 232408
+1671595481642, 6, 232414
+1671595482642, 0, 232414
+1671595483642, 0, 232414

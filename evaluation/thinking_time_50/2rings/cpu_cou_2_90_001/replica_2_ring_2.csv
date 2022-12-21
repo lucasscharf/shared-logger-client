@@ -1,0 +1,77 @@
+19:07:22,581 INFO  [main] RawABListener:48 - Initing a RawABListener...
+19:07:22,591 INFO  [main] Node:101 - PID: 11135
+19:07:22,766 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+19:07:22,770 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+19:07:22,770 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+19:07:22,787 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+19:07:22,789 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+19:07:22,789 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+19:07:22,798 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+19:07:22,800 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+19:07:22,805 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 24] (succsessor: 21 at /10.10.1.7:2545)
+19:07:22,821 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
+1671588442822, 0, 0
+Reading from stdin
+19:07:22,922 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 24, 25] (succsessor: 25 at /10.10.1.11:2811)
+19:07:23,041 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24, 25] (succsessor: 25 at /10.10.1.11:2811)
+1671588443822, 0, 0
+1671588444823, 0, 0
+1671588445823, 0, 0
+1671588446824, 0, 0
+19:07:27,715 INFO  [TCPListener] LearnerRole:167 - Learner start from instance 6947 without recovery
+19:07:27,716 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+1671588447824, 0, 0
+1671588448824, 0, 0
+1671588449825, 0, 0
+1671588450825, 0, 0
+1671588451826, 0, 0
+1671588452826, 0, 0
+1671588453826, 0, 0
+1671588454827, 0, 0
+1671588455827, 0, 0
+1671588456827, 0, 0
+1671588457828, 0, 0
+1671588458828, 0, 0
+1671588459828, 0, 0
+1671588460829, 0, 0
+1671588461829, 0, 0
+1671588462829, 0, 0
+1671588463830, 0, 0
+1671588464830, 0, 0
+1671588465830, 0, 0
+1671588466831, 0, 0
+1671588467831, 0, 0
+1671588468832, 0, 0
+1671588469832, 0, 0
+1671588470832, 0, 0
+1671588471832, 0, 0
+1671588472833, 0, 0
+1671588473833, 0, 0
+1671588474833, 0, 0
+1671588475834, 0, 0
+1671588476834, 0, 0
+1671588477834, 0, 0
+1671588478835, 0, 0
+1671588479835, 0, 0
+1671588480835, 0, 0
+1671588481836, 0, 0
+1671588482836, 0, 0
+1671588483836, 0, 0
+1671588484837, 0, 0
+1671588485837, 0, 0
+1671588486837, 0, 0
+1671588487837, 0, 0
+1671588488838, 0, 0
+19:08:09,035 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+19:08:09,042 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+19:08:09,042 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+19:08:09,042 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/learners
+19:08:09,043 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/acceptors
+19:08:09,043 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/acceptors
