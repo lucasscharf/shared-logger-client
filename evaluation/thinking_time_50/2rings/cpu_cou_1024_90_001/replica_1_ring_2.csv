@@ -13,48 +13,42 @@
 02:22:33,968 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [false] with simple constructor
 1671614553968, 0, 0
 Reading from stdin
-1671614554969, 8254, 8254
-1671614555969, 9783, 18037
-1671614556970, 9333, 27370
-1671614557971, 8997, 36367
-1671614558971, 10362, 46729
-1671614559972, 8642, 55371
-1671614560972, 10539, 65910
-1671614561973, 9036, 74946
-1671614562973, 10596, 85542
-1671614563973, 10402, 95944
-1671614564974, 10674, 106618
-1671614565974, 11827, 118445
-1671614566975, 12949, 131394
-1671614567976, 9874, 141268
-1671614568976, 7143, 148411
-1671614569976, 11119, 159530
-1671614570977, 11729, 171259
-1671614571977, 10754, 182013
-1671614572977, 9108, 191121
-1671614573978, 9419, 200540
-1671614574978, 10767, 211307
-1671614575979, 12449, 223756
-1671614576979, 11878, 235634
-1671614577980, 11039, 246673
-1671614578980, 10923, 257596
-1671614579980, 11528, 269124
-1671614580980, 11431, 280555
-1671614581981, 11384, 291939
-1671614582981, 10223, 302162
-1671614583982, 9195, 311357
-1671614584982, 8336, 319693
-1671614585982, 0, 319693
-1671614586983, 0, 319693
-02:23:07,654 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
-java.nio.channels.ClosedSelectorException
-	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
-	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
-	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-02:23:07,663 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
-02:23:07,764 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
-02:23:07,768 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-02:23:07,768 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+1671612104855, 0, 0
+1671612105855, 0, 0
+1671612106856, 0, 0
+1671612107856, 0, 0
+1671612108856, 3503, 3503
+1671612109860, 10321, 13824
+1671612110861, 19332, 23156
+1671612111861, 17604, 30760
+1671612112862, 16421, 37181
+1671612113862, 11269, 48450
+1671612114863, 10828, 59278
+1671612115863, 11979, 71257
+1671612116864, 12320, 83577
+1671612117864, 10912, 94489
+1671612118865, 19449, 103938
+1671612119865, 10663, 114601
+1671612120865, 19259, 123860
+1671612121866, 19628, 133488
+1671612122867, 11020, 144508
+1671612123867, 11006, 155514
+1671612124867, 11290, 166804
+1671612125868, 13206, 180010
+1671612126868, 13331, 193341
+1671612127869, 12136, 205477
+1671612128869, 18861, 214338
+1671612129870, 17729, 222067
+1671612130870, 17890, 229957
+1671612131870, 11412, 241369
+1671612132871, 11064, 252433
+1671612133871, 10769, 263202
+1671612134872, 10224, 273426
+1671612135872, 19845, 283271
+1671612136872, 10886, 294157
+1671612137872, 7615, 301772
+1671612138873, 5355, 307127
+1671612139873, 0, 307127
+01:42:19,921 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+01:42:20,022 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+01:42:20,022 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners

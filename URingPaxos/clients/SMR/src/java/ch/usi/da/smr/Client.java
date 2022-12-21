@@ -418,28 +418,6 @@ public class Client implements Receiver {
 	 * @throws Exception
 	 */
 	public Response send(Command cmd) throws Exception {
-		// Response r = new Response(cmd);
-		// commands.put(cmd.getID(), r);
-		// int partition = -1;
-		// partition = partitions.getPartition(cmd.getKey());
-		// // special case for EC2 inter-region app;
-		// String single_part = System.getenv("PART");
-		// if (single_part != null) {
-		// partition = Integer.parseInt(single_part);
-		// }
-		// logger.info(String.format("Trying send command with thread [%s] and command
-		// ID [%s]", Thread.currentThread().getName(), cmd.getID()));
-		// synchronized (send_queues) {
-		// if (!send_queues.containsKey(partition)) {
-		// send_queues.put(partition, new LinkedBlockingQueue<Response>());
-		// Thread t = new Thread(new BatchSender(partition, this));
-		// t.setName("BatchSender-" + partition + "-" +
-		// Thread.currentThread().getName());
-		// t.start();
-		// }
-		// }
-		// send_queues.get(partition).add(r);
-		// return r;
 		Response r = new Response(cmd);
 		commands.put(cmd.getID(), r);
 		int connectionSize = connectMap.size();
