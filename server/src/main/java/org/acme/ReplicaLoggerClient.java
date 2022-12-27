@@ -24,9 +24,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -50,16 +53,25 @@ import ch.usi.da.smr.message.Message;
  */
 public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	private Path path;
+	static boolean shouldDeleteStatistic = true;
+	static Path latencyStatsPath = Paths.get("/tmp/loggerStats");
+	int trackerNumber;
 	private static AtomicInteger commandsReceivedCounter;
 	static Thread stats;
-
+	static Map<Long, Long> allLatencies = new HashMap<>();
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
 
 	public ReplicaLoggerClient(String token, String ringIdRange, int nodeID, int snapshot_modulo, String zoo_host,
-			String pathPrefix)
+			String pathPrefix, int trackerNumber)
 			throws Exception {
 		super(token, Util.parseRingsArgument(ringIdRange), nodeID, snapshot_modulo, zoo_host);
+		this.trackerNumber = trackerNumber;
 		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
+		if (shouldDeleteStatistic) {
+			shouldDeleteStatistic = false;
+			Files.deleteIfExists(latencyStatsPath);
+			Files.createFile(latencyStatsPath);
+		}
 
 		if (!Files.exists(path))
 			Files.createFile(path);
@@ -102,6 +114,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	@Override
 	public void receive(Message m) {
 		try {
+			long currentTimeInNano = System.nanoTime();
 			synchronized (path) {
 				for (Command command : m.getCommands()) {
 					commandsReceivedCounter.incrementAndGet();
@@ -111,6 +124,10 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 					writer.flush();
 					writer.close();
 				}
+				if (commandsReceivedCounter.get() % trackerNumber == 0) {
+					long currentLatency = System.nanoTime() - currentTimeInNano;
+					allLatencies.put(System.currentTimeMillis(), currentLatency);
+				}
 			}
 		} catch (IOException e) {
 			logger.error("", e);
@@ -119,7 +136,19 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 
 	@Override
 	public void close() {
-		logger.info("Closing files");
+		logger.info("Saving latencies");
+		String stringToSave = allLatencies.entrySet().stream()
+				.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).map(
+						r -> r.getKey() + "," + r.getValue() + "\n")
+				.collect(Collectors.joining());
+		try {
+			Files.write(latencyStatsPath,
+					stringToSave.getBytes(),
+					StandardOpenOption.APPEND);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		logger.info("File save");
 	}
 
 	@Override

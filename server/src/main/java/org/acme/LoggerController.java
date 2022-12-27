@@ -67,6 +67,12 @@ public class LoggerController {
   }
 
   public void destroy(@Observes ShutdownEvent ignored) {
+    closeLoggers();
+  }
+
+  @POST
+  @Path("closeLoggers")
+  public void closeLoggers() {
     loggerClients.stream().forEach(a -> {
       try {
         a.close();
@@ -82,7 +88,7 @@ public class LoggerController {
   public Response registerReplica(LoggerConfig config) throws Exception {
     logger.info("Registering replica logger");
     ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(config.ring + "", config.ring + ":L",
-        config.id, 0, zookeeperUrl, config.pathPrefix);
+        config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
     replicaLoggerClient.start();
     loggerClients.add(replicaLoggerClient);
     return Response.ok().build();

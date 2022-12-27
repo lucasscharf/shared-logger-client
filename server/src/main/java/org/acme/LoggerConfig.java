@@ -4,6 +4,7 @@ public class LoggerConfig {
 	public String ring;
 	public int id;
 	public int replicas;
+	public int trackerNumber;
 	public String pathPrefix = "/mnt/disk1";
 
 	@Override
