@@ -18,7 +18,7 @@ public class LoadGenerator implements Runnable {
 	private ReplicaLoggerClient replicaLoggerClient;
 	private static final ConcurrentHashMap<Long, Long> allLatencies = new ConcurrentHashMap<>();
 	private Integer experimentTimeSeconds = 30;
-	private AtomicInteger responsesReceivedCounter;
+	private static AtomicInteger responsesReceivedCounter;
 	private Integer trackerNumber = 1000;
 	private static boolean shouldDeleteStatistic = true;
 	private static Path latencyStatsPath = Paths.get("/tmp/loggerStats");
