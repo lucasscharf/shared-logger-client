@@ -146,8 +146,8 @@ public class LoggerController {
 
     List<ReplicaLoggerClient> replicaLoggerClients = new ArrayList<>();
     for (int i = 1; i < ringCounter + 1; i++) {
-      ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(i + "", config.ring + ":L",
-          config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
+      ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(i + "", (i + config.ring) + ":L",
+          i, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
       replicaLoggerClient.start();
       loggerClients.add(replicaLoggerClient);
       replicaLoggerClients.add(replicaLoggerClient);
@@ -155,7 +155,7 @@ public class LoggerController {
 
     List<Thread> threads = new ArrayList<>();
     for (int i = 0; i < threadCounter; i++) {
-      for (ReplicaLoggerClient replicaLoggerClient  : replicaLoggerClients) {
+      for (ReplicaLoggerClient replicaLoggerClient : replicaLoggerClients) {
         Thread t = new Thread(new LoadGenerator(replicaLoggerClient));
         threads.add(t);
       }
