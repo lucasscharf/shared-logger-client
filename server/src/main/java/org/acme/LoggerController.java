@@ -20,6 +20,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -131,27 +132,55 @@ public class LoggerController {
   }
 
   @POST
+  @Path("executeLoggerPerformanceTest/{threadCounter}/{ringCounter}")
+  public void executePerformanceTest(@PathParam("threadCounter") Integer threadCounter,
+      @PathParam("ringCounter") Integer ringCounter) throws Exception {
+    LoggerConfig config = new LoggerConfig();
+    config.id = 4;
+    config.pathPrefix = "/media/disk1/";
+    config.trackerNumber = 1000;
+    config.ring = "1";
+
+    ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(config.ring + "", config.ring + ":L",
+        config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
+    replicaLoggerClient.start();
+    loggerClients.add(replicaLoggerClient);
+
+    List<Thread> threads = new ArrayList<>();
+    for (int i = 0; i < threadCounter; i++) {
+      Thread t = new Thread();
+      threads.add(t);
+      t.start();
+    }
+
+    for (Thread t : threads) {
+      t.join();
+    }
+
+    LoadGenerator.savingLatencies();
+  }
+
+  @POST
   @Path("generateDatFiles")
   public Response generateDatFiles() throws Exception {
     List<String> applications = List.of("io", "cpu");
-    // List<String> applications = List.of("cpu");
-    // List<String> loggerTypes = List.of("cou");
     List<String> loggerTypes = List.of("sem", "cou", "dec");
     List<String> others = List.of("90");
     List<String> commandsSizes = List.of("001");
-    List<String> threadCounters = Arrays.asList("2", "4", "8", "16", "32", "64", "128", "256", "512", "1024", "2048");
-    // List<String> threadCounters = Arrays.asList("1024");
+    List<String> threadCounters = Arrays.asList("8", "16", "32", "64", "128", "256", "512", "1024", "2048");
     final String separator = "_";
 
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_50/";
     StringBuilder datFile = new StringBuilder();
 
     datFile.append(
-        "name, sem_throughputReplica (avg)(kCommands/s), sem_throughputReplica (med)(kCommands/s), sem_throughputReplica (p95)(kCommands/s), sem_latency (avg)(ms), sem_latency (med)(ms), sem_latency (p95)(ms),")
+        "name, sem_throughputReplica (avg)(kCommands/s), sem_throughputReplica (med)(kCommands/s), sem_throughputReplica (p95)(kCommands/s), sem_latency (avg)(ms), sem_latency (med)(ms), sem_latency (p95)(ms), ")
         .append(
             "cou_throughputReplica (avg)(kCommands/s), cou_throughputReplica (med)(kCommands/s), cou_throughputReplica (p95)(kCommands/s), cou_latency (avg)(ms), cou_latency (med)(ms), cou_latency (med)(ms), ")
         .append(
-            "dec_throughputReplica (avg)(kCommands/s), dec_throughputReplica (med)(kCommands/s), dec_throughputReplica (p95)(kCommands/s), dec_latency (avg)(ms), dec_latency (med)(ms), dec_latency (p95)(ms),dec_throughputLogger (avg)(kCommands/s), dec_throughputLogger (med)(kCommands/s),dec_throughputLogger (p95)(kCommands/s),\n");
+            "dec_throughputReplica (avg)(kCommands/s), dec_throughputReplica (med)(kCommands/s), dec_throughputReplica (p95)(kCommands/s), dec_latency (avg)(ms), dec_latency (med)(ms), dec_latency (p95)(ms), ")
+        .append(
+            "dec_throughputLogger (avg)(kCommands/s), dec_throughputLogger (med)(kCommands/s), dec_throughputLogger (p95)(kCommands/s),dec_latencyLogger (avg)(kCommands/s), dec_latencyLogger (med)(kCommands/s),dec_latencyLogger (p95)(kCommands/s),\n");
     datFile.append("\n").append("Ring counter: ").append("1 ring").append("\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
@@ -169,12 +198,16 @@ public class LoggerController {
                   + separator + other
                   + separator + commandsSize
                   + "/";
-              String latencyPath = folderPath + "client_latency.csv";
+              String latencyLoggerPath = folderPath + "logger_latency.csv";
+              String latencyReplicaPath = folderPath + "client_latency.csv";
               String replicaPath = folderPath + "replica_1.csv";
               String loggerPath = folderPath + "logger_2.csv";
-              String latencyAvg = readAvgLatency(latencyPath);
-              String latencyP50 = readPercentilLatency(latencyPath, 50);
-              String latencyP95 = readPercentilLatency(latencyPath, 95);
+              String latencyAvg = readAvgLatency(latencyReplicaPath);
+              String latencyP50 = readPercentilLatency(latencyReplicaPath, 50);
+              String latencyP95 = readPercentilLatency(latencyReplicaPath, 95);
+              String latencyAvgLogger = readAvgLatency(latencyLoggerPath);
+              String latencyP50Logger = readPercentilLatency(latencyLoggerPath, 50);
+              String latencyP95Logger = readPercentilLatency(latencyLoggerPath, 95);
               String throughputAvgReplica = readAvgThroughput(replicaPath);
               String throughputAvgLogger = readAvgThroughput(loggerPath);
               String throughputP50Replica = readPercentilThroughput(replicaPath, 50);
@@ -193,7 +226,10 @@ public class LoggerController {
                 datFile
                     .append(throughputAvgLogger + ",")
                     .append(throughputP50Logger + ",")
-                    .append(throughputP95Logger + ",");
+                    .append(throughputP95Logger + ",")
+                    .append(latencyAvgLogger + ",")
+                    .append(latencyP50Logger + ",")
+                    .append(latencyP95Logger + ",");
               }
             }
             datFile.append("\n");
@@ -205,19 +241,19 @@ public class LoggerController {
     datFile.append("\n").append("\n");
 
     datFile.append(
-        "name, sem_throughputReplica (avg)(kCommands/s), sem_throughputReplica (med)(kCommands/s), sem_throughputReplica (p95)(kCommands/s), sem_latency (avg)(ms), sem_latency (med)(ms), sem_latency (p95)(ms),")
+        "name, sem_throughputReplica (avg)(kCommands/s), sem_throughputReplica (med)(kCommands/s), sem_throughputReplica (p95)(kCommands/s), sem_latency (avg)(ms), sem_latency (med)(ms), sem_latency (p95)(ms), ")
         .append(
-            "sem_throughputReplica (avg)(kCommands/s)(ring 2), sem_throughputReplica (med)(kCommands/s)(ring 2), sem_throughputReplica (p95)(kCommands/s)(ring 2), sem_latency (avg)(ms)(ring 2), sem_latency (med)(ms)(ring 2), sem_latency (p95)(ms)(ring 2),")
+            "sem_throughputReplica (avg)(kCommands/s)(ring 2), sem_throughputReplica (med)(kCommands/s)(ring 2), sem_throughputReplica (p95)(kCommands/s)(ring 2), sem_latency (avg)(ms)(ring 2), sem_latency (med)(ms)(ring 2), sem_latency (p95)(ms)(ring 2), ")
         .append(
             "cou_throughputReplica (avg)(kCommands/s), cou_throughputReplica (med)(kCommands/s), cou_throughputReplica (p95)(kCommands/s), cou_latency (avg)(ms), cou_latency (med)(ms), cou_latency (med)(ms), ")
         .append(
             "cou_throughputReplica (avg)(kCommands/s)(ring 2), cou_throughputReplica (med)(kCommands/s)(ring 2), cou_throughputReplica (p95)(kCommands/s)(ring 2), cou_latency (avg)(ms)(ring 2), cou_latency (med)(ms)(ring 2), cou_latency (med)(ms)(ring 2), ")
         .append(
-            "dec_throughputReplica (avg)(kCommands/s), dec_throughputReplica (med)(kCommands/s), dec_throughputReplica (p95)(kCommands/s), dec_latency (avg)(ms), dec_latency (med)(ms), dec_latency (p95)(ms),")
+            "dec_throughputReplica (avg)(kCommands/s), dec_throughputReplica (med)(kCommands/s), dec_throughputReplica (p95)(kCommands/s), dec_latency (avg)(ms), dec_latency (med)(ms), dec_latency (p95)(ms), ")
         .append(
             "dec_throughputReplica (avg)(kCommands/s)(ring 2), dec_throughputReplica (med)(kCommands/s)(ring 2), dec_throughputReplica (p95)(kCommands/s)(ring 2), dec_latency (avg)(ms)(ring 2), dec_latency (med)(ms)(ring 2), dec_latency (p95)(ms)(ring 2), ")
         .append(
-            "dec_throughputLogger (avg)(kCommands/s), dec_throughputLogger (med)(kCommands/s),dec_throughputLogger (p95)(kCommands/s)\n");
+            "dec_throughputLogger (avg)(kCommands/s), dec_throughputLogger (med)(kCommands/s),dec_throughputLogger (p95)(kCommands/s),dec_latencyLogger (avg)(kCommands/s), dec_latencyLogger (med)(kCommands/s),dec_latencyLogger (p95)(kCommands/s),\n");
     datFile.append("\n").append("Ring counter: ").append("2 rings").append("\n");
     for (String other : others) {
       for (String commandsSize : commandsSizes) {
@@ -235,6 +271,7 @@ public class LoggerController {
                   + separator + other
                   + separator + commandsSize
                   + "/";
+              String latencyLoggerPath = folderPath + "logger_latency.csv";
               String latencyPath = folderPath + "client_latency.csv";
               String replicaPath = folderPath + "replica_1.csv";
               String loggerPath = folderPath + "logger_2.csv";
@@ -256,6 +293,9 @@ public class LoggerController {
               String throughputAvgReplica_ring_2 = readAvgThroughput(replicaPath_ring_2);
               String throughputP50Replica_ring_2 = readPercentilThroughput(replicaPath_ring_2, 50);
               String throughputP95Replica_ring_2 = readPercentilThroughput(replicaPath_ring_2, 95);
+              String latencyAvgLogger = readAvgLatency(latencyLoggerPath);
+              String latencyP50Logger = readPercentilLatency(latencyLoggerPath, 50);
+              String latencyP95Logger = readPercentilLatency(latencyLoggerPath, 95);
 
               datFile
                   .append(throughputAvgReplica + ",")
@@ -276,7 +316,10 @@ public class LoggerController {
                 datFile
                     .append(throughputAvgLogger + ",")
                     .append(throughputP50Logger + ",")
-                    .append(throughputP95Logger + ",");
+                    .append(throughputP95Logger + ",")
+                    .append(latencyAvgLogger + ",")
+                    .append(latencyP50Logger + ",")
+                    .append(latencyP95Logger + ",");
               }
             }
             datFile.append("\n");

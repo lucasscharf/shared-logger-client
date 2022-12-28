@@ -54,7 +54,7 @@ import ch.usi.da.smr.message.Message;
 public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	private Path path;
 	static boolean shouldDeleteStatistic = true;
-	static Path latencyStatsPath = Paths.get("/tmp/loggerStats");
+	static Path latencyStatsPath = Paths.get("/tmp/loggerStatsOutdated");
 	int trackerNumber;
 	private static AtomicInteger commandsReceivedCounter;
 	static Thread stats;
