@@ -135,6 +135,9 @@ public class LoggerController {
   @Path("executeLoggerPerformanceTest/{threadCounter}/{ringCounter}")
   public void executePerformanceTest(@PathParam("threadCounter") Integer threadCounter,
       @PathParam("ringCounter") Integer ringCounter) throws Exception {
+    logger.info("Executing performance test with thread counter [{}] and ring counter [{}]",
+        threadCounter, ringCounter);
+
     LoggerConfig config = new LoggerConfig();
     config.id = 4;
     config.pathPrefix = "/media/disk1/";
