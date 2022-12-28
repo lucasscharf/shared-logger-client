@@ -27,6 +27,9 @@ public class LoadGenerator implements Runnable {
 		this.replicaLoggerClient = replicaLoggerClient;
 		allLatencies.put(0L, 0L);
 
+		if (responsesReceivedCounter == null)
+			responsesReceivedCounter = new AtomicInteger(0);
+
 		if (shouldDeleteStatistic) {
 			try {
 				shouldDeleteStatistic = false;
