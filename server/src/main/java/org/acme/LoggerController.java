@@ -151,7 +151,7 @@ public class LoggerController {
 
     List<Thread> threads = new ArrayList<>();
     for (int i = 0; i < threadCounter; i++) {
-      Thread t = new Thread();
+      Thread t = new Thread(new LoadGenerator(replicaLoggerClient));
       threads.add(t);
       t.start();
     }
