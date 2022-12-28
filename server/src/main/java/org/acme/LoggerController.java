@@ -144,16 +144,25 @@ public class LoggerController {
     config.trackerNumber = 1000;
     config.ring = "1";
 
-    ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(config.ring + "", config.ring + ":L",
-        config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
-    replicaLoggerClient.start();
-    loggerClients.add(replicaLoggerClient);
+    List<ReplicaLoggerClient> replicaLoggerClients = new ArrayList<>();
+    for (int i = 1; i < ringCounter + 1; i++) {
+      ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(i + "", config.ring + ":L",
+          config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
+      replicaLoggerClient.start();
+      loggerClients.add(replicaLoggerClient);
+      replicaLoggerClients.add(replicaLoggerClient);
+    }
 
     List<Thread> threads = new ArrayList<>();
     for (int i = 0; i < threadCounter; i++) {
-      Thread t = new Thread(new LoadGenerator(replicaLoggerClient));
-      threads.add(t);
-      t.start();
+      for (ReplicaLoggerClient replicaLoggerClient  : replicaLoggerClients) {
+        Thread t = new Thread(new LoadGenerator(replicaLoggerClient));
+        threads.add(t);
+      }
+    }
+
+    for (Thread thread : threads) {
+      thread.start();
     }
 
     for (Thread t : threads) {
