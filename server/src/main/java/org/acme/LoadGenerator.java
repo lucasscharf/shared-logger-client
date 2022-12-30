@@ -107,7 +107,7 @@ public class LoadGenerator implements Runnable {
 				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
 				new byte[1024]);
 
-		Message m = new Message(0, "from", "to", Arrays.asList(cmd, cmd1, cmd2, cmd3, cmd4, cmd5));
+		Message m = new Message(0, "from", "to", Arrays.asList(cmd));
 		return m;
 	}
 
