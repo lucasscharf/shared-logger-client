@@ -124,10 +124,11 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 					writer.flush();
 					writer.close();
 				}
-				if (commandsReceivedCounter.get() % trackerNumber == 0) {
-					long currentLatency = System.nanoTime() - currentTimeInNano;
-					allLatencies.put(System.currentTimeMillis(), currentLatency);
-				}
+			}
+
+			if (commandsReceivedCounter.get() % trackerNumber == 0) {
+				long currentLatency = System.nanoTime() - currentTimeInNano;
+				allLatencies.put(System.currentTimeMillis(), currentLatency);
 			}
 		} catch (IOException e) {
 			logger.error("", e);

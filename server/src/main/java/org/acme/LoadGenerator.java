@@ -7,6 +7,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -22,9 +23,11 @@ public class LoadGenerator implements Runnable {
 	private Integer trackerNumber = 1000;
 	private static boolean shouldDeleteStatistic = true;
 	private static Path latencyStatsPath = Paths.get("/tmp/loggerStats");
+	private SynchronousQueue<Message> queue;
 
-	public LoadGenerator(ReplicaLoggerClient replicaLoggerClient) {
-		this.replicaLoggerClient = replicaLoggerClient;
+	public LoadGenerator(SynchronousQueue<Message> queue) {
+		this.queue = queue;
+
 		allLatencies.put(0L, 0L);
 
 		if (responsesReceivedCounter == null)
@@ -52,7 +55,13 @@ public class LoadGenerator implements Runnable {
 			currentTimeSeconds = System.currentTimeMillis() / 1000;
 			long currentTimeInNano = System.nanoTime();
 
-			replicaLoggerClient.receive(buildMessage());
+			// replicaLoggerClient.receive(buildMessage());
+			try {
+				queue.put(buildMessage());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			int currentResponse = responsesReceivedCounter.incrementAndGet();
 			if (currentResponse % trackerNumber == 0) {
@@ -98,8 +107,7 @@ public class LoadGenerator implements Runnable {
 				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
 				new byte[1024]);
 
-
-		Message m = new Message(0, "from", "to", Arrays.asList(cmd,cmd1,cmd2,cmd3,cmd4,cmd5));
+		Message m = new Message(0, "from", "to", Arrays.asList(cmd, cmd1, cmd2, cmd3, cmd4, cmd5));
 		return m;
 	}
 

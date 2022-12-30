@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.SynchronousQueue;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,6 +32,7 @@ import org.eclipse.microprofile.rest.client.RestClientDefinitionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.usi.da.smr.message.Message;
 import io.quarkus.runtime.ShutdownEvent;
 
 @Path("/")
@@ -144,19 +146,26 @@ public class LoggerController {
     config.trackerNumber = 1000;
     config.ring = "1";
 
-    List<ReplicaLoggerClient> replicaLoggerClients = new ArrayList<>();
+    List<ConsumerGenerator> consumerGenerators = new ArrayList<>();
+    
     for (int i = 1; i < ringCounter + 1; i++) {
       ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(i + "", (i + config.ring) + ":L",
           i, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
+      SynchronousQueue<Message> queue = new SynchronousQueue<>();
       replicaLoggerClient.start();
       loggerClients.add(replicaLoggerClient);
-      replicaLoggerClients.add(replicaLoggerClient);
+      
+      ConsumerGenerator consumerGenerator = new ConsumerGenerator(replicaLoggerClient, queue);
+      consumerGenerators.add(consumerGenerator);
+      Thread thread = new Thread(consumerGenerator);
+      thread.setPriority(7);
+      thread.start();
     }
 
     List<Thread> threads = new ArrayList<>();
     for (int i = 0; i < threadCounter; i++) {
-      for (ReplicaLoggerClient replicaLoggerClient : replicaLoggerClients) {
-        Thread t = new Thread(new LoadGenerator(replicaLoggerClient));
+      for (ConsumerGenerator consumerGenerator : consumerGenerators) {
+        Thread t = new Thread(new LoadGenerator(consumerGenerator.queue));
         threads.add(t);
       }
     }
