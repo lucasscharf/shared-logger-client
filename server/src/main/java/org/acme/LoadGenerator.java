@@ -82,8 +82,36 @@ public class LoadGenerator implements Runnable {
 		Command cmd = new Command(responsesReceivedCounter.get(), CommandType.PUT,
 				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
 				new byte[1024]);
+		Command cmd1 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd2 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd3 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd4 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd5 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd6 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd7 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd8 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
+		Command cmd9 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
+				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
+				new byte[1024]);
 
-		Message m = new Message(0, "from", "to", Arrays.asList(cmd));
+
+		Message m = new Message(0, "from", "to", Arrays.asList(cmd,cmd1,cmd2,cmd3,cmd4,cmd5,cmd6,cmd7,cmd8,cmd9));
 		return m;
 	}
 
