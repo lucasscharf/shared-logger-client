@@ -2,68 +2,42 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-01:47:13,167 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.269s. Listening on: http://0.0.0.0:8888
-01:47:13,173 INFO  quarkus:91 [main] Profile prod activated. 
-01:47:13,174 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-01:47:17,030 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-01:47:17,076 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-01:47:17,077 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [4]
-01:47:17,134 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-01:47:17,484 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/9d4cf2ad-2cad-41a4-bab8-092c1a18c8e0]
-1672130837486, 0, 0
-01:47:17,543 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
-01:47:17,544 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [5]
-01:47:17,548 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-01:47:17,638 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/1685301d-ea90-4cf8-a049-a598a1e16f77]
-1672130838486, 0, 0
-1672130839487, 0, 0
-1672130840487, 0, 0
-1672130841487, 0, 0
-1672130842488, 0, 0
-1672130843488, 2404, 2404
-1672130844488, 21270, 23674
-1672130845489, 22750, 46424
-1672130846489, 20371, 66795
-1672130847490, 14818, 81613
-1672130848490, 13669, 95282
-1672130849490, 14861, 110143
-1672130850563, 12274, 122417
-1672130851563, 15465, 137882
-1672130852564, 13124, 151006
-1672130853564, 13709, 164715
-1672130854564, 21141, 185856
-1672130855565, 17888, 203744
-1672130856639, 20658, 224402
-1672130857639, 23672, 248074
-1672130858640, 21492, 269566
-1672130859641, 19648, 289214
-1672130860641, 23793, 313007
-1672130861642, 23219, 336226
-1672130862642, 27431, 363657
-1672130863642, 25551, 389208
-1672130864642, 17948, 407156
-1672130865643, 16233, 423389
-1672130866644, 21235, 444624
-1672130867645, 19674, 464298
-1672130868645, 22221, 486519
-1672130869645, 20171, 506690
-1672130870645, 24872, 531562
-1672130871646, 23630, 555192
-1672130872646, 22233, 577425
-1672130873646, 24656, 602081
-1672130874647, 24436, 626517
-1672130875647, 24289, 650806
-1672130876647, 28972, 679778
-1672130877648, 28677, 708455
-1672130878648, 30815, 739270
-1672130879648, 31716, 770986
-1672130880648, 30668, 801654
-1672130881649, 31790, 833444
-1672130882649, 28604, 862048
-1672130883649, 21259, 883307
-1672130884650, 20864, 904171
-01:48:04,894 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-01:48:04,905 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-01:48:04,905 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-01:48:04,906 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-1672130885650, 14699, 918870
+21:07:40,985 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.245s. Listening on: http://0.0.0.0:8888
+21:07:40,992 INFO  quarkus:91 [main] Profile prod activated. 
+21:07:40,992 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+21:07:44,952 INFO  LoggerController:67 [executor-thread-1] loggerRestClients size [2]
+21:07:44,956 INFO  LoggerController:138 [executor-thread-1] Executing performance test with thread counter [2048] and ring counter [2]
+21:07:45,268 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/7e5a9d95-2b02-4850-910a-b7e4a4064de7]
+1672200465269, 0, 0
+21:07:45,363 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/eea134f5-945e-442f-b0ef-05a9f8c1c548]
+1672200466270, 7692, 7692
+1672200467270, 7977, 15669
+1672200468271, 8140, 23809
+1672200469271, 8244, 32053
+1672200470272, 8355, 40408
+1672200471272, 8416, 48824
+1672200472272, 8270, 57094
+1672200473273, 8274, 65368
+1672200474273, 7850, 73218
+1672200475274, 8245, 81463
+1672200476274, 8487, 89950
+1672200477274, 8349, 98299
+1672200478275, 8184, 106483
+1672200479275, 8088, 114571
+1672200480276, 8302, 122873
+1672200481276, 8369, 131242
+1672200482276, 7850, 139092
+1672200483277, 8324, 147416
+1672200484277, 8241, 155657
+1672200485277, 8184, 163841
+1672200486278, 8161, 172002
+1672200487278, 8397, 180399
+1672200488279, 8310, 188709
+1672200489279, 8213, 196922
+1672200490279, 8165, 205087
+1672200491280, 8022, 213109
+1672200492280, 8247, 221356
+1672200493281, 8141, 229497
+1672200494281, 8195, 237692
+1672200495281, 7030, 244722
+1672200496282, 8020, 252742

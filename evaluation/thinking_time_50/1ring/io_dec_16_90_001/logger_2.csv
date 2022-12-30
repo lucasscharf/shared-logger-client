@@ -2,51 +2,39 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-21:15:00,600 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.421s. Listening on: http://0.0.0.0:8888
-21:15:00,606 INFO  quarkus:91 [main] Profile prod activated. 
-21:15:00,607 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-21:15:04,367 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-21:15:04,430 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-21:15:04,430 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [4]
-21:15:04,530 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-21:15:04,860 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/87d96be7-4ece-4ada-90dc-d6c270c05379]
-1672114504861, 0, 0
-1672114505862, 0, 0
-1672114506862, 0, 0
-1672114507863, 0, 0
-1672114508863, 0, 0
-1672114509863, 0, 0
-1672114510863, 151, 151
-1672114511864, 493, 644
-1672114512864, 493, 1137
-1672114513864, 479, 1616
-1672114514865, 501, 2117
-1672114515865, 493, 2610
-1672114516865, 505, 3115
-1672114517866, 488, 3603
-1672114518867, 504, 4107
-1672114519867, 498, 4605
-1672114520868, 498, 5103
-1672114521868, 509, 5612
-1672114522868, 486, 6098
-1672114523869, 479, 6577
-1672114524869, 478, 7055
-1672114525869, 514, 7569
-1672114526870, 510, 8079
-1672114527870, 515, 8594
-1672114528870, 504, 9098
-1672114529871, 503, 9601
-1672114530871, 508, 10109
-1672114531871, 506, 10615
-1672114532872, 489, 11104
-1672114533872, 503, 11607
-1672114534873, 499, 12106
-1672114535873, 506, 12612
-1672114536873, 497, 13109
-1672114537874, 497, 13606
-1672114538874, 518, 14124
-1672114539875, 501, 14625
-1672114540876, 83, 14708
-21:15:41,421 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-21:15:41,431 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-1672114541876, 0, 14708
+20:49:03,596 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.315s. Listening on: http://0.0.0.0:8888
+20:49:03,601 INFO  quarkus:91 [main] Profile prod activated. 
+20:49:03,602 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:49:07,445 INFO  LoggerController:67 [executor-thread-1] loggerRestClients size [2]
+20:49:07,450 INFO  LoggerController:138 [executor-thread-1] Executing performance test with thread counter [16] and ring counter [1]
+20:49:07,727 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/453a00e4-e812-489b-b852-578524770ab5]
+1672199347728, 0, 0
+1672199348728, 578, 578
+1672199349729, 576, 1154
+1672199350729, 590, 1744
+1672199351729, 572, 2316
+1672199352730, 601, 2917
+1672199353730, 568, 3485
+1672199354730, 591, 4076
+1672199355730, 558, 4634
+1672199356731, 592, 5226
+1672199357731, 589, 5815
+1672199358731, 575, 6390
+1672199359732, 583, 6973
+1672199360732, 586, 7559
+1672199361733, 592, 8151
+1672199362733, 611, 8762
+1672199363733, 605, 9367
+1672199364734, 580, 9947
+1672199365734, 614, 10561
+1672199366734, 582, 11143
+1672199367735, 613, 11756
+1672199368735, 568, 12324
+1672199369735, 580, 12904
+1672199370736, 583, 13487
+1672199371736, 564, 14051
+1672199372736, 604, 14655
+1672199373737, 595, 15250
+1672199374737, 569, 15819
+1672199375737, 589, 16408
+1672199376738, 597, 17005

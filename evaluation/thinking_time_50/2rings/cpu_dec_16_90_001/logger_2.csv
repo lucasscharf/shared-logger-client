@@ -2,57 +2,41 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-01:34:57,497 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.302s. Listening on: http://0.0.0.0:8888
-01:34:57,504 INFO  quarkus:91 [main] Profile prod activated. 
-01:34:57,504 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-01:35:01,383 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-01:35:01,430 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-01:35:01,430 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [4]
-01:35:01,492 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-01:35:01,801 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/7ffb91a1-352a-4da7-bd1d-f49ea9e17c83]
-1672130101802, 0, 0
-01:35:01,853 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
-01:35:01,854 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [5]
-01:35:01,858 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-01:35:01,946 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/51a6e217-cee4-4b2f-a189-dcfeaec7fd77]
-1672130102803, 0, 0
-1672130103803, 0, 0
-1672130104803, 0, 0
-1672130105804, 0, 0
-1672130106804, 0, 0
-1672130107804, 250, 250
-1672130108805, 916, 1166
-1672130109805, 912, 2078
-1672130110805, 883, 2961
-1672130111806, 906, 3867
-1672130112806, 912, 4779
-1672130113807, 928, 5707
-1672130114807, 930, 6637
-1672130115808, 884, 7521
-1672130116808, 926, 8447
-1672130117809, 987, 9434
-1672130118809, 1027, 10461
-1672130119809, 997, 11458
-1672130120810, 1031, 12489
-1672130121810, 1039, 13528
-1672130122810, 1020, 14548
-1672130123811, 986, 15534
-1672130124811, 1003, 16537
-1672130125811, 1015, 17552
-1672130126812, 1014, 18566
-1672130127812, 1001, 19567
-1672130128813, 1006, 20573
-1672130129814, 990, 21563
-1672130130814, 1025, 22588
-1672130131814, 1008, 23596
-1672130132815, 1017, 24613
-1672130133815, 1017, 25630
-1672130134815, 979, 26609
-1672130135816, 1014, 27623
-1672130136816, 1046, 28669
-1672130137816, 216, 28885
-01:35:38,479 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-01:35:38,489 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-01:35:38,489 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-01:35:38,490 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-1672130138817, 0, 28885
+20:59:29,819 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.254s. Listening on: http://0.0.0.0:8888
+20:59:29,825 INFO  quarkus:91 [main] Profile prod activated. 
+20:59:29,826 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:59:33,806 INFO  LoggerController:67 [executor-thread-1] loggerRestClients size [2]
+20:59:33,809 INFO  LoggerController:138 [executor-thread-1] Executing performance test with thread counter [16] and ring counter [2]
+20:59:34,098 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/efe4a60a-284f-4381-b310-22be5bb7c58a]
+1672199974099, 0, 0
+20:59:34,192 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/59c661d3-09ad-4dc6-a17e-a7c0100af2a3]
+1672199975100, 1039, 1039
+1672199976100, 1174, 2213
+1672199977100, 1146, 3359
+1672199978101, 1174, 4533
+1672199979101, 1197, 5730
+1672199980103, 1180, 6910
+1672199981103, 1164, 8074
+1672199982104, 1180, 9254
+1672199983104, 1147, 10401
+1672199984105, 1147, 11548
+1672199985105, 1155, 12703
+1672199986105, 1173, 13876
+1672199987106, 1215, 15091
+1672199988106, 1148, 16239
+1672199989106, 1169, 17408
+1672199990107, 1186, 18594
+1672199991107, 1186, 19780
+1672199992107, 1220, 21000
+1672199993108, 1182, 22182
+1672199994108, 1120, 23302
+1672199995108, 1147, 24449
+1672199996109, 1172, 25621
+1672199997109, 1188, 26809
+1672199998110, 1149, 27958
+1672199999110, 1187, 29145
+1672200000110, 1223, 30368
+1672200001111, 1175, 31543
+1672200002111, 1200, 32743
+1672200003111, 1150, 33893
+1672200004112, 1043, 34936

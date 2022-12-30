@@ -2,63 +2,40 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-21:09:31,109 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.254s. Listening on: http://0.0.0.0:8888
-21:09:31,116 INFO  quarkus:91 [main] Profile prod activated. 
-21:09:31,116 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-21:09:35,104 INFO  LoggerController:66 [executor-thread-1] loggerRestClients size [2]
-21:09:35,188 INFO  LoggerController:107 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-21:09:35,189 INFO  LoggerController:115 [executor-thread-1] Calling logger in url id [0] with id [4]
-21:09:35,255 INFO  LoggerController:89 [executor-thread-2] Registering replica logger
-21:09:35,531 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/176c1c9c-50cc-4562-9436-641adb341200]
-1672114175533, 0, 0
-1672114176533, 0, 0
-1672114177534, 0, 0
-1672114178534, 0, 0
-1672114179534, 0, 0
-1672114180534, 0, 0
-1672114181535, 2135, 2135
-1672114182535, 9074, 11209
-1672114183536, 9138, 20347
-1672114184536, 9104, 29451
-1672114185536, 9197, 38648
-1672114186537, 9081, 47729
-1672114187537, 9112, 56841
-1672114188538, 9140, 65981
-1672114189539, 9027, 75008
-1672114190539, 9118, 84126
-1672114191539, 10956, 95082
-1672114192540, 16513, 111595
-1672114193540, 16454, 128049
-1672114194540, 16374, 144423
-1672114195541, 16071, 160494
-1672114196541, 16362, 176856
-1672114197542, 16065, 192921
-1672114198543, 16318, 209239
-1672114199543, 15523, 224762
-1672114200543, 13057, 237819
-1672114201544, 16695, 254514
-1672114202544, 17273, 271787
-1672114203544, 11689, 283476
-1672114204545, 22124, 305600
-1672114205545, 17961, 323561
-1672114206545, 16151, 339712
-1672114207546, 16033, 355745
-1672114208546, 14004, 369749
-1672114209546, 16768, 386517
-1672114210547, 16929, 403446
-1672114211547, 8854, 412300
-1672114212548, 0, 412300
-21:10:12,540 ERROR [executor-thread-2-EventThread] TopologyManager:387 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/15
-21:10:12,557 ERROR ClientCnxn:537 [executor-thread-2-EventThread] Error while calling watcher : java.lang.NullPointerException
-	at java.base/sun.nio.ch.Net.checkAddress(Net.java:126)
-	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:706)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:720)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-
-21:10:12,756 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-21:10:12,766 INFO  ReplicaLoggerClient:151 [executor-thread-1] File save
-1672114213549, 0, 412300
+20:44:23,643 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.189s. Listening on: http://0.0.0.0:8888
+20:44:23,651 INFO  quarkus:91 [main] Profile prod activated. 
+20:44:23,652 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:44:27,641 INFO  LoggerController:67 [executor-thread-1] loggerRestClients size [2]
+20:44:27,643 INFO  LoggerController:138 [executor-thread-1] Executing performance test with thread counter [512] and ring counter [1]
+20:44:27,950 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/da9d8aeb-ea33-4d22-b04e-7ea9d554c5e3]
+1672199067951, 0, 0
+1672199068951, 4439, 4439
+1672199069952, 4109, 8548
+1672199070952, 4069, 12617
+1672199071952, 4530, 17147
+1672199072953, 4770, 21917
+1672199073953, 4345, 26262
+1672199074954, 4756, 31018
+1672199075954, 4725, 35743
+1672199076954, 4604, 40347
+1672199077954, 4770, 45117
+1672199078955, 4723, 49840
+1672199079955, 4748, 54588
+1672199080956, 4711, 59299
+1672199081956, 4721, 64020
+1672199082956, 4703, 68723
+1672199083957, 4720, 73443
+1672199084957, 4735, 78178
+1672199085957, 4690, 82868
+1672199086958, 4720, 87588
+1672199087958, 4708, 92296
+1672199088958, 4671, 96967
+1672199089959, 4687, 101654
+1672199090959, 4695, 106349
+1672199091959, 4722, 111071
+1672199092960, 4707, 115778
+1672199093960, 4708, 120486
+1672199094961, 4696, 125182
+1672199095961, 4662, 129844
+1672199096961, 4719, 134563
+1672199097962, 4573, 139136
