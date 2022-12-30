@@ -97,28 +97,16 @@ public class LoadGenerator implements Runnable {
 		Command cmd5 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
 				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
 				new byte[1024]);
-		Command cmd6 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
-				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
-				new byte[1024]);
-		Command cmd7 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
-				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
-				new byte[1024]);
-		Command cmd8 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
-				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
-				new byte[1024]);
-		Command cmd9 = new Command(responsesReceivedCounter.get(), CommandType.PUT,
-				"user" + UUID.randomUUID().toString() + "-" + Thread.currentThread().getName(),
-				new byte[1024]);
 
 
-		Message m = new Message(0, "from", "to", Arrays.asList(cmd,cmd1,cmd2,cmd3,cmd4,cmd5,cmd6,cmd7,cmd8,cmd9));
+		Message m = new Message(0, "from", "to", Arrays.asList(cmd,cmd1,cmd2,cmd3,cmd4,cmd5));
 		return m;
 	}
 
 	private void sleepForThinkingTime() {
 		try {
-			long thinkingTime = 55;
-			long timeToSleep = ((long) (Math.random() * 10000.0)) % thinkingTime;
+			long thinkingTime = 50;
+			long timeToSleep = ((long) (Math.random() * 10000.0)) % thinkingTime + 5;
 			Thread.sleep(timeToSleep);
 		} catch (Exception ex) {
 			ex.printStackTrace();
