@@ -2,40 +2,60 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-20:57:08,997 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.255s. Listening on: http://0.0.0.0:8888
-20:57:09,004 INFO  quarkus:91 [main] Profile prod activated. 
-20:57:09,004 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-20:57:12,944 INFO  LoggerController:67 [executor-thread-1] loggerRestClients size [2]
-20:57:12,947 INFO  LoggerController:138 [executor-thread-1] Executing performance test with thread counter [2048] and ring counter [1]
-20:57:13,252 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/57b67094-d0bb-409b-aeb7-842307e529b3]
-1672199833253, 0, 0
-1672199834253, 4345, 4345
-1672199835254, 4142, 8487
-1672199836254, 4314, 12801
-1672199837255, 4035, 16836
-1672199838255, 4006, 20842
-1672199839255, 4337, 25179
-1672199840256, 4646, 29825
-1672199841256, 4577, 34402
-1672199842256, 4681, 39083
-1672199843257, 4576, 43659
-1672199844257, 4615, 48274
-1672199845258, 4642, 52916
-1672199846267, 4622, 57538
-1672199847273, 4662, 62200
-1672199848279, 4663, 66863
-1672199849280, 4591, 71454
-1672199850280, 4608, 76062
-1672199851280, 4526, 80588
-1672199852281, 4643, 85231
-1672199853281, 4627, 89858
-1672199854281, 4574, 94432
-1672199855282, 4611, 99043
-1672199856282, 4607, 103650
-1672199857283, 4613, 108263
-1672199858283, 4457, 112720
-1672199859283, 4547, 117267
-1672199860284, 4617, 121884
-1672199861284, 4619, 126503
-1672199862284, 4606, 131109
-1672199863285, 4218, 135327
+17:45:21,597 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.142s. Listening on: http://0.0.0.0:8888
+17:45:21,605 INFO  quarkus:91 [main] Profile prod activated. 
+17:45:21,606 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+17:45:25,603 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+17:45:25,661 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+17:45:25,661 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+17:45:25,725 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+17:45:26,038 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/7e7eeefa-3630-4996-958c-753667b5fe48]
+1672706726039, 0, 0
+17:45:26,092 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk1/]]
+17:45:26,093 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [5]
+17:45:26,097 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+17:45:26,187 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/f99fdbe5-2113-4897-b8cc-565ffb2a2c39]
+1672706727040, 0, 0
+1672706728040, 0, 0
+1672706729040, 0, 0
+1672706730041, 0, 0
+1672706731041, 0, 0
+1672706732041, 1627, 1627
+1672706733041, 11769, 13396
+1672706734042, 12269, 25665
+1672706735043, 14426, 40091
+1672706736043, 10945, 51036
+1672706737043, 15589, 66625
+1672706738044, 13190, 79815
+1672706739044, 13783, 93598
+1672706740045, 10700, 104298
+1672706741046, 14293, 118591
+1672706742046, 13979, 132570
+1672706743046, 8696, 141266
+1672706744047, 13159, 154425
+1672706745047, 15662, 170087
+1672706746048, 15467, 185554
+1672706747049, 14406, 199960
+1672706748049, 13303, 213263
+1672706749049, 17307, 230570
+1672706750050, 14831, 245401
+1672706751050, 13021, 258422
+1672706752050, 4821, 263243
+1672706753051, 12300, 275543
+1672706754051, 11424, 286967
+1672706755052, 9712, 296679
+1672706756053, 10549, 307228
+1672706757053, 9523, 316751
+1672706758054, 7370, 324121
+1672706759059, 11755, 335876
+1672706760060, 15991, 351867
+1672706761060, 7447, 359314
+1672706762061, 14443, 373757
+1672706763061, 402, 374159
+1672706764061, 109, 374268
+1672706765062, 0, 374268
+17:46:05,430 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+17:46:05,442 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+17:46:05,442 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+17:46:05,443 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1672706766062, 0, 374268
