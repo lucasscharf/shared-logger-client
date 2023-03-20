@@ -160,6 +160,7 @@ public class LoggerController {
       Thread thread = new Thread(consumerGenerator);
       thread.setPriority(7);
       thread.start();
+      //config.pathPrefix = "/media/disk2"; //uncomment this line to make logger run in two disks
     }
 
     List<Thread> threads = new ArrayList<>();
@@ -353,6 +354,47 @@ public class LoggerController {
           }
       }
     }
+
+    datFile.append("\n\n").append("Logger: 2 rings + 2 disks").append("\n");
+    ringPaths = Arrays.asList("2rings");
+    for (String other : others) {
+      for (String ringPath : ringPaths) {
+        datFile.append("\n\n").append("Logger: ").append(ringPath).append("\n");
+
+        for (String commandsSize : commandsSizes)
+          for (String threadCounter : threadCounters) {
+            String application = "io";
+            String loggerType = "dec";
+            String folderPath = basePath + ringPath
+                + "/" + application
+                + separator + loggerType
+                + separator + threadCounter
+                + separator + other
+                + separator + commandsSize
+                + "/";
+
+            String loggerPath = folderPath + "logger_2.csv";
+            String throughputAvgLogger = readAvgThroughput(loggerPath);
+            String throughputP50Logger = readPercentilThroughput(loggerPath, 50);
+            String throughputP95Logger = readPercentilThroughput(loggerPath, 95);
+            String latencyLoggerPath = folderPath + "logger_latency.csv";
+
+            String latencyAvgLogger = readAvgLatency(latencyLoggerPath);
+            String latencyP50Logger = readPercentilLatency(latencyLoggerPath, 50);
+            String latencyP95Logger = readPercentilLatency(latencyLoggerPath, 95);
+
+            datFile
+                .append(throughputAvgLogger + ",")
+                .append(throughputP50Logger + ",")
+                .append(throughputP95Logger + ",")
+                .append(latencyAvgLogger + ",")
+                .append(latencyP50Logger + ",")
+                .append(latencyP95Logger + ",");
+            datFile.append("\n");
+          }
+      }
+    }
+
     return Response.ok(datFile.toString()).build();
 
   }

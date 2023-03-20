@@ -28,8 +28,6 @@ public class LoadGenerator implements Runnable {
 	public LoadGenerator(SynchronousQueue<Message> queue) {
 		this.queue = queue;
 
-		allLatencies.put(0L, 0L);
-
 		if (responsesReceivedCounter == null)
 			responsesReceivedCounter = new AtomicInteger(0);
 
@@ -48,8 +46,6 @@ public class LoadGenerator implements Runnable {
 	public void run() {
 		long initialTimeSeconds = System.currentTimeMillis() / 1000;
 		long currentTimeSeconds = System.currentTimeMillis() / 1000;
-
-		allLatencies.put(System.currentTimeMillis(), 0L);
 
 		while ((initialTimeSeconds + experimentTimeSeconds) > currentTimeSeconds) {
 			currentTimeSeconds = System.currentTimeMillis() / 1000;
