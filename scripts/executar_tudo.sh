@@ -13,6 +13,7 @@ ipReplica2_ring_2=pc780.emulab.net
 ipReplica3_ring_2=pc749.emulab.net
 ipClient=pc752.emulab.net
 ipLogger1=pc854.emulab.net
+#node5
 ipLogger2=pc762.emulab.net
 
 apps=(cpu)
