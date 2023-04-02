@@ -54,8 +54,3 @@ mvn clean install -DskipTests
 
 cd ~/shared-logger-client/URingPaxos/clients/SMR/target 
 unzip SMR-trunk-release.zip
-
-cd ~/shared-logger-client/server/
-mvn clean install -DskipTests 
-cd target 
-java -jar shared-logger-1.0.0-SNAPSHOT-runner.jar   

@@ -12,7 +12,7 @@ saturn=pc714.emulab.net
 
 apps=(cpu)
 logs=(sem)
-threads=(256 512 1024 2048)
+threads=(256)
 
 ips=($earth $venus $mars $jupyter $saturn $uranus)
 
@@ -20,7 +20,7 @@ cd ~/shared-logger-client/scripts
 
 for ip in "${ips[@]}" 
 do
-	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chown lucas123 /media ; sudo rm -rf /media/disk1/*'
+	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chown lucas123 /media ; sudo mkdir /media/disk1 ; sudo rm -rf /media/disk1/*'
 done 
 
 for ip in "${ips[@]}" 
