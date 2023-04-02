@@ -1,19 +1,20 @@
 #!/bin/bash
 
-sun
-earth
-venus
-mars 
-jupyter
+sun=pc783.emulab.net
+earth=pc798.emulab.net
+venus=pc799.emulab.net
+mars=pc793.emulab.net
+jupyter=pc724.emulab.net
 #node5
-saturn
-uranus
+uranus=pc716.emulab.net
+saturn=pc714.emulab.net
+
 
 apps=(cpu)
 logs=(sem)
 threads=(256 512 1024 2048)
 
-ips=($sun $earth $venus $mars $jupyter $saturn $uranus)
+ips=($earth $venus $mars $jupyter $saturn $uranus)
 
 cd ~/shared-logger-client/scripts 
 
@@ -56,16 +57,15 @@ do
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_3.sh" &
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_4.sh" &
 
-			
 			sleep 5
 
 			echo "Executando o experimento com $app $log $thread "
-			ssh lucas123@$ipClient "~/shared-logger-client/scripts/run_experiment.sh $thread"
+			~/shared-logger-client/scripts/run_experiment.sh $thread
 			echo "Killing sshs"
 			killall -9 ssh
 
 			if [ $log = dec ]; then
-				ssh lucas123@$ipLogger2 "curl -XPOST localhost:8888/closeLoggers" 
+				ssh lucas123@$uranus "curl -XPOST localhost:8888/closeLoggers" 
 			fi
 
 			for ip in "${ips[@]}" 
