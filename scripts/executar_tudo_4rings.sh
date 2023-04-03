@@ -14,7 +14,7 @@ apps=(cpu)
 logs=(sem)
 threads=(4)
 
-ips=($earth $venus $mars $jupyter $saturn $uranus)
+ips=($sun $earth $venus $mars $jupyter $saturn $uranus)
 
 cd ~/shared-logger-client/scripts 
 
@@ -75,13 +75,6 @@ do
 
 			echo "Getting logs"
 			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
-
-			# echo "Cleaning tmps"
-			# for ip in "${ips[@]}" 
-			# do 
-			# 	echo "Cleaning ip: $ip"
-			# 	ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'
-			# done 
 
 			echo "Rebuilding zookeeper"
 			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-$sun=$1
-$earth=$2
-$venus=$3
-$mars=$4
-$jupyter=$5
-$saturn=$6
-$uranus=$7
+sun=$1
+earth=$2
+venus=$3
+mars=$4
+jupyter=$5
+saturn=$6
+uranus=$7
 outputFile=$8
 
 mkdir $outputFile
