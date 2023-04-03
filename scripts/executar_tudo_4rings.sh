@@ -12,7 +12,7 @@ saturn=pc714.emulab.net
 
 apps=(cpu)
 logs=(sem)
-threads=(256)
+threads=(4)
 
 ips=($earth $venus $mars $jupyter $saturn $uranus)
 
@@ -39,22 +39,18 @@ do
 				sleep 6
 			fi
 
-			echo e1
-			outputFile=~/shared-logger-client/evaluation/thinking_time_50/1ring/$app\_$log\_$thread\_90_001/
+			outputFile=~/shared-logger-client/evaluation/thinking_time_50/4rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
 
-			echo e2
-
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
 
-			echo e3
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
@@ -67,13 +63,10 @@ do
 			echo "Killing sshs"
 			killall -9 ssh
 
-			echo e5
-
 			if [ $log = dec ]; then
 				ssh lucas123@$uranus "curl -XPOST localhost:8888/closeLoggers" 
 			fi
 
-			echo e6
 			for ip in "${ips[@]}" 
 			do 
 				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh'
@@ -82,15 +75,15 @@ do
 			echo "Getting logs"
 			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
 
-			echo "Cleaning tmps"
-			for ip in "${ips[@]}" 
-			do 
-				echo "Cleaning ip: $ip"
-				ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'
-			done 
+			# echo "Cleaning tmps"
+			# for ip in "${ips[@]}" 
+			# do 
+			# 	echo "Cleaning ip: $ip"
+			# 	ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'
+			# done 
 
-			echo "Rebuilding zookeeper"
-			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
+			# echo "Rebuilding zookeeper"
+			# ~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
 			killall -9 ssh
 		done
 	done

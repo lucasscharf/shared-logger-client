@@ -35,6 +35,11 @@ scp lucas123@$sun:/tmp/execucao_4 $outputFile/client_ring_4.log
 scp lucas123@$uranus:/tmp/execucao $outputFile/logger_2.csv
 scp lucas123@$uranus:/tmp/loggerStats $outputFile/logger_latency.csv
 
+scp lucas123@$jupyter:/tmp/execucao_1 $outputFile/replica_1_ring_1.csv
+scp lucas123@$jupyter:/tmp/execucao_2 $outputFile/replica_1_ring_2.csv
+scp lucas123@$jupyter:/tmp/execucao_3 $outputFile/replica_1_ring_3.csv
+scp lucas123@$jupyter:/tmp/execucao_4 $outputFile/replica_1_ring_4.csv
+
 #scp lucas123@$ipLogger1:/tmp/execucao $outputFile/logger_1.csv
 #scp lucas123@$ipLogger1:/tmp/loggerStats $outputFile/logger_latency.csv
 scp lucas123@$ipLogger2:/tmp/loggerStats $outputFile/logger_latency.csv
