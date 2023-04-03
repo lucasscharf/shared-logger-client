@@ -12,7 +12,7 @@ saturn=pc714.emulab.net
 
 apps=(cpu)
 logs=(sem)
-threads=(4)
+threads=(16)
 
 ips=($sun $earth $venus $mars $jupyter $saturn $uranus)
 
@@ -21,11 +21,6 @@ cd ~/shared-logger-client/scripts
 for ip in "${ips[@]}" 
 do
 	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chown lucas123 /media ; sudo mkdir /media/disk1 ; sudo rm -rf /media/disk1/*'
-done 
-
-for ip in "${ips[@]}" 
-do 
-	ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh'
 done 
 
 for app in "${apps[@]}" 
@@ -42,20 +37,20 @@ do
 			outputFile=~/shared-logger-client/evaluation/thinking_time_50/4rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
+			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
+			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
+			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
+			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
+			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
+			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
 
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
-
+			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
+			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
+			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
+			
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
@@ -73,8 +68,8 @@ do
 				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh'
 			done 
 
-			echo "Getting logs"
-			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
+			# echo "Getting logs"
+			# ~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
 
 			echo "Rebuilding zookeeper"
 			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
