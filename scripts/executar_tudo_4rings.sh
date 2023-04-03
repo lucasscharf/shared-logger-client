@@ -58,7 +58,7 @@ do
 
 			sleep 5
 
-			echo "Executando o experimento com $app $log $thread "
+			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
 			~/shared-logger-client/scripts/run_experiment.sh $thread
 			echo "Killing sshs"
 			killall -9 ssh
@@ -67,6 +67,7 @@ do
 				ssh lucas123@$uranus "curl -XPOST localhost:8888/closeLoggers" 
 			fi
 
+			echo "Matando os javas"
 			for ip in "${ips[@]}" 
 			do 
 				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh'
