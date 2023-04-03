@@ -83,8 +83,8 @@ do
 			# 	ssh lucas123@$ip '~/shared-logger-client/scripts/clean_tmp.sh'
 			# done 
 
-			# echo "Rebuilding zookeeper"
-			# ~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
+			echo "Rebuilding zookeeper"
+			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
 			killall -9 ssh
 		done
 	done

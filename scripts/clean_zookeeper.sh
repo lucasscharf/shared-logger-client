@@ -1,7 +1,6 @@
 #/bin/bash
 
-docker stop zookeeper
-docker rm zookeeper
+docker rm -f zookeeper
 cd ~/shared-logger-client
 docker-compose up -d zookeeper
 
