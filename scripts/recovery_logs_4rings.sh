@@ -9,7 +9,7 @@ saturn=$6
 uranus=$7
 outputFile=$8
 
-mkdir $outputFile
+mkdir -p $outputFile
 
 echo "Sun: $sun"
 echo "Uranus: $uranus"
