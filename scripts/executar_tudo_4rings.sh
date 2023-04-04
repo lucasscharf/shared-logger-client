@@ -1,20 +1,20 @@
 #!/bin/bash
 
-sun=pc783.emulab.net
-earth=pc798.emulab.net
-venus=pc799.emulab.net
-mars=pc793.emulab.net
-jupyter=pc724.emulab.net
+sun=pc784.emulab.net
+earth=pc796.emulab.net
+venus=pc756.emulab.net
+mars=pc786.emulab.net
+jupyter=pc791.emulab.net
 #node5
-uranus=pc716.emulab.net
-saturn=pc714.emulab.net
+uranus=pc811.emulab.net
+saturn=pc781.emulab.net
 
 
 apps=(cpu)
 logs=(sem)
 threads=(16)
 
-ips=($sun $earth $venus $mars $jupyter $saturn $uranus)
+ips=($earth $venus $mars $jupyter $saturn $uranus)
 
 cd ~/shared-logger-client/scripts 
 
@@ -37,24 +37,24 @@ do
 			outputFile=~/shared-logger-client/evaluation/thinking_time_50/4rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
-			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
-			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
-			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
+			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
+			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
+			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
-			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
-			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
-			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
+			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
+			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
+			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
 
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
-			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
-			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
-			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
+			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
+			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
+			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
 			
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
-			~/shared-logger-client/scripts/run_experiment.sh $thread
+			ssh lucas123@$saturn "~/shared-logger-client/scripts/run_experiment.sh $thread"
 			echo "Killing sshs"
 			killall -9 ssh
 
@@ -68,8 +68,8 @@ do
 				ssh lucas123@$ip '~/shared-logger-client/scripts/kill_all_java.sh'
 			done 
 
-			# echo "Getting logs"
-			# ~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
+			echo "Getting logs"
+			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
 
 			echo "Rebuilding zookeeper"
 			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
