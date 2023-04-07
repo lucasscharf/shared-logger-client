@@ -51,6 +51,12 @@ do
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
 			
+			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
+			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_2.sh" &
+			
+			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
+			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
+
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
@@ -81,7 +87,7 @@ done
 echo "Fim de execução"
 
 
-#a=$(ps aux | grep java | grep trunk | cut -d " " -f 4 | awk '{s=$0} NR==1  {printf "tail -f /proc/%s/fd/1",s}');
+#a=$(ps aux | grep java | grep trunk | cut -d " " -f 5 | awk '{s=$0} NR==1  {printf "tail -f /proc/%s/fd/1",s}');
 #echo $a ;
 #echo $a | bash
 

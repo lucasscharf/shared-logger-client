@@ -44,3 +44,8 @@ scp lucas123@$jupyter:/tmp/execucao_2 $outputFile/replica_1_ring_2.csv
 scp lucas123@$jupyter:/tmp/execucao_3 $outputFile/replica_1_ring_3.csv
 scp lucas123@$jupyter:/tmp/execucao_4 $outputFile/replica_1_ring_4.csv
 
+scp lucas123@$uranus:/tmp/execucao_1 $outputFile/replica_2_ring_1.csv
+scp lucas123@$uranus:/tmp/execucao_2 $outputFile/replica_2_ring_2.csv
+scp lucas123@$neptune:/tmp/execucao_3 $outputFile/replica_2_ring_3.csv
+scp lucas123@$neptune:/tmp/execucao_4 $outputFile/replica_2_ring_4.csv
+
