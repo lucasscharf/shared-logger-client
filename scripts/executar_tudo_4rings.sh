@@ -30,6 +30,8 @@ do
 		for thread in "${threads[@]}"
 		do
 			if [ $log = dec ]; then
+				ssh lucas123@$neptune "~/shared-logger-client/scripts/run_quarkus_simple.sh" &
+				sleep 2
 				ssh lucas123@$uranus "~/shared-logger-client/scripts/run_quarkus_createloggers.sh" &
 				sleep 6
 			fi
