@@ -1,18 +1,18 @@
 #!/bin/bash
 
-sun=pc784.emulab.net
-earth=pc796.emulab.net
-venus=pc756.emulab.net
-mars=pc786.emulab.net
-jupyter=pc791.emulab.net
+sun=pc801.emulab.net
+earth=pc725.emulab.net
+venus=pc794.emulab.net
+mars=pc808.emulab.net
+jupyter=pc757.emulab.net
 #node5
-uranus=pc811.emulab.net
-saturn=pc781.emulab.net
+uranus=pc766.emulab.net
+saturn=pc721.emulab.net
 
 
-apps=(cpu)
+apps=(io)
 logs=(sem)
-threads=(16)
+threads=(8)
 
 ips=($earth $venus $mars $jupyter $saturn $uranus)
 
@@ -20,7 +20,7 @@ cd ~/shared-logger-client/scripts
 
 for ip in "${ips[@]}" 
 do
-	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chown lucas123 /media ; sudo mkdir /media/disk1 ; sudo rm -rf /media/disk1/*'
+	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chmod 777 /tmp ; sudo chown lucas123 /media ; sudo mkdir /media/disk1 ; sudo rm -rf /media/disk1/*'
 done 
 
 for app in "${apps[@]}" 
@@ -54,7 +54,7 @@ do
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
-			ssh lucas123@$saturn "~/shared-logger-client/scripts/run_experiment.sh $thread"
+			~/shared-logger-client/scripts/run_experiment.sh $thread
 			echo "Killing sshs"
 			killall -9 ssh
 
@@ -80,4 +80,8 @@ done
 
 echo "Fim de execução"
 
+
+#a=$(ps aux | grep java | grep trunk | cut -d " " -f 4 | awk '{s=$0} NR==1  {printf "tail -f /proc/%s/fd/1",s}');
+#echo $a ;
+#echo $a | bash
 
