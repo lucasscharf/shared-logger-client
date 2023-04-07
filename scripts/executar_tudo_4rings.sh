@@ -7,14 +7,14 @@ mars=pc808.emulab.net
 jupyter=pc757.emulab.net
 #node5
 uranus=pc766.emulab.net
-saturn=pc721.emulab.net
+neptune=pc721.emulab.net
 
 
 apps=(cpu)
 logs=(dec)
 threads=(8)
 
-ips=($earth $venus $mars $jupyter $saturn $uranus)
+ips=($earth $venus $mars $jupyter $neptune $uranus)
 
 cd ~/shared-logger-client/scripts 
 
@@ -53,7 +53,6 @@ do
 			
 			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
 			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_2.sh" &
-			
 			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
 			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
 
@@ -75,7 +74,7 @@ do
 			done 
 
 			echo "Getting logs"
-			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $saturn $uranus $outputFile
+			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $neptune $uranus $outputFile
 
 			echo "Rebuilding zookeeper"
 			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null

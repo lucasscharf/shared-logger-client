@@ -5,7 +5,7 @@ earth=$2
 venus=$3
 mars=$4
 jupyter=$5
-saturn=$6
+neptune=$6
 uranus=$7
 outputFile=$8
 
