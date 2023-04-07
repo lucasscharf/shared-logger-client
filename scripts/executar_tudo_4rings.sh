@@ -10,8 +10,8 @@ uranus=pc766.emulab.net
 saturn=pc721.emulab.net
 
 
-apps=(io)
-logs=(sem)
+apps=(cpu)
+logs=(dec)
 threads=(8)
 
 ips=($earth $venus $mars $jupyter $saturn $uranus)
