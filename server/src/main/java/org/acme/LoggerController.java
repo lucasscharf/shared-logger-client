@@ -142,7 +142,7 @@ public class LoggerController {
 
     LoggerConfig config = new LoggerConfig();
     config.id = 4;
-    config.pathPrefix = "/media/disk1/";
+    config.pathPrefix = "/media/disk";
     config.trackerNumber = 1000;
     config.ring = "1";
 
@@ -150,7 +150,7 @@ public class LoggerController {
     
     for (int i = 1; i < ringCounter + 1; i++) {
       ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(i + "", (i + config.ring) + ":L",
-          i, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
+          i, 0, zookeeperUrl, config.pathPrefix + i + "/", config.trackerNumber);
       SynchronousQueue<Message> queue = new SynchronousQueue<>();
       replicaLoggerClient.start();
       loggerClients.add(replicaLoggerClient);
@@ -160,7 +160,6 @@ public class LoggerController {
       Thread thread = new Thread(consumerGenerator);
       thread.setPriority(7);
       thread.start();
-      //config.pathPrefix = "/media/disk2"; //uncomment this line to make logger run in two disks
     }
 
     List<Thread> threads = new ArrayList<>();

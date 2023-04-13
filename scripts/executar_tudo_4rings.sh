@@ -1,13 +1,13 @@
 #!/bin/bash
 
-sun=pc801.emulab.net
-earth=pc725.emulab.net
-venus=pc794.emulab.net
-mars=pc808.emulab.net
-jupyter=pc757.emulab.net
+sun=node0
+earth=node1
+venus=node2
+mars=node3
+jupyter=node4
 #node5
-uranus=pc766.emulab.net
-neptune=pc721.emulab.net
+uranus=node5
+neptune=node6
 
 
 apps=(cpu)
@@ -67,6 +67,7 @@ do
 
 			if [ $log = dec ]; then
 				ssh lucas123@$uranus "curl -XPOST localhost:8888/closeLoggers" 
+				ssh lucas123@$neptune "curl -XPOST localhost:8888/closeLoggers" 
 			fi
 
 			echo "Matando os javas"
