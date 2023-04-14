@@ -1,0 +1,85 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+16:49:14,568 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.713s. Listening on: http://0.0.0.0:8888
+16:49:14,576 INFO  quarkus:91 [main] Profile prod activated. 
+16:49:14,577 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+16:49:18,298 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+16:49:18,382 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
+16:49:18,383 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+16:49:18,472 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+16:49:25,795 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:1 ballot:21 v_ballot:11 value:<none> (175413789873671)]
+16:49:28,120 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/c3d69dd3-2dca-4384-9066-b8bbb5636c6a]
+1681426168122, 0, 0
+16:49:28,216 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+1681426169123, 7, 7
+16:49:29,491 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
+16:49:29,491 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+16:49:29,604 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+16:49:29,610 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+16:49:29,710 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/68699254-f2db-45a0-b4b1-8accd5c6c815]
+16:49:29,749 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
+16:49:29,750 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+16:49:29,759 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+16:49:29,839 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:696 ballot:41 v_ballot:0 value:<none> (1754641349003131)]
+16:49:29,842 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/f4452a38-900a-436c-acbe-3c61c388ca54]
+16:49:29,846 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+16:49:29,864 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
+16:49:29,983 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
+16:49:29,984 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+1681426170124, 0, 7
+16:49:30,171 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
+16:49:30,177 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+16:49:30,234 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+16:49:30,267 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/aa86f231-0c35-465a-8684-d47794b5539a]
+16:49:30,271 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:42 to:Learner instance:865 ballot:51 v_ballot:0 value:<none> (1754684325627641)]
+16:49:30,272 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
+16:49:30,694 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 650
+16:49:30,695 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 651
+16:49:30,695 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 652
+16:49:30,696 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 653
+16:49:30,696 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 654
+16:49:30,696 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 655
+16:49:30,696 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 656
+16:49:30,697 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 657
+16:49:30,697 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 658
+16:49:30,697 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 659
+16:49:30,701 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 660
+16:49:30,701 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 661
+16:49:30,701 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 662
+16:49:30,701 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 663
+1681426171125, 0, 7
+1681426172125, 0, 7
+1681426173125, 0, 7
+1681426174127, 0, 7
+1681426175127, 0, 7
+1681426176127, 0, 7
+1681426177128, 0, 7
+1681426178128, 0, 7
+1681426179128, 0, 7
+1681426180129, 0, 7
+1681426181129, 0, 7
+1681426182129, 0, 7
+1681426183130, 0, 7
+1681426184130, 0, 7
+1681426185131, 0, 7
+1681426186131, 0, 7
+1681426187132, 0, 7
+1681426188132, 0, 7
+1681426189134, 0, 7
+1681426190135, 0, 7
+1681426191135, 0, 7
+1681426192136, 0, 7
+1681426193136, 0, 7
+1681426194137, 0, 7
+16:49:54,761 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:49:54,772 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+16:49:54,772 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:49:54,772 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+16:49:54,772 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:49:54,773 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+16:49:54,773 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:49:54,773 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681426195137, 0, 7
+1681426196138, 0, 7

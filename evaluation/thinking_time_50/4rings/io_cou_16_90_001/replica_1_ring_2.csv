@@ -1,0 +1,31 @@
+16:38:44,556 INFO  [main] RawABListener:48 - Initing a RawABListener...
+16:38:44,571 INFO  [main] Node:101 - PID: 17054
+16:38:44,770 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+16:38:44,774 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+16:38:44,774 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+16:38:44,797 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+16:38:44,797 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+16:38:44,798 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+16:38:44,803 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+16:38:44,805 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+16:38:44,808 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23] (succsessor: 21 at /10.10.1.3:2998)
+16:38:44,980 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2084)
+16:39:07,528 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [true], useDiskDb [true] with simple constructor
+1681425547531, 0, 0
+Reading from stdin
+1681425548531, 2271, 2271
+1681425549531, 3047, 5318
+1681425550532, 145, 5463
+1681425551532, 87, 5550
+1681425552533, 1239, 6789
+1681425553533, 493, 7282
+1681425554534, 502, 7784
+1681425555534, 507, 8291
+1681425556535, 496, 8787
+1681425557535, 491, 9278
+1681425558536, 504, 9782
+1681425559537, 244, 10026
+16:39:20,516 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+1681425560537, 0, 10026
+16:39:20,619 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+16:39:20,619 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners

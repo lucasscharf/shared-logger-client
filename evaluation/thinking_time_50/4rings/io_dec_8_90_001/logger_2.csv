@@ -1,0 +1,85 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+21:36:24,562 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.749s. Listening on: http://0.0.0.0:8888
+21:36:24,571 INFO  quarkus:91 [main] Profile prod activated. 
+21:36:24,571 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+21:36:28,160 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+21:36:28,254 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
+21:36:28,255 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+21:36:28,364 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+21:36:28,850 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/6d04a00f-377e-44b2-8f0e-202eb53e2d3a]
+1681443388852, 0, 0
+21:36:28,899 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+1681443389852, 0, 0
+21:36:30,352 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
+21:36:30,354 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+21:36:30,458 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+21:36:30,465 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+21:36:30,570 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/8cb62b39-9708-4e53-9193-958ea97c8d44]
+21:36:30,607 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
+21:36:30,607 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+21:36:30,614 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+21:36:30,707 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/06c0f70f-0d26-46b3-a318-5a779f7f0fc5]
+21:36:30,710 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+1681443390853, 0, 0
+21:36:30,857 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
+21:36:30,858 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+21:36:30,977 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
+21:36:30,984 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+21:36:31,081 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/49b4960b-c095-48ff-9d6c-1a3153e62e1f]
+1681443391854, 0, 0
+1681443392854, 0, 0
+1681443393855, 12, 12
+1681443394855, 9, 21
+1681443395856, 0, 21
+1681443396856, 7, 28
+1681443397857, 0, 28
+1681443398857, 0, 28
+1681443399857, 0, 28
+1681443400858, 0, 28
+1681443401858, 0, 28
+1681443402858, 0, 28
+1681443403859, 32, 60
+1681443404859, 0, 60
+1681443405859, 0, 60
+1681443406860, 0, 60
+1681443407860, 0, 60
+1681443408860, 0, 60
+1681443409861, 0, 60
+1681443410861, 0, 60
+1681443411861, 0, 60
+1681443412862, 0, 60
+1681443413862, 32, 92
+1681443414863, 0, 92
+1681443415863, 0, 92
+1681443416863, 0, 92
+1681443417864, 0, 92
+1681443418864, 0, 92
+1681443419864, 0, 92
+1681443420864, 0, 92
+1681443421865, 0, 92
+1681443422865, 0, 92
+1681443423865, 32, 124
+1681443424866, 0, 124
+1681443425866, 0, 124
+1681443426867, 0, 124
+1681443427867, 0, 124
+1681443428867, 0, 124
+1681443429868, 0, 124
+1681443430868, 0, 124
+1681443431868, 0, 124
+1681443432868, 0, 124
+1681443433869, 0, 124
+1681443434869, 0, 124
+21:37:15,267 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+21:37:15,276 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+21:37:15,277 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+21:37:15,277 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+21:37:15,278 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+21:37:15,278 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+21:37:15,278 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+21:37:15,279 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681443435869, 0, 124
+1681443436870, 0, 124

@@ -1,0 +1,40 @@
+16:22:34,379 INFO  [main] RawABListener:48 - Initing a RawABListener...
+16:22:34,390 INFO  [main] Node:101 - PID: 8940
+16:22:34,600 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+16:22:34,605 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+16:22:34,606 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+16:22:34,629 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+16:22:34,629 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+16:22:34,630 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+16:22:34,634 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+16:22:34,636 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+16:22:34,639 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 4, 13] (succsessor: 2 at /10.10.1.2:2108)
+16:22:34,657 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13] (succsessor: 1 at /10.10.1.3:2589)
+16:22:34,684 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14] (succsessor: 14 at /10.10.1.6:2242)
+16:22:44,208 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 5, 13, 14] (succsessor: 14 at /10.10.1.6:2242)
+16:22:44,260 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:1755 ballot:11 v_ballot:0 value:<none> (159407974253431)]
+16:22:44,648 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 1755
+16:22:52,799 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1681424572800, 0, 0
+Reading from stdin
+1681424573801, 4074, 4074
+1681424574801, 5721, 9795
+1681424575802, 3514, 13309
+1681424576802, 7405, 20714
+1681424577802, 6245, 26959
+1681424578803, 6443, 33402
+1681424579803, 3697, 37099
+1681424580804, 5486, 42585
+1681424581804, 6494, 49079
+1681424582805, 5899, 54978
+1681424583805, 6578, 61556
+1681424584806, 4833, 66389
+1681424585806, 6306, 72695
+1681424586806, 6003, 78698
+1681424587807, 4779, 83477
+1681424588807, 5829, 89306
+1681424589807, 5911, 95217
+1681424590808, 7028, 102245
+16:23:10,845 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+16:23:10,846 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+16:23:10,846 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/learners

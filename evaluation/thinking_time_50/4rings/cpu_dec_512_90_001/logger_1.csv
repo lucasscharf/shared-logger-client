@@ -1,0 +1,114 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+16:56:21,753 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.769s. Listening on: http://0.0.0.0:8888
+16:56:21,762 INFO  quarkus:91 [main] Profile prod activated. 
+16:56:21,763 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+16:56:28,951 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+16:56:29,033 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+16:56:29,395 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/cac939d6-c2eb-420c-8489-abe17e504600]
+1681426589397, 0, 0
+16:56:29,478 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+16:56:29,585 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/8b30cfaa-bf8a-4216-bd8a-c92305296f71]
+16:56:29,860 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+16:56:29,933 ERROR QuarkusErrorHandler:97 [executor-thread-1] HTTP Request to /registerReplica failed, error id: 698993ac-dc39-4527-8a8f-5ef4d954175c-1: org.jboss.resteasy.spi.UnhandledException: java.net.BindException: Address already in use
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:469)
+	at java.base/sun.nio.ch.Net.bind(Net.java:458)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80)
+	at ch.usi.da.paxos.ring.NetworkManager.startServer(NetworkManager.java:133)
+	at ch.usi.da.paxos.ring.RingManager.init(RingManager.java:97)
+	at ch.usi.da.paxos.ring.Node.update(Node.java:129)
+	at ch.usi.da.paxos.ring.Node.start(Node.java:105)
+	at ch.usi.da.smr.transport.RawABListener.<init>(RawABListener.java:55)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:158)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:143)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:67)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+
+16:56:30,017 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+16:56:30,110 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/93bc94c1-5dc8-4063-b00d-8b503ea53ccb]
+1681426590398, 0, 0
+1681426591398, 0, 0
+1681426592399, 0, 0
+1681426593399, 6379, 6379
+1681426594400, 36012, 42391
+1681426595400, 42419, 84810
+1681426596402, 37288, 122098
+1681426597402, 41005, 163103
+1681426598402, 37555, 200658
+1681426599403, 36015, 236673
+1681426600403, 36380, 273053
+1681426601404, 32957, 306010
+1681426602404, 14919, 320929
+1681426603404, 11729, 332658
+1681426604406, 15667, 348325
+1681426605406, 16405, 364730
+1681426606407, 16880, 381610
+1681426607407, 29970, 411580
+1681426608407, 15562, 427142
+1681426609408, 34933, 462075
+1681426610408, 44399, 506474
+1681426611409, 43676, 550150
+1681426612409, 44376, 594526
+1681426613409, 44548, 639074
+1681426614410, 39950, 679024
+1681426615410, 42662, 721686
+1681426616411, 39617, 761303
+1681426617411, 50469, 811772
+1681426618411, 41908, 853680
+1681426619412, 47107, 900787
+1681426620412, 38285, 939072
+1681426621413, 50654, 989726
+1681426622413, 51626, 1041352
+1681426623413, 40887, 1082239
+1681426624413, 41215, 1123454
+16:57:05,005 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:57:05,017 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+16:57:05,018 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:57:05,019 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+16:57:05,019 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+16:57:05,020 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681426625414, 38920, 1162374
+1681426626414, 29611, 1191985
