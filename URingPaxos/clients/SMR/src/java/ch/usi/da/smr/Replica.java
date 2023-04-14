@@ -203,20 +203,19 @@ public class Replica implements Receiver {
 	}
 
 	private void clearDatabaseFileSystem() {
-		fileDatabase = Paths.get("/media/disk1/");
+		fileDatabase = Paths.get(pathPrefix);
 		try {
 			Files.createDirectories(fileDatabase);
 			Files.list(fileDatabase).forEach(f -> {
 				try {
 					Files.deleteIfExists(f);
 				} catch (Exception ex) {
-					ex.printStackTrace();
+					logger.error("Error trying cleaning database in " + f);
 				}
 			});
-			Files.deleteIfExists(fileDatabase);
-			Files.createDirectories(fileDatabase);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
+			logger.error("Error trying cleaning database in " + pathPrefix);
 		}
 	}
 

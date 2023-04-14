@@ -11,8 +11,8 @@ neptune=node6
 
 
 apps=(cpu)
-logs=(dec)
-threads=(8)
+logs=(sem)
+threads=(128 256 512 1024 2048)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
 
@@ -20,7 +20,7 @@ cd ~/shared-logger-client/scripts
 
 for ip in "${ips[@]}" 
 do
-	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chmod 777 /tmp ; sudo chown lucas123 /media ; sudo mkdir /media/disk1 ; sudo rm -rf /media/disk1/*'
+	ssh lucas123@$ip 'sudo rm -rf /tmp/* ; sudo chmod 777 /tmp ; sudo chown -R lucas123 /media ; sudo rm -rf /media/disk1/* ; sudo rm -rf /media/disk2/* ; sudo rm -rf /media/disk3/* ; sudo rm -rf /media/disk4/* ; sudo rm -rf /media/disk5/* ; sudo rm -rf /media/disk6/*'
 done 
 
 for app in "${apps[@]}" 
