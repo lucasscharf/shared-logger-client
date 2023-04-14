@@ -119,6 +119,7 @@ public class Replica implements Receiver {
 	private volatile boolean active_snapshot = false;
 	private boolean embebedLog;
 	private boolean useDiskDb;
+	private String pathPrefix;
 	private Path path;
 	private AtomicInteger commandsReceivedCounter;
 	private Path fileDatabase;
@@ -131,6 +132,7 @@ public class Replica implements Receiver {
 		udp = null;
 		ab = null;
 		path = Paths.get("/media/disk1/filesystem" + UUID.randomUUID().toString());
+		pathPrefix = path.toString();
 		clearDatabaseFileSystem();
 
 		logger.info(String.format(
@@ -151,6 +153,7 @@ public class Replica implements Receiver {
 		this.snapshot_modulo = snapshot_modulo;
 		this.partitions = new PartitionManager(zoo_host);
 		this.embebedLog = embebedLog;
+		this.pathPrefix = pathPrefix;
 
 		udp = new UDPSender();
 		commandsReceivedCounter = new AtomicInteger();
