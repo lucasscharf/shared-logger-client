@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sun=$1
+mars=$1
 earth=$2
 venus=$3
 mars=$4
@@ -11,30 +11,26 @@ outputFile=$8
 
 mkdir -p $outputFile
 
-echo "Sun: $sun"
-echo "Uranus: $uranus"
-echo "Jupyter: $jupyter"
-
-scp lucas123@$sun:/tmp/execucao_1 /tmp/client.log
+scp lucas123@$mars:/tmp/execucao_1 /tmp/client.log
 latencyPath=$(cat /tmp/client.log | grep "Raw path" | cut -d'[' -f3  | cut -d']' -f1 | cut -d' ' -f2 )
-scp lucas123@$sun:$latencyPath $outputFile/client_latency_1.csv
+scp lucas123@$mars:$latencyPath $outputFile/client_latency_1.csv
 
-scp lucas123@$sun:/tmp/execucao_2 /tmp/client_ring_2.log
+scp lucas123@$mars:/tmp/execucao_2 /tmp/client_ring_2.log
 latencyPath=$(cat /tmp/client_ring_2.log | grep "Raw path" | cut -d'[' -f3  | cut -d']' -f1 | cut -d' ' -f2 )
-scp lucas123@$sun:$latencyPath $outputFile/client_latency_2.csv
+scp lucas123@$mars:$latencyPath $outputFile/client_latency_2.csv
 
-scp lucas123@$sun:/tmp/execucao_3 /tmp/client_ring_3.log
+scp lucas123@$mars:/tmp/execucao_3 /tmp/client_ring_3.log
 latencyPath=$(cat /tmp/client_ring_3.log | grep "Raw path" | cut -d'[' -f3  | cut -d']' -f1 | cut -d' ' -f2 )
-scp lucas123@$sun:$latencyPath $outputFile/client_latency_3.csv
+scp lucas123@$mars:$latencyPath $outputFile/client_latency_3.csv
 
-scp lucas123@$sun:/tmp/execucao_4 /tmp/client_ring_4.log
+scp lucas123@$mars:/tmp/execucao_4 /tmp/client_ring_4.log
 latencyPath=$(cat /tmp/client_ring_4.log | grep "Raw path" | cut -d'[' -f3  | cut -d']' -f1 | cut -d' ' -f2 )
-scp lucas123@$sun:$latencyPath $outputFile/client_latency_4.csv
+scp lucas123@$mars:$latencyPath $outputFile/client_latency_4.csv
 
-scp lucas123@$sun:/tmp/execucao_1 $outputFile/client_ring_1.log
-scp lucas123@$sun:/tmp/execucao_2 $outputFile/client_ring_2.log
-scp lucas123@$sun:/tmp/execucao_3 $outputFile/client_ring_3.log
-scp lucas123@$sun:/tmp/execucao_4 $outputFile/client_ring_4.log
+scp lucas123@$mars:/tmp/execucao_1 $outputFile/client_ring_1.log
+scp lucas123@$mars:/tmp/execucao_2 $outputFile/client_ring_2.log
+scp lucas123@$mars:/tmp/execucao_3 $outputFile/client_ring_3.log
+scp lucas123@$mars:/tmp/execucao_4 $outputFile/client_ring_4.log
 
 scp lucas123@$neptune:/tmp/execucaoLogger $outputFile/logger_1.csv
 scp lucas123@$neptune:/tmp/loggerStatsOutdated $outputFile/logger_1_latency.csv

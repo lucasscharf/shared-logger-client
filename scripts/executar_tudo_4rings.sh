@@ -10,9 +10,9 @@ uranus=node5
 neptune=node6
 
 
-apps=(cpu)
-logs=(sem)
-threads=(128 256 512 1024 2048)
+apps=(cpu io)
+logs=(sem dec cou)
+threads=(8 16 32 64 128 256 512 1024 2048)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
 
@@ -61,7 +61,7 @@ do
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
-			~/shared-logger-client/scripts/run_experiment.sh $thread
+			ssh lucas123@$mars ~/shared-logger-client/scripts/run_experiment.sh $thread
 			echo "Killing sshs"
 			killall -9 ssh
 
@@ -77,7 +77,7 @@ do
 			done 
 
 			echo "Getting logs"
-			~/shared-logger-client/scripts/recovery_logs_4rings.sh $sun $earth $venus $mars $jupyter $neptune $uranus $outputFile
+			~/shared-logger-client/scripts/recovery_logs_4rings.sh $mars $earth $venus $mars $jupyter $neptune $uranus $outputFile
 
 			echo "Rebuilding zookeeper"
 			~/shared-logger-client/scripts/clean_zookeeper.sh > /dev/null
