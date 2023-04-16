@@ -9,10 +9,10 @@ jupyter=node4
 uranus=node5
 neptune=node6
 
-
+number_of_experiments=2
 apps=(cpu)
-logs=(cou)
-threads=(512 1024 2048)
+logs=(sem)
+threads=(1024 2048)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
 
@@ -36,7 +36,7 @@ do
 				sleep 2
 			fi
 
-			outputFile=~/shared-logger-client/evaluation/thinking_time_50/4rings/$app\_$log\_$thread\_90_001/
+			outputFile=~/shared-logger-client/evaluation/thinking_time_50/2rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
@@ -61,7 +61,7 @@ do
 			sleep 5
 
 			echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
-			ssh lucas123@$mars ~/shared-logger-client/scripts/run_experiment.sh $thread
+			ssh lucas123@$mars ~/shared-logger-client/scripts/run_experiment.sh $thread $number_of_experiments
 			echo "Killing sshs"
 			killall -9 ssh
 

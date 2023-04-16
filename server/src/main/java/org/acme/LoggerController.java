@@ -112,10 +112,12 @@ public class LoggerController {
     if (clusterSize <= 0)
       clusterSize = 1;
     int id = config.id;
+   
     for (int i = 0; i < clusterSize; i++) {
       int newId = i + id;
       int urlId = (newId) % clusterSize;
-      logger.info("Calling logger in url id [{}] with id [{}]", urlId, newId);
+      config.pathPrefix =  "/media/disk" + i + "/";
+      logger.info("Calling logger in url id [{}] with id [{}] and path [{}]", urlId, newId, config.pathPrefix);
       config.id = newId;
       loggerRestClients.get(urlId).registerReplica(config);
     }
@@ -271,8 +273,8 @@ public class LoggerController {
                   + separator + other
                   + separator + commandsSize
                   + "/";
-              String latencyPath = folderPath + "client_latency.csv";
-              String replicaPath = folderPath + "replica_1.csv";
+              String latencyPath = folderPath + "client_latency_1.csv";
+              String replicaPath = folderPath + "replica_1_ring_1.csv";
               String latencyAvg = readAvgLatency(latencyPath);
               String latencyP50 = readPercentilLatency(latencyPath, 50);
               String latencyP95 = readPercentilLatency(latencyPath, 95);
@@ -281,7 +283,7 @@ public class LoggerController {
               String throughputP95Replica = readPercentilThroughput(replicaPath, 95);
 
               String latencyPath_ring_2 = folderPath + "client_latency_2.csv";
-              String replicaPath_ring_2 = folderPath + "replica_1_ring_2.csv";
+              String replicaPath_ring_2 = folderPath + "replica_2_ring_2.csv";
               String latencyAvg_ring_2 = readAvgLatency(latencyPath_ring_2);
               String latencyP50_ring_2 = readPercentilLatency(latencyPath_ring_2, 50);
               String latencyP95_ring_2 = readPercentilLatency(latencyPath_ring_2, 95);
