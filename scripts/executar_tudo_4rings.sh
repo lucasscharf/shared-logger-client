@@ -9,9 +9,9 @@ jupyter=node4
 uranus=node5
 neptune=node6
 
-number_of_experiments=2
-apps=(cpu)
-logs=(sem)
+number_of_experiments=4
+apps=(cpu io)
+logs=(dec)
 threads=(1024 2048)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
@@ -36,27 +36,27 @@ do
 				sleep 2
 			fi
 
-			outputFile=~/shared-logger-client/evaluation/thinking_time_50/2rings/$app\_$log\_$thread\_90_001/
+			outputFile=~/shared-logger-client/evaluation/thinking_time_50/$number_of_experiments\rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
-			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
-			# ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
+			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
+			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
-			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
-			# ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
+			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
+			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
 
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
-			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
-			# ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
+			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
+			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
 			
 			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
 			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_2.sh" &
-			# ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
-			# ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
+			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
+			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
 
 			sleep 5
 
