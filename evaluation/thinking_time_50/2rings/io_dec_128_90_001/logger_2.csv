@@ -2,40 +2,197 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-19:34:30,108 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.220s. Listening on: http://0.0.0.0:8888
-19:34:30,115 INFO  quarkus:91 [main] Profile prod activated. 
-19:34:30,115 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-19:34:33,986 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-19:34:33,989 INFO  LoggerController:140 [executor-thread-1] Executing performance test with thread counter [128] and ring counter [2]
-19:34:34,275 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/328cdbbd-1061-4f31-a397-4ce888ac1f17]
-1672713274276, 0, 0
-19:34:34,366 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk2/61495e2e-53a3-4c82-a57f-35d46eaeddd5]
-1672713275277, 7437, 7437
-1672713276277, 8667, 16104
-1672713277278, 8627, 24731
-1672713278278, 8669, 33400
-1672713279279, 8638, 42038
-1672713280279, 8691, 50729
-1672713281280, 8654, 59383
-1672713282281, 8610, 67993
-1672713283281, 8663, 76656
-1672713284281, 8697, 85353
-1672713285282, 8590, 93943
-1672713286282, 8645, 102588
-1672713287282, 8677, 111265
-1672713288283, 8599, 119864
-1672713289283, 8685, 128549
-1672713290284, 8641, 137190
-1672713291284, 8580, 145770
-1672713292284, 8638, 154408
-1672713293285, 8629, 163037
-1672713294285, 8661, 171698
-1672713295285, 8669, 180367
-1672713296286, 8597, 188964
-1672713297287, 8630, 197594
-1672713298287, 8671, 206265
-1672713299288, 8464, 214729
-1672713300288, 8567, 223296
-1672713301288, 8697, 231993
-1672713302289, 8611, 240604
-1672713303289, 8582, 249186
+19:26:18,958 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.685s. Listening on: http://0.0.0.0:8888
+19:26:18,967 INFO  quarkus:91 [main] Profile prod activated. 
+19:26:18,967 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+19:26:22,559 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+19:26:22,639 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
+19:26:22,640 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+19:26:22,757 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+19:26:23,127 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/4edcf4a0-6d0c-44e8-b340-111611d1bc40]
+1681608383129, 0, 0
+19:26:23,239 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+1681608384129, 0, 0
+19:26:24,351 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
+19:26:24,352 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+19:26:24,463 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+19:26:24,470 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+19:26:24,557 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/98f47d99-5f82-45f8-b19d-3a87533c5bb9]
+19:26:24,599 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
+19:26:24,600 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+19:26:24,608 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+19:26:24,684 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 8a4b7aca-9bde-4f63-8cb2-6c2432ac1431-1: org.jboss.resteasy.spi.UnhandledException: java.net.BindException: Address already in use
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:469)
+	at java.base/sun.nio.ch.Net.bind(Net.java:458)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80)
+	at ch.usi.da.paxos.ring.NetworkManager.startServer(NetworkManager.java:133)
+	at ch.usi.da.paxos.ring.RingManager.init(RingManager.java:97)
+	at ch.usi.da.paxos.ring.Node.update(Node.java:129)
+	at ch.usi.da.paxos.ring.Node.start(Node.java:105)
+	at ch.usi.da.smr.transport.RawABListener.<init>(RawABListener.java:55)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:161)
+	at ch.usi.da.smr.Replica.<init>(Replica.java:145)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:67)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+
+19:26:24,712 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+19:26:24,767 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
+19:26:24,768 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+19:26:24,845 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
+19:26:24,853 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+19:26:24,924 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/66c3242d-3179-4b1c-9789-ccf1ce5a64c8]
+1681608385131, 798, 798
+19:26:25,561 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 17
+19:26:25,564 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 18
+19:26:25,564 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 19
+19:26:25,565 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 20
+19:26:25,566 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 21
+19:26:25,566 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 22
+19:26:25,567 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 23
+19:26:25,567 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 24
+19:26:25,567 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 25
+19:26:25,567 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 26
+19:26:25,568 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 27
+19:26:25,568 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 28
+19:26:25,568 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 29
+19:26:25,569 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 30
+19:26:25,569 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 31
+19:26:25,571 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 32
+19:26:25,571 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 33
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 34
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 35
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 36
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 37
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 38
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 39
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 40
+19:26:25,572 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 41
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 42
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 43
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 44
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 45
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 46
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 47
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 48
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 49
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 50
+19:26:25,573 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 51
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 52
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 53
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 54
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 55
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 56
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 57
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 58
+19:26:25,574 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 59
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 60
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 61
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 62
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 63
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 64
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 65
+19:26:25,575 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 66
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 67
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 68
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 69
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 70
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 71
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 72
+19:26:25,576 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 73
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 74
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 75
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 76
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 77
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 78
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 79
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 80
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 81
+19:26:25,577 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 82
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 83
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 84
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 85
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 86
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 87
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 88
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 89
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 90
+19:26:25,578 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 91
+1681608386131, 3647, 4445
+1681608387132, 3827, 8272
+1681608388152, 3777, 12049
+1681608389153, 3922, 15971
+1681608390155, 3538, 19509
+1681608391155, 3709, 23218
+1681608392156, 3820, 27038
+1681608393157, 3900, 30938
+1681608394157, 3859, 34797
+1681608395158, 3016, 37813
+1681608396158, 3892, 41705
+1681608397159, 3820, 45525
+1681608398159, 3859, 49384
+1681608399160, 3851, 53235
+1681608400160, 3189, 56424
+1681608401161, 3861, 60285
+1681608402162, 3875, 64160
+1681608403163, 3902, 68062
+1681608404163, 3852, 71914
+1681608405164, 3518, 75432
+1681608406165, 3087, 78519
+1681608407165, 3866, 82385
+1681608408166, 3865, 86250
+1681608409168, 3862, 90112
+1681608410168, 3503, 93615
+1681608411169, 3859, 97474
+1681608412170, 2874, 100348
+1681608413172, 3921, 104269
+1681608414172, 3220, 107489
+1681608415173, 102, 107591
+19:26:55,840 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:26:55,853 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+19:26:55,853 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:26:55,854 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+19:26:55,854 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:26:55,855 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681608416173, 0, 107591
+1681608417174, 0, 107591

@@ -1,0 +1,68 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+20:19:37,301 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.631s. Listening on: http://0.0.0.0:8888
+20:19:37,309 INFO  quarkus:91 [main] Profile prod activated. 
+20:19:37,309 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:19:44,125 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+20:19:44,202 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+20:19:44,571 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/fabd6159-2613-4011-90e9-260ab5d478e1]
+1681611584573, 0, 0
+20:19:44,629 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+20:19:44,710 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/d0c51a7e-0f8d-4020-b03e-d673c332936c]
+20:19:44,893 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+20:19:44,981 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/57b2c486-75df-4018-bfaf-6dd858c498f6]
+20:19:45,028 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+20:19:45,098 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/77747bf5-656e-4e6f-ad9a-e192af1196db]
+1681611585573, 16, 16
+1681611586574, 0, 16
+1681611587574, 0, 16
+1681611588575, 153, 169
+1681611589575, 279, 448
+1681611590576, 493, 941
+1681611591576, 493, 1434
+1681611592577, 499, 1933
+1681611593577, 489, 2422
+1681611594578, 491, 2913
+1681611595579, 500, 3413
+1681611596579, 496, 3909
+1681611597580, 513, 4422
+1681611598580, 507, 4929
+1681611599581, 508, 5437
+1681611600582, 527, 5964
+1681611601582, 502, 6466
+1681611602583, 508, 6974
+1681611603583, 499, 7473
+1681611604583, 491, 7964
+1681611605584, 501, 8465
+1681611606584, 494, 8959
+1681611607585, 512, 9471
+1681611608586, 505, 9976
+1681611609586, 500, 10476
+1681611610586, 506, 10982
+1681611611587, 493, 11475
+1681611612587, 499, 11974
+1681611613588, 501, 12475
+1681611614589, 227, 12702
+20:20:15,538 ERROR [executor-thread-1-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+1681611615589, 0, 12702
+20:20:16,094 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+20:20:16,107 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:20:16,108 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+20:20:16,108 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:20:16,109 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+20:20:16,109 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:20:16,109 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+20:20:16,110 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681611616589, 0, 12702

@@ -1,0 +1,73 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+19:27:36,979 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.747s. Listening on: http://0.0.0.0:8888
+19:27:36,985 INFO  quarkus:91 [main] Profile prod activated. 
+19:27:36,986 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+19:27:44,132 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+19:27:44,215 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+19:27:44,600 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/58913920-252c-45db-91d6-6033d9ecc68d]
+1681608464602, 0, 0
+19:27:44,677 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+19:27:44,803 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/27840791-9381-445c-9187-b3415d978c15]
+19:27:44,820 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+19:27:44,842 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:32 ballot:31 v_ballot:0 value:<none> (1081807297566621)]
+19:27:44,878 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:373)
+	at java.base/java.util.ArrayList.get(ArrayList.java:426)
+	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
+	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+19:27:44,883 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:66 ballot:31 v_ballot:0 value:<none> (1081814066597321)]
+19:27:45,004 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+19:27:45,095 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/b3d0159a-9744-4410-b181-9b4df73c172d]
+19:27:45,147 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+19:27:45,215 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/809238b3-d7d3-4a5c-aefb-8ee23d431483]
+1681608465602, 3627, 3627
+19:27:45,811 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 66
+1681608466603, 18492, 22119
+1681608467604, 15259, 37378
+1681608468604, 15555, 52933
+1681608469605, 15622, 68555
+1681608470605, 11914, 80469
+1681608471606, 15458, 95927
+1681608472606, 14355, 110282
+1681608473607, 15377, 125659
+1681608474607, 14644, 140303
+1681608475608, 12074, 152377
+1681608476608, 15659, 168036
+1681608477609, 13720, 181756
+1681608478609, 16907, 198663
+1681608479611, 13847, 212510
+1681608480611, 13231, 225741
+1681608481612, 15821, 241562
+1681608482612, 14653, 256215
+1681608483612, 15653, 271868
+1681608484613, 12584, 284452
+1681608485613, 14406, 298858
+1681608486615, 16296, 315154
+1681608487616, 15819, 330973
+1681608488617, 15320, 346293
+1681608489618, 15484, 361777
+1681608490623, 12316, 374093
+1681608491624, 14720, 388813
+1681608492624, 15362, 404175
+1681608493624, 15485, 419660
+1681608494625, 6302, 425962
+1681608495625, 0, 425962
+19:28:15,980 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:28:15,995 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+19:28:15,995 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:28:15,996 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+19:28:15,996 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:28:15,997 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+19:28:15,997 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+19:28:15,998 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681608496626, 0, 425962
