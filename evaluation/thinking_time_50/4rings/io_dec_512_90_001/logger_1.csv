@@ -2,65 +2,82 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-16:23:52,252 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.719s. Listening on: http://0.0.0.0:8888
-16:23:52,258 INFO  quarkus:91 [main] Profile prod activated. 
-16:23:52,259 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-16:24:11,489 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-16:24:11,586 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-16:24:12,005 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:1533 ballot:11 v_ballot:0 value:<none> (160285472805691)]
-16:24:12,017 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 1!
-16:24:13,625 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/1408080d-feda-4740-81ac-3050ba8687ec]
-1681424653627, 0, 0
-16:24:13,702 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-16:24:13,790 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:2694 ballot:31 v_ballot:0 value:<none> (1603036381198121)]
-16:24:13,811 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
-16:24:14,167 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/c1f047bd-e036-4c67-b02e-0ff2b2a8d8ad]
-16:24:14,250 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:2935 ballot:31 v_ballot:0 value:<none> (1603083625731321)]
-1681424654627, 0, 0
-16:24:14,794 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 2935
-16:24:14,794 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 2936
-1681424655628, 0, 0
-1681424656628, 0, 0
-16:24:17,617 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-1681424657629, 0, 0
-16:24:17,691 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:3121 ballot:41 v_ballot:0 value:<none> (1603426632311431)]
-16:24:17,692 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
-16:24:17,692 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:3124 ballot:41 v_ballot:0 value:<none> (1603427615176831)]
-1681424658629, 0, 0
-16:24:18,767 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/af38887b-851a-4f96-bdb3-821a153b1855]
-16:24:18,813 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-16:24:18,891 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:42 to:Learner instance:35882 ballot:51 v_ballot:0 value:<none> (1603547122841641)]
-16:24:18,892 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
-16:24:19,185 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/f3dcefd6-234f-458e-8c8f-44d968f2d5d5]
-1681424659630, 1259, 1259
-1681424660630, 2513, 3772
-1681424661632, 2639, 6411
-1681424662633, 2415, 8826
-1681424663633, 1687, 10513
-1681424664634, 1661, 12174
-1681424665634, 2202, 14376
-1681424666635, 4766, 19142
-1681424667636, 4975, 24117
-1681424668636, 4504, 28621
-1681424669637, 3756, 32377
-1681424670637, 3200, 35577
-1681424671674, 2648, 38225
-1681424672676, 2483, 40708
-1681424673676, 853, 41561
-1681424674678, 8, 41569
-1681424675679, 58, 41627
-1681424676680, 120, 41747
-1681424677681, 98, 41845
-1681424678683, 85, 41930
-1681424679683, 34, 41964
-1681424680685, 36, 42000
-1681424681685, 0, 42000
-16:24:42,031 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:24:42,040 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:24:42,041 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:24:42,041 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:24:42,041 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:24:42,042 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:24:42,042 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:24:42,043 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1681424682686, 0, 42000
+18:38:25,032 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.920s. Listening on: http://0.0.0.0:8888
+18:38:25,040 INFO  quarkus:91 [main] Profile prod activated. 
+18:38:25,041 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+18:38:31,977 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+18:38:32,053 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+18:38:32,441 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/b64fa178-9868-4fe2-9d08-ea7199847802]
+1681605512445, 0, 0
+18:38:32,566 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+18:38:32,651 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/9f64e8be-b4f5-4d5d-819a-c268751d06a6]
+18:38:32,896 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+18:38:32,971 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/5028f35c-0037-4c55-9b0c-638daf0f3b45]
+18:38:33,020 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
+18:38:33,084 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/492b2067-c075-4f19-b21d-cde4ea742e12]
+1681605513445, 512, 512
+1681605514446, 0, 512
+18:38:34,732 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:209 ballot:31 v_ballot:0 value:<none> (786797460098321)]
+18:38:34,741 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+1681605515449, 8764, 9276
+18:38:35,765 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:177 ballot:41 v_ballot:0 value:<none> (786902277654731)]
+18:38:35,769 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
+1681605516450, 20869, 30145
+1681605517450, 24815, 54960
+1681605518451, 14945, 69905
+1681605519452, 24925, 94830
+1681605520452, 21618, 116448
+1681605521453, 21156, 137604
+1681605522453, 22087, 159691
+1681605523454, 17756, 177447
+1681605524455, 25305, 202752
+1681605525455, 21407, 224159
+1681605526456, 24330, 248489
+1681605527456, 23984, 272473
+1681605528456, 16783, 289256
+1681605529457, 23088, 312344
+1681605530458, 30069, 342413
+1681605531459, 26155, 368568
+1681605532459, 27952, 396520
+1681605533459, 21968, 418488
+1681605534460, 25697, 444185
+1681605535461, 28884, 473069
+1681605536461, 28816, 501885
+1681605537462, 27378, 529263
+1681605538462, 26742, 556005
+1681605539463, 31896, 587901
+1681605540463, 26791, 614692
+1681605541464, 29143, 643835
+1681605542464, 17921, 661756
+1681605543465, 0, 661756
+1681605544465, 0, 661756
+1681605545465, 0, 661756
+1681605546466, 0, 661756
+1681605547466, 0, 661756
+1681605548466, 0, 661756
+1681605549466, 0, 661756
+1681605550467, 0, 661756
+1681605551467, 0, 661756
+1681605552468, 0, 661756
+1681605553468, 0, 661756
+18:39:13,862 ERROR [executor-thread-1-EventThread] NetworkManager:298 - NetworkManager client connect error
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:730)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+18:39:14,435 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:39:14,447 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:39:14,447 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:39:14,448 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:39:14,449 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:39:14,450 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:39:14,450 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:39:14,451 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681605554468, 0, 661756
+1681605555469, 0, 661756

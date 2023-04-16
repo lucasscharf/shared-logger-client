@@ -2,236 +2,77 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-16:25:24,836 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.983s. Listening on: http://0.0.0.0:8888
-16:25:24,846 INFO  quarkus:91 [main] Profile prod activated. 
-16:25:24,846 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-16:25:28,235 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-16:25:28,322 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
-16:25:28,323 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
-16:25:28,409 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:25:35,786 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:1 ballot:21 v_ballot:11 value:<none> (161113344298101)]
-16:25:35,801 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:2 ballot:21 v_ballot:11 value:<none> (161113472504591)]
-16:25:35,802 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:3 ballot:21 v_ballot:11 value:<none> (161113505339281)]
-16:25:35,804 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:4 ballot:21 v_ballot:11 value:<none> (161113606944491)]
-16:25:35,804 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:5 ballot:21 v_ballot:11 value:<none> (161113610197941)]
-16:25:35,804 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:6 ballot:21 v_ballot:11 value:<none> (161113618543051)]
-16:25:35,804 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:7 ballot:21 v_ballot:11 value:<none> (161113624898151)]
-16:25:35,804 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:8 ballot:21 v_ballot:11 value:<none> (161113630229881)]
-16:25:35,805 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:9 ballot:21 v_ballot:11 value:<none> (161113634636151)]
-16:25:35,805 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:10 ballot:21 v_ballot:11 value:<none> (161113637430191)]
-16:25:35,805 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:11 ballot:21 v_ballot:11 value:<none> (161113643374191)]
-16:25:35,805 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:12 ballot:21 v_ballot:11 value:<none> (161113648046881)]
-16:25:35,806 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:13 ballot:21 v_ballot:11 value:<none> (161113651521891)]
-16:25:35,806 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:14 ballot:21 v_ballot:11 value:<none> (161113654697831)]
-16:25:35,806 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:15 ballot:21 v_ballot:11 value:<none> (161113663133911)]
-16:25:35,806 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:16 ballot:21 v_ballot:11 value:<none> (161113666029351)]
-16:25:35,809 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:17 ballot:21 v_ballot:11 value:<none> (161113668816731)]
-16:25:35,809 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:18 ballot:21 v_ballot:11 value:<none> (161113677228531)]
-16:25:35,809 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:19 ballot:21 v_ballot:11 value:<none> (161113679330251)]
-16:25:35,810 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:20 ballot:21 v_ballot:11 value:<none> (161113683057551)]
-16:25:35,810 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:21 ballot:21 v_ballot:11 value:<none> (161113689974551)]
-16:25:35,810 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:22 ballot:21 v_ballot:11 value:<none> (161113693377011)]
-16:25:35,810 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:23 ballot:21 v_ballot:11 value:<none> (161113697724521)]
-16:25:35,810 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:24 ballot:21 v_ballot:11 value:<none> (161113701610531)]
-16:25:35,811 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:25 ballot:21 v_ballot:11 value:<none> (161113707049531)]
-16:25:35,811 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:26 ballot:21 v_ballot:11 value:<none> (161113710165891)]
-16:25:35,811 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:27 ballot:21 v_ballot:11 value:<none> (161113713075321)]
-16:25:35,811 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:28 ballot:21 v_ballot:11 value:<none> (161113720365321)]
-16:25:35,811 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:29 ballot:21 v_ballot:11 value:<none> (161113723443661)]
-16:25:35,812 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:30 ballot:21 v_ballot:11 value:<none> (161113726139641)]
-16:25:35,812 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:31 ballot:21 v_ballot:11 value:<none> (161113732764231)]
-16:25:35,812 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:32 ballot:21 v_ballot:11 value:<none> (161113735325981)]
-16:25:35,812 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:33 ballot:21 v_ballot:11 value:<none> (161113738402941)]
-16:25:35,812 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:34 ballot:21 v_ballot:11 value:<none> (161113741730291)]
-16:25:35,813 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:35 ballot:21 v_ballot:11 value:<none> (161113744402561)]
-16:25:35,813 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:36 ballot:21 v_ballot:11 value:<none> (161113747358631)]
-16:25:35,813 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:37 ballot:21 v_ballot:11 value:<none> (161113752551961)]
-16:25:35,813 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:38 ballot:21 v_ballot:11 value:<none> (161113755073351)]
-16:25:35,814 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:39 ballot:21 v_ballot:11 value:<none> (161113757785941)]
-16:25:35,814 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:40 ballot:21 v_ballot:11 value:<none> (161113762775581)]
-16:25:35,814 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:41 ballot:21 v_ballot:11 value:<none> (161113765028441)]
-16:25:35,814 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:42 ballot:21 v_ballot:11 value:<none> (161113766492351)]
-16:25:35,814 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:43 ballot:21 v_ballot:11 value:<none> (161113773241071)]
-16:25:35,815 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:44 ballot:21 v_ballot:11 value:<none> (161113774878121)]
-16:25:35,815 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:45 ballot:21 v_ballot:11 value:<none> (161113776354941)]
-16:25:35,815 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:46 ballot:21 v_ballot:11 value:<none> (161113782463591)]
-16:25:35,815 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:47 ballot:21 v_ballot:11 value:<none> (161113785731021)]
-16:25:35,815 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:48 ballot:21 v_ballot:11 value:<none> (161113789760011)]
-16:25:35,816 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:49 ballot:21 v_ballot:11 value:<none> (161113795591411)]
-16:25:35,816 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:50 ballot:21 v_ballot:11 value:<none> (161113797824231)]
-16:25:35,816 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:51 ballot:21 v_ballot:11 value:<none> (161113799728031)]
-16:25:35,816 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:52 ballot:21 v_ballot:11 value:<none> (161113805724871)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:53 ballot:21 v_ballot:11 value:<none> (161113807491051)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:54 ballot:21 v_ballot:11 value:<none> (161113808777121)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:55 ballot:21 v_ballot:11 value:<none> (161113811970511)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:56 ballot:21 v_ballot:11 value:<none> (161113814357291)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:57 ballot:21 v_ballot:11 value:<none> (161113815978511)]
-16:25:35,817 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:58 ballot:21 v_ballot:11 value:<none> (161113817650321)]
-16:25:35,818 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:59 ballot:21 v_ballot:11 value:<none> (161113820410801)]
-16:25:35,818 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:60 ballot:21 v_ballot:11 value:<none> (161113823607551)]
-16:25:35,818 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:61 ballot:21 v_ballot:11 value:<none> (161113825389741)]
-16:25:35,818 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:62 ballot:21 v_ballot:11 value:<none> (161113827739741)]
-16:25:35,818 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:63 ballot:21 v_ballot:11 value:<none> (161113832084201)]
-16:25:35,819 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:64 ballot:21 v_ballot:11 value:<none> (161113834840301)]
-16:25:35,819 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:65 ballot:21 v_ballot:11 value:<none> (161113837505271)]
-16:25:35,819 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:66 ballot:21 v_ballot:11 value:<none> (161113842778431)]
-16:25:35,819 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:67 ballot:21 v_ballot:11 value:<none> (161113844953001)]
-16:25:35,819 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:68 ballot:21 v_ballot:11 value:<none> (161113847158491)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:69 ballot:21 v_ballot:11 value:<none> (161113850325671)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:70 ballot:21 v_ballot:11 value:<none> (161113853002541)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:71 ballot:21 v_ballot:11 value:<none> (161113854958631)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:72 ballot:21 v_ballot:11 value:<none> (161113856407651)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:73 ballot:21 v_ballot:11 value:<none> (161113858922911)]
-16:25:35,820 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:74 ballot:21 v_ballot:11 value:<none> (161113861753121)]
-16:25:35,821 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:75 ballot:21 v_ballot:11 value:<none> (161113864100061)]
-16:25:35,821 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:76 ballot:21 v_ballot:11 value:<none> (161113866943701)]
-16:25:35,821 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:77 ballot:21 v_ballot:11 value:<none> (161113870323741)]
-16:25:35,821 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:78 ballot:21 v_ballot:11 value:<none> (161113872279431)]
-16:25:35,821 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:79 ballot:21 v_ballot:11 value:<none> (161113873644451)]
-16:25:35,822 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:80 ballot:21 v_ballot:11 value:<none> (161113875695501)]
-16:25:35,822 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:81 ballot:21 v_ballot:11 value:<none> (161113879131401)]
-16:25:35,822 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:82 ballot:21 v_ballot:11 value:<none> (161113880571001)]
-16:25:35,823 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:83 ballot:21 v_ballot:11 value:<none> (161113882152471)]
-16:25:35,823 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:84 ballot:21 v_ballot:11 value:<none> (161113885432861)]
-16:25:35,823 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:85 ballot:21 v_ballot:11 value:<none> (161113886949581)]
-16:25:35,823 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:86 ballot:21 v_ballot:11 value:<none> (161113889313171)]
-16:25:35,823 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:87 ballot:21 v_ballot:11 value:<none> (161113892949401)]
-16:25:35,824 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:88 ballot:21 v_ballot:11 value:<none> (161113895140331)]
-16:25:35,824 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:89 ballot:21 v_ballot:11 value:<none> (161113898531371)]
-16:25:35,824 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:90 ballot:21 v_ballot:11 value:<none> (161113901187711)]
-16:25:35,824 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:91 ballot:21 v_ballot:11 value:<none> (161113904330411)]
-16:25:35,824 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:92 ballot:21 v_ballot:11 value:<none> (161113907251311)]
-16:25:35,825 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:93 ballot:21 v_ballot:11 value:<none> (161113911270671)]
-16:25:35,825 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:94 ballot:21 v_ballot:11 value:<none> (161113913294191)]
-16:25:35,825 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:95 ballot:21 v_ballot:11 value:<none> (161113920174361)]
-16:25:35,825 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:96 ballot:21 v_ballot:11 value:<none> (161113926674211)]
-16:25:35,825 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:97 ballot:21 v_ballot:11 value:<none> (161113929153391)]
-16:25:35,826 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:98 ballot:21 v_ballot:11 value:<none> (161113936195031)]
-16:25:35,826 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:99 ballot:21 v_ballot:11 value:<none> (161113938272321)]
-16:25:35,826 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:100 ballot:21 v_ballot:11 value:<none> (161113940558151)]
-16:25:35,826 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:101 ballot:21 v_ballot:11 value:<none> (161113942230711)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:102 ballot:21 v_ballot:11 value:<none> (161113949054341)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:103 ballot:21 v_ballot:11 value:<none> (161113952635781)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:104 ballot:21 v_ballot:11 value:<none> (161113954784661)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:105 ballot:21 v_ballot:11 value:<none> (161113956948431)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:106 ballot:21 v_ballot:11 value:<none> (161113963826961)]
-16:25:35,827 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:107 ballot:21 v_ballot:11 value:<none> (161113966209771)]
-16:25:35,828 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:108 ballot:21 v_ballot:11 value:<none> (161113968000861)]
-16:25:35,828 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:109 ballot:21 v_ballot:11 value:<none> (161113975909171)]
-16:25:35,828 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:110 ballot:21 v_ballot:11 value:<none> (161113977919711)]
-16:25:35,828 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:111 ballot:21 v_ballot:11 value:<none> (161113981491971)]
-16:25:36,401 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/10c94103-3097-4f7a-85b7-57616036f5ec]
-1681424736404, 0, 0
-16:25:36,466 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
-1681424737404, 998, 998
-1681424738405, 0, 998
-16:25:38,882 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
-16:25:38,883 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
-16:25:39,159 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
-16:25:39,170 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:25:39,248 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:2634 ballot:31 v_ballot:0 value:<none> (1611582431943721)]
-16:25:39,264 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
-1681424739406, 0, 998
-16:25:40,217 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/86a6feaf-2ad8-45df-ae72-2aa1b5399375]
-16:25:40,248 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
-16:25:40,249 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
-16:25:40,253 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:25:40,329 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:13452 ballot:41 v_ballot:0 value:<none> (1611690253084831)]
-16:25:40,345 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
-1681424740406, 0, 998
-16:25:40,437 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/2169508a-b769-4af4-ba8c-06e05a7304e1]
-16:25:40,440 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
-16:25:40,674 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
-16:25:40,675 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
-16:25:40,798 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
-16:25:40,805 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:25:41,096 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/913d6d99-d22b-43df-a9c3-6277bd935402]
-16:25:41,274 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
-1681424741406, 23, 1021
-16:25:41,872 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17457
-16:25:41,873 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17458
-16:25:41,873 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17459
-16:25:41,873 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17460
-16:25:41,873 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17461
-16:25:41,874 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17462
-16:25:41,874 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17463
-16:25:41,874 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17464
-16:25:41,874 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17465
-16:25:41,875 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17466
-16:25:41,875 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17467
-16:25:41,875 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17468
-16:25:41,875 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17469
-16:25:41,876 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17470
-16:25:41,876 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17471
-16:25:41,876 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17472
-16:25:41,876 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17473
-16:25:41,876 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17474
-16:25:41,877 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17475
-16:25:41,877 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17476
-16:25:41,877 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17477
-16:25:41,877 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17478
-16:25:41,877 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17479
-16:25:41,878 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17480
-16:25:41,878 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17481
-16:25:41,878 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17482
-16:25:41,878 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17483
-16:25:41,878 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17484
-16:25:41,879 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17485
-16:25:41,879 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17486
-16:25:41,879 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17487
-16:25:41,879 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17488
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17489
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17490
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17491
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17492
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17493
-16:25:41,880 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17494
-16:25:41,881 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17495
-16:25:41,881 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17496
-16:25:41,881 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 17497
-1681424742407, 86, 1107
-1681424743407, 68, 1175
-1681424744408, 869, 2044
-1681424745408, 2971, 5015
-1681424746409, 5558, 10573
-1681424747410, 3445, 14018
-1681424748411, 1047, 15065
-1681424749412, 386, 15451
-1681424750412, 402, 15853
-1681424751413, 253, 16106
-1681424752413, 136, 16242
-1681424753414, 61, 16303
-1681424754414, 332, 16635
-1681424755415, 1660, 18295
-1681424756416, 5090, 23385
-1681424757419, 4224, 27609
-1681424758420, 2514, 30123
-1681424759420, 1158, 31281
-1681424760421, 698, 31979
-1681424761422, 447, 32426
-1681424762423, 412, 32838
-1681424763423, 4379, 37217
-1681424764424, 1332, 38549
-1681424765425, 1267, 39816
-1681424766426, 273, 40089
-1681424767426, 65, 40154
-1681424768427, 0, 40154
-1681424769427, 0, 40154
-1681424770427, 0, 40154
-1681424771428, 0, 40154
-1681424772428, 0, 40154
-1681424773428, 0, 40154
-1681424774429, 0, 40154
-1681424775429, 0, 40154
-1681424776429, 0, 40154
-1681424777430, 0, 40154
-16:26:17,556 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:26:17,568 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:26:17,569 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:26:17,569 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:26:17,570 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:26:17,570 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:26:17,571 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:26:17,571 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1681424778430, 0, 40154
-1681424779430, 0, 40154
+18:22:17,339 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.626s. Listening on: http://0.0.0.0:8888
+18:22:17,346 INFO  quarkus:91 [main] Profile prod activated. 
+18:22:17,346 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+18:22:21,033 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+18:22:21,117 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
+18:22:21,118 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+18:22:21,235 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:22:21,542 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/d99e1b51-55f6-4e6d-8ce8-02363ca42a70]
+1681604541543, 0, 0
+18:22:21,584 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+1681604542544, 0, 0
+18:22:22,704 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
+18:22:22,705 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+18:22:22,806 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+18:22:22,812 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:22:22,887 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/4f6e04a3-ec03-4f72-87db-8feffea0653e]
+18:22:22,922 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
+18:22:22,924 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+18:22:22,964 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:22:22,991 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:1 ballot:31 v_ballot:0 value:<none> (689619023424421)]
+18:22:22,998 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+18:22:23,044 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/2ab032ff-66df-47a5-addf-abf7fd1d23fe]
+18:22:23,050 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+18:22:23,058 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:107 ballot:41 v_ballot:0 value:<none> (689631404311531)]
+18:22:23,060 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
+18:22:23,165 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
+18:22:23,166 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+18:22:23,260 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
+18:22:23,267 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:22:23,335 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/4427aebf-0ed4-47ac-9641-300eb45798d5]
+1681604543544, 2039, 2039
+1681604544545, 0, 2039
+1681604545545, 0, 2039
+1681604546546, 1248, 3287
+18:22:27,463 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:42 to:Learner instance:119 ballot:51 v_ballot:0 value:<none> (690072457176741)]
+18:22:27,498 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
+1681604547546, 10009, 13296
+1681604548547, 22934, 36230
+1681604549547, 17848, 54078
+1681604550548, 24738, 78816
+1681604551548, 24884, 103700
+1681604552549, 38916, 142616
+1681604553550, 26025, 168641
+1681604554550, 23452, 192093
+1681604555551, 33447, 225540
+1681604556551, 28659, 254199
+1681604557551, 31834, 286033
+1681604558552, 22813, 308846
+1681604559554, 33580, 342426
+1681604560555, 29814, 372240
+1681604561555, 30587, 402827
+1681604562556, 28018, 430845
+1681604563556, 25967, 456812
+1681604564557, 28614, 485426
+1681604565558, 26131, 511557
+1681604566559, 29308, 540865
+1681604567560, 31980, 572845
+1681604568561, 25446, 598291
+1681604569561, 28157, 626448
+1681604570561, 29432, 655880
+1681604571562, 26463, 682343
+1681604572562, 20741, 703084
+1681604573563, 10663, 713747
+1681604574563, 0, 713747
+18:22:54,866 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:22:54,878 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:22:54,879 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:22:54,880 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:22:54,880 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:22:54,881 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:22:54,881 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:22:54,882 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681604575564, 0, 713747
+1681604576564, 0, 713747

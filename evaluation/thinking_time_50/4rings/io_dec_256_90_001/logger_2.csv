@@ -2,305 +2,76 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-16:22:30,286 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.954s. Listening on: http://0.0.0.0:8888
-16:22:30,296 INFO  quarkus:91 [main] Profile prod activated. 
-16:22:30,297 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-16:22:33,824 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-16:22:33,912 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
-16:22:33,912 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
-16:22:34,052 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:22:42,889 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/310a98ee-de94-4e22-9558-95f874664ae2]
-1681424562893, 0, 0
-16:22:42,956 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
-1681424563894, 5475, 5475
-16:22:44,471 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 1754
-1681424564895, 2810, 8285
-16:22:45,078 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
-16:22:45,079 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
-16:22:45,376 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
-16:22:45,384 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:22:45,707 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
-1681424565895, 4468, 12753
-16:22:46,454 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4698
-16:22:46,455 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4699
-16:22:46,456 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4700
-16:22:46,457 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4701
-16:22:46,457 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4702
-16:22:46,457 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4703
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4704
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4705
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4706
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4707
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4708
-16:22:46,458 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4709
-16:22:46,459 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4710
-16:22:46,459 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4711
-16:22:46,460 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4712
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4713
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4714
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4715
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4716
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4717
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4718
-16:22:46,461 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4719
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4720
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4721
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4722
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4723
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4724
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4725
-16:22:46,462 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4726
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4727
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4728
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4729
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4730
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4731
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4732
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4733
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4734
-16:22:46,463 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4735
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4736
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4737
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4738
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4739
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4740
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4741
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4742
-16:22:46,464 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4743
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4744
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4745
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4746
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4747
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4748
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4749
-16:22:46,465 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4750
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4751
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4752
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4753
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4754
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4755
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4756
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4757
-16:22:46,466 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4758
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4759
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4760
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4761
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4762
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4763
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4764
-16:22:46,467 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4765
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4766
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4767
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4768
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4769
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4770
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4771
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4772
-16:22:46,468 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4773
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4774
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4775
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4776
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4777
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4778
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4779
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4780
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4781
-16:22:46,469 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4782
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4783
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4784
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4785
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4786
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4787
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4788
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4789
-16:22:46,470 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4790
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4791
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4792
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4793
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4794
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4795
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4796
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4797
-16:22:46,471 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4798
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4799
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4800
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4801
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4802
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4803
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4804
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4805
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4806
-16:22:46,472 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4807
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4808
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4809
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4810
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4811
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4812
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4813
-16:22:46,473 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4814
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4815
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4816
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4817
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4818
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4819
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4820
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4821
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4822
-16:22:46,474 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4823
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4824
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4825
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4826
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4827
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4828
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4829
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4830
-16:22:46,475 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4831
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4832
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4833
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4834
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4835
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4836
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4837
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4838
-16:22:46,476 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4839
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4840
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4841
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4842
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4843
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4844
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4845
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4846
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4847
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4848
-16:22:46,477 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4849
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4850
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4851
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4852
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4853
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4854
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4855
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4856
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4857
-16:22:46,478 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4858
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4859
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4860
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4861
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4862
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4863
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4864
-16:22:46,479 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 4865
-16:22:46,604 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/e150a512-33db-408a-acfe-385e106a383c]
-16:22:46,636 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
-16:22:46,637 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
-16:22:46,645 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:22:46,740 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:3276 ballot:41 v_ballot:0 value:<none> (1594330213396531)]
-16:22:46,741 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
-1681424566896, 6963, 19716
-16:22:47,284 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/53ecac5a-3525-4bd9-ad91-3cf6c5e29ee3]
-16:22:47,288 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
-16:22:47,556 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
-16:22:47,556 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
-16:22:47,723 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
-16:22:47,733 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
-16:22:47,813 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
-1681424567905, 5255, 24971
-16:22:48,316 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/bbac553d-103d-47cf-b47d-6fe0d99a1c64]
-16:22:48,801 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13866
-1681424568906, 6305, 31276
-16:22:49,802 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13868
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13869
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13870
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13871
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13872
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13873
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13874
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13875
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13876
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13877
-16:22:49,803 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13878
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13879
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13880
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13881
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13882
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13883
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13884
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13885
-16:22:49,804 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13886
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13887
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13888
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13889
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13890
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13891
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13892
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13893
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13894
-16:22:49,805 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13895
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13896
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13897
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13898
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13899
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13900
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13901
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13902
-16:22:49,806 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13903
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13904
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13905
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13906
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13907
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13908
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13909
-16:22:49,807 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13910
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13911
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13912
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13913
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13914
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13915
-16:22:49,808 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13916
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13917
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13918
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13919
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13920
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13921
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13922
-16:22:49,809 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13923
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13924
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13925
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13926
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13927
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13928
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13929
-16:22:49,810 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13930
-16:22:49,811 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13931
-16:22:49,811 WARN  [Learner-4] LearnerRole:133 - Learner re-request missing instance 13932
-1681424569906, 6879, 38155
-1681424570907, 7504, 45659
-1681424571908, 6503, 52162
-1681424572908, 9454, 61616
-1681424573909, 7309, 68925
-1681424574910, 8728, 77653
-1681424575910, 9946, 87599
-1681424576911, 11357, 98956
-1681424577912, 9885, 108841
-1681424578914, 13287, 122128
-1681424579915, 9978, 132106
-1681424580916, 11185, 143291
-1681424581916, 12370, 155661
-1681424582961, 10288, 165949
-1681424583962, 13512, 179461
-1681424584963, 11174, 190635
-1681424585963, 11225, 201860
-1681424586964, 11007, 212867
-1681424588009, 11772, 224639
-1681424589011, 13477, 238116
-1681424590012, 547, 238663
-1681424591013, 0, 238663
-16:23:11,115 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:23:11,127 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:23:11,127 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:23:11,128 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:23:11,128 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:23:11,129 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-16:23:11,129 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-16:23:11,130 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1681424592014, 0, 238663
-1681424593014, 0, 238663
+18:37:07,032 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.720s. Listening on: http://0.0.0.0:8888
+18:37:07,041 INFO  quarkus:91 [main] Profile prod activated. 
+18:37:07,041 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+18:37:10,623 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+18:37:10,706 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=2, pathPrefix=/media/disk1/]]
+18:37:10,707 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [4]
+18:37:10,809 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:37:11,223 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/02356fca-a357-428f-8077-cd6b763cfd06]
+1681605431225, 0, 0
+18:37:11,267 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+1681605432226, 0, 0
+18:37:12,541 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=2, pathPrefix=/media/disk1/]]
+18:37:12,544 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [5]
+18:37:12,648 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+18:37:12,656 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:37:12,722 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/9a406fe8-4e4f-4aca-9a3d-59ffb8ff0121]
+18:37:12,759 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=2, pathPrefix=/media/disk1/]]
+18:37:12,760 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [6]
+18:37:12,756 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:86 ballot:31 v_ballot:0 value:<none> (778599156701221)]
+18:37:12,766 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+18:37:12,770 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:37:12,850 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/9c9cd1bc-7256-4a61-a3d2-63751d1a12e1]
+18:37:12,858 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+18:37:12,866 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:32 to:Learner instance:250 ballot:41 v_ballot:0 value:<none> (778611644853231)]
+18:37:12,869 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
+18:37:12,977 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=2, pathPrefix=/media/disk1/]]
+18:37:12,978 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [1] with id [7]
+18:37:13,061 INFO  LoggerController:118 [executor-thread-1] Calling logger in url id [0] with id [8]
+18:37:13,069 INFO  LoggerController:92 [executor-thread-2] Registering replica logger
+18:37:13,142 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/d245a5dd-3cf6-42eb-b5b5-52d9146d2844]
+18:37:13,159 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:42 to:Learner instance:750 ballot:51 v_ballot:0 value:<none> (778640770999441)]
+18:37:13,160 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
+1681605433229, 2064, 2064
+1681605434230, 7183, 9247
+1681605435230, 7411, 16658
+1681605436231, 7547, 24205
+1681605437232, 7699, 31904
+1681605438232, 5484, 37388
+1681605439233, 4927, 42315
+1681605440233, 7119, 49434
+1681605441234, 7164, 56598
+1681605442235, 5700, 62298
+1681605443236, 5405, 67703
+1681605444236, 5616, 73319
+1681605445237, 7240, 80559
+1681605446237, 6146, 86705
+1681605447238, 7690, 94395
+1681605448239, 5248, 99643
+1681605449240, 7610, 107253
+1681605450240, 7761, 115014
+1681605451241, 4800, 119814
+1681605452242, 7210, 127024
+1681605453243, 5729, 132753
+1681605454243, 6294, 139047
+1681605455244, 6520, 145567
+1681605456244, 6923, 152490
+1681605457245, 7894, 160384
+1681605458246, 6339, 166723
+1681605459246, 6999, 173722
+1681605460247, 7880, 181602
+1681605461247, 7843, 189445
+1681605462248, 5328, 194773
+1681605463249, 0, 194773
+18:37:43,643 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:37:43,657 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:37:43,657 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:37:43,658 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:37:43,659 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:37:43,659 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:37:43,660 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+18:37:43,660 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1681605464249, 0, 194773
+1681605465249, 0, 194773

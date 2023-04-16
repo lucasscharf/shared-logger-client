@@ -1,56 +1,48 @@
-16:16:59,250 INFO  [main] RawABListener:48 - Initing a RawABListener...
-16:16:59,269 INFO  [main] Node:101 - PID: 6133
-16:16:59,511 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-16:16:59,516 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-16:16:59,517 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-16:16:59,541 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
-16:16:59,542 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
-16:16:59,543 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-16:16:59,548 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-16:16:59,550 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-16:16:59,554 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 24] (succsessor: 21 at /10.10.1.3:2504)
-16:16:59,563 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 21 at /10.10.1.3:2504)
-16:16:59,989 INFO  [main] Replica:169 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
-1681424219990, 0, 0
+18:45:57,857 INFO  [main] RawABListener:48 - Initing a RawABListener...
+18:45:57,867 INFO  [main] Node:101 - PID: 24972
+18:45:58,085 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+18:45:58,091 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+18:45:58,092 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+18:45:58,120 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+18:45:58,121 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+18:45:58,122 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+18:45:58,127 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+18:45:58,129 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+18:45:58,134 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [22, 24] (succsessor: 22 at /10.10.1.2:2438)
+18:45:58,218 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 24] (succsessor: 21 at /10.10.1.3:2054)
+18:45:58,368 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 21 at /10.10.1.3:2054)
+18:46:02,680 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2952)
+18:46:02,798 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2952)
+18:46:07,199 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [true] with simple constructor
+1681605967203, 0, 0
 Reading from stdin
-1681424220991, 0, 0
-16:17:01,351 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2378)
-16:17:01,462 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2378)
-1681424221993, 0, 0
-1681424222994, 0, 0
-1681424223994, 0, 0
-1681424224995, 0, 0
-1681424225996, 170, 170
-1681424226996, 225, 395
-1681424227997, 425, 820
-1681424228998, 527, 1347
-1681424229999, 494, 1841
-1681424231000, 509, 2350
-1681424232003, 524, 2874
-1681424233004, 501, 3375
-1681424234005, 500, 3875
-1681424235005, 482, 4357
-1681424236006, 507, 4864
-1681424237007, 515, 5379
-1681424238007, 491, 5870
-1681424239008, 497, 6367
-1681424240008, 512, 6879
-1681424241009, 516, 7395
-1681424242010, 500, 7895
-1681424243011, 518, 8413
-1681424244012, 497, 8910
-1681424245013, 487, 9397
-1681424246013, 503, 9900
-1681424247014, 504, 10404
-1681424248015, 515, 10919
-1681424249016, 508, 11427
-1681424250016, 517, 11944
-1681424251016, 492, 12436
-1681424252017, 508, 12944
-1681424253018, 510, 13454
-1681424254018, 524, 13978
-1681424255019, 8, 13986
-16:17:35,529 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-16:17:35,628 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
-16:17:35,629 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-16:17:35,629 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+1681605968203, 449, 449
+1681605969204, 453, 902
+1681605970205, 501, 1403
+1681605971205, 514, 1917
+1681605972206, 507, 2424
+1681605973206, 488, 2912
+1681605974207, 513, 3425
+1681605975207, 499, 3924
+1681605976207, 507, 4431
+1681605977208, 519, 4950
+1681605978208, 497, 5447
+1681605979208, 495, 5942
+1681605980209, 506, 6448
+1681605981209, 520, 6968
+1681605982210, 512, 7480
+1681605983210, 494, 7974
+1681605984211, 504, 8478
+1681605985211, 511, 8989
+1681605986212, 529, 9518
+1681605987212, 508, 10026
+1681605988213, 513, 10539
+1681605989213, 524, 11063
+1681605990213, 497, 11560
+1681605991214, 520, 12080
+1681605992214, 522, 12602
+1681605993215, 420, 13022
+1681605994215, 0, 13022
+18:46:34,519 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+18:46:34,520 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+18:46:34,523 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/learners
