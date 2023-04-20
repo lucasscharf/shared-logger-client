@@ -1,68 +1,43 @@
-18:52:03,366 INFO  [main] RawABListener:48 - Initing a RawABListener...
-18:52:03,380 INFO  [main] Node:101 - PID: 33229
-18:52:03,569 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-18:52:03,572 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-18:52:03,573 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-18:52:03,592 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
-18:52:03,592 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
-18:52:03,593 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-18:52:03,597 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-18:52:03,599 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-18:52:03,605 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2347)
-18:52:03,628 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-1681606323629, 0, 0
+21:34:12,395 INFO  [main] RawABListener:48 - Initing a RawABListener...
+21:34:12,407 INFO  [main] Node:101 - PID: 9927
+21:34:12,613 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+21:34:12,617 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+21:34:12,618 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+21:34:12,638 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+21:34:12,639 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+21:34:12,639 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+21:34:12,644 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+21:34:12,645 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+21:34:12,649 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [22, 23] (succsessor: 22 at /10.10.1.2:2359)
+21:34:12,655 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23] (succsessor: 21 at /10.10.1.3:2993)
+21:34:12,670 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1681961652671, 0, 0
 Reading from stdin
-1681606324629, 0, 0
-1681606325630, 0, 0
-1681606326630, 0, 0
-1681606327631, 0, 0
-18:52:08,487 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2347)
-18:52:08,618 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2347)
-1681606328631, 97, 97
-1681606329632, 338, 435
-1681606330632, 342, 777
-1681606331633, 361, 1138
-1681606332633, 364, 1502
-1681606333634, 346, 1848
-1681606334634, 346, 2194
-1681606335635, 353, 2547
-1681606336635, 366, 2913
-1681606337635, 350, 3263
-1681606338636, 425, 3688
-1681606339636, 514, 4202
-1681606340636, 507, 4709
-1681606341637, 500, 5209
-1681606342637, 514, 5723
-1681606343638, 512, 6235
-1681606344638, 483, 6718
-1681606345638, 513, 7231
-1681606346639, 511, 7742
-1681606347639, 508, 8250
-1681606348640, 524, 8774
-1681606349640, 528, 9302
-1681606350640, 527, 9829
-1681606351641, 531, 10360
-1681606352641, 504, 10864
-1681606353641, 509, 11373
-1681606354642, 496, 11869
-1681606355642, 509, 12378
-1681606356642, 507, 12885
-1681606357643, 527, 13412
-1681606358643, 201, 13613
-18:52:39,521 ERROR [main-EventThread] TopologyManager:387 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes/5
-18:52:39,522 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 23] (succsessor: 5 at null)
-18:52:39,528 ERROR [main-EventThread] ClientCnxn:537 - Error while calling watcher 
-java.lang.NullPointerException
-	at java.base/sun.nio.ch.Net.checkAddress(Net.java:126)
-	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:706)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:720)
-	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
-	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
-	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
-18:52:39,622 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
-18:52:39,622 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-18:52:39,623 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-18:52:39,623 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-18:52:39,623 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+21:34:12,798 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2728)
+1681961653672, 0, 0
+1681961654672, 0, 0
+1681961655672, 0, 0
+1681961656673, 0, 0
+21:34:17,519 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2728)
+21:34:17,617 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2728)
+1681961657673, 0, 0
+1681961658673, 0, 0
+1681961659673, 0, 0
+1681961660674, 0, 0
+1681961661674, 0, 0
+1681961662674, 0, 0
+1681961663675, 0, 0
+1681961664675, 0, 0
+1681961665675, 0, 0
+1681961666675, 0, 0
+1681961667676, 0, 0
+1681961668676, 0, 0
+1681961669676, 0, 0
+1681961670676, 0, 0
+1681961671676, 0, 0
+1681961672677, 0, 0
+1681961673677, 0, 0
+1681961674677, 0, 0
+1681961675677, 0, 0
+1681961676678, 0, 0
+1681961677678, 0, 0
