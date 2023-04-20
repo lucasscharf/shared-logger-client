@@ -1,71 +1,469 @@
-11:38:03,603 INFO  [main] RawABListener:48 - Initing a RawABListener...
-11:38:03,614 INFO  [main] Node:101 - PID: 4813
-11:38:03,832 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-11:38:03,836 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-11:38:03,837 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-11:38:03,858 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
-11:38:03,858 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
-11:38:03,859 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-11:38:03,866 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-11:38:03,869 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-11:38:03,874 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 21 at /10.10.1.3:2567)
-11:38:03,898 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-1681666683899, 0, 0
+08:18:35,142 INFO  [main] RawABListener:48 - Initing a RawABListener...
+08:18:35,153 INFO  [main] Node:101 - PID: 83689
+08:18:35,338 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+08:18:35,343 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+08:18:35,343 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+08:18:35,363 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+08:18:35,364 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+08:18:35,365 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+08:18:35,371 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+08:18:35,373 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+08:18:35,378 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.6:2137)
+08:18:35,412 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1682000315413, 0, 0
 Reading from stdin
-1681666684899, 0, 0
-1681666685900, 0, 0
-1681666686900, 0, 0
-1681666687900, 0, 0
-11:38:08,585 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2756)
-11:38:08,674 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 6, 21, 22, 23, 24] (succsessor: 5 at /10.10.1.7:2756)
-1681666688901, 0, 0
-1681666689901, 25429, 25429
-1681666690902, 25241, 50670
-1681666691902, 24962, 75632
-1681666692903, 23234, 98866
-1681666693904, 24371, 123237
-1681666694904, 24221, 147458
-1681666695904, 24234, 171692
-1681666696905, 24034, 195726
-1681666697905, 23419, 219145
-1681666698905, 24101, 243246
-1681666699906, 26351, 269597
-1681666700906, 30010, 299607
-1681666701907, 32129, 331736
-1681666702907, 32742, 364478
-1681666703907, 33145, 397623
-1681666704908, 4144, 401767
-1681666705908, 0, 401767
-1681666706909, 0, 401767
-1681666707909, 0, 401767
-1681666708910, 0, 401767
-1681666709911, 0, 401767
-1681666710911, 0, 401767
-1681666711911, 0, 401767
-1681666712912, 0, 401767
-1681666713912, 0, 401767
-1681666714912, 0, 401767
-1681666715913, 0, 401767
-1681666716913, 0, 401767
-1681666717914, 0, 401767
-1681666718914, 0, 401767
-1681666719915, 0, 401767
-1681666720915, 0, 401767
-1681666721915, 0, 401767
-1681666722916, 0, 401767
-1681666723917, 0, 401767
-1681666724917, 0, 401767
-1681666725919, 0, 401767
-1681666726919, 0, 401767
-1681666727920, 0, 401767
-1681666728920, 0, 401767
-1681666729920, 0, 401767
-1681666730921, 0, 401767
-1681666731921, 0, 401767
-1681666732922, 0, 401767
-1681666733922, 0, 401767
-1681666734923, 0, 401767
-1681666735923, 0, 401767
-11:38:56,681 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-11:38:56,781 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-11:38:56,790 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
+1682000316413, 0, 0
+08:18:37,199 INFO  [TCPListener] LearnerRole:167 - Learner start from instance 92720 without recovery
+08:18:37,201 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
+1682000317414, 0, 0
+1682000318414, 0, 0
+1682000319415, 0, 0
+1682000320415, 0, 0
+1682000321416, 0, 0
+1682000322416, 0, 0
+1682000323417, 0, 0
+1682000324417, 0, 0
+1682000325417, 0, 0
+1682000326418, 0, 0
+1682000327419, 0, 0
+1682000328419, 0, 0
+1682000329419, 0, 0
+1682000330420, 0, 0
+1682000331420, 0, 0
+1682000332420, 0, 0
+1682000333421, 0, 0
+1682000334421, 0, 0
+1682000335421, 0, 0
+1682000336422, 0, 0
+1682000337422, 0, 0
+1682000338423, 0, 0
+1682000339423, 0, 0
+1682000340424, 0, 0
+1682000341424, 0, 0
+1682000342425, 0, 0
+1682000343425, 0, 0
+1682000344425, 0, 0
+1682000345426, 0, 0
+1682000346426, 0, 0
+1682000347426, 0, 0
+1682000348427, 0, 0
+1682000349427, 0, 0
+08:19:10,391 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96622
+08:19:10,391 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96623
+08:19:10,394 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96624
+08:19:10,394 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96625
+08:19:10,394 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96626
+08:19:10,394 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96627
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96628
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96629
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96630
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96631
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96632
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96633
+08:19:10,395 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96634
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96635
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96636
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96637
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96638
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96639
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96640
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96641
+08:19:10,396 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96642
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96643
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96644
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96645
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96646
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96647
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96648
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96649
+08:19:10,397 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96650
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96651
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96652
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96653
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96654
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96655
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96656
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96657
+08:19:10,398 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96658
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96659
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96660
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96661
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96662
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96663
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96664
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96665
+08:19:10,399 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96666
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96667
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96668
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96669
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96670
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96671
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96672
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96673
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96674
+08:19:10,400 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96675
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96676
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96677
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96678
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96679
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96680
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96681
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96682
+08:19:10,401 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96683
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96684
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96685
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96686
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96687
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96688
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96689
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96690
+08:19:10,402 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96691
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96692
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96693
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96694
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96695
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96696
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96697
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96698
+08:19:10,403 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96699
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96700
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96701
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96702
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96703
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96704
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96705
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96706
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96707
+08:19:10,404 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96708
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96709
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96710
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96711
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96712
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96713
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96714
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96715
+08:19:10,405 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96716
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96717
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96718
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96719
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96720
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96721
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96722
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96723
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96724
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96725
+08:19:10,406 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96726
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96727
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96728
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96729
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96730
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96731
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96732
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96733
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96734
+08:19:10,407 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96735
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96736
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96737
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96738
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96739
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96740
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96741
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96742
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96743
+08:19:10,408 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96744
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96745
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96746
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96747
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96748
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96749
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96750
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96751
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96752
+08:19:10,409 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96753
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96754
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96755
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96756
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96757
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96758
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96759
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96760
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96761
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96762
+08:19:10,410 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96763
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96764
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96765
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96766
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96767
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96768
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96769
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96770
+08:19:10,411 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96771
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96772
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96773
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96774
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96775
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96776
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96777
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96778
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96779
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96780
+08:19:10,412 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96781
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96782
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96783
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96784
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96785
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96786
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96787
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96788
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96789
+08:19:10,413 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96790
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96791
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96792
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96793
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96794
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96795
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96796
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96797
+08:19:10,414 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96798
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96799
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96800
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96801
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96802
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96803
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96804
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96805
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96806
+08:19:10,415 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96807
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96808
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96809
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96810
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96811
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96812
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96813
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96814
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96815
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96816
+08:19:10,416 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96817
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96818
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96819
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96820
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96821
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96822
+08:19:10,417 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96823
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96824
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96825
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96826
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96827
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96828
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96829
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96830
+08:19:10,418 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96831
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96832
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96833
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96834
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96835
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96836
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96837
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96838
+08:19:10,419 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96839
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96840
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96841
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96842
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96843
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96844
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96845
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96846
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96847
+08:19:10,420 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96848
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96849
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96850
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96851
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96852
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96853
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96854
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96855
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96856
+08:19:10,421 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96857
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96858
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96859
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96860
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96861
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96862
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96863
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96864
+08:19:10,422 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96865
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96866
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96867
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96868
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96869
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96870
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96871
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96872
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96873
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96874
+08:19:10,423 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96875
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96876
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96877
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96878
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96879
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96880
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96881
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96882
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96883
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96884
+08:19:10,424 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96885
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96886
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96887
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96888
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96889
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96890
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96891
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96892
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96893
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96894
+08:19:10,425 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96895
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96896
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96897
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96898
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96899
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96900
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96901
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96902
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96903
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96904
+08:19:10,426 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96905
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96906
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96907
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96908
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96909
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96910
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96911
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96912
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96913
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96914
+08:19:10,427 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96915
+1682000350427, 0, 0
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96916
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96917
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96918
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96919
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96920
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96921
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96922
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96923
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96924
+08:19:10,428 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96925
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96926
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96927
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96928
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96929
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96930
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96931
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96932
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96933
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96934
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96935
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96936
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96937
+08:19:10,429 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96938
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96939
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96940
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96941
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96942
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96943
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96944
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96945
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96946
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96947
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96948
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96949
+08:19:10,430 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96950
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96951
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96952
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96953
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96954
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96955
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96956
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96957
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96958
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96959
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96960
+08:19:10,431 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96961
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96962
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96963
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96964
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96965
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96966
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96967
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96968
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96969
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96970
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96971
+08:19:10,432 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96972
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96973
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96974
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96975
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96976
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96977
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96978
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96979
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96980
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96981
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96982
+08:19:10,433 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96983
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96984
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96985
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96986
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96987
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96988
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96989
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96990
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96991
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96992
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96993
+08:19:10,434 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96994
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96995
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96996
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96997
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96998
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 96999
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97000
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97001
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97002
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97003
+08:19:10,435 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97004
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97005
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97006
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97007
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97008
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97009
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97010
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97011
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97012
+08:19:10,436 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97013
+08:19:10,437 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97014
+08:19:10,437 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 97015
+1682000351428, 0, 0
+08:19:11,437 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 98490
+1682000352428, 0, 0
+1682000353429, 0, 0
+1682000354429, 0, 0
+1682000355429, 0, 0
+1682000356430, 0, 0
+1682000357430, 0, 0
+1682000358430, 0, 0
+1682000359430, 0, 0
+1682000360431, 0, 0
+1682000361431, 0, 0
+08:19:21,662 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+08:19:21,672 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/acceptors
+08:19:21,673 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+08:19:21,673 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/nodes
+08:19:21,673 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology2/learners
