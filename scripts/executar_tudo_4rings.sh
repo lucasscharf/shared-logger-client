@@ -5,7 +5,7 @@ earth=node1
 venus=node2
 mars=node3
 jupyter=node4
-#node5
+#loggers
 uranus=node5
 neptune=node6
 
