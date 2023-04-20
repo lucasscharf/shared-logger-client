@@ -116,7 +116,6 @@ public class LoggerController {
     for (int i = 0; i < clusterSize; i++) {
       int newId = i + id;
       int urlId = (newId) % clusterSize;
-      // config.pathPrefix =  "/media/disk" + (i + 1) + "/";
       logger.info("Calling logger in url id [{}] with id [{}] and path [{}]", urlId, newId, config.pathPrefix);
       config.id = newId;
       loggerRestClients.get(urlId).registerReplica(config);
@@ -212,7 +211,7 @@ public class LoggerController {
                 + separator + other
                 + separator + commandsSize + ",");
             for (String loggerType : loggerTypes) {
-              String folderPath = basePath + "1ring"
+              String folderPath = basePath + "1rings"
                   + "/" + application
                   + separator + loggerType
                   + separator + threadCounter
