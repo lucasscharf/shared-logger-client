@@ -89,7 +89,7 @@ public class LoggerController {
   @POST
   @Path("registerReplica")
   public Response registerReplica(LoggerConfig config) throws Exception {
-    logger.info("Registering replica logger");
+    logger.info("Registering replica logger [{}]", config);
     ReplicaLoggerClient replicaLoggerClient = new ReplicaLoggerClient(config.ring + "", config.ring + ":L",
         config.id, 0, zookeeperUrl, config.pathPrefix, config.trackerNumber);
     replicaLoggerClient.start();
@@ -116,7 +116,7 @@ public class LoggerController {
     for (int i = 0; i < clusterSize; i++) {
       int newId = i + id;
       int urlId = (newId) % clusterSize;
-      config.pathPrefix =  "/media/disk" + i + "/";
+      // config.pathPrefix =  "/media/disk" + (i + 1) + "/";
       logger.info("Calling logger in url id [{}] with id [{}] and path [{}]", urlId, newId, config.pathPrefix);
       config.id = newId;
       loggerRestClients.get(urlId).registerReplica(config);

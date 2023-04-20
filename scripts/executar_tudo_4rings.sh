@@ -12,7 +12,7 @@ neptune=node6
 number_of_experiments=4
 apps=(cpu io)
 logs=(dec)
-threads=(1024 2048)
+threads=(8)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
 
@@ -39,24 +39,30 @@ do
 			outputFile=~/shared-logger-client/evaluation/thinking_time_50/$number_of_experiments\rings/$app\_$log\_$thread\_90_001/
 
 			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
-			ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
-
 			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
-			ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
-
 			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
-			ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
-			
 			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
-			ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_2.sh" &
-			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
-			ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
+			
+			if [ "$number_of_experiments" -ge "2" ]; then
+				ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
+				ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_2.sh' & 
+				ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_2.sh" &
+				ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_2.sh" &
+			fi
+
+			if [ "$number_of_experiments" -ge "4" ]; then
+				ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_3.sh' & 
+				ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_4.sh' & 
+
+				ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_3.sh' & 
+				ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor_ring_4.sh' & 
+
+				ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_3.sh" &
+				ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1_ring_4.sh" &
+				
+				ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_3.sh" &
+				ssh lucas123@$neptune "~/shared-logger-client/scripts/run_$app\_$log\_replica_2_ring_4.sh" &
+			fi
 
 			sleep 5
 
