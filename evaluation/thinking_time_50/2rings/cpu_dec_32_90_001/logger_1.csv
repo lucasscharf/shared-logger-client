@@ -2,60 +2,66 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-20:22:17,044 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.932s. Listening on: http://0.0.0.0:8888
-20:22:17,054 INFO  quarkus:91 [main] Profile prod activated. 
-20:22:17,055 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-20:22:24,070 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-20:22:24,173 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-20:22:24,602 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/ec8f424a-3a59-446f-be51-694cd394f7a2]
-1681611744640, 0, 0
-20:22:24,629 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 1!
-20:22:24,769 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-20:22:24,837 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/3062ce48-ad65-4bdc-a7f4-78bdf060b852]
-20:22:24,891 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:282 ballot:31 v_ballot:0 value:<none> (1409810219074521)]
-20:22:24,894 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:283 ballot:31 v_ballot:0 value:<none> (1409810314258721)]
-20:22:24,895 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
-20:22:25,063 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-20:22:25,136 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/50c37069-6356-4b52-aa2b-ebd15a38fb0e]
-20:22:25,230 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-20:22:25,308 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/c933dafd-c5b4-4028-b3cc-818cc1cbb149]
-1681611745643, 929, 929
-1681611746643, 1011, 1940
-1681611747644, 1038, 2978
-1681611748644, 991, 3969
-1681611749645, 1004, 4973
-1681611750645, 1025, 5998
-1681611751646, 1009, 7007
-1681611752647, 996, 8003
-1681611753648, 996, 8999
-1681611754648, 1026, 10025
-1681611755649, 1000, 11025
-1681611756649, 1067, 12092
-1681611757650, 1010, 13102
-1681611758650, 1021, 14123
-1681611759651, 1000, 15123
-1681611760651, 1031, 16154
-1681611761652, 1003, 17157
-1681611762653, 1005, 18162
-1681611763654, 1017, 19179
-1681611764654, 987, 20166
-1681611765655, 1009, 21175
-1681611766656, 1027, 22202
-1681611767656, 886, 23088
-1681611768657, 1039, 24127
-1681611769657, 1020, 25147
-1681611770658, 1018, 26165
-1681611771658, 1028, 27193
-1681611772659, 1005, 28198
-1681611773683, 887, 29085
-1681611774684, 373, 29458
-1681611775686, 0, 29458
-20:22:56,053 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-20:22:56,070 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-20:22:56,070 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-20:22:56,071 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-20:22:56,071 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-20:22:56,072 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-20:22:56,072 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-20:22:56,072 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1681611776686, 0, 29458
+12:13:05,478 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.962s. Listening on: http://0.0.0.0:8888
+12:13:05,486 INFO  quarkus:91 [main] Profile prod activated. 
+12:13:05,486 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+12:13:08,883 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+12:13:08,966 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+12:13:08,967 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+12:13:09,056 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+12:13:09,417 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/89cff13e-9628-4e39-a205-4f79e3b81fa1]
+1682705589421, 0, 0
+12:13:09,494 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+12:13:09,495 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+12:13:09,500 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+12:13:09,566 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk2/f5c68cb7-9572-4e93-a5d0-b222acc7c2ac]
+12:13:09,636 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+12:13:09,637 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+12:13:09,643 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+12:13:09,716 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk3/8c3b9af3-44eb-41d5-b41f-c97e935c3151]
+12:13:09,774 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+12:13:09,775 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+12:13:09,783 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+12:13:09,855 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk4/f0979e75-2771-4cd2-b389-197f2447c5e6]
+1682705590422, 0, 0
+1682705591422, 1423, 1423
+1682705592423, 2019, 3442
+1682705593423, 2005, 5447
+1682705594424, 2035, 7482
+1682705595441, 2035, 9517
+1682705596442, 2082, 11599
+1682705597442, 2054, 13653
+1682705598442, 2085, 15738
+1682705599443, 2057, 17795
+1682705600443, 2006, 19801
+1682705601444, 2080, 21881
+1682705602445, 1958, 23839
+1682705603445, 2060, 25899
+1682705604446, 2069, 27968
+1682705605446, 2051, 30019
+1682705606447, 1995, 32014
+1682705607448, 2012, 34026
+1682705608449, 2048, 36074
+1682705609449, 2034, 38108
+1682705610449, 2027, 40135
+1682705611450, 2020, 42155
+1682705612450, 2002, 44157
+1682705613451, 2016, 46173
+1682705614451, 2029, 48202
+1682705615452, 2034, 50236
+1682705616453, 1983, 52219
+1682705617454, 2069, 54288
+1682705618454, 2066, 56354
+1682705619454, 2056, 58410
+1682705620455, 1182, 59592
+1682705621455, 0, 59592
+12:13:41,658 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:13:41,670 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:13:41,671 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:13:41,671 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:13:41,671 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:13:41,672 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:13:41,672 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:13:41,673 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1682705622456, 0, 59592
+1682705623456, 0, 59592

@@ -2,129 +2,67 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-18:34:23,822 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.735s. Listening on: http://0.0.0.0:8888
-18:34:23,830 INFO  quarkus:91 [main] Profile prod activated. 
-18:34:23,830 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-18:34:30,859 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-18:34:30,970 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-18:34:31,390 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/b652a759-0b6c-4010-8e3c-140155c241a1]
-1681605271391, 0, 0
-18:34:31,485 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-18:34:31,580 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/7d070996-665f-47ef-bf8c-7724e893e5f9]
-18:34:31,619 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:51 ballot:31 v_ballot:0 value:<none> (762484983225021)]
-18:34:31,631 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 2!
-18:34:31,668 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-	at java.base/java.util.Objects.checkIndex(Objects.java:373)
-	at java.base/java.util.ArrayList.get(ArrayList.java:426)
-	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
-	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-18:34:31,803 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-18:34:31,876 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/6561adb7-e50e-44fc-b70c-8f90794cd4ec]
-18:34:31,931 INFO  LoggerController:92 [executor-thread-1] Registering replica logger
-18:34:32,011 INFO  ReplicaLoggerClient:78 [executor-thread-1] Path created [/media/disk1/c3082f94-875d-4442-9797-3d6a9df13a5b]
-18:34:32,046 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:42 to:Learner instance:278 ballot:51 v_ballot:0 value:<none> (762528153118641)]
-18:34:32,049 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 4!
-1681605272391, 1607, 1607
-18:34:32,537 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 3!
-18:34:32,895 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 376
-18:34:32,895 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 377
-18:34:32,895 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 378
-18:34:32,896 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 379
-18:34:32,896 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 380
-18:34:32,896 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 381
-18:34:32,896 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 382
-18:34:32,896 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 383
-18:34:32,897 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 384
-18:34:32,897 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 385
-18:34:32,899 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 386
-18:34:32,900 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 387
-18:34:32,900 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 388
-18:34:32,900 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 389
-18:34:32,900 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 390
-18:34:32,901 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 391
-18:34:32,901 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 392
-18:34:32,901 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 393
-18:34:32,901 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 394
-18:34:32,901 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 395
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 396
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 397
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 398
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 399
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 400
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 401
-18:34:32,902 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 402
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 403
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 404
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 405
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 406
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 407
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 408
-18:34:32,903 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 409
-18:34:32,904 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 410
-18:34:32,904 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 411
-18:34:32,904 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 412
-18:34:32,904 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 413
-18:34:32,904 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 414
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 415
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 416
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 417
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 418
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 419
-18:34:32,905 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 420
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 421
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 422
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 423
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 424
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 425
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 426
-18:34:32,906 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 427
-18:34:32,907 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 428
-18:34:32,907 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 429
-18:34:32,907 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 430
-18:34:32,907 WARN  [Learner-3] LearnerRole:133 - Learner re-request missing instance 431
-1681605273401, 1966, 3573
-1681605274401, 1941, 5514
-1681605275402, 1832, 7346
-1681605276403, 1929, 9275
-1681605277403, 1828, 11103
-1681605278404, 1920, 13023
-1681605279405, 2015, 15038
-1681605280406, 2012, 17050
-1681605281407, 1820, 18870
-1681605282407, 1929, 20799
-1681605283409, 1997, 22796
-1681605284410, 2042, 24838
-1681605285411, 1787, 26625
-1681605286411, 1968, 28593
-1681605287412, 1729, 30322
-1681605288413, 2032, 32354
-1681605289414, 2031, 34385
-1681605290414, 1840, 36225
-1681605291415, 2007, 38232
-1681605292416, 1445, 39677
-1681605293416, 1655, 41332
-1681605294417, 1782, 43114
-1681605295417, 2041, 45155
-1681605296418, 1992, 47147
-1681605297418, 1679, 48826
-1681605298419, 2013, 50839
-1681605299419, 1742, 52581
-1681605300420, 2083, 54664
-1681605301420, 1229, 55893
-1681605302421, 0, 55893
-18:35:03,089 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-18:35:03,101 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-18:35:03,101 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-18:35:03,102 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-18:35:03,102 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-18:35:03,103 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-18:35:03,103 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
-18:35:03,104 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1681605303421, 0, 55893
+12:52:39,717 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.633s. Listening on: http://0.0.0.0:8888
+12:52:39,724 INFO  quarkus:91 [main] Profile prod activated. 
+12:52:39,724 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+12:52:43,404 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+12:52:43,486 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+12:52:43,487 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+12:52:43,573 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+12:52:44,027 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk1/d7e3f7df-1030-46e0-8042-73c1e7186b87]
+1682707964028, 0, 0
+12:52:44,122 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+12:52:44,123 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+12:52:44,130 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+12:52:44,215 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk2/c0f161b7-7ef7-4bf1-b935-cb5c5d27b48d]
+12:52:44,258 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+12:52:44,259 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+12:52:44,266 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+12:52:44,338 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk3/de98e6e9-3216-4894-b640-237fd628e5cb]
+12:52:44,379 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+12:52:44,380 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+12:52:44,387 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+12:52:44,464 INFO  ReplicaLoggerClient:78 [executor-thread-2] Path created [/media/disk4/db278013-8707-45c8-bacb-2d171c30dc19]
+1682707965029, 0, 0
+1682707966029, 5555, 5555
+1682707967030, 7972, 13527
+1682707968031, 7769, 21296
+1682707969032, 8127, 29423
+1682707970034, 8093, 37516
+1682707971035, 8055, 45571
+1682707972036, 7947, 53518
+1682707973037, 8113, 61631
+1682707974042, 8009, 69640
+1682707975042, 8140, 77780
+1682707976043, 7964, 85744
+1682707977044, 8049, 93793
+1682707978045, 7993, 101786
+1682707979046, 7961, 109747
+1682707980050, 8183, 117930
+1682707981051, 7906, 125836
+1682707982051, 8007, 133843
+1682707983052, 8141, 141984
+1682707984053, 8183, 150167
+1682707985053, 8084, 158251
+1682707986054, 8045, 166296
+1682707987055, 8128, 174424
+1682707988055, 8087, 182511
+1682707989056, 8170, 190681
+1682707990058, 8073, 198754
+1682707991059, 7946, 206700
+1682707992060, 8020, 214720
+1682707993063, 7957, 222677
+1682707994065, 8190, 230867
+1682707995066, 7816, 238683
+1682707996067, 0, 238683
+12:53:16,792 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:53:16,804 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:53:16,804 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:53:16,806 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:53:16,806 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:53:16,807 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+12:53:16,807 INFO  ReplicaLoggerClient:140 [executor-thread-1] Saving latencies
+12:53:16,808 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1682707997068, 0, 238683
+1682707998068, 0, 238683
+1682707999069, 0, 238683
