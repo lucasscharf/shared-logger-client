@@ -11,9 +11,9 @@ neptune=node6
 
 number_of_experiments=4
 
-experiments=(1 2 4)
+experiments=(2 4)
 apps=(cpu io)
-logs=(dec cou sem)
+logs=(dec)
 threads=(8 16 32 64 128 256 512 1024 2048)
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
@@ -75,9 +75,8 @@ do
 
 				sleep 5
 
-				echo "Executando o experimento App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
-				ssh lucas123@$mars ~/shared-logger-client/scripts/run_experiment.sh $(expr $thread / 2) $number_of_experiments &
-				ssh lucas123@$earth ~/shared-logger-client/scripts/run_experiment.sh $(expr $thread / 2) $number_of_experiments
+				echo "Executando o Experimento [$experiment] App: [$app] Tipo de Log: [$log] # de Threads: [$thread] "
+				ssh lucas123@$mars ~/shared-logger-client/scripts/run_experiment.sh $thread $number_of_experiments 
 				echo "Killing sshs"
 				killall -9 ssh
 
