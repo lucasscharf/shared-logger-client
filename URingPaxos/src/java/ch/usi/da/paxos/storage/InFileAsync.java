@@ -42,6 +42,7 @@ import ch.usi.da.paxos.api.StableStorage;
  */
 public class InFileAsync implements StableStorage {
 	private Path path;
+	private FileWriter writer;
 
 	private final Map<Long, Integer> promised = new LinkedHashMap<Long, Integer>(10000, 0.75F, false) {
 		private static final long serialVersionUID = -2704400128020327063L;
@@ -58,6 +59,15 @@ public class InFileAsync implements StableStorage {
 				path.toFile().mkdirs();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				String fileName = UUID.randomUUID().toString();
+				File file = path.resolve(fileName).toFile();
+				file.createNewFile();
+				writer = new FileWriter(file, true);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 	}
@@ -90,18 +100,14 @@ public class InFileAsync implements StableStorage {
 	@Override
 	public void putDecision(Long instance, Decision decision) {
 		decided.put(instance, decision);
+		
 		try {
 			char[] contentToSave = new String(decision.getValue().getValue()).toCharArray();
-			String fileName = decision.getInstance() + "_" + decision.getBallot() + "_" + decision.getRing();
-			File file = path.resolve(fileName).toFile();
-			file.createNewFile();
-			FileWriter writer = new FileWriter(file, true);
 			writer.write(contentToSave);
-			writer.close();
-		} catch (Exception e) {
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
