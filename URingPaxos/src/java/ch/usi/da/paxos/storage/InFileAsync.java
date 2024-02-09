@@ -55,8 +55,8 @@ public class InFileAsync implements StableStorage {
 		path = Paths.get("/tmp/acceptor_storage_" + UUID.randomUUID().toString());
 		if (!Files.exists(path))
 			try {
-				Files.createFile(path);
-			} catch (IOException e) {
+				path.toFile().mkdirs();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
