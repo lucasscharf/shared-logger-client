@@ -1,7 +1,13 @@
-version: '2'
+version: '3'
 services:
   zookeeper:
     container_name: zookeeper
     image: digitalwonderland/zookeeper
     ports:
       - "2181:2181"
+   
+  barkley:
+    container_name: barkley
+    image: lncm/bitcoind:v25.0
+    ports: 
+      - "2884:2884"
