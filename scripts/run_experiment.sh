@@ -6,6 +6,7 @@ thinking_time=$3
 
 if [ "$thinking_time" -eq "" ]; then
 	thinking_time=50
+	echo "Updating thinking time to $thinking_time"
 fi
 
 cd ~/shared-logger-client/scripts
