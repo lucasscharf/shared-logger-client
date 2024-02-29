@@ -18,7 +18,7 @@ public class CompletableFuturaTest {
 
 		for (int i = 0; i < 8; i++) {
 			executor.submit(() -> {
-				for (int j = 0; j < 5000; j++) {
+				for (int j = 0; j < 5; j++) {
 					counter++;
 					System.out.println("Thread " + Thread.currentThread().getName() + ": " + counter);
 				}
