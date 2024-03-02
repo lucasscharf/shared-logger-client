@@ -60,6 +60,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 	static Thread stats;
 	static Map<Long, Long> allLatencies = new HashMap<>();
 	private final static Logger logger = LoggerFactory.getLogger(ReplicaLoggerClient.class);
+	private FileWriter loggerFileWriter;
 
 	public ReplicaLoggerClient(String token, String ringIdRange, int nodeID, int snapshot_modulo, String zoo_host,
 			String pathPrefix, int trackerNumber)
@@ -67,6 +68,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		super(token, Util.parseRingsArgument(ringIdRange), nodeID, snapshot_modulo, zoo_host);
 		this.trackerNumber = trackerNumber;
 		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
+		loggerFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
 		if (shouldDeleteStatistic) {
 			shouldDeleteStatistic = false;
 			Files.deleteIfExists(latencyStatsPath);
@@ -117,12 +119,9 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			long currentTimeInNano = System.nanoTime();
 			synchronized (path) {
 				for (Command command : m.getCommands()) {
-					commandsReceivedCounter.incrementAndGet();
-					File file = path.toFile();
-					FileWriter writer = new FileWriter(file, true);
-					writer.write(Arrays.toString(command.getValue()));
-					writer.flush();
-					writer.close();
+					char[] contentToSave = new String(command.getValue()).toCharArray();
+					loggerFileWriter.write(contentToSave);
+					loggerFileWriter.flush();
 				}
 			}
 
@@ -146,6 +145,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 			Files.write(latencyStatsPath,
 					stringToSave.getBytes(),
 					StandardOpenOption.APPEND);
+			loggerFileWriter.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

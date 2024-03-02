@@ -39,6 +39,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -123,6 +124,8 @@ public class Replica implements Receiver {
 	private Path path;
 	private AtomicInteger commandsReceivedCounter;
 	private Path fileDatabase;
+	private FileWriter databaseFileWriter;
+	private FileWriter loggerFileWriter;
 
 	public Replica() {
 		this.nodeID = 0;
@@ -135,6 +138,12 @@ public class Replica implements Receiver {
 		pathPrefix = path.toString();
 		clearDatabaseFileSystem();
 
+		try {
+			databaseFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+			loggerFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
@@ -239,6 +248,9 @@ public class Replica implements Receiver {
 		ab.close();
 		stable_storage.close();
 		partitions.deregister(nodeID, token);
+		loggerFileWriter.close();
+		databaseFileWriter.close();
+
 	}
 
 	@Override
@@ -257,12 +269,15 @@ public class Replica implements Receiver {
 			for (Command command : message.getCommands()) {
 				try {
 					if (embebedLog) {
-						String stringToSave = command.toString() + "\n";
-							File file = path.toFile();
-							FileWriter writer = new FileWriter(file, true);
-							writer.write(Arrays.toString(command.getValue()));
-							writer.flush();
-							writer.close();
+						// String stringToSave = command.toString() + "\n";
+						// 	File file = path.toFile();
+						// 	FileWriter writer = new FileWriter(file, true);
+						// 	writer.write(Arrays.toString(command.getValue()));
+						// 	writer.flush();
+						// 	writer.close();
+						char[] contentToSave = new String(command.getValue()).toCharArray();
+						loggerFileWriter.write(contentToSave);
+						loggerFileWriter.flush();
 					}
 				} catch (IOException e) {
 					logger.error("", e);
@@ -273,12 +288,15 @@ public class Replica implements Receiver {
 						if (useDiskDb) {
 							Path fileToSave = fileDatabase.resolve(command.getKey());
 							try {
-								File file = fileToSave.toFile();
-								file.createNewFile();
-								FileWriter writer = new FileWriter(file, true);
-								writer.write(Arrays.toString(command.getValue()));
-								writer.flush();
-								writer.close();
+								// File file = fileToSave.toFile();
+								// file.createNewFile();
+								// FileWriter writer = new FileWriter(file, true);
+								// writer.write(Arrays.toString(command.getValue()));
+								// writer.flush();
+								// writer.close();
+								char[] contentToSave = new String(command.getValue()).toCharArray();
+								loggerFileWriter.write(contentToSave);
+								databaseFileWriter.flush();
 							} catch (Exception ex) {
 								ex.printStackTrace();
 								clearDatabaseFileSystem();
