@@ -6,15 +6,17 @@ venus=node2
 mars=node3
 jupyter=node4
 #loggers
-uranus=node5
-neptune=node6
+# uranus=node5
+# neptune=node6
+uranus=$jupyter
+neptune=$jupyter
 
 number_of_experiments=1
 
-experiments=(1 2 4)
-apps=(cpu io)
-logs=(dec)
-threads=(8 16 32 64 128 256 512 1024 2048)
+experiments=(1)
+apps=(cpu)
+logs=(sem)
+threads=(256)
 thinking_time=3
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)
@@ -43,12 +45,17 @@ do
 					sleep 2
 				fi
 
-				outputFile=~/shared-logger-client/evaluation/thinking_time_$thinking_time/$number_of_experiments\rings/$app\_$log\_$thread\_90_001/
+				#atualizar clean_zookeeper
+				echo "Rebuilding zookeeper"
+				docker exec zookeeper /opt/zookeeper/bin/zkCli.sh create /ringpaxos/topology1/config/stable_storage 0
+				docker exec zookeeper /opt/zookeeper/bin/zkCli.sh set    /ringpaxos/topology1/config/stable_storage ch.usi.da.paxos.storage.InFileAsync
+
+				outputFile=~/shared-logger-client/evaluation/thinking_time_$thinking_time/$number_of_experiments\rings/$app\_$log\_$thread\_90_001_async/
 
 				ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer.sh' & 
 				ssh lucas123@$earth '~/shared-logger-client/scripts/run_acceptor.sh' & 
 				ssh lucas123@$jupyter "~/shared-logger-client/scripts/run_$app\_$log\_replica_1.sh" &
-				ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
+				#ssh lucas123@$uranus "~/shared-logger-client/scripts/run_$app\_$log\_replica_2.sh" &
 				
 				if [ "$number_of_experiments" -ge "2" ]; then
 					ssh lucas123@$venus '~/shared-logger-client/scripts/run_proposer_ring_2.sh' & 
