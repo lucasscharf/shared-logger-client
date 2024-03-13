@@ -145,7 +145,7 @@ public class Replica implements Receiver {
 			e.printStackTrace();
 		}
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple and default constructor",
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
 	}
 
@@ -186,8 +186,8 @@ public class Replica implements Receiver {
 		}
 
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
-				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s], loggerPath [%s], databasePath[%s] with complex constructor",
+				token, null, nodeID, snapshot_modulo, zoo_host, path, embebedLog, useDiskDb, loggerFileWriter, databaseFileWriter));
 
 		final Thread stats = new Thread("ClientStatsWriter") {
 			private int lastReceivedCount = 0;
