@@ -179,15 +179,15 @@ public class Replica implements Receiver {
 		clearDatabaseFileSystem();
 
 		try {
-			databaseFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
-			loggerFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+			databaseFileWriter = new FileWriter(pathPrefix.resolve(UUID.randomUUID().toString()).toFile(), true);
+			loggerFileWriter = new FileWriter(pathPrefix.resolve(UUID.randomUUID().toString()).toFile(), true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		logger.info(String.format(
-				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s], loggerPath [%s], databasePath[%s] with complex constructor",
-				token, null, nodeID, snapshot_modulo, zoo_host, path, embebedLog, useDiskDb, loggerFileWriter, databaseFileWriter));
+				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], pathPrefix[%s], path [%s], embebedLog [%s], useDiskDb [%s] with complex constructor",
+				token, null, nodeID, snapshot_modulo, zoo_host, pathPrefix, path, embebedLog, useDiskDb));
 
 		final Thread stats = new Thread("ClientStatsWriter") {
 			private int lastReceivedCount = 0;
