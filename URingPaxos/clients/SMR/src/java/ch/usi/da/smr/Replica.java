@@ -245,12 +245,15 @@ public class Replica implements Receiver {
 	}
 
 	public void close() {
+		try {
 		ab.close();
 		stable_storage.close();
 		partitions.deregister(nodeID, token);
 		loggerFileWriter.close();
 		databaseFileWriter.close();
-
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	@Override
