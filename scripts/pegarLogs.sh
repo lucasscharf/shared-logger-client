@@ -23,8 +23,8 @@ scp lucas123@$ipClient:$latencyPath $outputFile/client_latency_2.csv
 
 scp lucas123@$ipClient:/tmp/execucao $outputFile/client.log
 scp lucas123@$ipClient:/tmp/execucao_2 $outputFile/client_ring_2.log
-scp lucas123@$ipLogger1:/tmp/execucaoLogger $outputFile/logger_1.csv
-scp lucas123@$ipLogger1:/tmp/loggerStatsOutdated $outputFile/logger_latency.csv
+#scp lucas123@$ipLogger1:/tmp/execucaoLogger $outputFile/logger_1.csv
+#scp lucas123@$ipLogger1:/tmp/loggerStatsOutdated $outputFile/logger_latency.csv
 scp lucas123@$ipLogger2:/tmp/execucaoLogger $outputFile/logger_2.csv
 scp lucas123@$ipLogger2:/tmp/loggerStatsOutdated $outputFile/logger_latency.csv
 
