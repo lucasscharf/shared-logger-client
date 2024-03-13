@@ -68,7 +68,7 @@ public class ReplicaLoggerClient extends Replica implements LoggerClient {
 		super(token, Util.parseRingsArgument(ringIdRange), nodeID, snapshot_modulo, zoo_host);
 		this.trackerNumber = trackerNumber;
 		path = Paths.get(pathPrefix + "/" + UUID.randomUUID().toString());
-		loggerFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+		loggerFileWriter = new FileWriter(path.toFile(), true);
 		if (shouldDeleteStatistic) {
 			shouldDeleteStatistic = false;
 			Files.deleteIfExists(latencyStatsPath);
