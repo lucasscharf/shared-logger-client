@@ -11,10 +11,10 @@ neptune=node6
 
 number_of_experiments=1
 
-experiments=(1 2 4)
-apps=(cpu io)
+experiments=(2)
+apps=(io)
 logs=(dec)
-threads=(8 16 32 64 128 256 512 1024 2048)
+threads=(8)
 thinking_time=3
 
 ips=($earth $venus $mars $jupyter $neptune $uranus)

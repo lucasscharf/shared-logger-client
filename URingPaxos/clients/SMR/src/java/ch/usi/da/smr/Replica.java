@@ -178,6 +178,13 @@ public class Replica implements Receiver {
 		this.useDiskDb = useDiskDb;
 		clearDatabaseFileSystem();
 
+		try {
+			databaseFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+			loggerFileWriter = new FileWriter(path.resolve(UUID.randomUUID().toString()).toFile(), true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		logger.info(String.format(
 				"Token [%s], ringId [%s], nodeId [%s], snapshot_modulo [%s], zoo_host [%s], path [%s], embebedLog [%s], useDiskDb [%s] with simple constructor",
 				token, null, nodeID, snapshot_modulo, null, null, embebedLog, useDiskDb));
@@ -298,7 +305,7 @@ public class Replica implements Receiver {
 								// writer.flush();
 								// writer.close();
 								char[] contentToSave = new String(command.getValue()).toCharArray();
-								loggerFileWriter.write(contentToSave);
+								databaseFileWriter.write(contentToSave);
 								databaseFileWriter.flush();
 							} catch (Exception ex) {
 								ex.printStackTrace();
