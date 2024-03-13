@@ -151,7 +151,7 @@ public class Replica implements Receiver {
 
 	public Replica(String token, List<RingDescription> rings, int nodeID, int snapshot_modulo, String zoo_host)
 			throws Exception {
-		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/media/disk1/filesystem", false);
+		this(token, rings, nodeID, snapshot_modulo, zoo_host, false, "/media/disk1/", false);
 	}
 
 	public Replica(String token, List<RingDescription> rings, int nodeId, int snapshot_modulo, String zoo_host,
