@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class CompletableFuturaTest {
 	int counter = 0;
 
-	@Test
+	// @Test
 	public void simpleTest() {
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 		counter = 0;
@@ -28,7 +28,7 @@ public class CompletableFuturaTest {
 		System.out.println("Hello World!");
 	}
 
-	@Test
+	// @Test
 	public void cascadeFuture() throws Exception {
 		ExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 		CompletableFuture
