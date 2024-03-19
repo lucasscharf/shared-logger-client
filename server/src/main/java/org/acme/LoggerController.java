@@ -189,7 +189,7 @@ public class LoggerController {
     List<String> loggerTypes = List.of("sem", "cou", "dec");
     List<String> others = List.of("90");
     List<String> commandsSizes = List.of("001");
-    List<String> threadCounters = Arrays.asList("8", "16", "32", "64", "128", "256", "512", "1024", "2048");
+    List<String> threadCounters = Arrays.asList("8", "16", "32", "64", "128", "256", "512", "768", "1024", "1280", "1536", "1792", "2048");
     final String separator = "_";
 
     String basePath = "/home/joaolucas/code/shared-logger-client/evaluation/thinking_time_3/";
