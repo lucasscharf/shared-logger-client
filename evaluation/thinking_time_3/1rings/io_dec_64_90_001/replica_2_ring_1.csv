@@ -1,0 +1,115 @@
+23:52:01,388 INFO  [main] RawABListener:48 - Initing a RawABListener...
+23:52:01,405 INFO  [main] Node:101 - PID: 64972
+23:52:11,662 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+23:52:11,668 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+23:52:11,668 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+23:52:11,690 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+23:52:11,690 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+23:52:11,691 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+23:52:11,696 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+23:52:11,698 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+23:52:11,701 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 14] (succsessor: 1 at /155.98.36.29:2621)
+23:52:11,741 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk5/], path [/media/disk5/3e08153a-12c6-428f-8428-f48fb8ad160d], embebedLog [false], useDiskDb [true] with complex constructor
+1710309131742, 0, 0
+Reading from stdin
+1710309132742, 0, 0
+1710309133743, 0, 0
+1710309134743, 0, 0
+1710309135743, 0, 0
+1710309136744, 0, 0
+1710309137744, 0, 0
+1710309138745, 0, 0
+1710309139746, 0, 0
+23:52:20,154 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 14] (succsessor: 1 at /155.98.36.29:2621)
+1710309140746, 0, 0
+23:52:21,699 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 4, 13, 14] (succsessor: 1 at /155.98.36.29:2621)
+1710309141747, 0, 0
+1710309142747, 0, 0
+1710309143748, 0, 0
+1710309144748, 0, 0
+1710309145748, 0, 0
+1710309146749, 0, 0
+1710309147749, 0, 0
+1710309148749, 0, 0
+1710309149750, 0, 0
+1710309150750, 0, 0
+1710309151751, 0, 0
+1710309152751, 0, 0
+1710309153751, 0, 0
+1710309154752, 0, 0
+1710309155752, 0, 0
+1710309156753, 0, 0
+1710309157753, 0, 0
+1710309158753, 0, 0
+1710309159754, 0, 0
+1710309160754, 0, 0
+1710309161754, 0, 0
+1710309162755, 0, 0
+1710309163755, 0, 0
+1710309164755, 0, 0
+1710309165756, 0, 0
+1710309166756, 0, 0
+1710309167757, 0, 0
+1710309168757, 0, 0
+1710309169757, 0, 0
+1710309170758, 0, 0
+1710309171758, 0, 0
+1710309172759, 0, 0
+23:52:52,838 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+23:52:52,846 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+23:52:52,949 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+23:52:52,950 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710309173759, 0, 0
+1710309174759, 0, 0
+1710309175760, 0, 0
+1710309176760, 0, 0
+1710309177760, 0, 0
+1710309178761, 0, 0
+1710309179761, 0, 0
+1710309180761, 0, 0
+1710309181762, 0, 0
+1710309182762, 0, 0
+1710309183762, 0, 0
+1710309184763, 0, 0
+1710309185763, 0, 0
+1710309186763, 0, 0
+1710309187764, 0, 0
+1710309188764, 0, 0
+1710309189764, 0, 0
+1710309190765, 0, 0
+1710309191765, 0, 0
+1710309192765, 0, 0
+1710309193766, 0, 0
+1710309194766, 0, 0
+1710309195766, 0, 0
+1710309196767, 0, 0
+1710309197767, 0, 0
+1710309198767, 0, 0
+1710309199768, 0, 0
+1710309200768, 0, 0
+1710309201768, 0, 0
+1710309202769, 0, 0
+1710309203769, 0, 0
+1710309204769, 0, 0
+1710309205770, 0, 0
+1710309206770, 0, 0
+1710309207770, 0, 0
+1710309208771, 0, 0
+1710309209771, 0, 0
+1710309210771, 0, 0
+1710309211772, 0, 0
+1710309212772, 0, 0
+1710309213772, 0, 0
+1710309214773, 0, 0
+1710309215773, 0, 0
+1710309216774, 0, 0
+1710309217774, 0, 0
+1710309218774, 0, 0
+1710309219775, 0, 0

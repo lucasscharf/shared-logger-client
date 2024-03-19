@@ -1,0 +1,35 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+00:08:06,205 WARNING BlockedThreadChecker:-1 [vertx-blocked-thread-checker] Thread Thread[vert.x-eventloop-thread-50,5,main]=Thread[vert.x-eventloop-thread-50,5,main] has been blocked for 3670 ms, time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
+	at app//io.netty.channel.AbstractChannel.newId(AbstractChannel.java:101)
+	at app//io.netty.channel.AbstractChannel.<init>(AbstractChannel.java:73)
+	at app//io.netty.channel.nio.AbstractNioChannel.<init>(AbstractNioChannel.java:80)
+	at app//io.netty.channel.nio.AbstractNioMessageChannel.<init>(AbstractNioMessageChannel.java:42)
+	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:89)
+	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:75)
+	at app//io.vertx.core.net.impl.transport.Transport$$Lambda$273/0x00000008002d7c40.newChannel(Unknown Source)
+	at app//io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:310)
+	at app//io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272)
+	at app//io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268)
+	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:60)
+	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper$$Lambda$274/0x00000008002d7040.handle(Unknown Source)
+	at app//io.vertx.core.impl.AddressResolver.lambda$null$0(AddressResolver.java:88)
+	at app//io.vertx.core.impl.AddressResolver$$Lambda$276/0x00000008002d6840.handle(Unknown Source)
+	at app//io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:366)
+	at app//io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
+	at app//io.vertx.core.impl.EventLoopContext$$Lambda$169/0x000000080028e440.run(Unknown Source)
+	at app//io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base@13.0.7/java.lang.Thread.run(Thread.java:830)
+
+00:08:07,150 WARN  NettyRecorder:30 [Thread-0] Netty DefaultChannelId initialization (with io.netty.machineId system property set to 58:53:66:a5:77:d5:92:1b) took more than a second
+00:08:07,211 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 21.365s. Listening on: http://0.0.0.0:8888
+00:08:07,213 INFO  quarkus:91 [main] Profile prod activated. 
+00:08:07,214 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+00:09:03,714 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]

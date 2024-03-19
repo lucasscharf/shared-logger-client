@@ -1,0 +1,29 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+22:04:17,241 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.609s. Listening on: http://0.0.0.0:8888
+22:04:17,247 INFO  quarkus:91 [main] Profile prod activated. 
+22:04:17,248 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+22:04:21,074 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+22:04:21,208 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+22:04:21,208 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+22:04:21,295 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+22:04:21,678 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/d507c0b6-940c-4e32-b42c-46c383d79e82]
+1710302661679, 0, 0
+22:04:21,756 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+22:04:21,757 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+22:04:21,764 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+22:04:21,826 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/f1d6cba6-8b41-43e5-829f-e8ed8470ef94]
+22:04:21,856 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+22:04:21,857 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+22:04:21,863 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+22:04:21,920 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk3/e9ad649c-7083-4fcb-8be6-4ed89d084285]
+22:04:21,955 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+22:04:21,955 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+22:04:21,961 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+22:04:22,018 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk4/4c7b53ff-de6f-4669-9f3c-11031e2707d9]
+1710302662679, 0, 0
+1710302663680, 0, 0
+1710302664680, 0, 0
+1710302665681, 0, 0

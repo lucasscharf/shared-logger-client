@@ -1,0 +1,98 @@
+01:19:11,490 INFO  [main] RawABListener:48 - Initing a RawABListener...
+01:19:11,500 INFO  [main] Node:101 - PID: 84082
+01:19:36,784 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+01:19:36,790 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+01:19:36,791 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+01:19:36,815 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+01:19:36,815 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+01:19:36,816 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+01:19:36,822 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+01:19:36,825 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+01:19:36,828 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 1 at /155.98.36.29:2897)
+01:19:36,850 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk5/], path [/media/disk5/c34fc8c0-1167-45ec-8e9d-4813376aa82c], embebedLog [false], useDiskDb [true] with complex constructor
+1710314376851, 0, 0
+Reading from stdin
+1710314377851, 0, 0
+1710314378852, 0, 0
+1710314379852, 0, 0
+1710314380853, 0, 0
+1710314381853, 0, 0
+1710314382854, 0, 0
+1710314383854, 0, 0
+1710314384855, 0, 0
+1710314385855, 0, 0
+1710314386856, 0, 0
+1710314387856, 0, 0
+1710314388857, 0, 0
+1710314389857, 0, 0
+1710314390857, 0, 0
+1710314391858, 0, 0
+1710314392858, 0, 0
+1710314393859, 0, 0
+1710314394859, 0, 0
+1710314395859, 0, 0
+1710314396860, 0, 0
+1710314397860, 0, 0
+1710314398861, 0, 0
+1710314399861, 0, 0
+1710314400862, 0, 0
+1710314401862, 0, 0
+1710314402862, 0, 0
+01:20:02,915 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+01:20:02,924 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+01:20:03,026 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+01:20:03,027 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+01:20:03,032 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710314403863, 0, 0
+1710314404863, 0, 0
+1710314405863, 0, 0
+1710314406864, 0, 0
+1710314407864, 0, 0
+1710314408865, 0, 0
+1710314409865, 0, 0
+1710314410865, 0, 0
+1710314411866, 0, 0
+1710314412866, 0, 0
+1710314413866, 0, 0
+1710314414867, 0, 0
+1710314415867, 0, 0
+1710314416868, 0, 0
+1710314417868, 0, 0
+1710314418869, 0, 0
+1710314419869, 0, 0
+1710314420869, 0, 0
+1710314421870, 0, 0
+1710314422870, 0, 0
+1710314423870, 0, 0
+1710314424871, 0, 0
+1710314425871, 0, 0
+1710314426871, 0, 0
+1710314427872, 0, 0
+1710314428872, 0, 0
+1710314429873, 0, 0
+1710314430873, 0, 0
+1710314431873, 0, 0
+1710314432874, 0, 0
+1710314433874, 0, 0
+1710314434874, 0, 0
+1710314435875, 0, 0
+1710314436875, 0, 0
+1710314437875, 0, 0
+1710314438876, 0, 0
+1710314439876, 0, 0
+1710314440876, 0, 0
+1710314441877, 0, 0
+1710314442877, 0, 0
+1710314443877, 0, 0
+1710314444878, 0, 0
+1710314445878, 0, 0
+1710314446878, 0, 0
+1710314447879, 0, 0
+1710314448879, 0, 0

@@ -1,61 +1,53 @@
-16:12:31,904 INFO  [main] RawABListener:48 - Initing a RawABListener...
-16:12:31,914 INFO  [main] Node:101 - PID: 22042
-16:12:32,128 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-16:12:32,134 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-16:12:32,134 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-16:12:32,158 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-16:12:32,159 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-16:12:32,160 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-16:12:32,164 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-16:12:32,166 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-16:12:32,170 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13] (succsessor: 1 at /10.10.1.3:2119)
-16:12:32,189 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-1709161952189, 0, 0
+08:34:51,678 INFO  [main] RawABListener:48 - Initing a RawABListener...
+08:34:51,697 INFO  [main] Node:101 - PID: 135565
+08:34:51,938 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+08:34:51,943 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+08:34:51,944 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+08:34:51,968 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+08:34:51,968 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+08:34:51,969 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+08:34:51,973 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+08:34:51,975 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+08:34:51,980 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 1 at /155.98.36.29:2309)
+08:34:52,003 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk5/], path [/media/disk5/cc857fb7-f12c-433a-9d9a-fe1a415ddc11], embebedLog [false], useDiskDb [false] with complex constructor
+1710340492003, 0, 0
 Reading from stdin
-1709161953190, 0, 0
-1709161954190, 0, 0
-1709161955191, 0, 0
-1709161956191, 0, 0
-1709161957192, 231, 231
-1709161958192, 3804, 4035
-1709161959193, 3948, 7983
-1709161960193, 4004, 11987
-1709161961194, 4049, 16036
-1709161962194, 4001, 20037
-1709161963195, 3995, 24032
-1709161964195, 3976, 28008
-1709161965197, 3843, 31851
-1709161966197, 4106, 35957
-1709161967197, 4085, 40042
-1709161968198, 4076, 44118
-1709161969198, 4027, 48145
-1709161970199, 4069, 52214
-1709161971199, 4058, 56272
-1709161972199, 4099, 60371
-1709161973200, 4051, 64422
-1709161974200, 4131, 68553
-1709161975201, 4120, 72673
-1709161976201, 4106, 76779
-1709161977202, 4091, 80870
-1709161978202, 4135, 85005
-1709161979203, 4059, 89064
-1709161980203, 4109, 93173
-1709161981203, 4031, 97204
-1709161982204, 4150, 101354
-1709161983204, 4126, 105480
-1709161984205, 4114, 109594
-1709161985205, 4032, 113626
-1709161986206, 3307, 116933
-1709161987206, 0, 116933
-16:13:07,443 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
-java.nio.channels.ClosedSelectorException
-	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
-	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
-	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-16:13:07,447 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13] (succsessor: 1 at /10.10.1.3:2119)
-16:13:07,455 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
-16:13:07,556 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-16:13:07,559 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710340493004, 0, 0
+1710340494004, 0, 0
+1710340495005, 0, 0
+1710340496005, 0, 0
+1710340497006, 1236, 1236
+1710340498006, 4072, 5308
+1710340499007, 4194, 9502
+1710340500007, 4065, 13567
+1710340501008, 4144, 17711
+1710340502008, 4094, 21805
+1710340503009, 4004, 25809
+1710340504009, 4151, 29960
+1710340505010, 4163, 34123
+1710340506010, 4128, 38251
+1710340507010, 4175, 42426
+1710340508011, 4151, 46577
+1710340509012, 4195, 50772
+1710340510012, 4021, 54793
+1710340511013, 4168, 58961
+1710340512013, 4212, 63173
+1710340513014, 4146, 67319
+1710340514014, 4200, 71519
+1710340515015, 4167, 75686
+1710340516015, 4233, 79919
+1710340517016, 4068, 83987
+1710340518017, 4178, 88165
+1710340519017, 4238, 92403
+1710340520017, 4224, 96627
+1710340521019, 4141, 100768
+1710340522019, 4223, 104991
+1710340523020, 4204, 109195
+1710340524020, 4218, 113413
+1710340525020, 4100, 117513
+1710340526021, 4175, 121688
+1710340527021, 0, 121688
+08:35:27,348 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+08:35:27,448 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+08:35:27,449 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710340528022, 0, 121688

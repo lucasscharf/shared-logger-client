@@ -1,0 +1,68 @@
+20:45:54,082 INFO  [main] RawABListener:48 - Initing a RawABListener...
+20:45:54,091 INFO  [main] Node:101 - PID: 12357
+20:45:54,307 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+20:45:54,312 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+20:45:54,313 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+20:45:54,336 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+20:45:54,337 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+20:45:54,339 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+20:45:54,346 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+20:45:54,348 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+20:45:54,349 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23] (succsessor: 21 at /155.98.36.29:2736)
+20:45:54,377 INFO  [main] Replica:181 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1710297954377, 0, 0
+Reading from stdin
+20:45:54,424 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2309)
+1710297955378, 0, 0
+1710297956379, 0, 0
+1710297957379, 0, 0
+20:45:58,071 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2309)
+1710297958380, 0, 0
+1710297959380, 16, 16
+1710297960380, 877, 893
+1710297961381, 955, 1848
+1710297962382, 983, 2831
+1710297963382, 991, 3822
+1710297964383, 995, 4817
+1710297965383, 995, 5812
+1710297966384, 983, 6795
+1710297967384, 1004, 7799
+1710297968385, 1002, 8801
+1710297969385, 1024, 9825
+1710297970385, 992, 10817
+1710297971386, 1026, 11843
+1710297972386, 1023, 12866
+1710297973387, 1018, 13884
+1710297974387, 1026, 14910
+1710297975388, 1023, 15933
+1710297976388, 1021, 16954
+1710297977388, 1025, 17979
+1710297978389, 1026, 19005
+1710297979389, 1022, 20027
+1710297980390, 1023, 21050
+1710297981390, 1027, 22077
+1710297982391, 1010, 23087
+1710297983391, 981, 24068
+1710297984391, 1028, 25096
+1710297985392, 1031, 26127
+1710297986392, 1019, 27146
+1710297987393, 1022, 28168
+1710297988393, 1027, 29195
+1710297989394, 632, 29827
+1710297990394, 0, 29827
+20:46:30,444 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+20:46:30,450 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 23] (succsessor: 5 at /10.10.1.6:2348)
+20:46:30,556 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/acceptors
+20:46:30,557 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/acceptors
+20:46:30,557 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+20:46:30,557 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+20:46:30,558 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
+1710297991395, 0, 29827
+1710297992395, 0, 29827

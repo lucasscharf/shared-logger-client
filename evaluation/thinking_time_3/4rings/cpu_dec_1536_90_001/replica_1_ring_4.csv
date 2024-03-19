@@ -1,0 +1,75 @@
+21:29:48,999 INFO  [main] RawABListener:48 - Initing a RawABListener...
+21:29:49,014 INFO  [main] Node:101 - PID: 26884
+21:29:49,255 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+21:29:49,260 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+21:29:49,261 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+21:29:49,290 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 4
+21:29:49,291 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 4
+21:29:49,292 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+21:29:49,298 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+21:29:49,301 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+21:29:49,304 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [41, 42, 43, 44] (succsessor: 44 at /10.10.1.7:2814)
+21:29:49,325 INFO  [main] Replica:181 - Token [0], ringId [null], nodeId [43], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1710300589326, 0, 0
+Reading from stdin
+1710300590326, 0, 0
+1710300591327, 0, 0
+1710300592327, 0, 0
+21:29:53,098 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [7, 41, 42, 43, 44] (succsessor: 44 at /10.10.1.7:2814)
+1710300593328, 0, 0
+1710300594328, 3933, 3933
+1710300595329, 30229, 34162
+1710300596329, 34324, 68486
+1710300597330, 31917, 100403
+1710300598331, 34802, 135205
+1710300599332, 33802, 169007
+1710300600333, 33817, 202824
+1710300601334, 35025, 237849
+1710300602335, 33847, 271696
+1710300603335, 33532, 305228
+1710300604336, 34576, 339804
+1710300605337, 32982, 372786
+1710300606338, 35345, 408131
+1710300607339, 35104, 443235
+1710300608339, 32901, 476136
+1710300609340, 35082, 511218
+1710300610341, 33594, 544812
+1710300611342, 34090, 578902
+1710300612343, 31241, 610143
+1710300613344, 33705, 643848
+1710300614345, 35415, 679263
+1710300615346, 33709, 712972
+1710300616347, 32819, 745791
+1710300617348, 34395, 780186
+1710300618348, 32259, 812445
+1710300619350, 35019, 847464
+1710300620350, 36171, 883635
+1710300621350, 35683, 919318
+1710300622351, 34880, 954198
+1710300623352, 33099, 987297
+1710300624352, 34606, 1021903
+1710300625353, 24091, 1045994
+1710300626353, 0, 1045994
+1710300627354, 0, 1045994
+1710300628355, 0, 1045994
+1710300629356, 0, 1045994
+1710300630356, 0, 1045994
+1710300631356, 99, 1046093
+1710300632357, 0, 1046093
+1710300633357, 162, 1046255
+1710300634358, 0, 1046255
+21:30:34,747 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+21:30:34,750 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [7, 41, 43, 44] (succsessor: 44 at /10.10.1.7:2814)
+21:30:34,759 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/nodes
+21:30:34,860 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/learners
+21:30:34,860 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/nodes
+21:30:34,861 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/nodes
+1710300635358, 0, 1046255
+1710300636359, 0, 1046255

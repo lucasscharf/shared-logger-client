@@ -1,0 +1,76 @@
+21:29:48,703 INFO  [main] RawABListener:48 - Initing a RawABListener...
+21:29:48,713 INFO  [main] Node:101 - PID: 32633
+21:29:48,938 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+21:29:48,944 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+21:29:48,945 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+21:29:48,966 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 4
+21:29:48,967 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 4
+21:29:48,968 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+21:29:48,975 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+21:29:48,977 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+21:29:48,982 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [41, 42, 44] (succsessor: 41 at /155.98.36.29:2735)
+21:29:49,003 INFO  [main] Replica:181 - Token [0], ringId [null], nodeId [44], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
+1710300589004, 0, 0
+Reading from stdin
+21:29:49,282 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [41, 42, 43, 44] (succsessor: 41 at /155.98.36.29:2735)
+1710300590004, 0, 0
+1710300591005, 0, 0
+1710300592005, 0, 0
+1710300593006, 0, 0
+21:29:53,100 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [7, 41, 42, 43, 44] (succsessor: 7 at /10.10.1.6:2832)
+1710300594006, 0, 0
+1710300595007, 23382, 23382
+1710300596007, 34810, 58192
+1710300597008, 31145, 89337
+1710300598008, 34098, 123435
+1710300599009, 34295, 157730
+1710300600010, 33889, 191619
+1710300601011, 35234, 226853
+1710300602012, 33404, 260257
+1710300603012, 33865, 294122
+1710300604013, 34048, 328170
+1710300605013, 33663, 361833
+1710300606014, 35982, 397815
+1710300607014, 33886, 431701
+1710300608015, 34749, 466450
+1710300609015, 33059, 499509
+1710300610017, 34740, 534249
+1710300611018, 33162, 567411
+1710300612019, 33920, 601331
+1710300613020, 31177, 632508
+1710300614020, 35028, 667536
+1710300615022, 35955, 703491
+1710300616022, 31158, 734649
+1710300617022, 34857, 769506
+1710300618023, 34073, 803579
+1710300619024, 32356, 835935
+1710300620025, 35739, 871674
+1710300621026, 36715, 908389
+1710300622027, 34652, 943041
+1710300623028, 34929, 977970
+1710300624028, 33903, 1011873
+1710300625029, 34121, 1045994
+1710300626029, 0, 1045994
+1710300627030, 0, 1045994
+1710300628030, 0, 1045994
+1710300629031, 0, 1045994
+1710300630031, 0, 1045994
+1710300631031, 0, 1045994
+1710300632032, 99, 1046093
+1710300633032, 0, 1046093
+1710300634032, 162, 1046255
+21:30:34,746 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+21:30:34,750 INFO  [main-EventThread] RingManager:133 - RingManager ring 4 changed: [7, 41, 43, 44] (succsessor: 7 at /10.10.1.6:2832)
+21:30:34,857 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/nodes
+21:30:34,858 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/nodes
+21:30:34,858 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology4/learners
+1710300635032, 0, 1046255
+1710300636033, 0, 1046255
+1710300637033, 0, 1046255

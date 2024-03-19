@@ -1,0 +1,85 @@
+00:19:45,210 INFO  [main] RawABListener:48 - Initing a RawABListener...
+00:19:45,223 INFO  [main] Node:101 - PID: 53018
+00:20:10,492 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+00:20:10,498 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+00:20:10,498 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+00:20:10,527 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+00:20:10,527 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+00:20:10,528 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+00:20:10,535 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+00:20:10,537 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+00:20:10,547 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.6:2931)
+00:20:10,572 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk1/], path [/media/disk1/7f6da92e-243c-46be-9cd7-0d92c0bfd73d], embebedLog [false], useDiskDb [true] with complex constructor
+1710310810573, 0, 0
+Reading from stdin
+00:20:11,334 INFO  [TCPListener] LearnerRole:167 - Learner start from instance 20394 without recovery
+00:20:11,335 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 1!
+00:20:11,360 INFO  [ElasticLearner] ElasticLearnerRole:377 - Received value count for instance 20394 20393
+00:20:11,552 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20396
+00:20:11,556 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20397
+00:20:11,556 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20398
+00:20:11,557 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20399
+00:20:11,557 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20400
+00:20:11,557 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20401
+00:20:11,557 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20402
+00:20:11,558 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20403
+00:20:11,558 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20404
+00:20:11,558 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20405
+00:20:11,558 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20406
+00:20:11,559 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20407
+00:20:11,559 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20408
+00:20:11,559 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20409
+00:20:11,559 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20410
+00:20:11,559 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20411
+00:20:11,560 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20412
+00:20:11,560 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 20413
+1710310811573, 69, 69
+1710310812574, 4935, 5004
+1710310813574, 4009, 9013
+1710310814575, 4040, 13053
+1710310815575, 3979, 17032
+1710310816576, 4037, 21069
+1710310817576, 4087, 25156
+1710310818577, 4041, 29197
+1710310819577, 4109, 33306
+1710310820578, 4086, 37392
+1710310821579, 4081, 41473
+1710310822579, 4089, 45562
+1710310823580, 4015, 49577
+1710310824580, 4004, 53581
+1710310825580, 4094, 57675
+1710310826581, 4076, 61751
+1710310827581, 4092, 65843
+1710310828582, 3911, 69754
+1710310829582, 1800, 71554
+00:20:30,453 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/acceptors
+00:20:30,552 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/acceptors
+00:20:30,552 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+00:20:30,552 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+00:20:30,553 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710310830583, 0, 71554
+1710310831583, 0, 71554
+1710310832583, 0, 71554
+1710310833584, 0, 71554
+1710310834584, 0, 71554
+1710310835585, 0, 71554
+1710310836585, 0, 71554
+1710310837586, 0, 71554
+1710310838586, 0, 71554
+1710310839586, 0, 71554
+1710310840586, 0, 71554
+1710310841587, 0, 71554
+1710310842587, 0, 71554
+1710310843587, 0, 71554
+1710310844588, 0, 71554
+1710310845588, 0, 71554
+1710310846588, 0, 71554
+1710310847589, 0, 71554
+1710310848589, 0, 71554
+1710310849590, 0, 71554
+1710310850590, 0, 71554
+1710310851590, 0, 71554
+1710310852591, 0, 71554
+1710310853591, 0, 71554
+1710310854592, 0, 71554
+1710310855592, 0, 71554

@@ -1,0 +1,54 @@
+05:16:29,703 INFO  [main] RawABListener:48 - Initing a RawABListener...
+05:16:29,714 INFO  [main] Node:101 - PID: 80639
+05:16:29,967 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+05:16:29,973 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+05:16:29,973 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+05:16:30,001 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+05:16:30,002 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+05:16:30,003 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+05:16:30,008 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+05:16:30,010 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+05:16:30,014 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.6:2574)
+05:16:30,046 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk1/], path [/media/disk1/1a26a9b7-c9c8-484e-9f50-0562fb1b242b], embebedLog [false], useDiskDb [true] with complex constructor
+1710328590047, 0, 0
+Reading from stdin
+1710328591047, 0, 0
+1710328592048, 0, 0
+1710328593048, 0, 0
+1710328594049, 0, 0
+1710328595049, 1114, 1114
+1710328596050, 3919, 5033
+1710328597050, 3905, 8938
+1710328598051, 4127, 13065
+1710328599051, 3798, 16863
+1710328600052, 4116, 20979
+1710328601053, 4104, 25083
+1710328602053, 4100, 29183
+1710328603054, 4172, 33355
+1710328604055, 4040, 37395
+1710328605055, 4101, 41496
+1710328606055, 4064, 45560
+1710328607056, 4122, 49682
+1710328608056, 3973, 53655
+1710328609057, 4098, 57753
+1710328610057, 4007, 61760
+1710328611057, 3917, 65677
+1710328612058, 4154, 69831
+1710328613058, 4077, 73908
+1710328614059, 4200, 78108
+1710328615060, 4151, 82259
+1710328616061, 4149, 86408
+1710328617063, 3976, 90384
+1710328618064, 4168, 94552
+1710328619065, 4082, 98634
+1710328620066, 4034, 102668
+1710328621066, 4120, 106788
+1710328622067, 3971, 110759
+1710328623068, 4173, 114932
+1710328624071, 3904, 118836
+1710328625072, 0, 118836
+05:17:05,400 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+05:17:05,505 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+05:17:05,506 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+05:17:05,506 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710328626072, 0, 118836

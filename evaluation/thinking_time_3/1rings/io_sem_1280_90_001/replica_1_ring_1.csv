@@ -1,0 +1,87 @@
+00:36:03,218 INFO  [main] RawABListener:48 - Initing a RawABListener...
+00:36:03,234 INFO  [main] Node:101 - PID: 55374
+00:36:28,518 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+00:36:28,523 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+00:36:28,523 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+00:36:28,548 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+00:36:28,549 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+00:36:28,550 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+00:36:28,555 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+00:36:28,557 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+00:36:28,561 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13] (succsessor: 1 at /155.98.36.29:2618)
+00:36:28,586 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk1/], path [/media/disk1/a6cbd97d-2e50-495d-b150-d6e06b02953c], embebedLog [false], useDiskDb [true] with complex constructor
+1710311788587, 0, 0
+Reading from stdin
+1710311789587, 0, 0
+1710311790588, 0, 0
+1710311791588, 0, 0
+1710311792589, 0, 0
+00:36:33,021 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:144 ballot:11 v_ballot:0 value:<none> (456220956056531)]
+00:36:33,022 INFO  [TCPListener] LearnerRole:167 - Learner start from instance 145 without recovery
+00:36:33,023 WARN  [ElasticLearner] ElasticLearnerRole:362 - ElasticLearner must recover the value count for ring 1!
+00:36:33,280 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.6:2593)
+00:36:33,576 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 332
+1710311793589, 1737, 1737
+1710311794589, 17819, 19556
+1710311795590, 18837, 38393
+1710311796590, 17901, 56294
+1710311797591, 18675, 74969
+1710311798591, 17649, 92618
+1710311799592, 16263, 108881
+1710311800593, 16362, 125243
+1710311801593, 20511, 145754
+1710311802594, 20169, 165923
+1710311803594, 20277, 186200
+1710311804595, 20862, 207062
+1710311805596, 21735, 228797
+1710311806596, 21618, 250415
+1710311807597, 22394, 272809
+1710311808598, 23095, 295904
+1710311809599, 22174, 318078
+1710311810599, 21619, 339697
+1710311811600, 22095, 361792
+1710311812601, 20463, 382255
+1710311813602, 11200, 393455
+00:36:54,558 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
+java.nio.channels.ClosedSelectorException
+	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
+	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
+	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
+	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
+	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+00:36:54,562 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13] (succsessor: 1 at /155.98.36.29:2618)
+00:36:54,571 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710311814603, 0, 393455
+00:36:54,671 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+00:36:54,672 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710311815603, 0, 393455
+1710311816604, 0, 393455
+1710311817604, 0, 393455
+1710311818604, 0, 393455
+1710311819605, 0, 393455
+1710311820605, 0, 393455
+1710311821605, 0, 393455
+1710311822606, 0, 393455
+1710311823606, 0, 393455
+1710311824606, 0, 393455
+1710311825607, 0, 393455
+1710311826607, 0, 393455
+1710311827607, 0, 393455
+1710311828608, 0, 393455
+1710311829608, 0, 393455
+1710311830608, 0, 393455
+1710311831609, 0, 393455
+1710311832609, 0, 393455
+1710311833609, 0, 393455
+1710311834610, 0, 393455
+1710311835610, 0, 393455
+1710311836611, 0, 393455
+1710311837611, 0, 393455
+1710311838611, 0, 393455
+1710311839611, 0, 393455
+1710311840612, 0, 393455
+1710311841612, 0, 393455
+1710311842612, 0, 393455
+1710311843612, 0, 393455
+1710311844613, 0, 393455

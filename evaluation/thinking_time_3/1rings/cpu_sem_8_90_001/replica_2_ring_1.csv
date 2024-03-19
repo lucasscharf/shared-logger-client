@@ -1,61 +1,53 @@
-16:10:04,340 INFO  [main] RawABListener:48 - Initing a RawABListener...
-16:10:04,350 INFO  [main] Node:101 - PID: 20940
-16:10:04,580 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-16:10:04,585 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-16:10:04,586 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-16:10:04,614 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-16:10:04,615 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-16:10:04,616 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-16:10:04,620 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-16:10:04,622 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-16:10:04,626 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13] (succsessor: 1 at /10.10.1.3:2270)
-16:10:04,645 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-1709161804645, 0, 0
+08:32:25,484 INFO  [main] RawABListener:48 - Initing a RawABListener...
+08:32:25,499 INFO  [main] Node:101 - PID: 134987
+08:32:25,730 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+08:32:25,736 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+08:32:25,736 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+08:32:25,762 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+08:32:25,763 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+08:32:25,764 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+08:32:25,768 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+08:32:25,770 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+08:32:25,773 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 1 at /155.98.36.29:2654)
+08:32:25,795 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk5/], path [/media/disk5/6bdd6746-150e-4ecc-870b-8f27d870986c], embebedLog [false], useDiskDb [false] with complex constructor
+1710340345796, 0, 0
 Reading from stdin
-1709161805646, 0, 0
-1709161806646, 0, 0
-1709161807646, 0, 0
-1709161808647, 0, 0
-1709161809647, 95, 95
-1709161810648, 962, 1057
-1709161811648, 992, 2049
-1709161812649, 1006, 3055
-1709161813649, 1004, 4059
-1709161814650, 1013, 5072
-1709161815651, 1014, 6086
-1709161816651, 1022, 7108
-1709161817652, 1018, 8126
-1709161818652, 968, 9094
-1709161819653, 1032, 10126
-1709161820653, 1025, 11151
-1709161821654, 1029, 12180
-1709161822654, 1033, 13213
-1709161823654, 1029, 14242
-1709161824655, 1021, 15263
-1709161825655, 1045, 16308
-1709161826656, 1032, 17340
-1709161827656, 1035, 18375
-1709161828656, 1029, 19404
-1709161829657, 1035, 20439
-1709161830657, 1037, 21476
-1709161831658, 1010, 22486
-1709161832658, 1044, 23530
-1709161833658, 1034, 24564
-1709161834659, 1042, 25606
-1709161835660, 1024, 26630
-1709161836660, 1027, 27657
-1709161837660, 1029, 28686
-1709161838661, 1036, 29722
-1709161839661, 369, 30091
-16:10:40,191 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
-java.nio.channels.ClosedSelectorException
-	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
-	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
-	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-16:10:40,195 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 13] (succsessor: 1 at /10.10.1.3:2270)
-16:10:40,204 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
-16:10:40,304 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-16:10:40,309 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710340346796, 0, 0
+1710340347797, 0, 0
+1710340348797, 0, 0
+1710340349798, 0, 0
+1710340350798, 247, 247
+1710340351799, 966, 1213
+1710340352799, 994, 2207
+1710340353800, 1003, 3210
+1710340354800, 994, 4204
+1710340355801, 986, 5190
+1710340356801, 1016, 6206
+1710340357801, 1017, 7223
+1710340358802, 1026, 8249
+1710340359802, 979, 9228
+1710340360803, 1005, 10233
+1710340361803, 1024, 11257
+1710340362804, 1026, 12283
+1710340363804, 1016, 13299
+1710340364804, 1004, 14303
+1710340365805, 1022, 15325
+1710340366805, 1021, 16346
+1710340367806, 1012, 17358
+1710340368806, 1025, 18383
+1710340369807, 1017, 19400
+1710340370808, 1027, 20427
+1710340371809, 1033, 21460
+1710340372809, 1006, 22466
+1710340373810, 1023, 23489
+1710340374810, 1027, 24516
+1710340375811, 1034, 25550
+1710340376811, 1024, 26574
+1710340377811, 1034, 27608
+1710340378812, 1013, 28621
+1710340379812, 1035, 29656
+1710340380813, 199, 29855
+08:33:01,171 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
+08:33:01,273 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+08:33:01,274 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710340381813, 0, 29855

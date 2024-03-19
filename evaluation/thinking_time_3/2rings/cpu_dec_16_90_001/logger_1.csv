@@ -1,0 +1,79 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+20:47:12,708 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.677s. Listening on: http://0.0.0.0:8888
+20:47:12,715 INFO  quarkus:91 [main] Profile prod activated. 
+20:47:12,716 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+20:47:16,472 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+20:47:16,564 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+20:47:16,565 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+20:47:16,655 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+20:47:17,070 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/ba5d8d04-81ad-4700-b170-ab6e37321120]
+1710298037071, 0, 0
+20:47:17,146 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+20:47:17,147 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+20:47:17,152 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+20:47:17,223 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/4acb3a0b-05e4-49bd-84b8-d5739330c5a4]
+20:47:17,264 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+20:47:17,265 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+20:47:17,273 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+20:47:17,350 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk3/d9511e02-88f2-4cf5-9bda-30b56a9e03dd]
+20:47:17,387 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+20:47:17,388 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+20:47:17,395 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+20:47:17,470 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk4/9c462d94-2216-4187-8dd5-3059cbd15107]
+1710298038072, 0, 0
+1710298039072, 0, 0
+1710298040073, 0, 0
+1710298041074, 0, 0
+1710298042074, 0, 0
+1710298043075, 0, 0
+1710298044075, 0, 0
+1710298045076, 0, 0
+1710298046077, 0, 0
+1710298047078, 0, 0
+1710298048078, 0, 0
+1710298049079, 0, 0
+1710298050079, 0, 0
+1710298051080, 0, 0
+1710298052081, 0, 0
+1710298053082, 0, 0
+1710298054083, 0, 0
+1710298055084, 0, 0
+1710298056084, 0, 0
+1710298057085, 0, 0
+1710298058086, 0, 0
+1710298059086, 0, 0
+1710298060087, 0, 0
+1710298061087, 0, 0
+1710298062088, 0, 0
+1710298063089, 0, 0
+1710298064089, 0, 0
+1710298065090, 0, 0
+1710298066091, 0, 0
+1710298067091, 0, 0
+1710298068092, 0, 0
+1710298069092, 0, 0
+20:47:49,455 ERROR [executor-thread-2-EventThread] TopologyManager:387 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/14
+20:47:49,482 ERROR ClientCnxn:537 [executor-thread-2-EventThread] Error while calling watcher : java.lang.NullPointerException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:126)
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:706)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:720)
+	at ch.usi.da.paxos.ring.NetworkManager.connectClient(NetworkManager.java:291)
+	at ch.usi.da.paxos.ring.RingManager.notifyRingChanged(RingManager.java:136)
+	at ch.usi.da.paxos.ring.RingManager.process(RingManager.java:210)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:535)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:510)
+
+20:47:49,704 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+20:47:49,765 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:47:49,766 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+20:47:49,790 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:47:49,790 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+20:47:49,806 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+20:47:49,806 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+20:47:49,821 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1710298070093, 0, 0
+1710298071093, 0, 0
+1710298072094, 0, 0
