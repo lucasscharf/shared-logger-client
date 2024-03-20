@@ -48,27 +48,3 @@ Reading from stdin
 1710902104837, 89636, 1718553
 1710902105837, 58615, 1777168
 1710902106838, 45864, 1823032
-1710902107844, 7921, 1830953
-1710902108845, 364, 1831317
-1710902109845, 18, 1831335
-1710902110846, 0, 1831335
-1710902111846, 18, 1831353
-1710902112847, 0, 1831353
-1710902113847, 108, 1831461
-1710902114848, 427, 1831888
-1710902115848, 113, 1832001
-20:35:16,565 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
-java.nio.channels.ClosedSelectorException
-	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
-	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
-	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-20:35:16,573 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [5, 21, 23] (succsessor: 5 at /10.10.1.6:2939)
-20:35:16,678 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
-20:35:16,683 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-20:35:16,684 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-1710902116848, 0, 1832001
-1710902117849, 0, 1832001
-1710902118849, 0, 1832001

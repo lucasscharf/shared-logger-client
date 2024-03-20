@@ -1,149 +1,51 @@
-01:16:26,042 INFO  [main] RawABListener:48 - Initing a RawABListener...
-01:16:26,058 INFO  [main] Node:101 - PID: 61706
-01:16:36,295 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-01:16:36,298 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-01:16:36,299 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-01:16:36,317 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-01:16:36,318 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-01:16:36,318 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-01:16:36,324 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-01:16:36,326 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-01:16:36,334 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [13] (succsessor: 13 at /10.10.1.5:2421)
-01:16:36,351 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk1/], path [/media/disk1/4d70f0e1-64c1-44b6-be48-00caedbe5c2f], embebedLog [false], useDiskDb [true] with complex constructor
-1710314196351, 0, 0
+01:16:25,963 INFO  [main] RawABListener:48 - Initing a RawABListener...
+01:16:25,973 INFO  [main] Node:101 - PID: 61707
+01:16:36,231 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+01:16:36,235 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+01:16:36,236 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+01:16:36,264 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+01:16:36,265 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+01:16:36,266 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+01:16:36,270 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+01:16:36,272 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+01:16:36,274 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23] (succsessor: 21 at /155.98.36.29:2858)
+01:16:36,535 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [23], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk2/], path [/media/disk2/f4abd2b8-9335-4ce4-9db8-84aac1271c85], embebedLog [false], useDiskDb [true] with complex constructor
+1710314196537, 0, 0
 Reading from stdin
-1710314197352, 0, 0
-1710314198352, 0, 0
-1710314199353, 0, 0
-1710314200353, 0, 0
-01:16:41,017 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [2, 13] (succsessor: 2 at /10.10.1.2:2278)
-1710314201354, 0, 0
-1710314202354, 0, 0
-1710314203355, 0, 0
-1710314204355, 0, 0
-1710314205355, 0, 0
-1710314206356, 0, 0
-1710314207356, 0, 0
-1710314208357, 0, 0
-1710314209357, 0, 0
-1710314210358, 0, 0
-01:16:51,132 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13] (succsessor: 1 at /155.98.36.29:2122)
-1710314211358, 0, 0
-1710314212359, 0, 0
-1710314213359, 0, 0
-1710314214360, 0, 0
-1710314215360, 0, 0
-01:16:56,322 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-	at java.base/java.util.Objects.checkIndex(Objects.java:373)
-	at java.base/java.util.ArrayList.get(ArrayList.java:426)
-	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
-	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-01:16:56,322 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 14 at /10.10.1.6:2909)
-01:16:56,344 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:2 to:Learner instance:307 ballot:11 v_ballot:0 value:<none> (480454197277321)]
-1710314216361, 2715, 2715
-01:16:57,341 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 307
-01:16:57,341 WARN  [Learner-1] LearnerRole:133 - Learner re-request missing instance 308
-1710314217361, 180, 2895
-1710314218362, 35753, 38648
-1710314219362, 39710, 78358
-1710314220363, 37966, 116324
-1710314221364, 41142, 157466
-1710314222365, 46763, 204229
-1710314223366, 49075, 253304
-1710314224367, 47788, 301092
-1710314225367, 46280, 347372
-1710314226368, 32368, 379740
-1710314227369, 42509, 422249
-1710314228370, 46565, 468814
-1710314229370, 43686, 512500
-1710314230371, 36592, 549092
-1710314231371, 43180, 592272
-1710314232372, 51437, 643709
-1710314233372, 48147, 691856
-1710314234373, 36233, 728089
-1710314235375, 46807, 774896
-1710314236376, 44693, 819589
-1710314237377, 48405, 867994
-1710314238378, 45332, 913326
-1710314239378, 45360, 958686
-1710314240379, 46422, 1005108
-1710314241379, 51721, 1056829
-01:17:21,803 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-01:17:21,902 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
-01:17:21,902 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-01:17:21,903 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
-1710314242380, 15854, 1072683
-1710314243381, 0, 1072683
-1710314244381, 0, 1072683
-1710314245381, 0, 1072683
-1710314246382, 0, 1072683
-1710314247382, 0, 1072683
-1710314248382, 0, 1072683
-1710314249382, 0, 1072683
-1710314250383, 0, 1072683
-1710314251383, 0, 1072683
-1710314252383, 0, 1072683
-1710314253384, 0, 1072683
-1710314254384, 0, 1072683
-1710314255385, 0, 1072683
-1710314256385, 0, 1072683
-1710314257385, 0, 1072683
-1710314258386, 0, 1072683
-1710314259386, 0, 1072683
-1710314260386, 0, 1072683
-1710314261386, 0, 1072683
-1710314262387, 0, 1072683
-1710314263387, 0, 1072683
-1710314264387, 0, 1072683
-1710314265388, 0, 1072683
-1710314266388, 0, 1072683
-1710314267388, 0, 1072683
-1710314268389, 0, 1072683
-1710314269389, 0, 1072683
-1710314270389, 0, 1072683
-1710314271390, 0, 1072683
-1710314272390, 0, 1072683
-1710314273390, 0, 1072683
-1710314274390, 0, 1072683
-1710314275391, 0, 1072683
-1710314276391, 0, 1072683
-1710314277391, 0, 1072683
-1710314278392, 0, 1072683
-1710314279392, 0, 1072683
-1710314280392, 0, 1072683
-1710314281393, 0, 1072683
-1710314282393, 0, 1072683
-1710314283393, 0, 1072683
-1710314284394, 0, 1072683
-1710314285394, 0, 1072683
-1710314286394, 0, 1072683
-1710314287395, 0, 1072683
-1710314288395, 0, 1072683
-1710314289395, 0, 1072683
-1710314290395, 0, 1072683
-1710314291396, 0, 1072683
-1710314292396, 0, 1072683
-1710314293396, 0, 1072683
-1710314294397, 0, 1072683
-1710314295397, 0, 1072683
-1710314296397, 0, 1072683
-1710314297397, 0, 1072683
-1710314298398, 0, 1072683
-1710314299398, 0, 1072683
-1710314300398, 0, 1072683
-1710314301399, 0, 1072683
-1710314302399, 0, 1072683
-1710314303399, 0, 1072683
-1710314304400, 0, 1072683
-1710314305400, 0, 1072683
-1710314306400, 0, 1072683
-1710314307400, 0, 1072683
-1710314308401, 0, 1072683
-1710314309401, 0, 1072683
+1710314197537, 0, 0
+1710314198538, 0, 0
+1710314199538, 0, 0
+1710314200539, 0, 0
+1710314201549, 6705, 6705
+1710314202551, 54166, 60871
+1710314203552, 53473, 114344
+1710314204552, 62636, 176980
+1710314205556, 65403, 242383
+01:16:46,286 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 24 at /10.10.1.6:2074)
+1710314206557, 46753, 289136
+01:16:47,290 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 32274
+1710314207558, 12113, 301249
+1710314208558, 42944, 344193
+1710314209559, 57840, 402033
+1710314210560, 41526, 443559
+1710314211560, 61977, 505536
+1710314212561, 58882, 564418
+1710314213561, 53301, 617719
+1710314214562, 56724, 674443
+1710314215562, 66371, 740814
+1710314216563, 59256, 800070
+1710314217563, 60210, 860280
+1710314218564, 58311, 918591
+1710314219565, 51264, 969855
+1710314220565, 36047, 1005902
+1710314221605, 22633, 1028535
+1710314222606, 27727, 1056262
+1710314223608, 28251, 1084513
+1710314224609, 26496, 1111009
+1710314225609, 32965, 1143974
+1710314226610, 48791, 1192765
+1710314227611, 29044, 1221809
+1710314228614, 26370, 1248179
+1710314229615, 35135, 1283314
+1710314230616, 37057, 1320371
+1710314231616, 21520, 1341891
