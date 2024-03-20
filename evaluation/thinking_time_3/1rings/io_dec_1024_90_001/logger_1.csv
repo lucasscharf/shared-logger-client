@@ -2,142 +2,163 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-00:03:41,001 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.708s. Listening on: http://0.0.0.0:8888
-00:03:41,010 INFO  quarkus:91 [main] Profile prod activated. 
-00:03:41,010 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-00:03:44,594 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-00:03:44,693 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-00:03:44,694 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
-00:03:44,791 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-00:03:45,300 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/f018a6b9-d117-40d7-8316-a2766e1de810]
-1710309825302, 0, 0
-00:03:45,389 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
-00:03:45,390 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
-00:03:45,397 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
-00:03:45,524 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/bd34724c-9318-4146-9af4-ad5b598ec4af]
-00:03:45,578 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
-00:03:45,578 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
-00:03:45,589 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
-00:03:45,674 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk3/097a7022-0bb2-4230-9edf-184d3a339581]
-00:03:45,711 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
-00:03:45,712 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
-00:03:45,719 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
-00:03:45,810 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk4/c70e5eea-22ef-4497-9b85-fdd5d34f5a11]
-1710309826302, 0, 0
-1710309827303, 0, 0
-1710309828303, 0, 0
-1710309829303, 0, 0
-1710309830304, 0, 0
-1710309831304, 0, 0
-1710309832304, 0, 0
-1710309833305, 0, 0
-1710309834305, 0, 0
-1710309835305, 0, 0
-1710309836306, 0, 0
-1710309837306, 0, 0
-1710309838306, 0, 0
-1710309839307, 0, 0
-1710309840307, 0, 0
-1710309841307, 0, 0
-1710309842308, 0, 0
-1710309843308, 0, 0
-1710309844308, 0, 0
-1710309845309, 0, 0
-1710309846309, 0, 0
-1710309847309, 0, 0
-1710309848310, 0, 0
-1710309849310, 0, 0
-1710309850311, 0, 0
-1710309851311, 0, 0
-1710309852311, 0, 0
-1710309853312, 0, 0
-1710309854312, 0, 0
-1710309855312, 0, 0
-1710309856313, 0, 0
-1710309857313, 0, 0
-1710309858313, 0, 0
-1710309859314, 0, 0
-1710309860314, 0, 0
-1710309861314, 0, 0
-1710309862315, 0, 0
-1710309863315, 0, 0
-1710309864315, 0, 0
-1710309865316, 0, 0
-1710309866316, 0, 0
-1710309867316, 0, 0
-1710309868316, 0, 0
-1710309869317, 0, 0
-1710309870317, 0, 0
-1710309871318, 0, 0
-1710309872318, 0, 0
-1710309873318, 0, 0
-1710309874319, 0, 0
-1710309875319, 0, 0
-1710309876319, 0, 0
-1710309877320, 0, 0
-1710309878320, 0, 0
-1710309879320, 0, 0
-1710309880321, 0, 0
-1710309881321, 0, 0
-1710309882321, 0, 0
-00:04:43,111 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-00:04:43,123 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-00:04:43,123 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-00:04:43,125 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-00:04:43,125 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-00:04:43,127 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-00:04:43,127 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-00:04:43,128 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1710309883322, 0, 0
-1710309884322, 0, 0
-1710309885323, 0, 0
-1710309886323, 0, 0
-1710309887323, 0, 0
-1710309888324, 0, 0
-1710309889324, 0, 0
-1710309890325, 0, 0
-1710309891325, 0, 0
-1710309892325, 0, 0
-1710309893326, 0, 0
-1710309894326, 0, 0
-1710309895327, 0, 0
-1710309896327, 0, 0
-1710309897327, 0, 0
-1710309898328, 0, 0
-1710309899328, 0, 0
-1710309900328, 0, 0
-1710309901329, 0, 0
-1710309902329, 0, 0
-1710309903329, 0, 0
-1710309904330, 0, 0
-1710309905330, 0, 0
-1710309906330, 0, 0
-1710309907331, 0, 0
-1710309908331, 0, 0
-1710309909331, 0, 0
-1710309910332, 0, 0
-1710309911332, 0, 0
-1710309912332, 0, 0
-1710309913333, 0, 0
-1710309914333, 0, 0
-1710309915333, 0, 0
-1710309916334, 0, 0
-1710309917334, 0, 0
-1710309918334, 0, 0
-1710309919334, 0, 0
-1710309920335, 0, 0
-1710309921335, 0, 0
-1710309922336, 0, 0
-1710309923336, 0, 0
-1710309924336, 0, 0
-1710309925337, 0, 0
-1710309926337, 0, 0
-1710309927337, 0, 0
-1710309928338, 0, 0
-1710309929338, 0, 0
-1710309930338, 0, 0
-1710309931339, 0, 0
-1710309932339, 0, 0
-1710309933340, 0, 0
-1710309934340, 0, 0
-1710309935340, 0, 0
+18:46:07,723 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.927s. Listening on: http://0.0.0.0:8888
+18:46:07,731 INFO  quarkus:91 [main] Profile prod activated. 
+18:46:07,732 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+18:46:11,275 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+18:46:11,390 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+18:46:11,390 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+18:46:11,499 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+18:46:11,960 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/64a5bedc-c726-481c-be6f-043df5299577]
+1710895571961, 0, 0
+18:46:12,031 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+18:46:12,032 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+18:46:12,038 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+18:46:12,128 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/fe4d6546-5317-40c0-9238-8cd45e50ea14]
+18:46:12,194 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+18:46:12,195 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+18:46:12,202 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+18:46:12,285 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 254da16a-6a76-40b1-9fa8-90fb3d52e4ad-1: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk3/de63ac6d-c7eb-428e-b278-f469b19d4dbc (No such file or directory)
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.io.FileNotFoundException: /media/disk3/de63ac6d-c7eb-428e-b278-f469b19d4dbc (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileWriter.<init>(FileWriter.java:113)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:71)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+
+18:46:12,343 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+18:46:12,344 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+18:46:12,349 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+18:46:12,428 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 254da16a-6a76-40b1-9fa8-90fb3d52e4ad-2: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk4/4168f6fb-c4a3-4cd2-9ae3-1d5c835b0e7b (No such file or directory)
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.io.FileNotFoundException: /media/disk4/4168f6fb-c4a3-4cd2-9ae3-1d5c835b0e7b (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileWriter.<init>(FileWriter.java:113)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:71)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
+
+1710895572962, 0, 0
+1710895573962, 0, 0
+1710895574963, 0, 0
+1710895575964, 0, 0
+1710895576964, 0, 0
+1710895577965, 0, 0
+1710895578971, 0, 0
+1710895579972, 0, 0
+1710895580973, 0, 0
+1710895581974, 0, 0
+1710895582974, 0, 0
+1710895583975, 0, 0
+1710895584975, 0, 0
+1710895585976, 0, 0
+1710895586976, 0, 0
+1710895587977, 0, 0
+1710895588977, 0, 0
+1710895589978, 0, 0
+1710895590978, 0, 0
+1710895591982, 0, 0
+1710895592982, 0, 0
+1710895593983, 0, 0
+1710895594984, 0, 0
+1710895596002, 0, 0
+1710895597003, 0, 0
+1710895598004, 0, 0
+1710895599006, 0, 0
+1710895600006, 0, 0
+1710895601008, 0, 0
+1710895602011, 0, 0
+1710895603012, 0, 0
+1710895604012, 0, 0
+1710895605013, 0, 0
+1710895606014, 0, 0
+1710895607014, 0, 0
+1710895608015, 0, 0
+1710895609015, 0, 0
+1710895610016, 0, 0
+1710895611016, 0, 0
+1710895612016, 0, 0
+1710895613017, 0, 0
+1710895614017, 0, 0
+18:46:54,592 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+1710895615017, 0, 0
+18:46:55,069 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:46:55,070 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+18:46:55,113 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1710895616018, 0, 0
+1710895617018, 0, 0

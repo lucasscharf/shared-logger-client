@@ -1,156 +1,54 @@
-01:21:25,673 INFO  [main] RawABListener:48 - Initing a RawABListener...
-01:21:25,693 INFO  [main] Node:101 - PID: 84400
-01:21:35,967 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-01:21:35,972 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-01:21:35,973 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-01:21:36,002 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
-01:21:36,003 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
-01:21:36,003 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-01:21:36,008 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-01:21:36,010 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-01:21:36,012 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 24] (succsessor: 21 at /155.98.36.29:2378)
-01:21:36,035 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk6/], path [/media/disk6/ea26877d-03e7-4f36-b47a-4dbeb6d3792b], embebedLog [false], useDiskDb [true] with complex constructor
-1710314496036, 0, 0
+20:02:09,433 INFO  [main] RawABListener:48 - Initing a RawABListener...
+20:02:09,452 INFO  [main] Node:101 - PID: 27658
+20:02:09,688 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+20:02:09,693 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+20:02:09,694 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+20:02:09,721 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 2
+20:02:09,722 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 2
+20:02:09,723 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+20:02:09,728 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+20:02:09,730 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+20:02:09,733 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 21 at /10.10.1.3:2701)
+20:02:09,766 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [24], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk6/], path [/media/disk6/138da670-1545-4eac-8b9c-c2a372c96b93], embebedLog [false], useDiskDb [true] with complex constructor
+1710900129767, 0, 0
 Reading from stdin
-1710314497036, 0, 0
-1710314498037, 0, 0
-1710314499037, 0, 0
-1710314500038, 0, 0
-1710314501038, 0, 0
-1710314502039, 0, 0
-1710314503039, 0, 0
-1710314504040, 0, 0
-1710314505040, 0, 0
-1710314506041, 0, 0
-1710314507041, 0, 0
-1710314508042, 0, 0
-1710314509042, 0, 0
-1710314510042, 0, 0
-01:21:50,931 INFO  [main-EventThread] RingManager:133 - RingManager ring 2 changed: [21, 22, 23, 24] (succsessor: 21 at /155.98.36.29:2378)
-01:21:50,931 ERROR [TCPListener] SessionHandler:104 - Error in SessionHandler during de-serializing!
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-	at java.base/java.util.Objects.checkIndex(Objects.java:373)
-	at java.base/java.util.ArrayList.get(ArrayList.java:426)
-	at ch.usi.da.paxos.ring.RingManager.getRingSuccessor(RingManager.java:169)
-	at ch.usi.da.paxos.ring.NetworkManager.receive(NetworkManager.java:172)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:99)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-01:21:50,951 ERROR [TCPListener] LearnerRole:219 - Learner received decision without value! [Decision from:22 to:Learner instance:41 ballot:31 v_ballot:0 value:<none> (4834002917920421)]
-01:21:51,027 WARN  [Learner-2] LearnerRole:133 - Learner re-request missing instance 41
-1710314511043, 176, 176
-1710314512043, 1665, 1841
-1710314513044, 1855, 3696
-1710314514044, 1889, 5585
-1710314515045, 1882, 7467
-1710314516045, 1928, 9395
-1710314517046, 1929, 11324
-1710314518047, 1958, 13282
-1710314519048, 1958, 15240
-1710314520049, 1900, 17140
-1710314521050, 2003, 19143
-1710314522051, 1978, 21121
-1710314523051, 2012, 23133
-1710314524052, 2028, 25161
-1710314525052, 1975, 27136
-1710314526053, 1974, 29110
-1710314527053, 2013, 31123
-1710314528054, 1999, 33122
-1710314529054, 1998, 35120
-1710314530055, 1990, 37110
-1710314531056, 1992, 39102
-1710314532056, 2009, 41111
-1710314533056, 1985, 43096
-1710314534057, 1995, 45091
-1710314535058, 1983, 47074
-1710314536058, 1991, 49065
-1710314537060, 1990, 51055
-1710314538060, 1959, 53014
-1710314539061, 2004, 55018
-1710314540061, 1868, 56886
-1710314541062, 0, 56886
-01:22:21,464 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/acceptors
-01:22:21,561 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/acceptors
-01:22:21,562 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-01:22:21,562 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
-01:22:21,563 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
-1710314542062, 0, 56886
-1710314543062, 0, 56886
-1710314544063, 0, 56886
-1710314545063, 0, 56886
-1710314546063, 0, 56886
-1710314547063, 0, 56886
-1710314548064, 0, 56886
-1710314549064, 0, 56886
-1710314550064, 0, 56886
-1710314551065, 0, 56886
-1710314552065, 0, 56886
-1710314553065, 0, 56886
-1710314554066, 0, 56886
-1710314555066, 0, 56886
-1710314556066, 0, 56886
-1710314557067, 0, 56886
-1710314558067, 0, 56886
-1710314559067, 0, 56886
-1710314560068, 0, 56886
-1710314561068, 0, 56886
-1710314562068, 0, 56886
-1710314563068, 0, 56886
-1710314564069, 0, 56886
-1710314565069, 0, 56886
-1710314566069, 0, 56886
-1710314567070, 0, 56886
-1710314568070, 0, 56886
-1710314569070, 0, 56886
-1710314570071, 0, 56886
-1710314571071, 0, 56886
-1710314572071, 0, 56886
-1710314573071, 0, 56886
-1710314574072, 0, 56886
-1710314575072, 0, 56886
-1710314576072, 0, 56886
-1710314577073, 0, 56886
-1710314578073, 0, 56886
-1710314579073, 0, 56886
-1710314580074, 0, 56886
-1710314581074, 0, 56886
-1710314582074, 0, 56886
-1710314583075, 0, 56886
-1710314584075, 0, 56886
-1710314585075, 0, 56886
-1710314586075, 0, 56886
-1710314587076, 0, 56886
-1710314588076, 0, 56886
-1710314589076, 0, 56886
-1710314590077, 0, 56886
-1710314591077, 0, 56886
-1710314592077, 0, 56886
-1710314593077, 0, 56886
-1710314594078, 0, 56886
-1710314595078, 0, 56886
-1710314596078, 0, 56886
-1710314597079, 0, 56886
-1710314598079, 0, 56886
-1710314599079, 0, 56886
-1710314600080, 0, 56886
-1710314601080, 0, 56886
-1710314602080, 0, 56886
-1710314603080, 0, 56886
-1710314604081, 0, 56886
-1710314605081, 0, 56886
-1710314606081, 0, 56886
-1710314607082, 0, 56886
-1710314608082, 0, 56886
-1710314609082, 0, 56886
-1710314610082, 0, 56886
-1710314611083, 0, 56886
-1710314612083, 0, 56886
-1710314613083, 0, 56886
-1710314614084, 0, 56886
-1710314615084, 0, 56886
-1710314616084, 0, 56886
-1710314617084, 0, 56886
-1710314618085, 0, 56886
+1710900130767, 0, 0
+1710900131768, 0, 0
+1710900132768, 0, 0
+1710900133769, 0, 0
+1710900134769, 481, 481
+1710900135769, 2043, 2524
+1710900136770, 2095, 4619
+1710900137770, 2067, 6686
+1710900138771, 2107, 8793
+1710900139772, 2095, 10888
+1710900140772, 2097, 12985
+1710900141773, 1968, 14953
+1710900142773, 2109, 17062
+1710900143774, 2121, 19183
+1710900144775, 2132, 21315
+1710900145775, 2081, 23396
+1710900146775, 2125, 25521
+1710900147776, 2120, 27641
+1710900148776, 2121, 29762
+1710900149777, 2126, 31888
+1710900150777, 2077, 33965
+1710900151777, 2118, 36083
+1710900152778, 2121, 38204
+1710900153778, 2127, 40331
+1710900154779, 2109, 42440
+1710900155779, 2125, 44565
+1710900156779, 2124, 46689
+1710900157780, 2106, 48795
+1710900158780, 2068, 50863
+1710900159780, 2091, 52954
+1710900160781, 2118, 55072
+1710900161782, 2098, 57170
+1710900162783, 2046, 59216
+1710900163783, 2120, 61336
+1710900164804, 473, 61809
+20:02:45,205 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+20:02:45,305 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/nodes
+20:02:45,305 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology2/learners
+1710900165804, 0, 61809
+1710900166805, 0, 61809

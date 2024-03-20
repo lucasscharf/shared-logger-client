@@ -1,60 +1,53 @@
-17:19:27,863 INFO  [main] RawABListener:48 - Initing a RawABListener...
-17:19:27,873 INFO  [main] Node:101 - PID: 38634
-17:19:28,090 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
-17:19:28,095 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
-17:19:28,095 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
-17:19:28,120 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
-17:19:28,120 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
-17:19:28,121 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
-17:19:28,128 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
-17:19:28,130 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
-17:19:28,137 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13] (succsessor: 1 at /10.10.1.3:2776)
-17:19:28,154 INFO  [main] Replica:172 - Token [0], ringId [null], nodeId [13], snapshot_modulo [0], zoo_host [null], path [null], embebedLog [false], useDiskDb [false] with simple constructor
-1709165968155, 0, 0
+21:38:05,763 INFO  [main] RawABListener:48 - Initing a RawABListener...
+21:38:05,778 INFO  [main] Node:101 - PID: 51892
+21:38:06,022 INFO  [main] NetworkManager:117 - NetworkManager tcp_nodelay: true
+21:38:06,027 INFO  [main] NetworkManager:123 - NetworkManager tcp_crc: false
+21:38:06,028 INFO  [main] NetworkManager:127 - NetworkManager buf_size: 2097152
+21:38:06,054 INFO  [main] ElasticLearnerRole:93 - ElasticLearnerRole replication group 1
+21:38:06,055 INFO  [main] ElasticLearnerRole:97 - ElasticLearnerRole initial ring 1
+21:38:06,055 INFO  [main] ElasticLearnerRole:102 - ElasticLearnerRole deliver_skip_messages: enabled
+21:38:06,062 INFO  [ElasticLearner] LearnerRole:102 - Learner recovery: disabled
+21:38:06,064 INFO  [ElasticLearner] LearnerRole:108 - Learner auto_trim: disabled
+21:38:06,069 INFO  [main-EventThread] RingManager:133 - RingManager ring 1 changed: [1, 2, 13, 14] (succsessor: 1 at /10.10.1.3:2407)
+21:38:06,088 INFO  [main] Replica:188 - Token [0], ringId [null], nodeId [14], snapshot_modulo [0], zoo_host [10.10.1.1], pathPrefix[/media/disk5/], path [/media/disk5/a34f77b0-b68b-43fe-9b28-7ebb646dffad], embebedLog [false], useDiskDb [false] with complex constructor
+1710905886088, 0, 0
 Reading from stdin
-1709165969155, 0, 0
-1709165970156, 0, 0
-1709165971156, 0, 0
-1709165972157, 0, 0
-1709165973157, 1655, 1655
-1709165974158, 16232, 17887
-1709165975158, 21190, 39077
-1709165976158, 22252, 61329
-1709165977159, 21842, 83171
-1709165978160, 25703, 108874
-1709165979160, 28493, 137367
-1709165980161, 30486, 167853
-1709165981163, 31081, 198934
-1709165982163, 30617, 229551
-1709165983164, 24983, 254534
-1709165984164, 28377, 282911
-1709165985165, 28192, 311103
-1709165986166, 27994, 339097
-1709165987167, 29929, 369026
-1709165988167, 23715, 392741
-1709165989168, 25679, 418420
-1709165990168, 27769, 446189
-1709165991169, 30906, 477095
-1709165992169, 28421, 505516
-1709165993170, 28718, 534234
-1709165994171, 25724, 559958
-1709165995171, 27418, 587376
-1709165996172, 30822, 618198
-1709165997173, 31900, 650098
-1709165998173, 28723, 678821
-1709165999174, 27751, 706572
-1709166000174, 32278, 738850
-1709166001175, 31764, 770614
-1709166002175, 27155, 797769
-1709166003176, 0, 797769
-17:20:03,497 ERROR [TCPListener] SessionHandler:120 - Error in SessionHandler during reading!
-java.nio.channels.ClosedSelectorException
-	at java.base/sun.nio.ch.EPollSelectorImpl.ensureOpen(EPollSelectorImpl.java:98)
-	at java.base/sun.nio.ch.EPollSelectorImpl.setEventOps(EPollSelectorImpl.java:243)
-	at java.base/sun.nio.ch.SelectionKeyImpl.interestOps(SelectionKeyImpl.java:101)
-	at ch.usi.da.paxos.ring.SessionHandler.handleReadable(SessionHandler.java:68)
-	at ch.usi.da.paxos.ring.TCPListener.run(TCPListener.java:89)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-17:20:03,504 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
-17:20:03,504 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /ringpaxos/topology1/nodes
-17:20:03,606 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+1710905887089, 0, 0
+1710905888089, 0, 0
+1710905889090, 0, 0
+1710905890090, 0, 0
+1710905891091, 6268, 6268
+1710905892091, 17820, 24088
+1710905893092, 22756, 46844
+1710905894092, 19875, 66719
+1710905895093, 22009, 88728
+1710905896093, 24211, 112939
+1710905897094, 28858, 141797
+1710905898095, 25352, 167149
+1710905899096, 23350, 190499
+1710905900096, 30278, 220777
+1710905901097, 24284, 245061
+1710905902097, 26343, 271404
+1710905903098, 29492, 300896
+1710905904099, 28345, 329241
+1710905905099, 31328, 360569
+1710905906100, 24264, 384833
+1710905907100, 26651, 411484
+1710905908101, 30115, 441599
+1710905909102, 32072, 473671
+1710905910102, 31097, 504768
+1710905911103, 31961, 536729
+1710905912105, 32789, 569518
+1710905913105, 31301, 600819
+1710905914106, 31963, 632782
+1710905915106, 30483, 663265
+1710905916107, 25189, 688454
+1710905917107, 27418, 715872
+1710905918108, 33160, 749032
+1710905919108, 30136, 779168
+1710905920109, 26225, 805393
+1710905921111, 0, 805393
+21:38:41,255 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/learners
+21:38:41,353 ERROR [main-EventThread] TopologyManager:465 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+21:38:41,354 ERROR [main-EventThread] RingManager:232 - org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = Session expired for /ringpaxos/topology1/nodes
+1710905922111, 0, 805393

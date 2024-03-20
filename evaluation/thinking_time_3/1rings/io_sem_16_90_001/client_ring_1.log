@@ -1,184 +1,52 @@
-00:17:30,223 INFO  [main] Client:126 - thinkingTime [3], writePercentage [100], trackerNumber [1000]
-00:17:30,240 INFO  [main] Client:224 - Start performance testing with [16] threads, experimentTimeSeconds [30], commandSize [1024] bytes)
-00:17:30,254 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 0, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:30,289 ERROR [Command Sender 12] BatchSender:145 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/1
-00:17:30,289 ERROR [Command Sender 0] BatchSender:145 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/1
-00:17:30,289 ERROR [Command Sender 7] BatchSender:145 - org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ringpaxos/topology1/nodes/1
-00:17:30,308 ERROR [Command Sender 12] Client:264 - Error in send thread!
-org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:243)
-	at org.apache.thrift.transport.layered.TFramedTransport.open(TFramedTransport.java:88)
-	at ch.usi.da.smr.transport.ThriftABSender.<init>(ThriftABSender.java:55)
-	at ch.usi.da.smr.BatchSender.getThriftABSender(BatchSender.java:148)
-	at ch.usi.da.smr.BatchSender.<init>(BatchSender.java:129)
-	at ch.usi.da.smr.Client.send(Client.java:430)
-	at ch.usi.da.smr.Client$3.run(Client.java:246)
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:339)
-	at java.base/java.net.Socket.connect(Socket.java:603)
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:238)
-	... 6 more
-00:17:30,308 ERROR [Command Sender 7] Client:264 - Error in send thread!
-org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:243)
-	at org.apache.thrift.transport.layered.TFramedTransport.open(TFramedTransport.java:88)
-	at ch.usi.da.smr.transport.ThriftABSender.<init>(ThriftABSender.java:55)
-	at ch.usi.da.smr.BatchSender.getThriftABSender(BatchSender.java:148)
-	at ch.usi.da.smr.BatchSender.<init>(BatchSender.java:129)
-	at ch.usi.da.smr.Client.send(Client.java:430)
-	at ch.usi.da.smr.Client$3.run(Client.java:246)
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:339)
-	at java.base/java.net.Socket.connect(Socket.java:603)
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:238)
-	... 6 more
-00:17:30,308 ERROR [Command Sender 0] Client:264 - Error in send thread!
-org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:243)
-	at org.apache.thrift.transport.layered.TFramedTransport.open(TFramedTransport.java:88)
-	at ch.usi.da.smr.transport.ThriftABSender.<init>(ThriftABSender.java:55)
-	at ch.usi.da.smr.BatchSender.getThriftABSender(BatchSender.java:148)
-	at ch.usi.da.smr.BatchSender.<init>(BatchSender.java:129)
-	at ch.usi.da.smr.Client.send(Client.java:430)
-	at ch.usi.da.smr.Client$3.run(Client.java:246)
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.connect0(Native Method)
-	at java.base/sun.nio.ch.Net.connect(Net.java:493)
-	at java.base/sun.nio.ch.Net.connect(Net.java:482)
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:339)
-	at java.base/java.net.Socket.connect(Socket.java:603)
-	at org.apache.thrift.transport.TSocket.open(TSocket.java:238)
-	... 6 more
-00:17:31,257 INFO  [ClientStatsWriter] Client:203 - Commands sent 19, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:32,257 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:33,258 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:34,259 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:35,260 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:36,261 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:37,262 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:38,266 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:39,267 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:40,267 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 19, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:40,270 ERROR [Command Sender 10] Client:254 - Did not receive response from replicas: 11
-00:17:40,270 ERROR [Command Sender 2] Client:254 - Did not receive response from replicas: 4
-00:17:40,270 ERROR [Command Sender 9] Client:254 - Did not receive response from replicas: 10
-00:17:40,270 ERROR [Command Sender 13] Client:254 - Did not receive response from replicas: 14
-00:17:40,270 ERROR [Command Sender 6] Client:254 - Did not receive response from replicas: 7
-00:17:40,270 ERROR [Command Sender 4] Client:254 - Did not receive response from replicas: 5
-00:17:40,270 ERROR [Command Sender 3] Client:254 - Did not receive response from replicas: 3
-00:17:40,270 ERROR [Command Sender 8] Client:254 - Did not receive response from replicas: 9
-00:17:40,270 ERROR [Command Sender 15] Client:254 - Did not receive response from replicas: 16
-00:17:40,270 ERROR [Command Sender 5] Client:254 - Did not receive response from replicas: 6
-00:17:40,270 ERROR [Command Sender 14] Client:254 - Did not receive response from replicas: 15
-00:17:40,270 ERROR [Command Sender 1] Client:254 - Did not receive response from replicas: 2
-00:17:40,270 ERROR [Command Sender 11] Client:254 - Did not receive response from replicas: 12
-00:17:40,317 ERROR [Command Sender 12] Client:254 - Did not receive response from replicas: 17
-00:17:40,319 ERROR [Command Sender 0] Client:254 - Did not receive response from replicas: 18
-00:17:40,319 ERROR [Command Sender 7] Client:254 - Did not receive response from replicas: 19
-00:17:41,268 INFO  [ClientStatsWriter] Client:203 - Commands sent 16, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:42,269 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:43,270 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:44,271 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:45,271 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:46,272 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:47,273 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:48,274 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:49,274 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 35, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:50,271 ERROR [Command Sender 10] Client:254 - Did not receive response from replicas: 20
-00:17:50,271 ERROR [Command Sender 2] Client:254 - Did not receive response from replicas: 21
-00:17:50,271 ERROR [Command Sender 9] Client:254 - Did not receive response from replicas: 22
-00:17:50,271 ERROR [Command Sender 13] Client:254 - Did not receive response from replicas: 23
-00:17:50,272 ERROR [Command Sender 6] Client:254 - Did not receive response from replicas: 24
-00:17:50,272 ERROR [Command Sender 4] Client:254 - Did not receive response from replicas: 25
-00:17:50,272 ERROR [Command Sender 3] Client:254 - Did not receive response from replicas: 26
-00:17:50,272 ERROR [Command Sender 8] Client:254 - Did not receive response from replicas: 27
-00:17:50,273 ERROR [Command Sender 15] Client:254 - Did not receive response from replicas: 28
-00:17:50,273 ERROR [Command Sender 5] Client:254 - Did not receive response from replicas: 29
-00:17:50,273 ERROR [Command Sender 14] Client:254 - Did not receive response from replicas: 30
-00:17:50,273 ERROR [Command Sender 1] Client:254 - Did not receive response from replicas: 31
-00:17:50,274 ERROR [Command Sender 11] Client:254 - Did not receive response from replicas: 32
-00:17:50,275 INFO  [ClientStatsWriter] Client:203 - Commands sent 13, Response received 0, Total Commands 48, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:50,317 ERROR [Command Sender 12] Client:254 - Did not receive response from replicas: 33
-00:17:50,319 ERROR [Command Sender 0] Client:254 - Did not receive response from replicas: 34
-00:17:50,320 ERROR [Command Sender 7] Client:254 - Did not receive response from replicas: 35
-00:17:51,276 INFO  [ClientStatsWriter] Client:203 - Commands sent 3, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:52,277 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:53,277 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:54,278 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:55,278 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:56,279 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:57,280 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:58,280 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:17:59,281 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 51, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:00,271 ERROR [Command Sender 10] Client:254 - Did not receive response from replicas: 36
-00:18:00,271 ERROR [Command Sender 2] Client:254 - Did not receive response from replicas: 37
-00:18:00,271 ERROR [Command Sender 9] Client:254 - Did not receive response from replicas: 38
-00:18:00,272 ERROR [Command Sender 13] Client:254 - Did not receive response from replicas: 39
-00:18:00,272 ERROR [Command Sender 6] Client:254 - Did not receive response from replicas: 40
-00:18:00,272 ERROR [Command Sender 4] Client:254 - Did not receive response from replicas: 41
-00:18:00,272 ERROR [Command Sender 3] Client:254 - Did not receive response from replicas: 42
-00:18:00,273 ERROR [Command Sender 8] Client:254 - Did not receive response from replicas: 43
-00:18:00,273 ERROR [Command Sender 15] Client:254 - Did not receive response from replicas: 44
-00:18:00,273 ERROR [Command Sender 5] Client:254 - Did not receive response from replicas: 45
-00:18:00,273 ERROR [Command Sender 14] Client:254 - Did not receive response from replicas: 46
-00:18:00,274 ERROR [Command Sender 1] Client:254 - Did not receive response from replicas: 47
-00:18:00,274 ERROR [Command Sender 11] Client:254 - Did not receive response from replicas: 48
-00:18:00,282 INFO  [ClientStatsWriter] Client:203 - Commands sent 13, Response received 0, Total Commands 64, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:00,318 ERROR [Command Sender 12] Client:254 - Did not receive response from replicas: 49
-00:18:00,319 ERROR [Command Sender 0] Client:254 - Did not receive response from replicas: 50
-00:18:00,320 ERROR [Command Sender 7] Client:254 - Did not receive response from replicas: 51
-00:18:01,282 INFO  [ClientStatsWriter] Client:203 - Commands sent 3, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:02,283 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:03,284 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:04,284 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:05,285 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:06,286 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:07,286 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:08,287 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:09,287 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:10,271 ERROR [Command Sender 10] Client:254 - Did not receive response from replicas: 52
-00:18:10,272 ERROR [Command Sender 2] Client:254 - Did not receive response from replicas: 53
-00:18:10,272 ERROR [Command Sender 9] Client:254 - Did not receive response from replicas: 54
-00:18:10,272 ERROR [Command Sender 13] Client:254 - Did not receive response from replicas: 55
-00:18:10,273 ERROR [Command Sender 6] Client:254 - Did not receive response from replicas: 56
-00:18:10,273 ERROR [Command Sender 4] Client:254 - Did not receive response from replicas: 57
-00:18:10,273 ERROR [Command Sender 3] Client:254 - Did not receive response from replicas: 58
-00:18:10,273 ERROR [Command Sender 8] Client:254 - Did not receive response from replicas: 59
-00:18:10,273 ERROR [Command Sender 15] Client:254 - Did not receive response from replicas: 60
-00:18:10,274 ERROR [Command Sender 5] Client:254 - Did not receive response from replicas: 61
-00:18:10,275 ERROR [Command Sender 1] Client:254 - Did not receive response from replicas: 63
-00:18:10,275 ERROR [Command Sender 11] Client:254 - Did not receive response from replicas: 64
-00:18:10,274 ERROR [Command Sender 14] Client:254 - Did not receive response from replicas: 62
-00:18:10,279 INFO  [Command Sender 5] Client:269 - Thread [Command Sender 5] terminated.
-00:18:10,279 INFO  [Command Sender 8] Client:269 - Thread [Command Sender 8] terminated.
-00:18:10,279 INFO  [Command Sender 15] Client:269 - Thread [Command Sender 15] terminated.
-00:18:10,279 INFO  [Command Sender 10] Client:269 - Thread [Command Sender 10] terminated.
-00:18:10,280 INFO  [Command Sender 11] Client:269 - Thread [Command Sender 11] terminated.
-00:18:10,280 INFO  [Command Sender 1] Client:269 - Thread [Command Sender 1] terminated.
-00:18:10,280 INFO  [Command Sender 9] Client:269 - Thread [Command Sender 9] terminated.
-00:18:10,280 INFO  [Command Sender 2] Client:269 - Thread [Command Sender 2] terminated.
-00:18:10,280 INFO  [Command Sender 6] Client:269 - Thread [Command Sender 6] terminated.
-00:18:10,280 INFO  [Command Sender 13] Client:269 - Thread [Command Sender 13] terminated.
-00:18:10,280 INFO  [Command Sender 14] Client:269 - Thread [Command Sender 14] terminated.
-00:18:10,280 INFO  [Command Sender 4] Client:269 - Thread [Command Sender 4] terminated.
-00:18:10,279 INFO  [Command Sender 3] Client:269 - Thread [Command Sender 3] terminated.
-00:18:10,288 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 67, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
-00:18:10,318 ERROR [Command Sender 12] Client:254 - Did not receive response from replicas: 65
-00:18:10,318 INFO  [Command Sender 12] Client:269 - Thread [Command Sender 12] terminated.
-00:18:10,320 ERROR [Command Sender 0] Client:254 - Did not receive response from replicas: 66
-00:18:10,320 INFO  [Command Sender 0] Client:269 - Thread [Command Sender 0] terminated.
-00:18:10,321 ERROR [Command Sender 7] Client:254 - Did not receive response from replicas: 67
-00:18:10,321 INFO  [Command Sender 7] Client:269 - Thread [Command Sender 7] terminated.
+18:56:04,288 INFO  [main] Client:126 - thinkingTime [3], writePercentage [100], trackerNumber [1000]
+18:56:04,303 INFO  [main] Client:224 - Start performance testing with [16] threads, experimentTimeSeconds [30], commandSize [1024] bytes)
+18:56:04,316 INFO  [ClientStatsWriter] Client:203 - Commands sent 0, Response received 0, Total Commands 0, Total Responses 0, Avg latency (ms) 0.00, Lantencies size 0,
+18:56:05,322 INFO  [ClientStatsWriter] Client:203 - Commands sent 1586, Response received 1581, Total Commands 1586, Total Responses 1581, Avg latency (ms) 2.24, Lantencies size 1,
+18:56:06,323 INFO  [ClientStatsWriter] Client:203 - Commands sent 1985, Response received 1984, Total Commands 3571, Total Responses 3565, Avg latency (ms) 1.90, Lantencies size 2,
+18:56:07,325 INFO  [ClientStatsWriter] Client:203 - Commands sent 1997, Response received 2001, Total Commands 5568, Total Responses 5566, Avg latency (ms) 1.95, Lantencies size 2,
+18:56:08,326 INFO  [ClientStatsWriter] Client:203 - Commands sent 2004, Response received 2004, Total Commands 7572, Total Responses 7570, Avg latency (ms) 1.77, Lantencies size 2,
+18:56:09,331 INFO  [ClientStatsWriter] Client:203 - Commands sent 2066, Response received 2065, Total Commands 9638, Total Responses 9635, Avg latency (ms) 1.45, Lantencies size 2,
+18:56:10,332 INFO  [ClientStatsWriter] Client:203 - Commands sent 2043, Response received 2043, Total Commands 11681, Total Responses 11678, Avg latency (ms) 1.63, Lantencies size 2,
+18:56:11,335 INFO  [ClientStatsWriter] Client:203 - Commands sent 2030, Response received 2029, Total Commands 13711, Total Responses 13707, Avg latency (ms) 2.01, Lantencies size 2,
+18:56:12,337 INFO  [ClientStatsWriter] Client:203 - Commands sent 1969, Response received 1972, Total Commands 15680, Total Responses 15679, Avg latency (ms) 1.86, Lantencies size 2,
+18:56:13,338 INFO  [ClientStatsWriter] Client:203 - Commands sent 2050, Response received 2049, Total Commands 17730, Total Responses 17728, Avg latency (ms) 1.92, Lantencies size 2,
+18:56:14,339 INFO  [ClientStatsWriter] Client:203 - Commands sent 2065, Response received 2062, Total Commands 19795, Total Responses 19790, Avg latency (ms) 1.54, Lantencies size 2,
+18:56:15,340 INFO  [ClientStatsWriter] Client:203 - Commands sent 2048, Response received 2049, Total Commands 21843, Total Responses 21839, Avg latency (ms) 1.82, Lantencies size 2,
+18:56:16,342 INFO  [ClientStatsWriter] Client:203 - Commands sent 2048, Response received 2048, Total Commands 23891, Total Responses 23887, Avg latency (ms) 1.71, Lantencies size 2,
+18:56:17,343 INFO  [ClientStatsWriter] Client:203 - Commands sent 2054, Response received 2055, Total Commands 25945, Total Responses 25942, Avg latency (ms) 1.45, Lantencies size 2,
+18:56:18,348 INFO  [ClientStatsWriter] Client:203 - Commands sent 2068, Response received 2066, Total Commands 28013, Total Responses 28008, Avg latency (ms) 1.82, Lantencies size 3,
+18:56:19,349 INFO  [ClientStatsWriter] Client:203 - Commands sent 2061, Response received 2062, Total Commands 30074, Total Responses 30070, Avg latency (ms) 1.53, Lantencies size 2,
+18:56:20,350 INFO  [ClientStatsWriter] Client:203 - Commands sent 2071, Response received 2071, Total Commands 32145, Total Responses 32141, Avg latency (ms) 1.43, Lantencies size 2,
+18:56:21,352 INFO  [ClientStatsWriter] Client:203 - Commands sent 2072, Response received 2071, Total Commands 34217, Total Responses 34212, Avg latency (ms) 1.59, Lantencies size 2,
+18:56:22,354 INFO  [ClientStatsWriter] Client:203 - Commands sent 2051, Response received 2052, Total Commands 36268, Total Responses 36264, Avg latency (ms) 1.50, Lantencies size 2,
+18:56:23,355 INFO  [ClientStatsWriter] Client:203 - Commands sent 2042, Response received 2046, Total Commands 38310, Total Responses 38310, Avg latency (ms) 1.75, Lantencies size 2,
+18:56:24,356 INFO  [ClientStatsWriter] Client:203 - Commands sent 2061, Response received 2061, Total Commands 40371, Total Responses 40371, Avg latency (ms) 1.50, Lantencies size 2,
+18:56:25,358 INFO  [ClientStatsWriter] Client:203 - Commands sent 2057, Response received 2057, Total Commands 42428, Total Responses 42428, Avg latency (ms) 1.45, Lantencies size 2,
+18:56:26,359 INFO  [ClientStatsWriter] Client:203 - Commands sent 2085, Response received 2080, Total Commands 44513, Total Responses 44508, Avg latency (ms) 1.52, Lantencies size 2,
+18:56:27,360 INFO  [ClientStatsWriter] Client:203 - Commands sent 2078, Response received 2080, Total Commands 46591, Total Responses 46588, Avg latency (ms) 1.72, Lantencies size 2,
+18:56:28,361 INFO  [ClientStatsWriter] Client:203 - Commands sent 2072, Response received 2074, Total Commands 48663, Total Responses 48662, Avg latency (ms) 1.95, Lantencies size 2,
+18:56:29,362 INFO  [ClientStatsWriter] Client:203 - Commands sent 2058, Response received 2058, Total Commands 50721, Total Responses 50720, Avg latency (ms) 1.65, Lantencies size 2,
+18:56:30,363 INFO  [ClientStatsWriter] Client:203 - Commands sent 2073, Response received 2074, Total Commands 52794, Total Responses 52794, Avg latency (ms) 1.81, Lantencies size 2,
+18:56:31,364 INFO  [ClientStatsWriter] Client:203 - Commands sent 2064, Response received 2061, Total Commands 54858, Total Responses 54855, Avg latency (ms) 1.74, Lantencies size 2,
+18:56:32,365 INFO  [ClientStatsWriter] Client:203 - Commands sent 1948, Response received 1950, Total Commands 56806, Total Responses 56805, Avg latency (ms) 1.73, Lantencies size 2,
+18:56:33,366 INFO  [ClientStatsWriter] Client:203 - Commands sent 2066, Response received 2065, Total Commands 58872, Total Responses 58870, Avg latency (ms) 1.57, Lantencies size 2,
+18:56:34,021 INFO  [Command Sender 5] Client:269 - Thread [Command Sender 5] terminated.
+18:56:34,021 INFO  [Command Sender 0] Client:269 - Thread [Command Sender 0] terminated.
+18:56:34,021 INFO  [Command Sender 10] Client:269 - Thread [Command Sender 10] terminated.
+18:56:34,021 INFO  [Command Sender 8] Client:269 - Thread [Command Sender 8] terminated.
+18:56:34,021 INFO  [Command Sender 2] Client:269 - Thread [Command Sender 2] terminated.
+18:56:34,021 INFO  [Command Sender 7] Client:269 - Thread [Command Sender 7] terminated.
+18:56:34,021 INFO  [Command Sender 12] Client:269 - Thread [Command Sender 12] terminated.
+18:56:34,021 INFO  [Command Sender 14] Client:269 - Thread [Command Sender 14] terminated.
+18:56:34,021 INFO  [Command Sender 1] Client:269 - Thread [Command Sender 1] terminated.
+18:56:34,021 INFO  [Command Sender 13] Client:269 - Thread [Command Sender 13] terminated.
+18:56:34,021 INFO  [Command Sender 9] Client:269 - Thread [Command Sender 9] terminated.
+18:56:34,021 INFO  [Command Sender 15] Client:269 - Thread [Command Sender 15] terminated.
+18:56:34,021 INFO  [Command Sender 11] Client:269 - Thread [Command Sender 11] terminated.
+18:56:34,021 INFO  [Command Sender 6] Client:269 - Thread [Command Sender 6] terminated.
+18:56:34,021 INFO  [Command Sender 4] Client:269 - Thread [Command Sender 4] terminated.
+18:56:34,021 INFO  [Command Sender 3] Client:269 - Thread [Command Sender 3] terminated.
 I will kill everything
-00:18:11,341 INFO  [ShutdownHook] Client:551 - Raw path created [ /tmp/0b5fe052-1811-4673-885e-bba8b7ac4409]
+18:56:35,039 INFO  [ShutdownHook] Client:551 - Raw path created [ /tmp/fbae6778-9a23-4db2-9e67-be6ba313c7d8]
 Saving file
 File save

@@ -2,123 +2,153 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-23:54:39,113 WARNING BlockedThreadChecker:-1 [vertx-blocked-thread-checker] Thread Thread[vert.x-eventloop-thread-43,5,main]=Thread[vert.x-eventloop-thread-43,5,main] has been blocked for 3651 ms, time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
-	at app//io.netty.channel.AbstractChannel.newId(AbstractChannel.java:101)
-	at app//io.netty.channel.AbstractChannel.<init>(AbstractChannel.java:73)
-	at app//io.netty.channel.nio.AbstractNioChannel.<init>(AbstractNioChannel.java:80)
-	at app//io.netty.channel.nio.AbstractNioMessageChannel.<init>(AbstractNioMessageChannel.java:42)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:89)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:75)
-	at app//io.vertx.core.net.impl.transport.Transport$$Lambda$253/0x00000008002c7c40.newChannel(Unknown Source)
-	at app//io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:310)
-	at app//io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272)
-	at app//io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:60)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper$$Lambda$254/0x00000008002c7040.handle(Unknown Source)
-	at app//io.vertx.core.impl.AddressResolver.lambda$null$0(AddressResolver.java:88)
-	at app//io.vertx.core.impl.AddressResolver$$Lambda$256/0x00000008002c6840.handle(Unknown Source)
-	at app//io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:366)
-	at app//io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
-	at app//io.vertx.core.impl.EventLoopContext$$Lambda$169/0x000000080028e440.run(Unknown Source)
-	at app//io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
-	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
-	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base@13.0.7/java.lang.Thread.run(Thread.java:830)
+18:42:07,840 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.786s. Listening on: http://0.0.0.0:8888
+18:42:07,848 INFO  quarkus:91 [main] Profile prod activated. 
+18:42:07,849 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+18:42:11,442 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+18:42:11,514 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+18:42:11,514 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+18:42:11,606 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+18:42:12,025 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/b71b49bf-3aa6-4978-8f1b-813e2f3ca11a]
+1710895332026, 0, 0
+18:42:12,096 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+18:42:12,097 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+18:42:12,103 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+18:42:12,192 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/0b1b8822-7777-48ca-aee2-c5bf060c41a0]
+18:42:12,258 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+18:42:12,258 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+18:42:12,265 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+18:42:12,342 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: b3cf3b14-de28-4e6d-8751-6c27b8622260-1: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk3/f600a617-05f6-4519-bc45-0192e3df3a27 (No such file or directory)
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.io.FileNotFoundException: /media/disk3/f600a617-05f6-4519-bc45-0192e3df3a27 (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileWriter.<init>(FileWriter.java:113)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:71)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
 
-23:54:41,114 WARNING BlockedThreadChecker:-1 [vertx-blocked-thread-checker] Thread Thread[vert.x-eventloop-thread-43,5,main]=Thread[vert.x-eventloop-thread-43,5,main] has been blocked for 5651 ms, time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
-	at app//io.netty.channel.AbstractChannel.newId(AbstractChannel.java:101)
-	at app//io.netty.channel.AbstractChannel.<init>(AbstractChannel.java:73)
-	at app//io.netty.channel.nio.AbstractNioChannel.<init>(AbstractNioChannel.java:80)
-	at app//io.netty.channel.nio.AbstractNioMessageChannel.<init>(AbstractNioMessageChannel.java:42)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:89)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:75)
-	at app//io.vertx.core.net.impl.transport.Transport$$Lambda$253/0x00000008002c7c40.newChannel(Unknown Source)
-	at app//io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:310)
-	at app//io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272)
-	at app//io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:60)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper$$Lambda$254/0x00000008002c7040.handle(Unknown Source)
-	at app//io.vertx.core.impl.AddressResolver.lambda$null$0(AddressResolver.java:88)
-	at app//io.vertx.core.impl.AddressResolver$$Lambda$256/0x00000008002c6840.handle(Unknown Source)
-	at app//io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:366)
-	at app//io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
-	at app//io.vertx.core.impl.EventLoopContext$$Lambda$169/0x000000080028e440.run(Unknown Source)
-	at app//io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
-	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
-	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base@13.0.7/java.lang.Thread.run(Thread.java:830)
+18:42:12,416 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+18:42:12,416 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+18:42:12,424 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+18:42:12,503 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: b3cf3b14-de28-4e6d-8751-6c27b8622260-2: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk4/f2bdcaef-4aff-4196-ad0e-434621eb2e2b (No such file or directory)
+	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
+	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:519)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:261)
+	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:161)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:164)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:247)
+	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:136)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:40)
+	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:97)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
+Caused by: java.io.FileNotFoundException: /media/disk4/f2bdcaef-4aff-4196-ad0e-434621eb2e2b (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileWriter.<init>(FileWriter.java:113)
+	at org.acme.ReplicaLoggerClient.<init>(ReplicaLoggerClient.java:71)
+	at org.acme.LoggerController.registerReplica(LoggerController.java:93)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:170)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:643)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:507)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:457)
+	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:459)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:419)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:393)
+	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
+	... 17 more
 
-23:54:43,113 WARNING BlockedThreadChecker:-1 [vertx-blocked-thread-checker] Thread Thread[vert.x-eventloop-thread-43,5,main]=Thread[vert.x-eventloop-thread-43,5,main] has been blocked for 7652 ms, time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
-	at app//io.netty.channel.AbstractChannel.newId(AbstractChannel.java:101)
-	at app//io.netty.channel.AbstractChannel.<init>(AbstractChannel.java:73)
-	at app//io.netty.channel.nio.AbstractNioChannel.<init>(AbstractNioChannel.java:80)
-	at app//io.netty.channel.nio.AbstractNioMessageChannel.<init>(AbstractNioMessageChannel.java:42)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:89)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:75)
-	at app//io.vertx.core.net.impl.transport.Transport$$Lambda$253/0x00000008002c7c40.newChannel(Unknown Source)
-	at app//io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:310)
-	at app//io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272)
-	at app//io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:60)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper$$Lambda$254/0x00000008002c7040.handle(Unknown Source)
-	at app//io.vertx.core.impl.AddressResolver.lambda$null$0(AddressResolver.java:88)
-	at app//io.vertx.core.impl.AddressResolver$$Lambda$256/0x00000008002c6840.handle(Unknown Source)
-	at app//io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:366)
-	at app//io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
-	at app//io.vertx.core.impl.EventLoopContext$$Lambda$169/0x000000080028e440.run(Unknown Source)
-	at app//io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
-	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
-	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base@13.0.7/java.lang.Thread.run(Thread.java:830)
-
-23:54:45,081 WARN  NettyRecorder:30 [Thread-0] Netty DefaultChannelId initialization (with io.netty.machineId system property set to 58:53:66:a5:77:d5:92:1b) took more than a second
-23:54:45,115 WARNING BlockedThreadChecker:-1 [vertx-blocked-thread-checker] Thread Thread[vert.x-eventloop-thread-43,5,main]=Thread[vert.x-eventloop-thread-43,5,main] has been blocked for 9653 ms, time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
-	at java.base@13.0.7/java.lang.ClassLoader.defineClass1(Native Method)
-	at java.base@13.0.7/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
-	at java.base@13.0.7/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:151)
-	at java.base@13.0.7/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
-	at java.base@13.0.7/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:719)
-	at java.base@13.0.7/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:642)
-	at java.base@13.0.7/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:600)
-	at java.base@13.0.7/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base@13.0.7/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at app//io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24)
-	at app//io.netty.channel.DefaultChannelConfig.<init>(DefaultChannelConfig.java:59)
-	at app//io.netty.channel.DefaultChannelConfig.<init>(DefaultChannelConfig.java:72)
-	at app//io.netty.channel.socket.DefaultServerSocketChannelConfig.<init>(DefaultServerSocketChannelConfig.java:50)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel$NioServerSocketChannelConfig.<init>(NioServerSocketChannel.java:201)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel$NioServerSocketChannelConfig.<init>(NioServerSocketChannel.java:199)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:90)
-	at app//io.netty.channel.socket.nio.NioServerSocketChannel.<init>(NioServerSocketChannel.java:75)
-	at app//io.vertx.core.net.impl.transport.Transport$$Lambda$253/0x00000008002c7c40.newChannel(Unknown Source)
-	at app//io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:310)
-	at app//io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272)
-	at app//io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:60)
-	at app//io.vertx.core.net.impl.AsyncResolveConnectHelper$$Lambda$254/0x00000008002c7040.handle(Unknown Source)
-	at app//io.vertx.core.impl.AddressResolver.lambda$null$0(AddressResolver.java:88)
-	at app//io.vertx.core.impl.AddressResolver$$Lambda$256/0x00000008002c6840.handle(Unknown Source)
-	at app//io.vertx.core.impl.ContextImpl.executeTask(ContextImpl.java:366)
-	at app//io.vertx.core.impl.EventLoopContext.lambda$executeAsync$0(EventLoopContext.java:38)
-	at app//io.vertx.core.impl.EventLoopContext$$Lambda$169/0x000000080028e440.run(Unknown Source)
-	at app//io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
-	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
-	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
-	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base@13.0.7/java.lang.Thread.run(Thread.java:830)
-
-23:54:45,173 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 26.355s. Listening on: http://0.0.0.0:8888
-23:54:45,176 INFO  quarkus:91 [main] Profile prod activated. 
-23:54:45,177 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-23:55:28,209 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+1710895333026, 0, 0
+1710895334027, 0, 0
+1710895335028, 0, 0
+1710895336030, 0, 0
+1710895337030, 0, 0
+1710895338031, 0, 0
+1710895339032, 0, 0
+1710895340033, 0, 0
+1710895341034, 0, 0
+1710895342035, 0, 0
+1710895343036, 0, 0
+1710895344036, 0, 0
+1710895345037, 0, 0
+1710895346038, 0, 0
+1710895347038, 0, 0
+1710895348039, 0, 0
+1710895349040, 0, 0
+1710895350040, 0, 0
+1710895351043, 0, 0
+1710895352044, 0, 0
+1710895353045, 0, 0
+1710895354046, 0, 0
+1710895355046, 0, 0
+1710895356047, 0, 0
+1710895357047, 0, 0
+1710895358048, 0, 0
+1710895359048, 0, 0
+1710895360049, 0, 0
+1710895361050, 0, 0
+1710895362050, 0, 0
+1710895363051, 0, 0
+1710895364052, 0, 0
+18:42:44,710 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+18:42:44,849 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+18:42:44,850 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+18:42:44,872 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1710895365052, 0, 0
+1710895366053, 0, 0
+1710895367053, 0, 0
