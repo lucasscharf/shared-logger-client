@@ -2,23 +2,23 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-20:34:31,200 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.912s. Listening on: http://0.0.0.0:8888
-20:34:31,208 INFO  quarkus:91 [main] Profile prod activated. 
-20:34:31,208 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
-20:34:34,741 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
-20:34:34,825 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-20:34:34,826 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
-20:34:34,917 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
-20:34:35,343 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/5025cee7-ee58-4227-8064-4e59287b5728]
-1710902075344, 0, 0
-20:34:35,415 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
-20:34:35,416 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
-20:34:35,421 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
-20:34:35,508 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/885cf7e7-e3dd-4c18-b522-d034cd8b85ca]
-20:34:35,562 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
-20:34:35,564 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
-20:34:35,570 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
-20:34:35,661 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 476bae26-321c-4ddf-9181-d20ba9bbfa5d-1: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk3/50ed838b-90b3-4338-a0ce-ea0afe9f98c6 (No such file or directory)
+02:17:28,321 INFO  quarkus:88 [main] shared-logger 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.10.2.Final) started in 1.770s. Listening on: http://0.0.0.0:8888
+02:17:28,329 INFO  quarkus:91 [main] Profile prod activated. 
+02:17:28,330 INFO  quarkus:92 [main] Installed features: [cdi, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-openapi]
+02:17:31,976 INFO  LoggerController:69 [executor-thread-1] loggerRestClients size [2]
+02:17:32,062 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+02:17:32,062 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [4] and path [/media/disk1/]
+02:17:32,149 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=4, ring=1, replicas=1, pathPrefix=/media/disk1/]]
+02:17:32,559 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk1/aea30aae-c5b3-4faa-b3c1-df8361f33ccd]
+1710922652561, 0, 0
+02:17:32,642 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+02:17:32,643 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [5] and path [/media/disk2/]
+02:17:32,651 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=5, ring=2, replicas=1, pathPrefix=/media/disk2/]]
+02:17:32,734 INFO  ReplicaLoggerClient:80 [executor-thread-2] Path created [/media/disk2/6c5baad8-ce89-4839-87b9-c1c76946ed44]
+02:17:32,784 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+02:17:32,786 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [6] and path [/media/disk3/]
+02:17:32,792 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=6, ring=3, replicas=1, pathPrefix=/media/disk3/]]
+02:17:32,890 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 6c2cb2de-01ea-4962-aae2-5be9553cba52-1: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk3/49e2c35d-20a9-4462-b3bb-2a242fb53a3f (No such file or directory)
 	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
 	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
@@ -40,7 +40,7 @@ __  ____  __  _____   ___  __ ____  ______
 	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
-Caused by: java.io.FileNotFoundException: /media/disk3/50ed838b-90b3-4338-a0ce-ea0afe9f98c6 (No such file or directory)
+Caused by: java.io.FileNotFoundException: /media/disk3/49e2c35d-20a9-4462-b3bb-2a242fb53a3f (No such file or directory)
 	at java.base/java.io.FileOutputStream.open0(Native Method)
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
@@ -64,10 +64,10 @@ Caused by: java.io.FileNotFoundException: /media/disk3/50ed838b-90b3-4338-a0ce-e
 	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
 	... 17 more
 
-20:34:35,733 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
-20:34:35,733 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
-20:34:35,740 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
-20:34:35,818 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 476bae26-321c-4ddf-9181-d20ba9bbfa5d-2: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk4/4928b7b2-5145-4de2-a5a6-8fb525ed9f76 (No such file or directory)
+02:17:32,970 INFO  LoggerController:110 [executor-thread-1] Registering config [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+02:17:32,971 INFO  LoggerController:119 [executor-thread-1] Calling logger in url id [0] with id [7] and path [/media/disk4/]
+02:17:32,978 INFO  LoggerController:92 [executor-thread-2] Registering replica logger [LoggerConfig [id=7, ring=4, replicas=1, pathPrefix=/media/disk4/]]
+02:17:33,055 ERROR QuarkusErrorHandler:97 [executor-thread-2] HTTP Request to /registerReplica failed, error id: 6c2cb2de-01ea-4962-aae2-5be9553cba52-2: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: /media/disk4/ac94fca2-6c26-4e8d-be54-3afae2745198 (No such file or directory)
 	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)
 	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:218)
@@ -89,7 +89,7 @@ Caused by: java.io.FileNotFoundException: /media/disk3/50ed838b-90b3-4338-a0ce-e
 	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 	at org.jboss.threads.JBossThread.run(JBossThread.java:479)
-Caused by: java.io.FileNotFoundException: /media/disk4/4928b7b2-5145-4de2-a5a6-8fb525ed9f76 (No such file or directory)
+Caused by: java.io.FileNotFoundException: /media/disk4/ac94fca2-6c26-4e8d-be54-3afae2745198 (No such file or directory)
 	at java.base/java.io.FileOutputStream.open0(Native Method)
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
@@ -113,51 +113,52 @@ Caused by: java.io.FileNotFoundException: /media/disk4/4928b7b2-5145-4de2-a5a6-8
 	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:492)
 	... 17 more
 
-1710902076345, 0, 0
-1710902077346, 0, 0
-1710902078346, 0, 0
-1710902079348, 0, 0
-1710902080348, 0, 0
-1710902081350, 0, 0
-1710902082351, 0, 0
-1710902083352, 0, 0
-1710902084353, 0, 0
-1710902085353, 0, 0
-1710902086354, 0, 0
-1710902087356, 0, 0
-1710902088356, 0, 0
-1710902089357, 0, 0
-1710902090358, 0, 0
-1710902091358, 0, 0
-1710902092359, 0, 0
-1710902093359, 0, 0
-1710902094360, 0, 0
-1710902095361, 0, 0
-1710902096361, 0, 0
-1710902097362, 0, 0
-1710902098362, 0, 0
-1710902099363, 0, 0
-1710902100398, 0, 0
-1710902101399, 0, 0
-1710902102399, 0, 0
-1710902103400, 0, 0
-1710902104401, 0, 0
-1710902105434, 0, 0
-1710902106436, 0, 0
-1710902107437, 0, 0
-1710902108439, 0, 0
-1710902109441, 0, 0
-1710902110443, 0, 0
-1710902111444, 0, 0
-1710902112445, 0, 0
-1710902113446, 0, 0
-1710902114448, 0, 0
-1710902115449, 0, 0
-1710902116451, 0, 0
-20:35:16,860 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-20:35:17,211 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-20:35:17,212 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
-20:35:17,258 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
-1710902117451, 0, 0
-1710902118452, 0, 0
-1710902119452, 0, 0
+1710922653561, 0, 0
+1710922654562, 0, 0
+1710922655563, 0, 0
+1710922656564, 0, 0
+1710922657566, 0, 0
+1710922658568, 0, 0
+1710922659570, 0, 0
+1710922660571, 0, 0
+1710922661572, 0, 0
+1710922662573, 0, 0
+1710922663575, 0, 0
+1710922664576, 0, 0
+1710922665577, 0, 0
+1710922666577, 0, 0
+1710922667578, 0, 0
+1710922668578, 0, 0
+1710922669579, 0, 0
+1710922670579, 0, 0
+1710922671580, 0, 0
+1710922672582, 0, 0
+1710922673582, 0, 0
+1710922674583, 0, 0
+1710922675583, 0, 0
+1710922676584, 0, 0
+1710922677585, 0, 0
+1710922678586, 0, 0
+1710922679586, 0, 0
+1710922680587, 0, 0
+1710922681587, 0, 0
+1710922682588, 0, 0
+1710922683588, 0, 0
+1710922684589, 0, 0
+1710922685589, 0, 0
+1710922686590, 0, 0
+1710922687590, 0, 0
+1710922688591, 0, 0
+1710922689591, 0, 0
+1710922690591, 0, 0
+1710922691592, 0, 0
+1710922692592, 0, 0
+1710922693592, 0, 0
+1710922694593, 0, 0
+02:18:15,210 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+1710922695593, 0, 0
+02:18:15,775 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+02:18:15,776 INFO  ReplicaLoggerClient:139 [executor-thread-1] Saving latencies
+02:18:15,798 INFO  ReplicaLoggerClient:152 [executor-thread-1] File save
+1710922696594, 0, 0
+1710922697594, 0, 0
